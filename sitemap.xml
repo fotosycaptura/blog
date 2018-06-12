@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/</loc>
-<lastmod>2018-06-12T17:33:08-00:00</lastmod>
+<lastmod>2018-06-12T19:31:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/archives.html</loc>
-<lastmod>2018-06-12T17:33:08-00:00</lastmod>
+<lastmod>2018-06-12T19:31:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tags.html</loc>
-<lastmod>2018-06-12T17:33:08-00:00</lastmod>
+<lastmod>2018-06-12T19:31:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/categories.html</loc>
-<lastmod>2018-06-12T17:33:08-00:00</lastmod>
+<lastmod>2018-06-12T19:31:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
