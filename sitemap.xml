@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/</loc>
-<lastmod>2018-06-17T20:01:38-00:00</lastmod>
+<lastmod>2018-06-19T09:41:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/archives.html</loc>
-<lastmod>2018-06-17T20:01:38-00:00</lastmod>
+<lastmod>2018-06-19T09:41:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tags.html</loc>
-<lastmod>2018-06-17T20:01:38-00:00</lastmod>
+<lastmod>2018-06-19T09:41:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/categories.html</loc>
-<lastmod>2018-06-17T20:01:38-00:00</lastmod>
+<lastmod>2018-06-19T09:41:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -36,6 +36,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2018-06-12T20:30:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>/blog/posts/abrazo-frio.html</loc>
+<lastmod>2018-06-19T07:20:00-04:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
@@ -131,28 +138,56 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/category/personal.html</loc>
-<lastmod>2018-06-17T17:34:00-04:43</lastmod>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tag/blog.html</loc>
-<lastmod>2018-06-17T17:34:00-04:43</lastmod>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tag/sentimientos.html</loc>
-<lastmod>2018-06-17T17:34:00-04:43</lastmod>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tag/emociones.html</loc>
-<lastmod>2018-06-17T17:34:00-04:43</lastmod>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/oscuridad.html</loc>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/frialdad.html</loc>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/paranormal.html</loc>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/creencias.html</loc>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -180,6 +215,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/tag/duende.html</loc>
+<lastmod>2018-06-17T17:34:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/gnomo-creencias.html</loc>
 <lastmod>2018-06-17T17:34:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -327,7 +369,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/author/fotosycaptura.html</loc>
-<lastmod>2018-06-17T17:34:00-04:43</lastmod>
+<lastmod>2018-06-19T07:20:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
