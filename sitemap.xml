@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/</loc>
-<lastmod>2018-09-05T16:53:50-00:00</lastmod>
+<lastmod>2018-09-05T17:41:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/archives.html</loc>
-<lastmod>2018-09-05T16:53:50-00:00</lastmod>
+<lastmod>2018-09-05T17:41:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tags.html</loc>
-<lastmod>2018-09-05T16:53:50-00:00</lastmod>
+<lastmod>2018-09-05T17:41:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/categories.html</loc>
-<lastmod>2018-09-05T16:53:50-00:00</lastmod>
+<lastmod>2018-09-05T17:41:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -34,6 +34,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/blog/pages/links.html</loc>
 <lastmod>2018-06-12T20:30:00-04:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.3</priority>
+</url>
+
+<url>
+<loc>/blog/pages/libro-firmas.html</loc>
+<lastmod>2018-09-05T20:20:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
