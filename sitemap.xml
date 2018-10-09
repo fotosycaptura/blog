@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/</loc>
-<lastmod>2018-10-05T14:39:27-00:00</lastmod>
+<lastmod>2018-10-09T16:14:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/archives.html</loc>
-<lastmod>2018-10-05T14:39:27-00:00</lastmod>
+<lastmod>2018-10-09T16:14:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tags.html</loc>
-<lastmod>2018-10-05T14:39:27-00:00</lastmod>
+<lastmod>2018-10-09T16:14:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/categories.html</loc>
-<lastmod>2018-10-05T14:39:27-00:00</lastmod>
+<lastmod>2018-10-09T16:14:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -43,6 +43,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2018-09-05T20:20:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>/blog/posts/2018-pedaleando-busqueda-fotos.html</loc>
+<lastmod>2018-10-07T20:30:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
@@ -264,7 +271,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/category/paseando-por-un-dia.html</loc>
-<lastmod>2018-09-24T20:30:00-04:43</lastmod>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -285,20 +292,55 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/tag/blog.html</loc>
-<lastmod>2018-09-24T20:30:00-04:43</lastmod>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/tag/video-blog.html</loc>
-<lastmod>2018-09-24T20:30:00-04:43</lastmod>
+<loc>/blog/tag/sentimientos.html</loc>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tag/emociones.html</loc>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/fotos.html</loc>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/bicicleta.html</loc>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/montanesa.html</loc>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/mbt.html</loc>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/video-blog.html</loc>
 <lastmod>2018-09-24T20:30:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -347,13 +389,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/blog/tag/sentimientos.html</loc>
-<lastmod>2018-09-24T20:30:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>/blog/tag/verde.html</loc>
 <lastmod>2018-09-24T20:30:00-04:43</lastmod>
 <changefreq>daily</changefreq>
@@ -383,13 +418,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/tag/flora.html</loc>
-<lastmod>2018-09-06T08:30:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/blog/tag/fotos.html</loc>
 <lastmod>2018-09-06T08:30:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -634,27 +662,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/blog/tag/bicicleta.html</loc>
-<lastmod>2004-01-11T22:20:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/blog/tag/montanesa.html</loc>
-<lastmod>2004-01-11T22:20:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/blog/tag/mbt.html</loc>
-<lastmod>2004-01-11T22:20:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>/blog/tag/pensamientos.html</loc>
 <lastmod>2003-04-03T20:27:00-04:43</lastmod>
 <changefreq>daily</changefreq>
@@ -677,7 +684,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/author/fotosycaptura.html</loc>
-<lastmod>2018-09-24T20:30:00-04:43</lastmod>
+<lastmod>2018-10-07T20:30:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
