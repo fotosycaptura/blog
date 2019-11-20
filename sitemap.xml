@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/</loc>
-<lastmod>2019-11-20T17:25:00-00:00</lastmod>
+<lastmod>2019-11-20T17:34:03-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/archives.html</loc>
-<lastmod>2019-11-20T17:25:00-00:00</lastmod>
+<lastmod>2019-11-20T17:34:03-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/tags.html</loc>
-<lastmod>2019-11-20T17:25:00-00:00</lastmod>
+<lastmod>2019-11-20T17:34:03-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/blog/categories.html</loc>
-<lastmod>2019-11-20T17:25:00-00:00</lastmod>
+<lastmod>2019-11-20T17:34:03-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -837,13 +837,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/blog/author/_less.html</loc>
-<lastmod>2019-09-05T20:30:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>/blog/author/diosa-eris.html</loc>
 <lastmod>2003-04-03T20:27:00-04:43</lastmod>
 <changefreq>daily</changefreq>
@@ -853,6 +846,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/blog/author/fotosycaptura.html</loc>
 <lastmod>2019-11-19T09:00:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/author/less.html</loc>
+<lastmod>2019-09-05T20:30:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
