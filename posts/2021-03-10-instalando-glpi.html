@@ -112,10 +112,10 @@
 <h2>Cosas previas antes de...</h2>
 <p>Si, es posible, instalar en un Windows Server 2012 R2, solo hay que tener algunas consideraciones y después de investigar un poco, la mejor opción es utilizar algo llamado <a href="https://www.microsoft.com/web/downloads/platform.aspx">Web Plataform Installer</a>.</p>
 <p>Una vez instalado, hay que cerrar y volver a abrir el IIS y ubicar el nuevo ícono de la aplicación.</p>
-<p><img alt="Web Plataform Installer" src="/media/2021/glpi-paso-01.png"><br>
+<p><img alt="Web Plataform Installer" src="/media/2021/glpi-paso-01.png" style="width: auto; max-width: 100% !important;"><br>
 <em>Web plataform Installer</em></p>
 <p>Una vez ubicada la nueva aplicación, doble clic para ejecutarlo y buscar PHP.</p>
-<p><img alt="Php ubicado" src="/media/2021/glpi-paso-02.png"><br>
+<p><img alt="Php ubicado" src="/media/2021/glpi-paso-02.png" style="width: auto; max-width: 100% !important;"><br>
 <em>Php ubicado, en mi caso, instalado</em></p>
 <p>En mi caso, tengo instalada la versión 7.3.25 al momento de la publicación de este post.</p>
 <h2>Pero...</h2>
@@ -131,13 +131,13 @@ Module: FastCgiModule ....</p>
 <p>Lo que hice después de mucho leer e investigar - ya que el mensaje de error es algo... - fue instalar las librerías de <a href="https://www.microsoft.com/es-cl/download/details.aspx?id=48145">Visual C++ Redistributable para Visual Studio 2015</a>, encontré que en algunos sitios, recomendaban instalar las de 2012, pero después de algunos intentos y con el mismo error, fui instalando de versión en versión hasta que con esta me funcionó.</p>
 <p>Peeeeero, <em>porque siempre hay un pero</em>, al intentar ejecutar la instalación del GLPI en IIS, me lanzó un mensaje diferente, esta vez, de que la versión de php era inferior y que necesitaba una mayor o igual a 7.2.x - no recuerdo el número en este momento -...</p>
 <p>Entonces... Nuevamente, fui al IIS, y esta vez a la opción Handler Mappings.</p>
-<p><img alt="Handler Mappings" src="/media/2021/glpi-paso-03.png"><br>
+<p><img alt="Handler Mappings" src="/media/2021/glpi-paso-03.png" style="width: auto; max-width: 100% !important;"><br>
 <em>Hangler Mappings</em></p>
 <p>Y luego de ejecutarlo, busqué aquél php que tenía que quitar, para finalmente dejar los que muestro en la imagen a continuación.</p>
-<p><img alt="Los que tienen que quedar" src="/media/2021/glpi-paso-04.png"><br>
+<p><img alt="Los que tienen que quedar" src="/media/2021/glpi-paso-04.png" style="width: auto; max-width: 100% !important;"><br>
 <em>Los que tienen que quedar</em></p>
 <p>Y con esto, una vez más, reinicio el IIS y por fin! Mi sistema de tickets por fin, ¡vivo!</p>
-<p><img alt="GLPI instalado y funcionando" src="/media/2021/glpi-paso-05.png"><br>
+<p><img alt="GLPI instalado y funcionando" src="/media/2021/glpi-paso-05.png" style="width: auto; max-width: 100% !important;"><br>
 <em>GLPI instalado y funcionando</em></p>
 <p>Ya el resto de la instalación se las dejo a uds, si total, next, next, finalizar... XDDD</p>
   </div>
