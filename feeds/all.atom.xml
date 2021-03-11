@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Paseando por un día</title><link href="http://fotosycaptura.cl/" rel="alternate"></link><link href="http://fotosycaptura.cl/feeds/all.atom.xml" rel="self"></link><id>http://fotosycaptura.cl/</id><updated>2021-03-10T10:00:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Instalando GLPI.</title><link href="http://fotosycaptura.cl/posts/2021-03-10-instalando-glpi.html" rel="alternate"></link><published>2021-03-10T10:00:00-03:00</published><updated>2021-03-10T10:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2021-03-10:/posts/2021-03-10-instalando-glpi.html</id><summary type="html">&lt;p&gt;Van pasando los años y surgen necesidades informáticas en algún punto de la vida... De repente, toca implementar un sistema de tickets, o mesa de ayuda... Uhm, valdrá la pena desarrollar alguno a medida? O quizás sea mejor usar uno ya construido, que lleva ya su tiempo en vida?...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;¿Vale la pena?&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Paseando por un día</title><link href="http://fotosycaptura.cl/" rel="alternate"></link><link href="http://fotosycaptura.cl/feeds/all.atom.xml" rel="self"></link><id>http://fotosycaptura.cl/</id><updated>2021-03-11T15:20:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Mi blog, la historia</title><link href="http://fotosycaptura.cl/posts/2021-03-10-mi-blog-la-historia.html" rel="alternate"></link><published>2021-03-11T15:20:00-03:00</published><updated>2021-03-11T15:20:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2021-03-11:/posts/2021-03-10-mi-blog-la-historia.html</id><summary type="html">&lt;p&gt;Una breve historia sobre cómo es que creé mi blog. Con un poco de paciencia, con algo de investigación y tiempo, y sobre todo, ganas de escribir...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Un poco de historia...&lt;/h2&gt;
+&lt;p&gt;Erase una vez, en el año 2000, cuando estudiaba en la universidad, en la que se me dio por crear un sitio web personal. Mi primer sitio web... ¡Qué recuerdos! ¡Que nostalgia!... ^^, bueno, ha pasado bastante tiempo desde ese entonces. Pero... En ese entonces había creado mi sitio web, que aún se puede ver algo de ello en &lt;a href="http://web.archive.org/web/20021128115838/http://www.xcx.cjb.net/"&gt;web.archive.org&lt;/a&gt; concretamente en el año 2002.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Mi blog en esa época" src="/media/2021/mi-blog01.png" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;Mi blog en esa época&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Estaba contento con ello, era mi creación, bien colorida, con hartas páginas, y bastante texto donde tenía algunas cosas...&lt;/p&gt;
+&lt;p&gt;Después, en el año 2003 aproximadamente, cuando cursaba una de las asignaturas de programación... A estas alturas no recuerdo cual sería, pero sí recuerdo que conocí uno de los lenguajes java en ella.&lt;/p&gt;
+&lt;p&gt;En ese entonces, se me abrió un mundo de posibilidades... Páginas web dinámicas... Bases de datos... Por alguna razón nunca me gustó php, pero java... Java era mi paraíso... Así que comencé a aprender desarrollo en jsp, servlet, etc... &lt;/p&gt;
+&lt;p&gt;En ese entonces, quité todo, y me puse manos a la obra, y logré desarrollar &lt;a href="http://web.archive.org/web/20051024123117/http://www.myjavaserver.com/~liss/"&gt;mi sitio web personal&lt;/a&gt;, en el que podía escribir algunas cosas en base de datos y se mostraban como páginas web... Eran tan feliz... - &lt;em&gt;Que ingenuo era&lt;/em&gt; -&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Mi segundo blog" src="/media/2021/mi-blog02.png" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;Mi segundo blog&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Después ya con el trabajo no hubo tiempo que pudiera dedicarle, el sitio de myjavaserver que era el lugar que usaba de hosting murió, y ya no hice nada más... &lt;/p&gt;
+&lt;h2&gt;Pero entonces...&lt;/h2&gt;
+&lt;p&gt;Visitando algunos sitios de blogs me puse a pensar sobre si valía la pena realmente un sitio web con base de datos y todo lo del contenido dinámico...&lt;/p&gt;
+&lt;p&gt;Verán, se trata que de algo personal, no soy una empresa, o un periodista o algo por el estilo, mucho menos un escritor, como para pensar en que haya algún tipo de contenido a cada rato... Lo dinámico sería la interacción del usuario si es que la hay eventualmente, pero todo lo demás, es estático... Entonces... ¿Qué sentido tiene tener un sitio web usando tantos recursos para finalmente, servir páginas webs estáticas y algunas imágenes? &lt;/p&gt;
+&lt;p&gt;Fue entonces en el que buscando por internet me encontré con generadores de páginas webs estáticas utilizando lenguajes de marcados como el Mark Down u otro en especial, y esto - pensé - me iba a ahorrar bastante tiempo...&lt;/p&gt;
+&lt;p&gt;En primer lugar, el uso de recursos, ya no tengo que instalar editores tan sofisticados en el ámbito de edición, - menos es más ;) -...
+En segundo lugar, al ser estático, la carga por el lado del servidor es mucho menor, y por ende la rapidez de carga del sitio web también mejora bastante.&lt;/p&gt;
+&lt;p&gt;Y entre las búsquedas me encontré con algunos interesantes... Entre ellos Pelican, que usando Python, genera contenido HTML estático... &lt;/p&gt;
+&lt;p&gt;Consulté algunos sitios, blogs, y si bien, encontré opiniones similares a lo que pienso varios de ellos usan GNU/Linux para la descripción de pasos de configurar Python, Pelican y todo lo relacionado, no vi nada relacionado sobre cómo realizar estos pasos en un ambiente Windows... Así que eso es lo que haré... &lt;/p&gt;
+&lt;p&gt;Aunque personalmente, no es mucha la diferencia, al menos según yo...&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A la fecha de redacción de este post, la versión de Python a usar es la 3.9.2, y con ello todo ha funcionado sin problemas.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;¿Ventajas?&lt;/h2&gt;
+&lt;p&gt;Las ventajas son varias, pero siempre está el tema de qué es lo que uno quiere hacer. Así que puede haber diferentes opiniones con respecto a un sitio web estático y uno dinámico, pero no hay que olvidar, que siempre, por muy dinámico que uno piense un sitio, finalmente lo que retorna un servidor es una página web que pueda ser interpretada por el navegador. Lo que realmente estaríamos ahorrando - por decirlo así -, es recursos del propio servidor, y rapidez en la carga de la página.&lt;/p&gt;
+&lt;h2&gt;Lo primero que hice&lt;/h2&gt;
+&lt;p&gt;Lo primero por supuesto fue instalar Python, tan sencillo como ir a la web de &lt;a href="https://www.python.org/downloads/"&gt;Python&lt;/a&gt; y descargarlo desde allí.&lt;/p&gt;
+&lt;p&gt;Una vez lo instalé, abrí una consola en modo administrador y escribí:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install pelican  
+pip install fabric  
+pip install beautifulsoup4  
+pip install Markdown  
+pip install typogrify  
+pip install ghp-import  
+pip install virtualenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ya con todas las dependencias instaladas solo me puse a &lt;del&gt;jugar&lt;/del&gt; desarrollar. &amp;#x1F605;&lt;/p&gt;
+&lt;p&gt;En algunos sitios, blogs, hablan de usar un entorno virtual para no causar problemas con otras versiones de Pyhton, instaladas en el sistema... Tengo que recordar que esto es válido para los usuarios que principalmente usan sistemas basados en GNU/Linux. En OSX de Mac también es válido, aunque si eres un usuario de Windows, lo normal sería que tuvieras una sola versión instalada de Python, por lo que ese paso mencionado no es necesario.&lt;/p&gt;
+&lt;p&gt;Ehm, una vez mencionado eso, ya solo tuve que crear una carpeta e iniciar una consola desde allí con el explorer... &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ah, si no sabes esto, no te culpo, yo lo descubrí un día por casualidad XD, desde el explorador de Windows en una carpeta en concreto, uno se dirige a la barra de direcciones, borra el texto de la dirección y allí uno escribe cmd, y con ello ya se abre una consola de texto en esa ruta, en vez de la típica y tradicional inicio-&amp;gt;ejecutar-&amp;gt;cmd, y después mediante las ordenes de comando, navegar hasta la carpeta que uno busca posicionarse.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Bien, entonces invoqué a pelican y su asistente en la creación de lo que sería mi futuro sitio web.&lt;/p&gt;
+&lt;p&gt;Para ello:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pelican-quickstart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Luego de una breve carga, comenzó con realizar algunas preguntas que uno deberá de responder. A estas alturas tienes que tener cierto nivel de inglés, aunque sea mínimo para saber lo que dice y responder si o no - en inglés -. Aunque a casi todo le respondía que no... XDDD&lt;/p&gt;
+&lt;p&gt;Y ya después de ello, fue cosa de elegir un tema, algún plugin de los tantos que hay, y con ello, ya solo quedaba comenzar a escribir los futuros artículos dentro de la carpeta content. Ah cierto, no lo mencioné, pero la estructura de carpeta es bastante fácil e intuitiva, según yo, claro está... &amp;#x1F605;&lt;/p&gt;
+&lt;p&gt;Ya para finalizar, solo queda llevar las páginas y todo lo demás generado en la carpeta output después de haber ejecutado Pelican en la consola para generar el contenido estático, y llevarlo a algún sitio web que tengan.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#eso&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Referencias&lt;/h2&gt;
+&lt;p&gt;Si desean profundizar sobre la implementación, detalles de ello más técnicos, creación de plantillas, o alguna otra cosa, les dejaré estos enlaces de referencias para sus consultas, documentación, etc...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/DandyDev/dandydev.net"&gt;Archivo pelicancof.py y publishconf.py del blog de DandyDev, creador de plantilla Booostrap3.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"&gt;Cheat Sheet para Markdown.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://mathamy.com/migrating-to-github-pages-using-pelican.html"&gt;Amy Hanlon, Migrating to Github Pages using Pelican.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.getpelican.com/en/3.1.1/getting_started.html#installing-pelican"&gt;Documentación de Pelican - Getting Started&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/DandyDev/pelican-bootstrap3"&gt;Pelican Boostrap3 Theme.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://italofarve.github.io/posts/2015/03/01/mi-blog-con-pelican-y-github.html"&gt;El blog de Italo Farfán Vera&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://joedicastro.com/pelican-introduccion-e-instalacion.html"&gt;Pelican - Introducción e instalación, Blog de joedicastro&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Paseando por un d&amp;iacute;a"></category><category term="blog"></category><category term="config"></category><category term="programacion"></category></entry><entry><title>Instalando GLPI.</title><link href="http://fotosycaptura.cl/posts/2021-03-10-instalando-glpi.html" rel="alternate"></link><published>2021-03-10T10:00:00-03:00</published><updated>2021-03-10T10:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2021-03-10:/posts/2021-03-10-instalando-glpi.html</id><summary type="html">&lt;p&gt;Van pasando los años y surgen necesidades informáticas en algún punto de la vida... De repente, toca implementar un sistema de tickets, o mesa de ayuda... Uhm, valdrá la pena desarrollar alguno a medida? O quizás sea mejor usar uno ya construido, que lleva ya su tiempo en vida?...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;¿Vale la pena?&lt;/h2&gt;
 &lt;p&gt;Después de revisar y analizar un poco lo que se requiere, llegó el momento en que me puse a pensar, ¿Valdrá la pena crear un sistema desde cero? Esto igual tiene sus ventajas, sus pro y sus contra... Pero no soy partidario de reinventar la rueda.&lt;/p&gt;
 &lt;p&gt;Así que rápidamente me puse a revisar algunos proyectos existentes en Github.&lt;/p&gt;
 &lt;p&gt;Después de mucho revisar, clonar, instalar, intentar su ejecución, finalmente... Me decanté por &lt;a href="https://github.com/glpi-project/glpi"&gt;GLPI&lt;/a&gt;.&lt;/p&gt;
