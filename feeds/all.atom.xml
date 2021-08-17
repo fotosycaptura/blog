@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Paseando por un día</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/all.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2021-07-11T12:28:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Obsolecencia de software...</title><link href="https://fotosycaptura.cl/posts/2021-07-11-obsolecencia-de-software.html" rel="alternate"></link><published>2021-07-11T12:28:00-04:00</published><updated>2021-07-11T12:28:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2021-07-11:/posts/2021-07-11-obsolecencia-de-software.html</id><summary type="html">&lt;p&gt;Hace unos días estuve viendo un caso, en donde unos usuarios se quejaban que no podían realizar una actividad con sus programas habituales... Fue todo un tema la investigación, para finalmente, detectar cual fue el problema...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Año 2021, ¿Y todavía está Windows 7 en los equipos?&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Paseando por un día</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/all.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2021-08-17T16:30:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Jugando con una Raspberry Pi B+</title><link href="https://fotosycaptura.cl/posts/2021-08-17-jugando-con-raspberry-pi-b-plus.html" rel="alternate"></link><published>2021-08-17T16:30:00-04:00</published><updated>2021-08-17T16:30:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2021-08-17:/posts/2021-08-17-jugando-con-raspberry-pi-b-plus.html</id><summary type="html">&lt;p&gt;Llevaba bastante tiempo durmiendo la paz de los justos como decía mi padre, hasta que de repente me acordé de ella y pensé ¿Porqué no darle un uso? De las tantas aplicaciones que pueden darsele a un pequeño hardware como ello, bien que funciona como un server casero... Con GIT, por ejemplo...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Año 2021, pero esta placa es del 2014... o.O&lt;/h2&gt;
+&lt;p&gt;Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar.&lt;/p&gt;
+&lt;p&gt;Luego de ello, me puse a investigar un poco sobre como dejarlo como un servidor GIT, pero lo que encontré, no sirvió mucho, en el sentido de que me pedían que instalara docker por ejemplo, y aunque lo intenté, creo que en esta versión de hardware es algo modesta para ello. &lt;/p&gt;
+&lt;p&gt;Así que después de mucho intentarlo, simplemente me fui a la web de gitea, ah claro, lo quería bonito, con una interfaz agradable, configurable, etc... Así que &lt;a href="https://dl.gitea.io/gitea"&gt;Gitea&lt;/a&gt; los pasajes.. Jejeje...&lt;/p&gt;
+&lt;p&gt;Luego, sabiendo que la arquitectura es del tipo ARM, pues busqué la versión adecuada según yo. Pueden optar por la versión &lt;em&gt;Current Release&lt;/em&gt; pero como soy algo inestable XD, bajé la versión rc 3... ~_^&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;$wget&lt;/span&gt; https://dl.gitea.io/gitea/1.15.0-rc2/gitea-1.15.0-rc2-linux-arm-5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Luego lo renombré con mv a gitea, le di permisos de ejecución con chmod +x.. Vamos, lo usual...&lt;/p&gt;
+&lt;p&gt;Uhm, he de mencionar que la Raspberry que tengo, la tengo con una SD de 16 GB. Considerando que con el OS versión Lite, y python 3.9, ah cierto, estoy experimentando con ello también, así que, 16% de espacio en total ocupado, y todo el resto libre para repositorio GIT. Creo que es más que suficiente, aunque si quisiera más espacio, siempre se puede instalar una unidad USB y formatear, montar y configurar.&lt;/p&gt;
+&lt;p&gt;La configuración de Gitea, no la voy a publicar acá, porque está muy bien documentada en su &lt;a href="https://docs.gitea.io/en-us/install-from-binary/"&gt;web&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Aunque sí pondré algunos pasos que realicé por supuesto... No te mueras!!!&lt;/p&gt;
+&lt;h2&gt;Instalando como servicio&lt;/h2&gt;
+&lt;p&gt;Seguramente, si has llegado hasta acá, estarás pensando en cómo dejarlo configurado y listo para ejecutarlo como servicio, no tiene sentido ejecutarlo mientras estás logueado como usuario, porque con un reinicio todo eso se va... Y habría que volver a ejecutar la aplicación para que quede escuchando en el puerto que le hayas especificado, etc, etc, etc...&lt;/p&gt;
+&lt;p&gt;Así que... Lo primero sería ingresar &lt;a href="https://docs.gitea.io/en-us/linux-service/"&gt;acá&lt;/a&gt; y descargar el ejemplo que mencionan de &lt;em&gt;gitea.service&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Luego tocaría modificarlo un poco. No es difícil. Está bien, me compadeceré de ti, te dejaré el archivo que a mi me a funcionado en mi modesto HW...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;###&lt;/span&gt;
+&lt;span class="c1"&gt;# (You can also provide gitea an http fallback and/or ssh socket too)&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of /etc/systemd/system/gitea.main.socket&lt;/span&gt;
+&lt;span class="c1"&gt;###&lt;/span&gt;
+&lt;span class="c1"&gt;##&lt;/span&gt;
+&lt;span class="c1"&gt;## [Unit]&lt;/span&gt;
+&lt;span class="c1"&gt;## Description=Gitea Web Socket&lt;/span&gt;
+&lt;span class="c1"&gt;## PartOf=gitea.service&lt;/span&gt;
+&lt;span class="c1"&gt;##&lt;/span&gt;
+&lt;span class="c1"&gt;## [Socket]&lt;/span&gt;
+&lt;span class="c1"&gt;## Service=gitea.service&lt;/span&gt;
+&lt;span class="c1"&gt;## ListenStream=&amp;lt;some_port&amp;gt;&lt;/span&gt;
+&lt;span class="c1"&gt;## NoDelay=true&lt;/span&gt;
+&lt;span class="c1"&gt;##&lt;/span&gt;
+&lt;span class="c1"&gt;## [Install]&lt;/span&gt;
+&lt;span class="c1"&gt;## WantedBy=sockets.target&lt;/span&gt;
+&lt;span class="c1"&gt;##&lt;/span&gt;
+&lt;span class="c1"&gt;###&lt;/span&gt;
+
+&lt;span class="o"&gt;[&lt;/span&gt;Service&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="c1"&gt;# Modify these two values and uncomment them if you have&lt;/span&gt;
+&lt;span class="c1"&gt;# repos with lots of files and get an HTTP error 500 because&lt;/span&gt;
+&lt;span class="c1"&gt;# of that&lt;/span&gt;
+&lt;span class="c1"&gt;###&lt;/span&gt;
+&lt;span class="c1"&gt;#LimitMEMLOCK=infinity&lt;/span&gt;
+&lt;span class="c1"&gt;#LimitNOFILE=65535&lt;/span&gt;
+&lt;span class="nv"&gt;RestartSec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;2s
+&lt;span class="nv"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;simple
+&lt;span class="nv"&gt;User&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pi
+&lt;span class="nv"&gt;Group&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pi
+&lt;span class="nv"&gt;WorkingDirectory&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/pi/
+&lt;span class="c1"&gt;# If using Unix socket: tells systemd to create the /run/gitea folder, which will contain the gitea.sock file&lt;/span&gt;
+&lt;span class="c1"&gt;# (manually creating /run/gitea doesn&amp;#39;t work, because it would not persist across reboots)&lt;/span&gt;
+&lt;span class="c1"&gt;#RuntimeDirectory=gitea&lt;/span&gt;
+&lt;span class="nv"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/pi/gitea web --config /home/pi/custom/conf/app.ini
+&lt;span class="nv"&gt;Restart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;always
+&lt;span class="nv"&gt;Environment&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pi &lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/pi &lt;span class="nv"&gt;GITEA_WORK_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/pi
+&lt;span class="c1"&gt;# If you install Git to directory prefix other than default PATH (which happens&lt;/span&gt;
+&lt;span class="c1"&gt;# for example if you install other versions of Git side-to-side with&lt;/span&gt;
+&lt;span class="c1"&gt;# distribution version), uncomment below line and add that prefix to PATH&lt;/span&gt;
+&lt;span class="c1"&gt;# Don&amp;#39;t forget to place git-lfs binary on the PATH below if you want to enable&lt;/span&gt;
+&lt;span class="c1"&gt;# Git LFS support&lt;/span&gt;
+&lt;span class="c1"&gt;#Environment=PATH=/path/to/git/bin:/bin:/sbin:/usr/bin:/usr/sbin&lt;/span&gt;
+&lt;span class="c1"&gt;# If you want to bind Gitea to a port below 1024, uncomment&lt;/span&gt;
+&lt;span class="c1"&gt;# the two values below, or use socket activation to pass Gitea its ports as above&lt;/span&gt;
+&lt;span class="c1"&gt;###&lt;/span&gt;
+&lt;span class="c1"&gt;#CapabilityBoundingSet=CAP_NET_BIND_SERVICE&lt;/span&gt;
+&lt;span class="c1"&gt;#AmbientCapabilities=CAP_NET_BIND_SERVICE&lt;/span&gt;
+&lt;span class="c1"&gt;###&lt;/span&gt;
+
+&lt;span class="o"&gt;[&lt;/span&gt;Install&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;multi-user.target
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;¿Viste que no era difícil?... Bueno, ya tan solo falta dejarlo en la ruta que mencionan en el link que está más arriba, osea esta:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ /etc/systemd/system/gitea.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Uhm, ya solo queda activarlo como servicio.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; gitea.service
+sudo systemctl start gitea.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y listo, el resto sería ingresar a la url, que normalmente es localhost:3000 si es que has dejado el puerto por defecto. Y configurar mediante un navegador web, las opciones como la base de datos a usar, la ruta, el usuario administrador, etc, etc, etc... ¡Pero ya quedó!&lt;/p&gt;
+&lt;h2&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Ya tienes tu server casero, ahorrativo - consume nada de energía - y con la primera versión de la raspberry... Ahora si tienes una versión como la 4 por ejemplo, que al momento de escribir estas líneas, es la más actual. Pues, felicidades, quizás con la opción de usar docker sea más que suficiente... Yo lo hice así porque simplemente, docker no hubo forma de que funcionara utilizando el comando tipico de apt install blablabla....&lt;/p&gt;
+&lt;p&gt;¡Hasta la próxima!...&lt;/p&gt;</content><category term="Paseando por un d&amp;iacute;a"></category><category term="blog"></category><category term="config"></category><category term="software"></category><category term="python"></category><category term="raspberrypi"></category></entry><entry><title>Obsolecencia de software...</title><link href="https://fotosycaptura.cl/posts/2021-07-11-obsolecencia-de-software.html" rel="alternate"></link><published>2021-07-11T12:28:00-04:00</published><updated>2021-07-11T12:28:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2021-07-11:/posts/2021-07-11-obsolecencia-de-software.html</id><summary type="html">&lt;p&gt;Hace unos días estuve viendo un caso, en donde unos usuarios se quejaban que no podían realizar una actividad con sus programas habituales... Fue todo un tema la investigación, para finalmente, detectar cual fue el problema...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Año 2021, ¿Y todavía está Windows 7 en los equipos?&lt;/h2&gt;
 &lt;p&gt;Hace ya un tiempo que algunas compañías van renovando con el paso del tiempo sus sistemas operativos, utilidades, programas, etc... Es parte de la evolución en lo que a programas se refiere... Lo que es parte de la naturaleza se sigue observando incluso en el mundo de la tecnología... La palabra evolución... Uhm... &lt;/p&gt;
 &lt;p&gt;Bueno, iré al grano, estaba haciendo mis labores de lo mejor cuando de repente me avisan que un usuario no puede realizar una labor... En concreto, no puede trabajar con un documento compartido en la plataforma Teams con la opción &lt;em&gt;abrir aplicación en escritorio&lt;/em&gt;... Me puse a investigar y me encontré con que la versión del office no era la misma que la que tenía mi propio equipo. &lt;/p&gt;
 &lt;p&gt;Por lo que me puse a desinstalar el office en su equipo y volver a instalarlo, pensando que con ello se actualizaría a la última versión... Pero a pesar de todo, no fue así... Y esto es... Porque Windows 7 no tiene soporte a estas altulras de la vida...&lt;/p&gt;

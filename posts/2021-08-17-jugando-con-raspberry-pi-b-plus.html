@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Jugando con una Raspberry Pi B+ | Paseando por un d&iacute;a
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2021-08-17-jugando-con-raspberry-pi-b-plus.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Llevaba bastante tiempo durmiendo la paz de los justos como decía mi padre, hasta que de repente me acordé de ella y pensé ¿Porqué no darle un uso? De las tantas aplicaciones que pueden darsele a un pequeño hardware como ello, bien que funciona como un server casero... Con GIT, por ejemplo...">
+<script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o);
+    a.async = 1;
+    a.src = g;
+    m = s.getElementsByTagName(o)[0];
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-120795590-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="Paseando por un d&iacute;a">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">Paseando por un d&iacute;a</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/libro-firmas.html">Libro de Firmas</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/posts/aboutme.html">Acerca de</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Jugando con una Raspberry Pi B+
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2021-08-17T16:30:00-04:00">
+        <i class="fa fa-clock-o"></i>
+        ma. 17 agosto 2021
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/paseando-por-un-dia.html">Paseando por un d&iacute;a</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/blog.html">#blog</a>,         <a href="https://fotosycaptura.cl/tag/config.html">#config</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>,         <a href="https://fotosycaptura.cl/tag/python.html">#python</a>,         <a href="https://fotosycaptura.cl/tag/raspberrypi.html">#raspberrypi</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <h2>Año 2021, pero esta placa es del 2014... o.O</h2>
+<p>Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar.</p>
+<p>Luego de ello, me puse a investigar un poco sobre como dejarlo como un servidor GIT, pero lo que encontré, no sirvió mucho, en el sentido de que me pedían que instalara docker por ejemplo, y aunque lo intenté, creo que en esta versión de hardware es algo modesta para ello. </p>
+<p>Así que después de mucho intentarlo, simplemente me fui a la web de gitea, ah claro, lo quería bonito, con una interfaz agradable, configurable, etc... Así que <a href="https://dl.gitea.io/gitea">Gitea</a> los pasajes.. Jejeje...</p>
+<p>Luego, sabiendo que la arquitectura es del tipo ARM, pues busqué la versión adecuada según yo. Pueden optar por la versión <em>Current Release</em> pero como soy algo inestable XD, bajé la versión rc 3... ~_^</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$wget</span> https://dl.gitea.io/gitea/1.15.0-rc2/gitea-1.15.0-rc2-linux-arm-5
+</code></pre></div>
+
+<p>Luego lo renombré con mv a gitea, le di permisos de ejecución con chmod +x.. Vamos, lo usual...</p>
+<p>Uhm, he de mencionar que la Raspberry que tengo, la tengo con una SD de 16 GB. Considerando que con el OS versión Lite, y python 3.9, ah cierto, estoy experimentando con ello también, así que, 16% de espacio en total ocupado, y todo el resto libre para repositorio GIT. Creo que es más que suficiente, aunque si quisiera más espacio, siempre se puede instalar una unidad USB y formatear, montar y configurar.</p>
+<p>La configuración de Gitea, no la voy a publicar acá, porque está muy bien documentada en su <a href="https://docs.gitea.io/en-us/install-from-binary/">web</a>.</p>
+<p>Aunque sí pondré algunos pasos que realicé por supuesto... No te mueras!!!</p>
+<h2>Instalando como servicio</h2>
+<p>Seguramente, si has llegado hasta acá, estarás pensando en cómo dejarlo configurado y listo para ejecutarlo como servicio, no tiene sentido ejecutarlo mientras estás logueado como usuario, porque con un reinicio todo eso se va... Y habría que volver a ejecutar la aplicación para que quede escuchando en el puerto que le hayas especificado, etc, etc, etc...</p>
+<p>Así que... Lo primero sería ingresar <a href="https://docs.gitea.io/en-us/linux-service/">acá</a> y descargar el ejemplo que mencionan de <em>gitea.service</em>.</p>
+<p>Luego tocaría modificarlo un poco. No es difícil. Está bien, me compadeceré de ti, te dejaré el archivo que a mi me a funcionado en mi modesto HW...</p>
+<div class="highlight"><pre><span></span><code><span class="c1">###</span>
+<span class="c1"># (You can also provide gitea an http fallback and/or ssh socket too)</span>
+<span class="c1">#</span>
+<span class="c1"># An example of /etc/systemd/system/gitea.main.socket</span>
+<span class="c1">###</span>
+<span class="c1">##</span>
+<span class="c1">## [Unit]</span>
+<span class="c1">## Description=Gitea Web Socket</span>
+<span class="c1">## PartOf=gitea.service</span>
+<span class="c1">##</span>
+<span class="c1">## [Socket]</span>
+<span class="c1">## Service=gitea.service</span>
+<span class="c1">## ListenStream=&lt;some_port&gt;</span>
+<span class="c1">## NoDelay=true</span>
+<span class="c1">##</span>
+<span class="c1">## [Install]</span>
+<span class="c1">## WantedBy=sockets.target</span>
+<span class="c1">##</span>
+<span class="c1">###</span>
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="c1"># Modify these two values and uncomment them if you have</span>
+<span class="c1"># repos with lots of files and get an HTTP error 500 because</span>
+<span class="c1"># of that</span>
+<span class="c1">###</span>
+<span class="c1">#LimitMEMLOCK=infinity</span>
+<span class="c1">#LimitNOFILE=65535</span>
+<span class="nv">RestartSec</span><span class="o">=</span>2s
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">User</span><span class="o">=</span>pi
+<span class="nv">Group</span><span class="o">=</span>pi
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/home/pi/
+<span class="c1"># If using Unix socket: tells systemd to create the /run/gitea folder, which will contain the gitea.sock file</span>
+<span class="c1"># (manually creating /run/gitea doesn&#39;t work, because it would not persist across reboots)</span>
+<span class="c1">#RuntimeDirectory=gitea</span>
+<span class="nv">ExecStart</span><span class="o">=</span>/home/pi/gitea web --config /home/pi/custom/conf/app.ini
+<span class="nv">Restart</span><span class="o">=</span>always
+<span class="nv">Environment</span><span class="o">=</span><span class="nv">USER</span><span class="o">=</span>pi <span class="nv">HOME</span><span class="o">=</span>/home/pi <span class="nv">GITEA_WORK_DIR</span><span class="o">=</span>/home/pi
+<span class="c1"># If you install Git to directory prefix other than default PATH (which happens</span>
+<span class="c1"># for example if you install other versions of Git side-to-side with</span>
+<span class="c1"># distribution version), uncomment below line and add that prefix to PATH</span>
+<span class="c1"># Don&#39;t forget to place git-lfs binary on the PATH below if you want to enable</span>
+<span class="c1"># Git LFS support</span>
+<span class="c1">#Environment=PATH=/path/to/git/bin:/bin:/sbin:/usr/bin:/usr/sbin</span>
+<span class="c1"># If you want to bind Gitea to a port below 1024, uncomment</span>
+<span class="c1"># the two values below, or use socket activation to pass Gitea its ports as above</span>
+<span class="c1">###</span>
+<span class="c1">#CapabilityBoundingSet=CAP_NET_BIND_SERVICE</span>
+<span class="c1">#AmbientCapabilities=CAP_NET_BIND_SERVICE</span>
+<span class="c1">###</span>
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</code></pre></div>
+
+<p>¿Viste que no era difícil?... Bueno, ya tan solo falta dejarlo en la ruta que mencionan en el link que está más arriba, osea esta:</p>
+<div class="highlight"><pre><span></span><code>$ /etc/systemd/system/gitea.service
+</code></pre></div>
+
+<p>Uhm, ya solo queda activarlo como servicio.</p>
+<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> gitea.service
+sudo systemctl start gitea.service
+</code></pre></div>
+
+<p>Y listo, el resto sería ingresar a la url, que normalmente es localhost:3000 si es que has dejado el puerto por defecto. Y configurar mediante un navegador web, las opciones como la base de datos a usar, la ruta, el usuario administrador, etc, etc, etc... ¡Pero ya quedó!</p>
+<h2>Conclusión</h2>
+<p>Ya tienes tu server casero, ahorrativo - consume nada de energía - y con la primera versión de la raspberry... Ahora si tienes una versión como la 4 por ejemplo, que al momento de escribir estas líneas, es la más actual. Pues, felicidades, quizás con la opción de usar docker sea más que suficiente... Yo lo hice así porque simplemente, docker no hubo forma de que funcionara utilizando el comando tipico de apt install blablabla....</p>
+<p>¡Hasta la próxima!...</p>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://counter4.whocame.ovh/private/contadorvisitasgratis.php?c=ytntbfglwxdg259x6h7frf6ybfzar8zb" title="contador de visitas" alt="contador de visitas"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
