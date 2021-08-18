@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
 
 
-<meta name="description" content="Llevaba bastante tiempo durmiendo la paz de los justos como decía mi padre, hasta que de repente me acordé de ella y pensé ¿Porqué no darle un uso? De las tantas aplicaciones que pueden darsele a un pequeño hardware como ello, bien que funciona como un server casero... Con GIT, por ejemplo...">
+<meta name="description" content="Llevaba bastante tiempo durmiendo la paz de los justos como decía mi padre, hasta que de repente me acordé de ella y pensé ¿Porqué no darle un uso? De las tantas aplicaciones que pueden darsele a un pequeño hardware como lo es la Raspberry, bien que funcionaría como un server casero... Con Gitea, por ejemplo...">
 <script>
   (function(i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
@@ -104,13 +104,13 @@
     <h2>Año 2021, pero esta placa es del 2014... o.O</h2>
 <p>Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar.</p>
 <p>Luego de ello, me puse a investigar un poco sobre como dejarlo como un servidor GIT, pero lo que encontré, no sirvió mucho, en el sentido de que me pedían que instalara docker por ejemplo, y aunque lo intenté, creo que en esta versión de hardware es algo modesta para ello. </p>
-<p>Así que después de mucho intentarlo, simplemente me fui a la web de gitea, ah claro, lo quería bonito, con una interfaz agradable, configurable, etc... Así que <a href="https://dl.gitea.io/gitea">Gitea</a> los pasajes.. Jejeje...</p>
-<p>Luego, sabiendo que la arquitectura es del tipo ARM, pues busqué la versión adecuada según yo. Pueden optar por la versión <em>Current Release</em> pero como soy algo inestable XD, bajé la versión rc 3... ~_^</p>
+<p>Así que después de mucho intentarlo, simplemente me fui a la web de Gitea, ah claro, lo quería bonito, con una interfaz agradable, configurable, etc... Así que <a href="https://dl.gitea.io/gitea">Gitea</a> los pasajes.. Jejeje...</p>
+<p>Luego, sabiendo que la arquitectura es del tipo ARM, pues busqué la versión adecuada según yo. Pueden optar por la versión <em>Current Release</em> pero como soy algo inestable XD, bajé la versión rc 2... ~_^</p>
 <div class="highlight"><pre><span></span><code><span class="nv">$wget</span> https://dl.gitea.io/gitea/1.15.0-rc2/gitea-1.15.0-rc2-linux-arm-5
 </code></pre></div>
 
 <p>Luego lo renombré con mv a gitea, le di permisos de ejecución con chmod +x.. Vamos, lo usual...</p>
-<p>Uhm, he de mencionar que la Raspberry que tengo, la tengo con una SD de 16 GB. Considerando que con el OS versión Lite, y python 3.9, ah cierto, estoy experimentando con ello también, así que, 16% de espacio en total ocupado, y todo el resto libre para repositorio GIT. Creo que es más que suficiente, aunque si quisiera más espacio, siempre se puede instalar una unidad USB y formatear, montar y configurar.</p>
+<p>Uhm, he de mencionar que la Raspberry que tengo, la tengo con una SD de 16 GB. Considerando que con el OS versión Lite, y python 3.9, ah cierto, estoy experimentando con ello también, así que, 14% de espacio en total ocupado, y todo el resto libre para repositorio GIT. Creo que es más que suficiente, aunque si quisiera más espacio, siempre se puede instalar una unidad USB y formatear, montar y configurar.</p>
 <p>La configuración de Gitea, no la voy a publicar acá, porque está muy bien documentada en su <a href="https://docs.gitea.io/en-us/install-from-binary/">web</a>.</p>
 <p>Aunque sí pondré algunos pasos que realicé por supuesto... No te mueras!!!</p>
 <h2>Instalando como servicio</h2>
