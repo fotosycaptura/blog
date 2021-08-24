@@ -102,7 +102,23 @@
   </header>
   <div class="content">
     <h2>Año 2021, pero esta placa es del 2014... o.O</h2>
-<p>Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar.</p>
+<p>Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar. Si no estás usando monitor y teclado por separado, no te olvides de crear un archivo vacío llamado <em>ssh</em> en la sd antes de ingresarla o no podrás configurarla vía ssh.</p>
+<p>Luego de ello, y de ingresar con las credenciales iniciales que son pi y de contraseña raspberry, procedí a cambiar la clave con el comando passwd, no te olvides de agregar ese usuario al grupo ssh con:</p>
+<div class="highlight"><pre><span></span><code>$ sudo adduser pi ssh
+</code></pre></div>
+
+<p>y luego de ello a configurarla con: </p>
+<div class="highlight"><pre><span></span><code>$ sudo raspi-config
+</code></pre></div>
+
+<p>Después de setear lo del idioma, lo de la hora y todo eso, ya solo me puse a actualizar con:</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt update
+</code></pre></div>
+
+<p>y después: </p>
+<div class="highlight"><pre><span></span><code>$ sudo apt upgrade
+</code></pre></div>
+
 <p>Luego de ello, me puse a investigar un poco sobre como dejarlo como un servidor GIT, pero lo que encontré, no sirvió mucho, en el sentido de que me pedían que instalara docker por ejemplo, y aunque lo intenté, creo que en esta versión de hardware es algo modesta para ello. </p>
 <p>Así que después de mucho intentarlo, simplemente me fui a la web de Gitea, ah claro, lo quería bonito, con una interfaz agradable, configurable, etc... Así que <a href="https://dl.gitea.io/gitea">Gitea</a> los pasajes.. Jejeje...</p>
 <p>Luego, sabiendo que la arquitectura es del tipo ARM, pues busqué la versión adecuada según yo. Pueden optar por la versión <em>Current Release</em> pero como soy algo inestable XD, bajé la versión rc 2... ~_^</p>

@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Paseando por un día - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2021-08-17T16:30:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Jugando con una Raspberry Pi B+</title><link href="https://fotosycaptura.cl/posts/2021-08-17-jugando-con-raspberry-pi-b-plus.html" rel="alternate"></link><published>2021-08-17T16:30:00-04:00</published><updated>2021-08-17T16:30:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2021-08-17:/posts/2021-08-17-jugando-con-raspberry-pi-b-plus.html</id><summary type="html">&lt;p&gt;Llevaba bastante tiempo durmiendo la paz de los justos como decía mi padre, hasta que de repente me acordé de ella y pensé ¿Porqué no darle un uso? De las tantas aplicaciones que pueden darsele a un pequeño hardware como lo es la Raspberry, bien que funcionaría como un server casero... Con Gitea, por ejemplo...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Año 2021, pero esta placa es del 2014... o.O&lt;/h2&gt;
-&lt;p&gt;Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar.&lt;/p&gt;
+&lt;p&gt;Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar. Si no estás usando monitor y teclado por separado, no te olvides de crear un archivo vacío llamado &lt;em&gt;ssh&lt;/em&gt; en la sd antes de ingresarla o no podrás configurarla vía ssh.&lt;/p&gt;
+&lt;p&gt;Luego de ello, y de ingresar con las credenciales iniciales que son pi y de contraseña raspberry, procedí a cambiar la clave con el comando passwd, no te olvides de agregar ese usuario al grupo ssh con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo adduser pi ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;y luego de ello a configurarla con: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo raspi-config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Después de setear lo del idioma, lo de la hora y todo eso, ya solo me puse a actualizar con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;y después: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Luego de ello, me puse a investigar un poco sobre como dejarlo como un servidor GIT, pero lo que encontré, no sirvió mucho, en el sentido de que me pedían que instalara docker por ejemplo, y aunque lo intenté, creo que en esta versión de hardware es algo modesta para ello. &lt;/p&gt;
 &lt;p&gt;Así que después de mucho intentarlo, simplemente me fui a la web de Gitea, ah claro, lo quería bonito, con una interfaz agradable, configurable, etc... Así que &lt;a href="https://dl.gitea.io/gitea"&gt;Gitea&lt;/a&gt; los pasajes.. Jejeje...&lt;/p&gt;
 &lt;p&gt;Luego, sabiendo que la arquitectura es del tipo ARM, pues busqué la versión adecuada según yo. Pueden optar por la versión &lt;em&gt;Current Release&lt;/em&gt; pero como soy algo inestable XD, bajé la versión rc 2... ~_^&lt;/p&gt;
