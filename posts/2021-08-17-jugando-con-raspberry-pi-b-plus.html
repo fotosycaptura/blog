@@ -104,25 +104,25 @@
     <h2>Año 2021, pero esta placa es del 2014... o.O</h2>
 <p>Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar. Si no estás usando monitor y teclado por separado, no te olvides de crear un archivo vacío llamado <em>ssh</em> en la sd antes de ingresarla o no podrás configurarla vía ssh.</p>
 <p>Luego de ello, y de ingresar con las credenciales iniciales que son pi y de contraseña raspberry, procedí a cambiar la clave con el comando passwd, no te olvides de agregar ese usuario al grupo ssh con:</p>
-<div class="highlight"><pre><span></span><code>$ sudo adduser pi ssh
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>adduser<span class="w"> </span>pi<span class="w"> </span>ssh
 </code></pre></div>
 
 <p>y luego de ello a configurarla con: </p>
-<div class="highlight"><pre><span></span><code>$ sudo raspi-config
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>raspi-config
 </code></pre></div>
 
 <p>Después de setear lo del idioma, lo de la hora y todo eso, ya solo me puse a actualizar con:</p>
-<div class="highlight"><pre><span></span><code>$ sudo apt update
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </code></pre></div>
 
 <p>y después: </p>
-<div class="highlight"><pre><span></span><code>$ sudo apt upgrade
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
 </code></pre></div>
 
 <p>Luego de ello, me puse a investigar un poco sobre como dejarlo como un servidor GIT, pero lo que encontré, no sirvió mucho, en el sentido de que me pedían que instalara docker por ejemplo, y aunque lo intenté, creo que en esta versión de hardware es algo modesta para ello. </p>
 <p>Así que después de mucho intentarlo, simplemente me fui a la web de Gitea, ah claro, lo quería bonito, con una interfaz agradable, configurable, etc... Así que <a href="https://dl.gitea.io/gitea">Gitea</a> los pasajes.. Jejeje...</p>
 <p>Luego, sabiendo que la arquitectura es del tipo ARM, pues busqué la versión adecuada según yo. Pueden optar por la versión <em>Current Release</em> pero como soy algo inestable XD, bajé la versión rc 2... ~_^</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$wget</span> https://dl.gitea.io/gitea/1.15.0-rc2/gitea-1.15.0-rc2-linux-arm-5
+<div class="highlight"><pre><span></span><code><span class="nv">$wget</span><span class="w"> </span>https://dl.gitea.io/gitea/1.15.0-rc2/gitea-1.15.0-rc2-linux-arm-5
 </code></pre></div>
 
 <p>Luego lo renombré con mv a gitea, le di permisos de ejecución con chmod +x.. Vamos, lo usual...</p>
@@ -168,9 +168,9 @@
 <span class="c1"># If using Unix socket: tells systemd to create the /run/gitea folder, which will contain the gitea.sock file</span>
 <span class="c1"># (manually creating /run/gitea doesn&#39;t work, because it would not persist across reboots)</span>
 <span class="c1">#RuntimeDirectory=gitea</span>
-<span class="nv">ExecStart</span><span class="o">=</span>/home/pi/gitea web --config /home/pi/custom/conf/app.ini
+<span class="nv">ExecStart</span><span class="o">=</span>/home/pi/gitea<span class="w"> </span>web<span class="w"> </span>--config<span class="w"> </span>/home/pi/custom/conf/app.ini
 <span class="nv">Restart</span><span class="o">=</span>always
-<span class="nv">Environment</span><span class="o">=</span><span class="nv">USER</span><span class="o">=</span>pi <span class="nv">HOME</span><span class="o">=</span>/home/pi <span class="nv">GITEA_WORK_DIR</span><span class="o">=</span>/home/pi
+<span class="nv">Environment</span><span class="o">=</span><span class="nv">USER</span><span class="o">=</span>pi<span class="w"> </span><span class="nv">HOME</span><span class="o">=</span>/home/pi<span class="w"> </span><span class="nv">GITEA_WORK_DIR</span><span class="o">=</span>/home/pi
 <span class="c1"># If you install Git to directory prefix other than default PATH (which happens</span>
 <span class="c1"># for example if you install other versions of Git side-to-side with</span>
 <span class="c1"># distribution version), uncomment below line and add that prefix to PATH</span>
@@ -189,12 +189,12 @@
 </code></pre></div>
 
 <p>¿Viste que no era difícil?... Bueno, ya tan solo falta dejarlo en la ruta que mencionan en el link que está más arriba, osea esta:</p>
-<div class="highlight"><pre><span></span><code>$ /etc/systemd/system/gitea.service
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/etc/systemd/system/gitea.service
 </code></pre></div>
 
 <p>Uhm, ya solo queda activarlo como servicio.</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> gitea.service
-sudo systemctl start gitea.service
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>gitea.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>gitea.service
 </code></pre></div>
 
 <p>Y listo, el resto sería ingresar a la url, que normalmente es localhost:3000 si es que has dejado el puerto por defecto. Y configurar mediante un navegador web, las opciones como la base de datos a usar, la ruta, el usuario administrador, etc, etc, etc... ¡Pero ya quedó!</p>
