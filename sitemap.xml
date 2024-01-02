@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/</loc>
-<lastmod>2024-01-02T16:51:13-00:00</lastmod>
+<lastmod>2024-01-02T17:09:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tags.html</loc>
-<lastmod>2024-01-02T16:51:13-00:00</lastmod>
+<lastmod>2024-01-02T17:09:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/categories.html</loc>
-<lastmod>2024-01-02T16:51:13-00:00</lastmod>
+<lastmod>2024-01-02T17:09:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/authors.html</loc>
-<lastmod>2024-01-02T16:51:13-00:00</lastmod>
+<lastmod>2024-01-02T17:09:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/archives.html</loc>
-<lastmod>2024-01-02T16:51:13-00:00</lastmod>
+<lastmod>2024-01-02T17:09:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -600,7 +600,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/category/paseando-por-un-dia.html</loc>
-<lastmod>2023-09-30T23:58:00-04:43</lastmod>
+<lastmod>2021-02-24T10:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -614,14 +614,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/category/personal.html</loc>
-<lastmod>2019-12-31T10:00:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/category/xavierconx.html</loc>
-<lastmod>2018-12-25T20:20:00-04:43</lastmod>
+<lastmod>2023-09-30T23:58:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
