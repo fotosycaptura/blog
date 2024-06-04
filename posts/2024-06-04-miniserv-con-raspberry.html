@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Mini servidor con Raspberry PI | Paseando por un d&iacute;a
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2024-06-04-miniserv-con-raspberry.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Digamos que hay que darle trabajo a este pequeño pero pontente hardware del tamaño de una tarjeta de crédito - dicen -... Y... ¿Qué mejor que sea un pequeño pero potente servidor? Que hasta incluso sirva las páginas de este blog que estás leyendo... Y con estadísticas de visitas...">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="Paseando por un d&iacute;a">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">Paseando por un d&iacute;a</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/libro-firmas.html">Libro de Firmas</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/posts/aboutme.html">Acerca de</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Mini servidor con Raspberry PI
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2024-06-04T09:42:00-04:00">
+        <i class="fa fa-clock-o"></i>
+        ma., 04 junio
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/blog.html">#blog</a>,         <a href="https://fotosycaptura.cl/tag/personal.html">#personal</a>,         <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <h2>Un poco de recuerdos...</h2>
+<p>Si bien ocupé tiempo atrás una raspberry para ser <a href="2021-08-17-jugando-con-raspberry-pi-b-plus.html">un server casero Git</a>, puede dar mucho más, pero ahí estaba, descansando y acumulando algo de polvo... Bueno, tiempo atrás borré todo e instalé un <a href="https://www.kali.org/">Kali</a>, pero anda tan tan lento, otro día creo que les comentaré ese caso. De momento, solo les comentaré lo lento, puesto que, bueno, la raspi que tengo es la 1 b+, es un modelo bastante más arcaico para los tiempos actuales, pero no por ello inutilizable para proyectos actuales...</p>
+<h2>Y si...</h2>
+<p>... Hacemos que se convierta en un servidor de este blog, pero que además sea capaz de desplegar las visitas que tiene más gráficamente?</p>
+<p>Piensalo por un momento. Actualmente mi sitio web solo cuenta a la forma antigua, bueno, en cierta forma digamos que tengo cierto espíritu de retro o viejuno XDDD, pero es cierto, antiguamente las primeras páginas webs al menos en mi tiempo, tenían un contador de visitas, como el que está al pie de esta página Web.</p>
+<p>Pero, estando alojado en un servidor del que tengo control, tengo acceso a los logs, y con algo de programación pues.. Magia!</p>
+<h2>Partimos</h2>
+<p>Así que comenzamos con bajar una versión de raspbian del sitio oficial utilizando la aplicación que tienen para ello. Quito la microSD y la inserto en el PC, comienza el proceso de grabación de la imagen a la tarjeta y cuando finaliza, la vuelvo a insertar en la Raspberry pi. La conecto y con con breve barrido de red con nmap encuentro en que ip está dentro de mi red para ingresar vía SSH.</p>
+<p>Hasta aquí todo bien. Dado el contexto de ciberseguridad que rige hoy en día, lo primero a comenzar a realizar es actualizar el sistema operativo. Así que comenzamos con:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</code></pre></div>
+
+<p>Luego de esto, veamos... Necesitamos un servidor Web, como la raspi es de las primeras, creo que lo mejor es <a href="https://nginx.org/">nginx</a>, así que procedemos con nuestro querido gestor de paquetes apt.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>nginx
+</code></pre></div>
+
+<p>Ahora, si uno se dirige a un PC con un navegador y pone la ip de la raspi con http, se debería de visualizar una página de pruebas que dispone nginx.</p>
+<p><img alt="nginx instalado correctamente" src="/media/2024/junio/nginx-01.png" style="width: auto; max-width: 100% !important;"><br>
+<em>nginx, recién instalado</em></p>
+<p>Bueno, ya estamos con lo escencial... No, todavía no, en mi caso, si bien escribir en consola es lo usual, me gusta usar algo similar al <a href="https://es.wikipedia.org/wiki/Norton_Commander">Comandante Norton</a> que usaba en ms-dos, pero como estoy en GNU/Linux, pues... Acá tiene otro nombre, <a href="https://midnight-commander.org/">Midnight Commander</a>, así que, vamos con nuestro gestor de paquetes favorito XD y escribimos</p>
+<div class="highlight"><pre><span></span><code>sudo apt install mc
+</code></pre></div>
+
+<p>Y con esto ya tenemos a nuestro gestor de archivos gráfico de la terminal de dos paneles, para ahorranos un poco en el tecle tecle...</p>
+<p><img alt="Midnight Commander" src="/media/2024/junio/mc.png" style="width: auto; max-width: 100% !important;"><br>
+<em>mc instalado</em></p>
+<p>También, necesitaremos un servicio <a href="https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_archivos">FTP</a>. Para quien no lo sepa... </p>
+<p>¿Hay alguien que no sepa en esta época de la vida que es un FTP?, en fin, por si acaso alguien no sabe, un FTP viene de File Transfer Protocol, o Protocolo de Transferencia de Archivo en buen español, en la actualidad si bien se usa, su uso no es tan masificado como antes porque se usan otras soluciones tipo nube, pero sigue siendo muy utilizado. </p>
+<p>Y a nosotros, o bueno, en mi caso, me servirá mucho para copiar los archivos de mi sitio Web actuales al futuro servidor.</p>
+<p>Así que, tecle tecle XDD</p>
+<div class="highlight"><pre><span></span><code>sudo apt install vsftpd
+</code></pre></div>
+
+<p>Aunque, este servicio será de uso temporal. Creo que la generación de las páginas en el futuro quizás las genere desde el mismo server, no sé, ya veré eso después.</p>
+<p>Y ya que estamos, un firewall no nos vendría nada de mal...</p>
+<div class="highlight"><pre><span></span><code>sudo apt install ufw
+</code></pre></div>
+
+<p>Uhm, los más puristas dirían que filtrar por iptables, blablabla, pero digamos que es más engorroso de manejar, así que lo realizaré utilizando esta herramienta que fue pensada para ello.</p>
+<p>Bueno, ahora tocará, <em>antes</em> de activar el firewall, configurarlo. Esta parte es bien importante, porque si no se realiza correctamente puede que os toque volver a partir de cero todo el proceso llevado hasta ahora.</p>
+<p>Entonces, partimos por configurar que deniegue toda conexión entrante pero que permita las salientes, para ello comenzamos con agregar las siguientes reglas:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span>default<span class="w"> </span>deny<span class="w"> </span>incoming
+sudo<span class="w"> </span>ufw<span class="w"> </span>default<span class="w"> </span>allow<span class="w"> </span>outgoing
+</code></pre></div>
+
+<p>Luego, se habilitará para el servicio ssh, importante en mi caso para configurar la raspi sin tener que conectarlo a una tele con teclado.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>ssh
+</code></pre></div>
+
+<p>Con nuestra ip del equipo que usemos para configurar la raspi, la agregamos también para que permita la conexión ssh desde nuestro PC hacia la raspi.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>from<span class="w"> </span><span class="m">192</span>.168.0.5
+</code></pre></div>
+
+<p>Y ahora, viene la prueba de fuego, si todo sale bien, el Firewall se activará y permitirá la conexión vía ssh.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+</code></pre></div>
+
+<p>Taran! Ya estamos con la parte más compleja, entre comillas, por decirlo así jijijiji.</p>
+<p>Quizás, ahora que lo pienso, estos pasos deberían de realizarse antes que lo de nginx, pero bueno, ya no importa.</p>
+<p>Como apunte de cosas generales por hacer con el firewall, si se desea eliminar alguna regla, se puede realizar con</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span>status<span class="w"> </span>numbered
+</code></pre></div>
+
+<p>La salida sería algo como:</p>
+<div class="highlight"><pre><span></span><code>Numbered Output:
+Status: active
+
+    To                         Action      From
+    --                         ------      ----
+[ 1] 22                         ALLOW IN    192.168.0.5
+[ 2] 80                         ALLOW IN    Anywhere
+</code></pre></div>
+
+<p>Y luego escribir la siguiente instrucción para eliminar por ejemplo la regla número 2:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span>delete<span class="w"> </span><span class="m">2</span>
+</code></pre></div>
+
+<p>Posteriormente habrá que abrir más puertos para permitir la salida del servicio nginx, que permitirá que desde un navegador Web se visualicen las páginas que tengo planeado compartir.</p>
+<h2>¿Qué más?</h2>
+<p>Bueno, esta línea se auto destriuirá y se modificará lo que resta por agregar... Creo que será para largo como para escribirlo justo en este instante, pero eso lo iré agregando en medida de mis tiempos, a fin y al cabo, sigo actualizando las cosas con la raspi en estos momentos y he tenido algunos problemas... Así que mi yo del futuro les escribirá como prosigue...</p>
+  </div>
+</article>
+<hr>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() {
+    this.page.url = 'https://fotosycaptura.cl/posts/2024-06-04-miniserv-con-raspberry.html';
+    this.page.identifier = '2024-06-04-miniserv-con-raspberry';
+  };
+  (function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = 'https://fotosycaptura.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript class="text-muted">
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://counter4.whocame.ovh/private/contadorvisitasgratis.php?c=ytntbfglwxdg259x6h7frf6ybfzar8zb" title="contador de visitas" alt="contador de visitas"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

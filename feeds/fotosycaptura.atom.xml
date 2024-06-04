@@ -1,5 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Paseando por un día - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2024-05-27T13:47:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Quiero escribir</title><link href="https://fotosycaptura.cl/posts/2024-05-27-quiero-escribir.html" rel="alternate"></link><published>2024-05-27T13:47:00-04:00</published><updated>2024-05-27T13:47:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-05-27:/posts/2024-05-27-quiero-escribir.html</id><summary type="html">&lt;p&gt;Quiero escribir... Así que eso haré, porque... No tengo que pedirle permiso a nadie, felizmente XDDD&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Quiero escribir...&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Paseando por un día - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2024-06-04T09:42:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Mini servidor con Raspberry PI</title><link href="https://fotosycaptura.cl/posts/2024-06-04-miniserv-con-raspberry.html" rel="alternate"></link><published>2024-06-04T09:42:00-04:00</published><updated>2024-06-04T09:42:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-06-04:/posts/2024-06-04-miniserv-con-raspberry.html</id><summary type="html">&lt;p&gt;Digamos que hay que darle trabajo a este pequeño pero pontente hardware del tamaño de una tarjeta de crédito - dicen -... Y... ¿Qué mejor que sea un pequeño pero potente servidor? Que hasta incluso sirva las páginas de este blog que estás leyendo... Y con estadísticas de visitas...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Un poco de recuerdos...&lt;/h2&gt;
+&lt;p&gt;Si bien ocupé tiempo atrás una raspberry para ser &lt;a href="2021-08-17-jugando-con-raspberry-pi-b-plus.html"&gt;un server casero Git&lt;/a&gt;, puede dar mucho más, pero ahí estaba, descansando y acumulando algo de polvo... Bueno, tiempo atrás borré todo e instalé un &lt;a href="https://www.kali.org/"&gt;Kali&lt;/a&gt;, pero anda tan tan lento, otro día creo que les comentaré ese caso. De momento, solo les comentaré lo lento, puesto que, bueno, la raspi que tengo es la 1 b+, es un modelo bastante más arcaico para los tiempos actuales, pero no por ello inutilizable para proyectos actuales...&lt;/p&gt;
+&lt;h2&gt;Y si...&lt;/h2&gt;
+&lt;p&gt;... Hacemos que se convierta en un servidor de este blog, pero que además sea capaz de desplegar las visitas que tiene más gráficamente?&lt;/p&gt;
+&lt;p&gt;Piensalo por un momento. Actualmente mi sitio web solo cuenta a la forma antigua, bueno, en cierta forma digamos que tengo cierto espíritu de retro o viejuno XDDD, pero es cierto, antiguamente las primeras páginas webs al menos en mi tiempo, tenían un contador de visitas, como el que está al pie de esta página Web.&lt;/p&gt;
+&lt;p&gt;Pero, estando alojado en un servidor del que tengo control, tengo acceso a los logs, y con algo de programación pues.. Magia!&lt;/p&gt;
+&lt;h2&gt;Partimos&lt;/h2&gt;
+&lt;p&gt;Así que comenzamos con bajar una versión de raspbian del sitio oficial utilizando la aplicación que tienen para ello. Quito la microSD y la inserto en el PC, comienza el proceso de grabación de la imagen a la tarjeta y cuando finaliza, la vuelvo a insertar en la Raspberry pi. La conecto y con con breve barrido de red con nmap encuentro en que ip está dentro de mi red para ingresar vía SSH.&lt;/p&gt;
+&lt;p&gt;Hasta aquí todo bien. Dado el contexto de ciberseguridad que rige hoy en día, lo primero a comenzar a realizar es actualizar el sistema operativo. Así que comenzamos con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;update
+sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Luego de esto, veamos... Necesitamos un servidor Web, como la raspi es de las primeras, creo que lo mejor es &lt;a href="https://nginx.org/"&gt;nginx&lt;/a&gt;, así que procedemos con nuestro querido gestor de paquetes apt.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ahora, si uno se dirige a un PC con un navegador y pone la ip de la raspi con http, se debería de visualizar una página de pruebas que dispone nginx.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="nginx instalado correctamente" src="/media/2024/junio/nginx-01.png" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;nginx, recién instalado&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Bueno, ya estamos con lo escencial... No, todavía no, en mi caso, si bien escribir en consola es lo usual, me gusta usar algo similar al &lt;a href="https://es.wikipedia.org/wiki/Norton_Commander"&gt;Comandante Norton&lt;/a&gt; que usaba en ms-dos, pero como estoy en GNU/Linux, pues... Acá tiene otro nombre, &lt;a href="https://midnight-commander.org/"&gt;Midnight Commander&lt;/a&gt;, así que, vamos con nuestro gestor de paquetes favorito XD y escribimos&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt install mc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y con esto ya tenemos a nuestro gestor de archivos gráfico de la terminal de dos paneles, para ahorranos un poco en el tecle tecle...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Midnight Commander" src="/media/2024/junio/mc.png" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;mc instalado&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;También, necesitaremos un servicio &lt;a href="https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_archivos"&gt;FTP&lt;/a&gt;. Para quien no lo sepa... &lt;/p&gt;
+&lt;p&gt;¿Hay alguien que no sepa en esta época de la vida que es un FTP?, en fin, por si acaso alguien no sabe, un FTP viene de File Transfer Protocol, o Protocolo de Transferencia de Archivo en buen español, en la actualidad si bien se usa, su uso no es tan masificado como antes porque se usan otras soluciones tipo nube, pero sigue siendo muy utilizado. &lt;/p&gt;
+&lt;p&gt;Y a nosotros, o bueno, en mi caso, me servirá mucho para copiar los archivos de mi sitio Web actuales al futuro servidor.&lt;/p&gt;
+&lt;p&gt;Así que, tecle tecle XDD&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt install vsftpd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Aunque, este servicio será de uso temporal. Creo que la generación de las páginas en el futuro quizás las genere desde el mismo server, no sé, ya veré eso después.&lt;/p&gt;
+&lt;p&gt;Y ya que estamos, un firewall no nos vendría nada de mal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt install ufw
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Uhm, los más puristas dirían que filtrar por iptables, blablabla, pero digamos que es más engorroso de manejar, así que lo realizaré utilizando esta herramienta que fue pensada para ello.&lt;/p&gt;
+&lt;p&gt;Bueno, ahora tocará, &lt;em&gt;antes&lt;/em&gt; de activar el firewall, configurarlo. Esta parte es bien importante, porque si no se realiza correctamente puede que os toque volver a partir de cero todo el proceso llevado hasta ahora.&lt;/p&gt;
+&lt;p&gt;Entonces, partimos por configurar que deniegue toda conexión entrante pero que permita las salientes, para ello comenzamos con agregar las siguientes reglas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;default&lt;span class="w"&gt; &lt;/span&gt;deny&lt;span class="w"&gt; &lt;/span&gt;incoming
+sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;default&lt;span class="w"&gt; &lt;/span&gt;allow&lt;span class="w"&gt; &lt;/span&gt;outgoing
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Luego, se habilitará para el servicio ssh, importante en mi caso para configurar la raspi sin tener que conectarlo a una tele con teclado.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;allow&lt;span class="w"&gt; &lt;/span&gt;ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Con nuestra ip del equipo que usemos para configurar la raspi, la agregamos también para que permita la conexión ssh desde nuestro PC hacia la raspi.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;allow&lt;span class="w"&gt; &lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.0.5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y ahora, viene la prueba de fuego, si todo sale bien, el Firewall se activará y permitirá la conexión vía ssh.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Taran! Ya estamos con la parte más compleja, entre comillas, por decirlo así jijijiji.&lt;/p&gt;
+&lt;p&gt;Quizás, ahora que lo pienso, estos pasos deberían de realizarse antes que lo de nginx, pero bueno, ya no importa.&lt;/p&gt;
+&lt;p&gt;Como apunte de cosas generales por hacer con el firewall, si se desea eliminar alguna regla, se puede realizar con&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;status&lt;span class="w"&gt; &lt;/span&gt;numbered
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La salida sería algo como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Numbered Output:
+Status: active
+
+    To                         Action      From
+    --                         ------      ----
+[ 1] 22                         ALLOW IN    192.168.0.5
+[ 2] 80                         ALLOW IN    Anywhere
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y luego escribir la siguiente instrucción para eliminar por ejemplo la regla número 2:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;delete&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Posteriormente habrá que abrir más puertos para permitir la salida del servicio nginx, que permitirá que desde un navegador Web se visualicen las páginas que tengo planeado compartir.&lt;/p&gt;
+&lt;h2&gt;¿Qué más?&lt;/h2&gt;
+&lt;p&gt;Bueno, esta línea se auto destriuirá y se modificará lo que resta por agregar... Creo que será para largo como para escribirlo justo en este instante, pero eso lo iré agregando en medida de mis tiempos, a fin y al cabo, sigo actualizando las cosas con la raspi en estos momentos y he tenido algunos problemas... Así que mi yo del futuro les escribirá como prosigue...&lt;/p&gt;</content><category term="Laboratorio"></category><category term="blog"></category><category term="personal"></category><category term="laboratorio"></category></entry><entry><title>Quiero escribir</title><link href="https://fotosycaptura.cl/posts/2024-05-27-quiero-escribir.html" rel="alternate"></link><published>2024-05-27T13:47:00-04:00</published><updated>2024-05-27T13:47:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-05-27:/posts/2024-05-27-quiero-escribir.html</id><summary type="html">&lt;p&gt;Quiero escribir... Así que eso haré, porque... No tengo que pedirle permiso a nadie, felizmente XDDD&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Quiero escribir...&lt;/h2&gt;
 &lt;p&gt;No soy mucho de compartir cosas desde ya su resto de tiempo en face... De hace varios años de hecho. Salvo fotos, pero estas las comparte mayormente mi esposa... 😅 Pero bueno, estoy contento...&lt;/p&gt;
 &lt;p&gt;Contento y en paz consigo mismo... Y creo que eso es lo que importa, a pesar de todo...&lt;/p&gt;
 &lt;p&gt;Al final el tiempo dicta si los sacrificios valen la pena y bueno... ¿Qué saben de estar un día feriado en clases? (21 de mayo), o por ejemplo das pruebas los fines de semana (Ayer de hecho di una y me fue bien 🥳).&lt;/p&gt;
