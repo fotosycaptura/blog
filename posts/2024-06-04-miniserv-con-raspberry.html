@@ -54,6 +54,7 @@
             <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
             <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
             <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-bar-chart" href="http://blog.fotosycaptura.cl/output.html" target="_blank"></a></li>
             <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
           </ul>
         </div>
@@ -166,7 +167,127 @@ Status: active
 
 <p>Posteriormente habrá que abrir más puertos para permitir la salida del servicio nginx, que permitirá que desde un navegador Web se visualicen las páginas que tengo planeado compartir.</p>
 <h2>¿Qué más?</h2>
-<p>Bueno, esta línea se auto destriuirá y se modificará lo que resta por agregar... Creo que será para largo como para escribirlo justo en este instante, pero eso lo iré agregando en medida de mis tiempos, a fin y al cabo, sigo actualizando las cosas con la raspi en estos momentos y he tenido algunos problemas... Así que mi yo del futuro les escribirá como prosigue...</p>
+<h4>Actualización: 05-06-2024 19:10 utc -4</h4>
+<p>Bueno, posteriormente habría que verificar si Python está actualizado o al menos en la versión 3.9 en adelante, al menos en teoría... Recuerdo que en Windows me funcionaba bien hace un par de años, imagino que en la raspi no debería de ser problemas... Pero la verdad es que ha sido un poco laborioso... Iba todo bien hasta que me percaté que al instalar unas de las librerías famosas para manejar datos, pues, daba problemas de dependencias.</p>
+<p>He probado de todo, me he bajado la última versión de Python desde la página oficial y lo compilé... Mala idea, 3 horas aproximadamente la compilación, para otros 5 o 10 minutos usar pip para instalar pandas y que me arroje errores... Pero ya era tarde y había que irse a dormir... </p>
+<p>Sin embargo, hoy encontré que algunos han tenido el <a href="https://raspberrypi.stackexchange.com/questions/17073/how-do-i-install-pandas-on-raspberry-pi">mismo problema que yo</a> así que, al momento de la redacción de estas líneas pues, estoy probando esto.</p>
+<p>Según esa página Web, lo primero sería instalar mediante apt Python3-pandas de esta manera:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-pandas
+</code></pre></div>
+
+<p><img alt="Instalando Python3-pandas" src="/media/2024/junio/python-pandas-01.png" style="width: auto; max-width: 100% !important;"><br>
+<em>Instalando Python3-pandas... A ver como resulta...</em></p>
+<p>Luego de que terminara el proceso, probamos con una pequeña aplicación en Python que intente leer un archivo csv y lo despliegue en pantalla...</p>
+<p>Pues....</p>
+<div class="highlight"><pre><span></span><code><span class="n">python3</span> <span class="n">mi</span><span class="o">-</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s2">&quot;mi-test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;pandas&#39;</span>
+</code></pre></div>
+
+<p>Creo que no sirvió de nada... </p>
+<p>Un <a href="https://leonardomerino.cl/">amigo</a> me ha dicho que instale <a href="https://dietpi.com/#downloadinfo">DietPi</a>, pero todavía tengo esperanza de que raspbian serviría...</p>
+<p>Los días van pasando y cada día que pasa, estoy pensando más en seriamente volver a realizar todo el proceso de reinstalación, configuración y todo lo que conlleva... Hasta lo que llevo escrito en estos momentos...</p>
+<h4>Actualización: 06-06-2024 21:53 utc -4</h4>
+<p>Bueno, anoche me resigné y borré todo y comencé con DietPi. Y bueno, primero tuve problemas al utilizar la propia aplicación de la raspi para traspasar la imagen a la microSD. Si bien la imagen permitía a la raspi iniciar, al momento de tratar de conectarse via SSH, no me dejaba, por lo que... Probé esta vez con <a href="https://rufus.ie/es/">Rufus</a> y después de esto, si pude conectarme, y comenzó el proceso de instalación y configuración.</p>
+<p>Elegí los paquetes que instalara que en mi caso fueron nginx, python3, vsftpd, y posteriormente instalé el resto a mano utilizando los comandos antes descrito en este mismo artículo.</p>
+<p>Todo bien hasta el momento de conectarme vía FTP y transferir los archivos. El sitio se visualiza y quedo medianamente contento...</p>
+<p>Luego ejecuté un programa en Python para que lea los logs y me genere un csv que posteriormente procesa y me percado que da error, porque no hay logs... </p>
+<p>Revisando la configuración de Nginx, me percato que efectivamente están desactivados, seguramente se deba a que DietPi no quiere que haya tanta escritura en la microsd para alargar su vida... </p>
+<p>Pero acá estamos para analizar logs, así que, ingreso al archivo de configuración de Nginx ubicado en la ruta /etc/nginx/nginx.conf con mi editor favorito VIM y agrego después de http</p>
+<div class="highlight"><pre><span></span><code>...
+<span class="w">    </span>http<span class="w"> </span><span class="o">{</span>
+
+<span class="w">    </span><span class="c1">##</span>
+<span class="w">    </span><span class="c1"># Basic Settings</span>
+<span class="w">    </span><span class="c1">##</span>
+
+<span class="w">    </span>sendfile<span class="w"> </span>on<span class="p">;</span>
+<span class="w">    </span>tcp_nopush<span class="w"> </span>on<span class="p">;</span>
+<span class="w">    </span>types_hash_max_size<span class="w"> </span><span class="m">2048</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># server_tokens off;</span>
+
+<span class="w">    </span>server_names_hash_bucket_size<span class="w"> </span><span class="m">64</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># server_name_in_redirect off;</span>
+
+<span class="w">    </span>include<span class="w"> </span>/etc/nginx/mime.types<span class="p">;</span>
+<span class="w">    </span>default_type<span class="w"> </span>application/octet-stream<span class="p">;</span>
+
+<span class="w">    </span><span class="c1">##</span>
+<span class="w">    </span><span class="c1"># Logging Settings</span>
+<span class="w">    </span><span class="c1">##</span>
+
+<span class="w">    </span>access_log<span class="w"> </span>/var/log/nginx/access.log<span class="p">;</span>
+<span class="w">    </span>error_log<span class="w"> </span>/var/log/nginx/error.log<span class="p">;</span>
+
+<span class="w">    </span><span class="c1">##</span>
+<span class="w">    </span><span class="c1"># Gzip Settings</span>
+<span class="w">    </span><span class="c1">##</span>
+...
+</code></pre></div>
+
+<p>Nuevamente probamos... Esta vez el error es otro... Y relacionado nuevamente a pandas... Si bien, instalé pandas y numpy, me siguen dando problemas...</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">sudo</span> <span class="n">python3</span> <span class="n">pi</span><span class="o">-</span><span class="n">lectura</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s2">&quot;/home/dietpi/pi-lectura.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.11/dist-packages/pandas/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">19</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="kn">import</span> <span class="nn">required</span> <span class="n">dependencies</span><span class="p">:</span>
+<span class="n">numpy</span><span class="p">:</span> <span class="n">Error</span> <span class="n">importing</span> <span class="n">numpy</span><span class="p">:</span> <span class="n">you</span> <span class="n">should</span> <span class="ow">not</span> <span class="k">try</span> <span class="n">to</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">from</span>
+        <span class="nn">its</span> <span class="kp">source</span> <span class="n">directory</span><span class="p">;</span> <span class="n">please</span> <span class="n">exit</span> <span class="n">the</span> <span class="n">numpy</span> <span class="kp">source</span> <span class="n">tree</span><span class="p">,</span> <span class="ow">and</span> <span class="n">relaunch</span>
+        <span class="n">your</span> <span class="n">python</span> <span class="n">interpreter</span> <span class="kn">from</span> <span class="nn">there.</span>
+</code></pre></div>
+
+<p>Es extraño... Probé en una máquina virtual y funciona bien... </p>
+<div class="highlight"><pre><span></span><code><span class="n">dietpi</span><span class="nv">@DietPi</span><span class="err">:</span><span class="o">~/</span><span class="n">lector</span><span class="err">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">py</span><span class="w"> </span><span class="nf">pi</span><span class="o">-</span><span class="n">lectura</span><span class="p">.</span><span class="n">py</span>
+<span class="n">dietpi</span><span class="nv">@DietPi</span><span class="err">:</span><span class="o">~/</span><span class="n">lector</span><span class="err">$</span>
+</code></pre></div>
+
+<p>Pero en la raspi no funciona...</p>
+<p>Entonces probé con una versión que sólo me genere un csv sin análisis por intermedio de pandas y eso funciona...</p>
+<p>Pero me percato de algo, no vienen las localizaciones de las direcciones IP. Falta algo más por instalar: geoiplookup, así que lo instalamos, bueno, aprovecho e instalo otras cosas más que pueden faltar... </p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>geoip-bin
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>geoip-database
+</code></pre></div>
+
+<p>Luego de instalar y probar el comando <em>geoiplookup</em> y una IP, y verificar que se encuentra funcionando, intento revisar nuevamente si el programa funciona y genera el csv. Y de repente pienso, y ¿Si mejor genero un ambiente virtual y voy instalando librerías por librerías para verificar cual da conflicto?</p>
+<p>Vamos!</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>dnsutils
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-pip<span class="w"> </span>python3-dev<span class="w"> </span>build-essential<span class="w"> </span>libssl-dev<span class="w"> </span>libffi-dev<span class="w"> </span>python3-setuptools
+pip<span class="w"> </span>install<span class="w"> </span>wheel
+</code></pre></div>
+
+<p>A continuación, pruebo configurando un entorno virtual para aislar la aplicación de los otros archivos de Python del sistema.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-venv
+</code></pre></div>
+
+<p>Finalmente pruebo creando un entorno virtual, principalmente para ir aislando el problema relacionado al pandas y numpy.</p>
+<div class="highlight"><pre><span></span><code>py<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>labenv
+</code></pre></div>
+
+<p>Luego activo el ambiente con el comando</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>labenv/bin/activate
+</code></pre></div>
+
+<p>De a poco voy instalando las mismas librerías con <em>pip</em> que he mencionado anteriormente y creo que ya he encontrado el problema. Al menos en DietPi.</p>
+<p>Así que instalo lo que segun yo, faltaría...</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libopenblas-dev
+</code></pre></div>
+
+<p>Probé en la terminal mi aplicación y veo que funciona. ¡YEY!</p>
+<p>Es momento de probar que automáticamente, se ejecute un script con mi programa en Python para que vaya actualizando las estadísticas.</p>
+<p>Así que, edito el <em>crontab</em></p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>crontab<span class="w"> </span>-e
+</code></pre></div>
+
+<p>Elijo <em>VIM</em> y agrego la siguiente línea para que se ejecute cada 5 minutos</p>
+<div class="highlight"><pre><span></span><code><span class="m">5</span>,10,15,20,25,30,35,40,45,50,55<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>sleep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>/home/dietpi/lab/registro.sh
+</code></pre></div>
+
+<p>Funciona! Al menos en la VM... Ahora tengo que ver porqué sigue dando problemas en la raspi, si es el mismo OS...</p>
+<p>Después de varios intentos, funcionó! SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEH! Soy el p*to amo XDDDDD</p>
   </div>
 </article>
 <hr>

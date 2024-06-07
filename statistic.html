@@ -11,9 +11,9 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
-  <title>Paseando por un d&iacute;a | Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨
+  <title>Estadísticas del sitio | Paseando por un d&iacute;a
 </title>
-  <link rel="canonical" href="https://fotosycaptura.cl/index17.html">
+  <link rel="canonical" href="https://fotosycaptura.cl/statistic.html">
 
   <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
 
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
 
 
-<meta name="description" content="Un blog personal sobre viajes, fotos, y de lo que yo quiera...">
+<meta name="description" content="Estas son las estadísticas del sitio Web. No uso Analytics porque encuentro que es muy intruso, así que decidí mejor programar algo por mi mismo. Creo que el resultado quedó mucho más amigable, al menos para mi... ¿No les parece? XDD Estas estadísticas se actualizan automáticamentee cada cierto intervalo de …">
 </head>
 
 <body>
@@ -64,44 +64,58 @@
 
   <div class="main">
     <div class="container">
-      <h1>Art&iacute;culos
+      <h1>Estadísticas del sitio
 </h1>
       <hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2001-11-01T19:30:00-03:00">
-        <i class="fa fa-clock-o"></i>
-        ju., 01 noviembre
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="https://fotosycaptura.cl/category/pensamientos.html">Pensamientos</a>
-      </li>
-      <li>
-        <i class="fa fa-user-o"></i>
-        <a href="https://fotosycaptura.cl/author/diosa-eris.html">Diosa Eris</a>      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="https://fotosycaptura.cl/posts/2001-carta-de-jamaica.html">Carta de Jamaica</a></h4>
-    <div class="content">
- La esperanza indudablemente es lo último que se pierde
-    </div>
+<article class="article">
+  <div class="content">
+    <script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
+
+<p>Estas son las estadísticas del sitio Web. No uso <s>Analytics</s> porque encuentro que es muy intruso, así que decidí mejor programar algo por mi mismo.</p>
+<p>Creo que el resultado quedó mucho más amigable, al menos para mi... ¿No les parece? XDD</p>
+<p>Estas estadísticas se actualizan automáticamentee cada cierto intervalo de tiempos de manera frecuente. No sé de donde me visites, bueno, si sé, pero no os voy a decir XDDDD<br>
+En fin... Ya estais advertidos... Jijiji</p>
+<h2>Gráfico de visitas</h2>
+<div id='visitas'><!-- Plotly chart will be drawn inside this DIV --></div>
+
+<script>
+  var trace1 = {
+      type: 'bar',
+      x: {paises},
+      y: {IP},
+      name: 'Lugar'
+  };
+
+  var data = [trace1];
+
+  var layout = {
+      witdh: 800,
+      title: '{titulo}',
+      color: 'Lugar',
+      barmode: 'group',
+      xaxis: {
+          title: '{titulo_x}'
+      },
+      yaxis: {
+          title: '{titulo_y}'
+      },
+      font: { size: 12 }
+  };
+
+  var config = { responsive: true }
+
+  Plotly.newPlot('visitas', data, layout, config);
+
+</script>
+
+<h3>Estado del servidor</h3>
+<ul>
+<li>{hora}</li>
+<li>{temperatura}</li>
+<li>Tiempo en línea: {encendido}</li>
+</ul>
   </div>
 </article>
-<hr>
-<ul class="pagination">
-  <li class="page-item">
-    <a class="page-link" href="https://fotosycaptura.cl/index16.html">
-      <span aria-hidden="true">&laquo;</span>
-      <span class="sr-only">Anterior</span>
-    </a>
-  </li>
-  <li class="page-item disabled">
-    <span class="page-link">17 de 17</span>
-  </li>
-</ul>
     </div>
   </div>
 
