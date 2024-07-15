@@ -11,7 +11,7 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
-  <title>Estadísticas del sitio | Paseando por un d&iacute;a
+  <title>Estadísticas del sitio | https://fotosycaptura.cl
 </title>
   <link rel="canonical" href="https://fotosycaptura.cl/statistic.html">
 
@@ -38,11 +38,11 @@
       <div class="row">
         <div class="col-sm-4">
           <a href="https://fotosycaptura.cl">
-            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="Paseando por un d&iacute;a">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
           </a>
         </div>
         <div class="col-sm-8">
-          <h1 class="title"><a href="https://fotosycaptura.cl">Paseando por un d&iacute;a</a></h1>
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
           <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
           <ul class="list-inline">
             <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
@@ -54,7 +54,6 @@
             <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
             <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
             <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
-            <li class="list-inline-item"><a class="fa fa-bar-chart" href="http://blog.fotosycaptura.cl/output.html" target="_blank"></a></li>
             <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
           </ul>
         </div>
@@ -76,7 +75,19 @@
 <p>Estas estadísticas se actualizan automáticamentee cada cierto intervalo de tiempos de manera frecuente. No sé de donde me visites, bueno, si sé, pero no os voy a decir XDDDD<br>
 En fin... Ya estais advertidos... Jijiji</p>
 <h2>Gráfico de visitas</h2>
+<p>Acá se puede visualizar la cantidad de visitas que tiene mi sitio Web. Ya sean bots o no, todo es contabilizado XDDD.</p>
 <div id='visitas'><!-- Plotly chart will be drawn inside this DIV --></div>
+
+<h2>Estado del servidor</h2>
+<p>Bueno, acá hilamos algo más fino. Durante la época de invierno la temperatura más baja registrada para la Raspi es de 31 grados aproximadamente.</p>
+<p>Algunos incrementos se pueden deber a que justo enciendo la estufa. O quizás al cómputo que deba de realizar... Aunque tiempo atrás tomé los datos y realicé una tabla Anova con ellos, estableciendo la hipótesis y todo eso, y me dio que no era significativo...</p>
+<p>Como sea, ahí está...</p>
+<h3>Gráfico de temperaturas</h3>
+<div id='Temperaturas'><!-- Plotly chart will be drawn inside this DIV --></div>
+
+<h3>Gráfico de carga de la CPU</h3>
+<p>Con respecto a la carga del procesador, me sorprende en forma muy grata que está bien aliviado. </p>
+<div id='CargaCPU'><!-- Plotly chart will be drawn inside this DIV --></div>
 
 <script>
   var trace1 = {
@@ -106,12 +117,62 @@ En fin... Ya estais advertidos... Jijiji</p>
 
   Plotly.newPlot('visitas', data, layout, config);
 
+  var trace2 = {
+        type: 'line',
+        x: {temp_tiempo},
+        y: {temp_grados},
+        name: 'Temperaturas',
+    };
+
+    var data = [trace2];
+
+    var layout = {
+        witdh: 800,
+        title: 'Registro de temperaturas',
+        xaxis: {
+            title: 'Fecha y hora'
+        },
+        yaxis: {
+            title: 'Temperatura (en ºC)'
+        },
+        font: { size: 12 }
+    };
+
+    var config = { responsive: true }
+
+    Plotly.newPlot('Temperaturas', data, layout, config);
+
+
+    var trace3 = {
+        type: 'line',
+        x: {CPU_tiempo},
+        y: {CPU_grados},
+        name: 'Carga CPU',
+    };
+
+    var data = [trace3];
+
+    var layout = {
+        witdh: 800,
+        title: 'Registro de Carga de CPU',
+        xaxis: {
+            title: 'Fecha y hora'
+        },
+        yaxis: {
+            title: 'Carga de CPU (en %)'
+        },
+        font: { size: 12 }
+    };
+
+    var config = { responsive: true }
+
+    Plotly.newPlot('CargaCPU', data, layout, config);
 </script>
 
-<h3>Estado del servidor</h3>
+<h3>Publicación de estadísticas</h3>
 <ul>
-<li>{hora}</li>
-<li>{temperatura}</li>
+<li>Fecha y hora de actualización: {hora}</li>
+<li>Última temperatura registrada: {temperatura}</li>
 <li>Tiempo en línea: {encendido}</li>
 </ul>
   </div>
