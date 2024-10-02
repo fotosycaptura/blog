@@ -1,5 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/all.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2024-09-16T21:21:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Midiendo la Velocidad de una Red e Internet con iperf3</title><link href="https://fotosycaptura.cl/posts/2024-09-16-midiendo-velocidad.html" rel="alternate"></link><published>2024-09-16T21:21:00-03:00</published><updated>2024-09-16T21:21:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-09-16:/posts/2024-09-16-midiendo-velocidad.html</id><summary type="html">&lt;p&gt;En el mundo de la administración de redes, medir la velocidad de una red local o la conexión a Internet es una tarea que se suele realizar para comprobar que el proveedor brinda el rendimiento contratado. Una de las herramientas más utilizadas para este propósito es iperf3, que permite evaluar el rendimiento de una red de manera rápida y precisa. En este artículo (Siempre quise decir esto XDD), veremos cómo usar esta herramienta para medir tanto la velocidad de una red LAN como la velocidad de conexión a Internet.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;¿Qué es iperf3?&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/all.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2024-10-01T22:13:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Guía casi completa XD: Instalando y configurando docker</title><link href="https://fotosycaptura.cl/posts/2024-10-01-instalando-y-configurando-docker.html" rel="alternate"></link><published>2024-10-01T22:13:00-03:00</published><updated>2024-10-01T22:13:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-10-01:/posts/2024-10-01-instalando-y-configurando-docker.html</id><summary type="html">&lt;p&gt;En esta guía, aprenderás desde los conceptos básicos de Docker, la instalación y configuración inicial, hasta cómo crear y gestionar contenedores con archivos persistentes usando docker-compose. Usaremos como ejemplo un entorno donde configuramos un contenedor nginx, manejando todo mediante un archivo de configuración denominado: docker-compose.yml.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;¿Qué es docker?&lt;/h2&gt;
+&lt;p&gt;Docker es una plataforma que permite automatizar el despliegue de aplicaciones en contenedores. Los contenedores son entornos ligeros y portátiles que contienen todo lo necesario para ejecutar una aplicación, como el código, las bibliotecas y las dependencias necesarias.&lt;/p&gt;
+&lt;p&gt;Las ventajas que posee, si te dedicas por ejemplo al desarrollo, son varias: portabilidad, aislamiento, facilidad de despliegue, son algunas de sus ventajas...&lt;/p&gt;
+&lt;h2&gt;Instalando docker&lt;/h2&gt;
+&lt;p&gt;Lo primero será instalar docker en tu distribución de Linux. Dependiendo de la distro que uses puede que varíe un poco las sentencias, pero por ejemplo en mi caso al usar arch:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-Syu&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;docker-compose&lt;span class="w"&gt; &lt;/span&gt;containerd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Agregando el usuario al grupo docker&lt;/h2&gt;
+&lt;p&gt;Para que funcione de forma correcta lo que tendrás que hacer será lo siguiente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;usermod&lt;span class="w"&gt; &lt;/span&gt;-aG&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;USUARIO
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Donde &lt;em&gt;USUARIO&lt;/em&gt; será tu usuario. Luego deberás crear el grupo con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;newgrp&lt;span class="w"&gt; &lt;/span&gt;docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Podrás comprobar si todo está ben con el comando &lt;strong&gt;groups&lt;/strong&gt; en la terminal.&lt;/p&gt;
+&lt;p&gt;También puedes corroborarlo con&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cat&lt;span class="w"&gt; &lt;/span&gt;/etc/group&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Levantando el servicio&lt;/h2&gt;
+&lt;p&gt;Una vez que haya finalizado, lo siguiente será iniciar el servicio a demanda o dejarlo habilitado para que se ejecute de forma permanente, bueno, esto dependerá de como lo quieras manejar. En mi caso, basta con hacer un:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;start&lt;span class="w"&gt; &lt;/span&gt;docker.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Con esto, el servicio se estará ejecutando y podrás consultar su estado mediante:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;status&lt;span class="w"&gt; &lt;/span&gt;docker.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Nuestro primer contenedor&lt;/h2&gt;
+&lt;p&gt;Supongamos que tengo un pequeño sitio web como por ejemplo el de &lt;a href="secpo.cl"&gt;https://secpo.cl&lt;/a&gt;. El sitio Web en cuestión, es un sitio de contenido estático. Para el ejemplo es perfecto.&lt;/p&gt;
+&lt;p&gt;Entonces, iremos a nuestro directorio de desarrollo o de pruebas, o el que tengas. Y crearás un directorio que contendrá el sitio web así como el archivo &lt;mark&gt;docker-compose.yml&lt;/mark&gt;.&lt;/p&gt;
+&lt;p&gt;Para ello, habrá que crear el mentado archivo &lt;mark&gt;docker-compose.yml&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;Bastará con que ejecutes tu editor de texto favorito en la terminal, en mi caso &lt;em&gt;vim&lt;/em&gt;, seguido del nombre del archivo, así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vim&lt;span class="w"&gt; &lt;/span&gt;docker-compose.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Tienes que pensar, que la estructura de directorios &lt;em&gt;final&lt;/em&gt; deberá quedar algo similar a esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;├── docker-compose.yml
+├── web
+    └── index.html  # Si tienes uno personalizado
+    └── css/        # Resto de archivos css, y así...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Bueno, el archivo docker-compose deberá tener algo como esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;web&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;nginx:latest&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;container_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;secpo-cn&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;NGINX_HOST&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;secpo.cl&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;NGINX_PORT&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;80&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;volumes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;./web:/usr/share/nginx/html&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;ports&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;80:80&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Puedes cambiar el primer puerto más a la izquierda, por ejemplo 8080:80&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;restart&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;always&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Debes de ser bien &lt;em&gt;cuidadoso&lt;/em&gt; en lo que a identación respecta. Docker es bien riguroso en este aspecto.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;En el caso del &lt;mark&gt;8080:80&lt;/mark&gt;, el primer puerto (8080), será el puerto que se podrá visualizar desde el equipo anfitrión.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Una vez completado, solo quedará guardar todo y salir del editor &lt;em&gt;vim&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Ejecutando el contenedor&lt;/h2&gt;
+&lt;p&gt;Si todo ha ido bien, ya solo quedará realizar lo siguiente desde la terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;compose&lt;span class="w"&gt; &lt;/span&gt;up
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si deseas lanzarlo de manera que quede ejecutándose aún si presionas control+c o sales de la terminal, deberás agregar el parámetro &lt;mark&gt;-d&lt;/mark&gt;.&lt;/p&gt;
+&lt;h2&gt;¿El contenedor está ejecutándose?&lt;/h2&gt;
+&lt;p&gt;Eso se puede observar mediante la ejecución de:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si quisieras detener el contendor, nada mejor que:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;stop&lt;span class="w"&gt; &lt;/span&gt;ID
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Donde &lt;em&gt;ID&lt;/em&gt; será el hash raro que se suele observar al utilizar &lt;em&gt;docker ps&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Si no has usado el parámetro &lt;mark&gt;-d&lt;/mark&gt;, será entonces solo cosa de usar las teclas control+c en la terminal donde se encuentra ejecutándose el contenedor.&lt;/p&gt;
+&lt;p&gt;Si quieres acceder al contenedor para cambiar alguna configuración en caso de que algo no haya salido como quieres, puedes &lt;em&gt;ingresar&lt;/em&gt; mediante:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-it&lt;span class="w"&gt; &lt;/span&gt;NOMBRE_O_ID&lt;span class="w"&gt; &lt;/span&gt;/bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Donde el &lt;em&gt;NOMBRE_O_ID&lt;/em&gt; corresponderá al hash o al nombre si es que lo has nombrado.&lt;/p&gt;
+&lt;p&gt;Si tienes demasiados contenedores, puedes detenerlos todos usando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;stop&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;ps&lt;span class="w"&gt; &lt;/span&gt;-aq&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Bueno, eliminar tanto contenedores como imagenes es sencillo también.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;rm&lt;span class="w"&gt; &lt;/span&gt;NOMBRE_O_ID
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si lo que deseas, es eliminar una imagen, entonces deberás usar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;rmi&lt;span class="w"&gt; &lt;/span&gt;NOMBRE_O_ID
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ojo que siempre tienes que estar seguro de lo que haces, y de que el contenedor esté detenido, de lo contrario, ya sabes...&lt;/p&gt;
+&lt;h2&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Bueno, como has visto, todos estos comandos te permiten gestionar y desplegar aplicaciones de manera rápida. Siguiendo esta guía, has aprendido (o quizás no XD), cómo configurar un entorno completo, aunque sea un sitio Web simple. Lo siguiente será experimentar con &lt;em&gt;mysql&lt;/em&gt;, sitios más complejos... En fin... Tienes harto por investigar joven padawan... XDD&lt;/p&gt;
+&lt;p&gt;Pero en serio, creo que está todo lo básico para comenzar y experimentar...&lt;/p&gt;</content><category term="Laboratorio"></category><category term="blog"></category><category term="personal"></category><category term="laboratorio"></category></entry><entry><title>Midiendo la Velocidad de una Red e Internet con iperf3</title><link href="https://fotosycaptura.cl/posts/2024-09-16-midiendo-velocidad.html" rel="alternate"></link><published>2024-09-16T21:21:00-03:00</published><updated>2024-09-16T21:21:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-09-16:/posts/2024-09-16-midiendo-velocidad.html</id><summary type="html">&lt;p&gt;En el mundo de la administración de redes, medir la velocidad de una red local o la conexión a Internet es una tarea que se suele realizar para comprobar que el proveedor brinda el rendimiento contratado. Una de las herramientas más utilizadas para este propósito es iperf3, que permite evaluar el rendimiento de una red de manera rápida y precisa. En este artículo (Siempre quise decir esto XDD), veremos cómo usar esta herramienta para medir tanto la velocidad de una red LAN como la velocidad de conexión a Internet.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;¿Qué es iperf3?&lt;/h2&gt;
 &lt;p&gt;This... Osea, en español please... XDDD Es una herramienta de código abierto que se utiliza para medir el ancho de banda máximo que se puede alcanzar por ejemplo entre dos equipos en una red. Se pueden realizar pruebas tanto en redes locales (LAN) como en conexiones a Internet, midiendo tanto la velocidad de subida como de descarga.&lt;/p&gt;
 &lt;h2&gt;Medición en una Red LAN&lt;/h2&gt;
 &lt;p&gt;Para medir la velocidad de una red local con iperf3, es necesario tener dos equipos: uno actuando como servidor y otro como cliente. El servidor espera las conexiones entrantes, mientras que el cliente envía datos para medir la capacidad de la red.&lt;/p&gt;
