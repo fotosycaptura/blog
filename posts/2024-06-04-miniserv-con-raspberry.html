@@ -11,7 +11,7 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
-  <title>Mini servidor con Raspberry PI | https://fotosycaptura.cl
+  <title>Mini servidor con Raspberry PI | Paseando por un d&iacute;a
 </title>
   <link rel="canonical" href="https://fotosycaptura.cl/posts/2024-06-04-miniserv-con-raspberry.html">
 
@@ -38,11 +38,11 @@
       <div class="row">
         <div class="col-sm-4">
           <a href="https://fotosycaptura.cl">
-            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="Paseando por un d&iacute;a">
           </a>
         </div>
         <div class="col-sm-8">
-          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <h1 class="title"><a href="https://fotosycaptura.cl">Paseando por un d&iacute;a</a></h1>
           <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
           <ul class="list-inline">
             <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
@@ -71,7 +71,7 @@
     <ul class="list-inline">
       <li class="list-inline-item text-muted" title="2024-06-04T09:42:00-04:00">
         <i class="fa fa-clock-o"></i>
-        mar, 04 junio
+        ma., 04 junio
       </li>
       <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
@@ -178,11 +178,11 @@ Status: active
 <em>Instalando Python3-pandas... A ver como resulta...</em></p>
 <p>Luego de que terminara el proceso, probamos con una pequeña aplicación en Python que intente leer un archivo csv y lo despliegue en pantalla...</p>
 <p>Pues....</p>
-<div class="highlight"><pre><span></span><code><span class="n">python3</span><span class="w"> </span><span class="n">mi</span><span class="o">-</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
-<span class="n">Traceback</span><span class="w"> </span><span class="p">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">last</span><span class="p">):</span>
-<span class="n">File</span><span class="w"> </span><span class="s2">&quot;mi-test.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">ModuleNotFoundError</span><span class="p">:</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="s1">&#39;pandas&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">python3</span> <span class="n">mi</span><span class="o">-</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s2">&quot;mi-test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;pandas&#39;</span>
 </code></pre></div>
 
 <p>Creo que no sirvió de nada... </p>
@@ -227,16 +227,16 @@ Status: active
 </code></pre></div>
 
 <p>Nuevamente probamos... Esta vez el error es otro... Y relacionado nuevamente a pandas... Si bien, instalé pandas y numpy, me siguen dando problemas...</p>
-<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">pi</span><span class="o">-</span><span class="n">lectura</span><span class="o">.</span><span class="n">py</span>
-<span class="n">Traceback</span><span class="w"> </span><span class="p">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">last</span><span class="p">):</span>
-<span class="n">File</span><span class="w"> </span><span class="s2">&quot;/home/dietpi/pi-lectura.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">File</span><span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.11/dist-packages/pandas/__init__.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="k">raise</span><span class="w"> </span><span class="n">ImportError</span><span class="p">(</span>
-<span class="n">ImportError</span><span class="p">:</span><span class="w"> </span><span class="n">Unable</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="nn">required</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span>
-<span class="n">numpy</span><span class="p">:</span><span class="w"> </span><span class="nb">Error</span><span class="w"> </span><span class="n">importing</span><span class="w"> </span><span class="n">numpy</span><span class="p">:</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">from</span>
-<span class="w">        </span><span class="nn">its</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">directory</span><span class="p">;</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="n">exit</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">numpy</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">relaunch</span>
-<span class="w">        </span><span class="n">your</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">interpreter</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="nn">there.</span>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">sudo</span> <span class="n">python3</span> <span class="n">pi</span><span class="o">-</span><span class="n">lectura</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s2">&quot;/home/dietpi/pi-lectura.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.11/dist-packages/pandas/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">19</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="kn">import</span> <span class="nn">required</span> <span class="n">dependencies</span><span class="p">:</span>
+<span class="n">numpy</span><span class="p">:</span> <span class="n">Error</span> <span class="n">importing</span> <span class="n">numpy</span><span class="p">:</span> <span class="n">you</span> <span class="n">should</span> <span class="ow">not</span> <span class="k">try</span> <span class="n">to</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">from</span>
+        <span class="nn">its</span> <span class="kp">source</span> <span class="n">directory</span><span class="p">;</span> <span class="n">please</span> <span class="n">exit</span> <span class="n">the</span> <span class="n">numpy</span> <span class="kp">source</span> <span class="n">tree</span><span class="p">,</span> <span class="ow">and</span> <span class="n">relaunch</span>
+        <span class="n">your</span> <span class="n">python</span> <span class="n">interpreter</span> <span class="kn">from</span> <span class="nn">there.</span>
 </code></pre></div>
 
 <p>Es extraño... Probé en una máquina virtual y funciona bien... </p>
@@ -289,6 +289,24 @@ pip<span class="w"> </span>install<span class="w"> </span>wheel
 <p>Después de varios intentos, funcionó! SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEH! Soy el p*to amo XDDDDD</p>
   </div>
 </article>
+<hr>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() {
+    this.page.url = 'https://fotosycaptura.cl/posts/2024-06-04-miniserv-con-raspberry.html';
+    this.page.identifier = '2024-06-04-miniserv-con-raspberry';
+  };
+  (function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = 'https://fotosycaptura.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript class="text-muted">
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
     </div>
   </div>
 
