@@ -107,10 +107,22 @@ hr {
 }
 
 .fondo {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté sobre el pseudo-elemento */
+}
+
+.fondo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url("/images/Fondo.jpg");
-  background-color: transparent;
-  background-repeat: no-repeat;
+  
   background-size: cover;
+  opacity: 0.4; /* Opacidad solo en la imagen */
+  z-index: -1; /* Coloca la imagen detrás del contenido */
 }
 
 @media (min-width: 576px) {
