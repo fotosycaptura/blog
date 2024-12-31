@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/</loc>
-<lastmod>2024-11-17T19:40:09-00:00</lastmod>
+<lastmod>2024-12-31T10:29:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tags.html</loc>
-<lastmod>2024-11-17T19:40:09-00:00</lastmod>
+<lastmod>2024-12-31T10:29:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/categories.html</loc>
-<lastmod>2024-11-17T19:40:09-00:00</lastmod>
+<lastmod>2024-12-31T10:29:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/authors.html</loc>
-<lastmod>2024-11-17T19:40:09-00:00</lastmod>
+<lastmod>2024-12-31T10:29:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/archives.html</loc>
-<lastmod>2024-11-17T19:40:09-00:00</lastmod>
+<lastmod>2024-12-31T10:29:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -50,6 +50,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2024-10-22T14:22:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/posts/2024-12-31-resumen-del-year.html</loc>
+<lastmod>2024-12-31T23:31:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
@@ -698,7 +705,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/category/personal.html</loc>
-<lastmod>2024-11-17T19:31:00-04:43</lastmod>
+<lastmod>2024-12-31T23:31:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -712,21 +719,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/tag/blog.html</loc>
-<lastmod>2024-11-17T19:31:00-04:43</lastmod>
+<lastmod>2024-12-31T23:31:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tag/pensamiento.html</loc>
-<lastmod>2024-11-17T19:31:00-04:43</lastmod>
+<lastmod>2024-12-31T23:31:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tag/personal.html</loc>
-<lastmod>2024-11-17T19:31:00-04:43</lastmod>
+<lastmod>2024-12-31T23:31:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1272,7 +1279,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/author/fotosycaptura.html</loc>
-<lastmod>2024-11-17T19:31:00-04:43</lastmod>
+<lastmod>2024-12-31T23:31:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
