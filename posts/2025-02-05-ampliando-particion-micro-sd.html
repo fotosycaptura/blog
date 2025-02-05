@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Ampliando partición de GNU/Linux de una micro SD | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2025-02-05-ampliando-particion-micro-sd.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Hace un tiempo, había configurado una raspberry con un sistema Linux en una micro SD, sin embargo el tiempo ha transcurrido, las actualizaciones y las aplicaciones entre otras cosas hacen que se ocupe más espacio, siendo necesario actualizar el medio físico en el que se encuentra ejecutándose este sistema operativo junto a su conjunto de aplicaciones. Acompáñame a ver de qué manera se puede solucionar esto...">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Acerca de</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-comments" href="https://notas.fotosycaptura.cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Ampliando partición de GNU/Linux de una micro SD
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2025-02-05T12:00:00-03:00">
+        <i class="fa fa-clock-o"></i>
+        mi., 05 febrero
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/blog.html">#blog</a>,         <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/config.html">#config</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <h2>Cómo Ampliar la Partición de una micro SD al Migrar una Raspberry Pi a una Tarjeta más Grande</h2>
+<p>Al trabajar con una Raspberry Pi, es común que, con el tiempo, la micro SD original se quede sin espacio debido a instalaciones de software y almacenamiento de datos. En estos casos, surge la necesidad de migrar a una tarjeta de mayor capacidad sin perder configuraciones ni reinstalar todo el sistema.</p>
+<p>Este artículo explica cómo clonar una micro SD de una Raspberry Pi 4 (1GB de RAM) a otra de mayor capacidad (de 16GB a 64GB, por ejemplo) y, posteriormente, ampliar la partición para aprovechar todo el espacio disponible.</p>
+<p><img alt="Micro SD" src="/media/2025/febrero/size01.jpg" style="width: auto; max-width: 100% !important;"><br>
+<em>Espacio de la micro SD, ya no pude lanzar actualizaciones de seguridad</em></p>
+<h2>Clonando la micro SD Original</h2>
+<p>Antes de ampliar la partición, primero es necesario clonar la micro SD original en la nueva tarjeta. Existen varias herramientas para este propósito, dependiendo del sistema operativo del usuario.</p>
+<p>La opción usada para esta ocasión desde el propio GNU/Linux es, redoble de tambores... </p>
+<h3>DD</h3>
+<p>Lo primero, es identificar la micro SD en el sistema de archivo, para ello se puede utilizar el comando <strong>lsblk</strong> de la siguiente manera:</p>
+<div class="highlight"><pre><span></span><code>lsblk
+</code></pre></div>
+
+<p>Normalmente, la salida debiera ser algo como <em>/dev/mmcblk0</em>, en este punto se tendrá que identificar muy bien la unidad a modificar.</p>
+<h3>Crear una imagen del sistema</h3>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/mmcblk0<span class="w"> </span><span class="nv">of</span><span class="o">=</span>raspberry_backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+</code></pre></div>
+
+<p>Recuerda reemplazar <em>mmcblk0</em> por la unidad respectiva.</p>
+<h3>Insertar la nueva microSD y restaurar la imagen</h3>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>raspberry_backup.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/mmcblk0<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+</code></pre></div>
+
+<p>En este punto, deberías de tener una copia exacta, funcional de tu antigua micro SD en la nueva micro SD de mayor capacidad, al menos en teoría. En la práctica todavía falta un paso, pues si bien se traspasó la imagen, existe un espacio libre que está sin utilizar en la micro SD nueva, por lo que habrá que identificar la partición de Linux en la micro SD y expandirla para ocupar la totalidad de este espacio libre sin usar.</p>
+<h3>Expandiendo la Partición en la Nueva microSD</h3>
+<p>Después de clonar la microSD, se notará que la partición sigue ocupando el mismo tamaño que la original (16GB en una tarjeta de 64GB, por ejemplo). Para aprovechar todo el espacio disponible, se debe expandir la partición tal como fue mencionado anteriormente.</p>
+<p>Este punto se puede realizar de varias maneras. En mi caso: <em>gparted</em>.</p>
+<ul>
+<li>
+<p>Expansión con GParted</p>
+<p>Si en tu sistema no está instalado, normalmente se debería de poder instalar con el comando</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gparted
+</code></pre></div>
+
+<ul>
+<li>Insertar la microSD clonada en el PC y abrir GParted</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>gparted
+</code></pre></div>
+
+<ul>
+<li>
+<p>Seleccionar la unidad de la microSD</p>
+<p>Por ejemplo, <em>/dev/mmcblk0</em>.</p>
+</li>
+<li>
+<p>Identificar la partición de rootfs (ext4) y seleccionarla.  </p>
+</li>
+<li>Hacer clic en "Redimensionar/Mover", arrastrar la barra para usar todo el espacio disponible y aplicar los cambios.  </li>
+<li>Expulsar la microSD y probarla en la Raspberry Pi.</li>
+</ul>
+<h3>Verificación y Prueba en la Raspberry Pi</h3>
+<p>Una vez que la partición ha sido ampliada, se debe verificar que el sistema reconoce el nuevo espacio:</p>
+<ul>
+<li>Insertar la microSD en la Raspberry Pi y encender el dispositivo.</li>
+<li>Comprobar el espacio disponible con:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>df<span class="w"> </span>-h
+</code></pre></div>
+
+<p>Si todo ha salido bien, se mostrará la capacidad total de la microSD de 64GB.</p>
+<h2>Conclusión</h2>
+<p>Expandir la partición de una micro SD al migrar a una tarjeta de mayor capacidad es un procedimiento para quienes buscan "ampliar" el almacenamiento sin necesidad de reinstalar el sistema operativo ni perder configuraciones, osea, mi caso... Aunque tengo todo documentado de como debería de realizarlo desde cero, no quería realizarlo desde cero, puesto que ya lo tenía configurado.</p>
+<p><img alt="Micro SD" src="/media/2025/febrero/size02.jpg" style="width: auto; max-width: 100% !important;"><br>
+<em>Nueva micro SD con espacio libre suficiente para realizar actualizaciones, entre otras cosas</em></p>
+<p><code>#eso</code></p>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://counter4.whocame.ovh/private/contadorvisitasgratis.php?c=ytntbfglwxdg259x6h7frf6ybfzar8zb" title="contador de visitas" alt="contador de visitas"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

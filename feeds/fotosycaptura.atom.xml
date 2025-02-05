@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2025-01-17T11:45:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Visitando Tianfu Festival</title><link href="https://fotosycaptura.cl/posts/2025-01-17-visitando-tianfu-festival.html" rel="alternate"></link><published>2025-01-17T11:45:00-03:00</published><updated>2025-01-17T11:45:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-01-17:/posts/2025-01-17-visitando-tianfu-festival.html</id><summary type="html">&lt;p&gt;Queda tan poco para terminar el año 2025... Ehm, creo que esto quedó del copy paste del post anterior, y ahora que veo, este año está recién comenzando... Uhm, bueno, también es válido decir que esto es como si hubiera sido ayer... Ehm, ya, XDDD, digamos que vamos a comentar sobre Tianfu Festival, un festival de luces chinas que se realiza, al momento de escribir - y tú leer - estas líneas, en Cerrillos.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;¿Luces chinas? ¿Qué es?&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2025-02-05T12:00:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Ampliando partición de GNU/Linux de una micro SD</title><link href="https://fotosycaptura.cl/posts/2025-02-05-ampliando-particion-micro-sd.html" rel="alternate"></link><published>2025-02-05T12:00:00-03:00</published><updated>2025-02-05T12:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-02-05:/posts/2025-02-05-ampliando-particion-micro-sd.html</id><summary type="html">&lt;p&gt;Hace un tiempo, había configurado una raspberry con un sistema Linux en una micro SD, sin embargo el tiempo ha transcurrido, las actualizaciones y las aplicaciones entre otras cosas hacen que se ocupe más espacio, siendo necesario actualizar el medio físico en el que se encuentra ejecutándose este sistema operativo junto a su conjunto de aplicaciones. Acompáñame a ver de qué manera se puede solucionar esto...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cómo Ampliar la Partición de una micro SD al Migrar una Raspberry Pi a una Tarjeta más Grande&lt;/h2&gt;
+&lt;p&gt;Al trabajar con una Raspberry Pi, es común que, con el tiempo, la micro SD original se quede sin espacio debido a instalaciones de software y almacenamiento de datos. En estos casos, surge la necesidad de migrar a una tarjeta de mayor capacidad sin perder configuraciones ni reinstalar todo el sistema.&lt;/p&gt;
+&lt;p&gt;Este artículo explica cómo clonar una micro SD de una Raspberry Pi 4 (1GB de RAM) a otra de mayor capacidad (de 16GB a 64GB, por ejemplo) y, posteriormente, ampliar la partición para aprovechar todo el espacio disponible.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Micro SD" src="/media/2025/febrero/size01.jpg" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;Espacio de la micro SD, ya no pude lanzar actualizaciones de seguridad&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Clonando la micro SD Original&lt;/h2&gt;
+&lt;p&gt;Antes de ampliar la partición, primero es necesario clonar la micro SD original en la nueva tarjeta. Existen varias herramientas para este propósito, dependiendo del sistema operativo del usuario.&lt;/p&gt;
+&lt;p&gt;La opción usada para esta ocasión desde el propio GNU/Linux es, redoble de tambores... &lt;/p&gt;
+&lt;h3&gt;DD&lt;/h3&gt;
+&lt;p&gt;Lo primero, es identificar la micro SD en el sistema de archivo, para ello se puede utilizar el comando &lt;strong&gt;lsblk&lt;/strong&gt; de la siguiente manera:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;lsblk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Normalmente, la salida debiera ser algo como &lt;em&gt;/dev/mmcblk0&lt;/em&gt;, en este punto se tendrá que identificar muy bien la unidad a modificar.&lt;/p&gt;
+&lt;h3&gt;Crear una imagen del sistema&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dd&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/mmcblk0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;raspberry_backup.img&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4M&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;progress
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Recuerda reemplazar &lt;em&gt;mmcblk0&lt;/em&gt; por la unidad respectiva.&lt;/p&gt;
+&lt;h3&gt;Insertar la nueva microSD y restaurar la imagen&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dd&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;raspberry_backup.img&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/mmcblk0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4M&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;progress
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En este punto, deberías de tener una copia exacta, funcional de tu antigua micro SD en la nueva micro SD de mayor capacidad, al menos en teoría. En la práctica todavía falta un paso, pues si bien se traspasó la imagen, existe un espacio libre que está sin utilizar en la micro SD nueva, por lo que habrá que identificar la partición de Linux en la micro SD y expandirla para ocupar la totalidad de este espacio libre sin usar.&lt;/p&gt;
+&lt;h3&gt;Expandiendo la Partición en la Nueva microSD&lt;/h3&gt;
+&lt;p&gt;Después de clonar la microSD, se notará que la partición sigue ocupando el mismo tamaño que la original (16GB en una tarjeta de 64GB, por ejemplo). Para aprovechar todo el espacio disponible, se debe expandir la partición tal como fue mencionado anteriormente.&lt;/p&gt;
+&lt;p&gt;Este punto se puede realizar de varias maneras. En mi caso: &lt;em&gt;gparted&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Expansión con GParted&lt;/p&gt;
+&lt;p&gt;Si en tu sistema no está instalado, normalmente se debería de poder instalar con el comando&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;gparted
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Insertar la microSD clonada en el PC y abrir GParted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;gparted
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Seleccionar la unidad de la microSD&lt;/p&gt;
+&lt;p&gt;Por ejemplo, &lt;em&gt;/dev/mmcblk0&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Identificar la partición de rootfs (ext4) y seleccionarla.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Hacer clic en "Redimensionar/Mover", arrastrar la barra para usar todo el espacio disponible y aplicar los cambios.  &lt;/li&gt;
+&lt;li&gt;Expulsar la microSD y probarla en la Raspberry Pi.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Verificación y Prueba en la Raspberry Pi&lt;/h3&gt;
+&lt;p&gt;Una vez que la partición ha sido ampliada, se debe verificar que el sistema reconoce el nuevo espacio:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Insertar la microSD en la Raspberry Pi y encender el dispositivo.&lt;/li&gt;
+&lt;li&gt;Comprobar el espacio disponible con:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;df&lt;span class="w"&gt; &lt;/span&gt;-h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si todo ha salido bien, se mostrará la capacidad total de la microSD de 64GB.&lt;/p&gt;
+&lt;h2&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Expandir la partición de una micro SD al migrar a una tarjeta de mayor capacidad es un procedimiento para quienes buscan "ampliar" el almacenamiento sin necesidad de reinstalar el sistema operativo ni perder configuraciones, osea, mi caso... Aunque tengo todo documentado de como debería de realizarlo desde cero, no quería realizarlo desde cero, puesto que ya lo tenía configurado.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Micro SD" src="/media/2025/febrero/size02.jpg" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;Nueva micro SD con espacio libre suficiente para realizar actualizaciones, entre otras cosas&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#eso&lt;/code&gt;&lt;/p&gt;</content><category term="Laboratorio"></category><category term="blog"></category><category term="laboratorio"></category><category term="config"></category></entry><entry><title>Visitando Tianfu Festival</title><link href="https://fotosycaptura.cl/posts/2025-01-17-visitando-tianfu-festival.html" rel="alternate"></link><published>2025-01-17T11:45:00-03:00</published><updated>2025-01-17T11:45:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-01-17:/posts/2025-01-17-visitando-tianfu-festival.html</id><summary type="html">&lt;p&gt;Queda tan poco para terminar el año 2025... Ehm, creo que esto quedó del copy paste del post anterior, y ahora que veo, este año está recién comenzando... Uhm, bueno, también es válido decir que esto es como si hubiera sido ayer... Ehm, ya, XDDD, digamos que vamos a comentar sobre Tianfu Festival, un festival de luces chinas que se realiza, al momento de escribir - y tú leer - estas líneas, en Cerrillos.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;¿Luces chinas? ¿Qué es?&lt;/h2&gt;
 &lt;p&gt;El Tianfu Festival, también conocido como el Festival de las Luces Chinas, es un evento cultural que celebra la riqueza de las tradiciones chinas a través de exhibiciones de luces y linternas, generalmente de papel. Este festival combina arte, historia y tecnología moderna para crear un espectáculo visual lleno de color y creatividad. Los asistentes tienen la oportunidad de maravillarse con figuras iluminadas que representan temas mitológicos, históricos y naturales, ofreciendo una experiencia única que conecta a las personas con la cultura china de una manera mágica e inolvidable.&lt;/p&gt;
 &lt;p&gt;Al menos eso debería de resumir lo que es... Creo... &lt;/p&gt;
 &lt;h2&gt;¿Y?&lt;/h2&gt;
