@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/</loc>
-<lastmod>2025-04-08T12:01:08-00:00</lastmod>
+<lastmod>2025-05-12T11:58:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tags.html</loc>
-<lastmod>2025-04-08T12:01:08-00:00</lastmod>
+<lastmod>2025-05-12T11:58:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/categories.html</loc>
-<lastmod>2025-04-08T12:01:08-00:00</lastmod>
+<lastmod>2025-05-12T11:58:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/authors.html</loc>
-<lastmod>2025-04-08T12:01:08-00:00</lastmod>
+<lastmod>2025-05-12T11:58:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/archives.html</loc>
-<lastmod>2025-04-08T12:01:08-00:00</lastmod>
+<lastmod>2025-05-12T11:58:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -50,6 +50,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2024-10-22T14:22:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/posts/2025-05-12-Lo-que-estuve-haciendo-este-trimestre-en-la-u.html</loc>
+<lastmod>2025-05-12T12:00:00-04:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
@@ -726,7 +733,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/category/pensamientos.html</loc>
-<lastmod>2025-04-08T12:00:00-04:43</lastmod>
+<lastmod>2025-05-12T12:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -747,14 +754,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/tag/blog.html</loc>
-<lastmod>2025-04-08T12:00:00-04:43</lastmod>
+<lastmod>2025-05-12T12:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tag/personal.html</loc>
-<lastmod>2025-04-08T12:00:00-04:43</lastmod>
+<lastmod>2025-05-12T12:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1321,7 +1328,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/author/fotosycaptura.html</loc>
-<lastmod>2025-04-08T12:00:00-04:43</lastmod>
+<lastmod>2025-05-12T12:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
