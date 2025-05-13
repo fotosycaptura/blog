@@ -11,9 +11,9 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
-  <title>Casi fin de año | https://fotosycaptura.cl
+  <title>Mis notas... | https://fotosycaptura.cl
 </title>
-  <link rel="canonical" href="https://fotosycaptura.cl/posts/2019-12-Fin-Anio.html">
+  <link rel="canonical" href="https://fotosycaptura.cl/pages/notas.html">
 
   <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
 
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
 
 
-<meta name="description" content="Un alto y momento de reflexión... Considerando que el término del año está a la vuelta de la esquina...">
+<meta name="description" content="Mis notas...">
 </head>
 
 <body>
@@ -64,53 +64,32 @@
 
   <div class="main">
     <div class="container">
-      <h1>Casi fin de año
+      <h1>Mis notas...
 </h1>
       <hr>
 <article class="article">
-  <header>
-    <ul class="list-inline">
-      <li class="list-inline-item text-muted" title="2019-12-05T17:00:00-03:00">
-        <i class="fa fa-clock-o"></i>
-        ju., 05 diciembre
-      </li>
-      <li class="list-inline-item">
-        <i class="fa fa-folder-open-o"></i>
-        <a href="https://fotosycaptura.cl/category/personal.html">Personal</a>
-      </li>
-      <li class="list-inline-item">
-        <i class="fa fa-user-o"></i>
-        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
-      <li class="list-inline-item">
-        <i class="fa fa-files-o"></i>
-        <a href="https://fotosycaptura.cl/tag/blog.html">#blog</a>,         <a href="https://fotosycaptura.cl/tag/emociones.html">#emociones</a>,         <a href="https://fotosycaptura.cl/tag/pensamientos.html">#pensamientos</a>      </li>
-    </ul>
-  </header>
   <div class="content">
-    <h2>El año casi se termina</h2>
-<p>Y con ello, una página más de la vida se escribe en el libro de mi vida. Un año donde han transcurrido muchas cosas...</p>
-<p>Algunas de ellas quizás dignas de ser mencionadas... Otras en cambio, quizás sea mejor mantenerlas ocultas o que al menos, se resguarden de la luz del sol... Al menos hasta que el negativo sea revelado... Pero siendo un negativo, debería de resguardarse de cualquier luz... </p>
-<p>Al menos, esto era algo importante al momento de realizar un proceso de revelado. Hoy en día con la implantación de la tecnología, es inmediato y electrónicamente.</p>
-<p>Este año... Han pasado tantas cosas... Enumerarlas no vale la pena, pero quizás sí podría resaltar algunas...</p>
-<h2>Informática</h2>
-<p>El uso de nuevas tecnologías por ejemplo. He pasado de usar SVN a Git, y hasta montar un servidor de repositorio propio... Ha sido una de las cosas más entretenidas en lo que a programación se refiere, sin contar todos los nuevos sistemas desarrollados...</p>
-<p>El aprender suele ser entretenido cuando es algo que a uno le gusta... Y qué mejor manera de entretenerse además de implementar lo aprendido... En lo profesional, esto me ha llenado mucho, incluso en ocasiones, he llegado por las noches sólo para cerrar los ojos y dormir, pero con una sonrisa a pesar del cansancio... </p>
-<p>Mi padre decía:</p>
-<blockquote>
-<p>El trabajo dignifica, por eso hay que querer al trabajo...</p>
-</blockquote>
-<p>Y cuánta razón le encuentro a estas alturas de la vida...</p>
-<h2>Paseos</h2>
-<p>Este año, también ha sido una parte importante en mi vida, la de los paseos... Paseos y fotografía, suelen estar estrechamente relacionados entre sí... Incluso he tenido la experiencia de <a href="../posts/2019-san-pedro-atacama.html">viajar en avión</a> conociendo lugares nuevos... </p>
-<h2>Música</h2>
-<p>Bueno, en este apartado, aunque llevo poco más del año ya de haberme reencontrado con esa parte de mi ser, o mi veta artística, lo cierto es que estaba algo empolvada... Tantos años que no volvía a tocar el piano, y ahora, hasta tengo un disco... Ha sido placentero... Se que no es del gusto de todos, pero me basta con expresar mi armonía musical... Aquellas melodías que resuenan en mi ser...</p>
-<h2>Reencuentro y pérdidas</h2>
-<p>También ha sido un año en el que he hecho nuevas amistades, así como también he perdido otras... Pero creo que está bien, al fin y al cabo, los lastres, las malas vibras, son necesario dejarlas para dar cabida a nuevas y positivas vibras... A nuevas y positivas amistades, aquellas que resuenen con uno...</p>
-<h2>Estallido social</h2>
-<p>Queda tan poco para la navidad, y tan poco para el año nuevo... Y sin embargo, este año está por terminar con un cierto sabor amargo... En mi vida pensé que iba a vivir en carne propia un estallido social... Ha sido un tanto extraño. Es tanto que incluso se han suspendido las celebraciones de año nuevo, navidad, entre otras... <br>
-Pero no todo es malo. Este año, el amor también ha hecho compañía en la vida de algunos, incluyendo mi vida... Y el atardecer tiene nuevos y deslumbrantes colores... </p>
-<h2>Finalmente</h2>
-<p>Espero que las cosas tomen su cauce natural.... Y a esperar que nos traerá la vida...</p>
+    <script>
+  const sitioNotasUrl = "https://notas.fotosycaptura.cl/images";
+  const testImage = new Image();
+
+  testImage.onload = function() {
+    // Si responde, redirige
+    window.location.href = sitioNotasUrl;
+  };
+
+  testImage.onerror = function() {
+    // Si no responde, muestra alerta o mensaje personalizado
+    document.getElementById("estadoConexion").textContent = "Mis notas no están disponibles en este momento... Intenta más tarde...";
+  };
+
+  // Lanzamos la prueba con un recurso común como favicon
+  testImage.src = sitioNotasUrl + "/favicon.ico?" + new Date().getTime(); // El timestamp evita el caché
+</script>
+
+<h2>Espera un momento...</h2>
+<p>... Mientras se verifica que esté en línea. De estaro, se te redireccionará... Mientas, te comento que ésta, es una de las pocas páginas de mi sitio Web que posee código JS... </p>
+<div id="estadoConexion" style="color: red; font-weight: bold;"></div>
   </div>
 </article>
     </div>
