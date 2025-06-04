@@ -552,7 +552,7 @@ sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&g
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Nuestro primer contenedor&lt;/h2&gt;
-&lt;p&gt;Supongamos que tengo un pequeño sitio web como por ejemplo el de &lt;a href="secpo.cl"&gt;https://secpo.cl&lt;/a&gt;. El sitio Web en cuestión, es un sitio de contenido estático. Para el ejemplo es perfecto.&lt;/p&gt;
+&lt;p&gt;Supongamos que tengo un pequeño sitio web como por ejemplo el de &lt;a href="https://secpo.cl"&gt;https://secpo.cl&lt;/a&gt;. El sitio Web en cuestión, es un sitio de contenido estático. Para el ejemplo es perfecto.&lt;/p&gt;
 &lt;p&gt;Entonces, iremos a nuestro directorio de desarrollo o de pruebas, o el que tengas. Y crearás un directorio que contendrá el sitio web así como el archivo &lt;mark&gt;docker-compose.yml&lt;/mark&gt;.&lt;/p&gt;
 &lt;p&gt;Para ello, habrá que crear el mentado archivo &lt;mark&gt;docker-compose.yml&lt;/mark&gt;&lt;/p&gt;
 &lt;p&gt;Bastará con que ejecutes tu editor de texto favorito en la terminal, en mi caso &lt;em&gt;vim&lt;/em&gt;, seguido del nombre del archivo, así:&lt;/p&gt;
