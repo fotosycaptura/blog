@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
 
 
-<meta name="description" content="Hace unos días estuve revisando un viejo cd, uno de esos que venían con revistas de programación/Linux, que en esos años eran muy populares... Hoy en día la editorial no existe, pero aún conservo la revista y por supuesto su CD, sin embargo, con el paso de los años hay detalles en el disco, aún así, es posible de leerse, pero... ¿Y qué pasará en unos años más? Así que, tocará realizar un respaldo, también conocido como backup para no perder la info, ya que en su tiempo la revista la pagué...Acompáñame en esta aventura...">
+<meta name="description" content="Hace unos días estuve revisando un viejo cd, uno de esos que venían con revistas de programación/Linux, que en esos años eran muy populares... Hoy en día la editorial no existe, pero aún conservo la revista y por supuesto su CD, sin embargo, con el paso de los años hay detalles en el disco, aún así, es posible de leerse, pero... ¿Y qué pasará en unos años más? Así que, tocará realizar un respaldo, también conocido como backup para no perder la info, ya que en su tiempo la revista la pagué...Acompáñame en esta pequeña pero útil aventura...">
 </head>
 
 <body>
@@ -87,7 +87,10 @@
     </ul>
   </header>
   <div class="content">
-    <h1>Lo primero</h1>
+    <h2>Contexto</h2>
+<p>Hace unos días estuve revisando un viejo CD, de esos que venían con revistas de programación o Linux que en su época eran muy populares. Aunque la editorial ya no existe, aún conservo tanto la revista como su disco. Sin embargo, el paso del tiempo ya empieza a notarse en la superficie del CD: todavía es legible, pero... ¿y en unos años más?</p>
+<p>Así que decidí hacer un respaldo, también conocido como <em>backup</em>, para no perder esa información que en su momento pagué. Aquí te muestro cómo crear una imagen ISO, ya sea desde un pendrive o desde un directorio, con y sin permisos de superusuario. Acompáñame en esta pequeña pero útil aventura...</p>
+<h2>Lo primero</h2>
 <p>Es verificar que unidad es la del lector, grabador, lo que sea que tengas en tu equipo... En mi caso, es una unidad que permite leer y escribir discos DVD, así que, vamos con</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsscsi
 </code></pre></div>
@@ -102,7 +105,7 @@
 <span class="o">[</span><span class="m">2</span>:0:0:0<span class="o">]</span><span class="w">    </span>cd/dvd<span class="w">  </span>MATSHITA<span class="w"> </span>BD-MLT<span class="w"> </span>UJ272<span class="w">     </span><span class="m">1</span>.00<span class="w">  </span>/dev/sr0<span class="w"> </span>
 <span class="o">[</span><span class="m">3</span>:0:0:0<span class="o">]</span><span class="w">    </span>disk<span class="w">    </span>ATA<span class="w">      </span>HGST<span class="w"> </span>HTS721010A9<span class="w"> </span>A3J0<span class="w">  </span>/dev/sda<span class="w"> </span>
 <span class="o">[</span><span class="m">4</span>:0:0:0<span class="o">]</span><span class="w">    </span>disk<span class="w">    </span>Kingston<span class="w"> </span>DataTraveler<span class="w"> </span><span class="m">3</span>.0<span class="w"> </span><span class="m">0000</span><span class="w">  </span>/dev/sdb<span class="w"> </span>
-<span class="o">[</span>N:0:0:1<span class="o">]</span><span class="w">    </span>disk<span class="w">    </span>CT1000P5PSSD8__1<span class="w">                           </span>/dev/nvme0n1
+<span class="o">[</span>N:0:0:1<span class="o">]</span><span class="w">    </span>disk<span class="w">    </span>CT1000P5PSSD8__1<span class="w">                </span>/dev/nvme0n1
 </code></pre></div>
 
 <p>Al menos, eso es en mi caso. Entonces... </p>
@@ -126,7 +129,8 @@
 <p><img alt="Desmontando unidad ISO con Dolphin" src="/media/2025/junio/dolphin-04.png" style="width: auto; max-width: 100% !important;"><br>
 <em>Desmontando la imagen ISO del sistema, con Dolphin</em></p>
 <h2>¿Y en la terminal?</h2>
-<p>Sería para otra ocasión... Pero ya vez, así de simple se puede...</p>
+<p>Sería para otra ocasión... Próximamente: cómo montar una ISO en Linux desde la terminal...</p>
+<p>Pero ya vez, así de simple se puede...</p>
 <p>Hasta la próxima...</p>
   </div>
 </article>
