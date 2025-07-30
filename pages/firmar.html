@@ -71,16 +71,16 @@
       <hr>
 <article class="article">
   <div class="content">
-    <h1>Firma el libro de visitas</h1>
+    <h2>¡Deja tu huella!</h2>
 <p>Tu mensaje será revisado antes de publicarse.</p>
 <form action="https://api.fotosycaptura.cl/api/firmar" method="post" id="form-libro" onsubmit="enviarFormulario(event)">
   <label for="nombre">Nombre:</label><br>
-  <input type="text" name="nombre" required><br><br>
+  <input type="text" name="nombre" required class="form-control" placeholder="Ingresa tu nombre" autocomplete="off"><br><br>
 
   <label for="mensaje">Mensaje:</label><br>
-  <textarea name="mensaje" rows="4" cols="50" required></textarea><br><br>
+  <textarea name="mensaje" rows="4" cols="50" required class="form-control" autocomplete="off" placeholder="Dime algo..."></textarea><br><br>
 
-  <input type="submit" value="Firmar">
+  <input type="submit" value="Firmar" class="btn btn-primary">
 </form>
 
 <div id="respuesta" style="margin-top: 1em; font-weight: bold;"></div>
