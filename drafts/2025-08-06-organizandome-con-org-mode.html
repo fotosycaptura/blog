@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Organizándome con org-mode | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/drafts/2025-08-06-organizandome-con-org-mode.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="He estado experimentando con emacs. Hace muchos años que intento usarlo pero nada me convencía, pensaba que con VIM estaba listo, pero... Hace unos días estaba leyendo y me enteré de ciertas características que, simplemente me hicieron replantearme la idea... Veamos que resultó...">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Acerca de</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-comments" href="https://fotosycaptura.cl/pages/notas.html" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Organizándome con org-mode
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2025-08-06T22:40:00-04:00">
+        <i class="fa fa-clock-o"></i>
+        2025, mié 06 agosto
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/blog.html">#blog</a>,         <a href="https://fotosycaptura.cl/tag/config.html">#config</a>,         <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <h2>Contexto</h2>
+<p><img alt="GNU Emacs" src="/media/2025/agosto/emacs.jpg" style="width: auto; max-width: 100% !important;"><br>
+<em>El editor GNU Emacs</em></p>
+<p>He estado experimentando con emacs. Hace muchos años que intento usarlo pero nada me convencía, pensaba que con VIM estaba listo, pero... Hace unos días estaba leyendo y me enteré de ciertas características que, simplemente me hicieron replantearme la idea... Veamos que resultó...</p>
+<h2>Un poco de historia</h2>
+<p>Durante todos estos años he sido un usuario más en su mayoría al uso de Vim, con ciertos toques de VS Code. Sin embargo, en las últimas semanas me decidí a darle una nueva oportunidad a Emacs.</p>
+<p>En las oportunidades anteriores, no había conseguido nada... Pero esta vez fue diferente... Me comprometí con más paciencia y curiosidad. El resultado ha sido... Mejor sigue leyendo...</p>
+<h2>Adaptándome a Emacs</h2>
+<p>Al principio, la interfaz gráfica me pareció extraña. Siempre que la he visto pensaba que era algo demasiado rudimentario. Casi al mismo nivel que el block de notas de cierto sistema operativo... Pero cuando toca consultar por las teclas de acceso directo, también llamado atajos, te das cuenta que, en comparación a Vim, es confuso...</p>
+<h2>Conceptos generales</h2>
+<p>Creo que lo primero, como para que no se me olvide más adelante es definir algunos conceptos para que no se me olvide más adelante. Había leído sobre su curva de aprendizaje, y creo que lo mejor para aprender a comenzar a usarlo es metiéndose, y no usando VIM para nada. Bueno, eso hice, me siento perdido... Pero eso no dura mucho, leyendo y practicando de inmediato hace que uno comience a soltarse...</p>
+<p>Vamos con algunos concetpos.</p>
+<ul>
+<li>Minibuffer: es esa área de trabajo. </li>
+<li>Modos: de momento existen dos, los modos mayores (por ejemplo org-mode), donde hay teclas preasignadas, sintáxis de colores y comandos específicos... Y los menores del tipo <code>flyspell-mode</code>, <code>visual-line-mode</code>, entre otros... Solo puede estar activo un modo mayor, los otros pueden ser varios...</li>
+<li>M-algo: la tecla <code>Meta</code> la definen refiriéndose a la tecla <code>ALT</code>, mientras que el algo es un comando o una letra para referirse a una acción, por ejemplo <code>M-g g</code> se refiere a goto, es decir ir hacia una línea.</li>
+<li>C-x C-s: esta combinación de teclas se refiere a la tecla <code>CONTROL</code> más la tecla <code>x</code> y luego nuevamente la tecla <code>CONTROL</code> más la tecla <code>s</code>. Esto guarda el documento actual que se tenga abierto en ese momento.</li>
+<li>C-l: dependiendo de la línea donde se encuentre el cursor, es como para posicionar todo al comienzo, al medio o al final. Es como la <code>z</code> de VIM.</li>
+</ul>
+<h2>Org-mode: el descubrimiento</h2>
+<p>Es sin duda, lo que más me llamó la atención. Un modo que permite tomar notas, hacer tareas, visualizar todo esto en una agenda, repetir eventos... Al comienzo pensé, que enredado, todo en un puro archivo .org, pero luego pensé ¿Y si los separo? Y bueno, hice eso y quedó mucho mejor la organización, una planificación más clara.</p>
+<p>Para comenzar, se abre con <code>M-x</code> y luego org-mode y se da <code>ENTER</code>.</p>
+<p>Acá, es bien entretenido XD, todo es texto, osea, al estilo markdown, pero en vez de <code>#</code> se puede usar <code>*</code></p>
+<p>Después de eso, ya se puede definir si es una lista de cosas, actividades, etc... <code>C-c a a</code> para abrir la agenda. En mi caso, creé una carpeta org, y dentro de ella tengo archivos del tipo cumples.org, diario.org, eventos.org y por último inbox.org.</p>
+<p>Creo que los nombres son súper claros, cumples para los cumpleaños, diario para las tareas diarias, eventos para los eventos del año, feriados, cosas por el estilo, y por último, inbox, donde voy colocando todo lo relacionado al trabajo en sí, es decir, las tareas.</p>
+<h2>¿Configuraciones?</h2>
+<p>Por supuesto, hubo que hacer ciertos ajustes. No fue muy difícil... La documentación ayuda bastante y en general, lo que uno quiere hacer ya otra persona lo intentó hacer antes, por lo que hay códigos de ejemplos por la Web... Pero dejaré aquí algunos códigos que utilicé para más o menos dejar configurado esto.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">;; Este es un comentario</span>
+
+<span class="c1">;; Activa líneas numeradas</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">display-line-numbers-type</span><span class="w"> </span><span class="no">t</span><span class="p">)</span>
+<span class="c1">;; Mostrar números de línea en todos los buffers</span>
+<span class="p">(</span><span class="nv">global-display-line-numbers-mode</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">;; Usar UTF-8</span>
+<span class="p">(</span><span class="nv">prefer-coding-system</span><span class="w"> </span><span class="ss">&#39;utf-8</span><span class="p">)</span>
+
+<span class="c1">;; Quita el tutorial del inicio</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">inhibit-startup-message</span><span class="w"> </span><span class="no">t</span><span class="p">)</span>
+
+<span class="c1">;; ------------------------------</span>
+<span class="c1">;; Configuración básica Org-Mode</span>
+<span class="c1">;; ------------------------------</span>
+
+<span class="c1">;; Agregar archivo org a la agenda</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-agenda-files</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;~/org/inbox.org&quot;</span><span class="w"> </span><span class="s">&quot;~/org/eventos.org&quot;</span><span class="w"> </span><span class="s">&quot;~/org/cumples.org&quot;</span><span class="p">))</span>
+
+<span class="c1">;; Usar org-mode para archivos .org</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">auto-mode-alist</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;\\.org$&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nv">org-mode</span><span class="p">))</span><span class="w"> </span><span class="nv">auto-mode-alist</span><span class="p">))</span>
+
+<span class="c1">;; Activar indentación visual y modos útiles al abrir org-mode</span>
+<span class="p">(</span><span class="nv">add-hook</span><span class="w"> </span><span class="ss">&#39;org-mode-hook</span>
+<span class="w">          </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">()</span>
+<span class="w">            </span><span class="p">(</span><span class="nv">org-indent-mode</span><span class="p">)</span>
+<span class="w">            </span><span class="p">(</span><span class="nv">visual-line-mode</span><span class="p">)</span>
+<span class="w">            </span><span class="p">(</span><span class="nv">variable-pitch-mode</span><span class="p">)</span><span class="w"> </span><span class="c1">; letra proporcional para mejor legibilidad</span>
+<span class="w">            </span><span class="p">(</span><span class="nv">auto-fill-mode</span><span class="p">)))</span>
+
+<span class="c1">;; Usar TAB para plegar y desplegar secciones</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-hide-leading-stars</span><span class="w"> </span><span class="no">t</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-startup-folded</span><span class="w"> </span><span class="ss">&#39;content</span><span class="p">)</span>
+
+<span class="c1">;; Configuración básica de TODOs</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-todo-keywords</span>
+<span class="w">      </span><span class="o">&#39;</span><span class="p">((</span><span class="nc">sequence</span><span class="w"> </span><span class="s">&quot;TODO(t)&quot;</span><span class="w"> </span><span class="s">&quot;IN-PROGRESS(i)&quot;</span><span class="w"> </span><span class="s">&quot;WAITING(w@/!)&quot;</span><span class="w"> </span><span class="s">&quot;|&quot;</span><span class="w"> </span><span class="s">&quot;DONE(d!)&quot;</span><span class="w"> </span><span class="s">&quot;CANCELLED(c@)&quot;</span><span class="p">)))</span>
+
+<span class="c1">;; Cambiar color de TODOs</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-todo-keyword-faces</span>
+<span class="w">      </span><span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;TODO&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;tomato&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="s">&quot;IN-PROGRESS&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;orange&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="s">&quot;WAITING&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="s">&quot;DONE&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;lime green&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="s">&quot;CANCELLED&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">)))</span>
+
+<span class="c1">;; Carpeta principal de notas y agenda</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-directory</span><span class="w"> </span><span class="s">&quot;~/org/&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-default-notes-file</span><span class="w"> </span><span class="s">&quot;~/org/inbox.org&quot;</span><span class="p">)</span>
+
+<span class="c1">;; Activar captura rápida de ideas</span>
+<span class="p">(</span><span class="nv">global-set-key</span><span class="w"> </span><span class="p">(</span><span class="nv">kbd</span><span class="w"> </span><span class="s">&quot;C-c c&quot;</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;org-capture</span><span class="p">)</span>
+
+<span class="c1">;; Ver agenda</span>
+<span class="p">(</span><span class="nv">global-set-key</span><span class="w"> </span><span class="p">(</span><span class="nv">kbd</span><span class="w"> </span><span class="s">&quot;C-c a&quot;</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;org-agenda</span><span class="p">)</span>
+
+<span class="c1">;; Habilitar tiempo de reloj y log de tareas</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-log-done</span><span class="w"> </span><span class="ss">&#39;time</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-log-repeat</span><span class="w"> </span><span class="ss">&#39;time</span><span class="p">)</span><span class="w"> </span><span class="c1">;; Guarda cuándo se marcó como DONE</span>
+
+<span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">abrir-inbox</span><span class="w"> </span><span class="p">()</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">find-file</span><span class="w"> </span><span class="s">&quot;~/org/inbox.org&quot;</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nv">global-set-key</span><span class="w"> </span><span class="p">(</span><span class="nv">kbd</span><span class="w"> </span><span class="s">&quot;C-c i&quot;</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;abrir-inbox</span><span class="p">)</span>
+
+<span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">abrir-diario</span><span class="w"> </span><span class="p">()</span>
+<span class="w">  </span><span class="s">&quot;Abrir la bitácora diaria y crear una entrada con fecha actual si no existe.&quot;</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">archivo</span><span class="w"> </span><span class="s">&quot;~/org/diario.org&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">fecha</span><span class="w"> </span><span class="p">(</span><span class="nv">format-time-string</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d %A&quot;</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">(</span><span class="nv">find-file</span><span class="w"> </span><span class="nv">archivo</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="nv">goto-char</span><span class="w"> </span><span class="p">(</span><span class="nv">point-max</span><span class="p">))</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">unless</span><span class="w"> </span><span class="p">(</span><span class="nv">search-backward</span><span class="w"> </span><span class="nv">fecha</span><span class="w"> </span><span class="no">nil</span><span class="w"> </span><span class="no">t</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">insert</span><span class="w"> </span><span class="p">(</span><span class="nb">format</span><span class="w"> </span><span class="s">&quot;\n* %s\n\n&quot;</span><span class="w"> </span><span class="nv">fecha</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">save-buffer</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="nv">global-set-key</span><span class="w"> </span><span class="p">(</span><span class="nv">kbd</span><span class="w"> </span><span class="s">&quot;C-c j&quot;</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;abrir-diario</span><span class="p">)</span>
+
+<span class="c1">;; Establecer idioma de exportación a español</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-export-default-language</span><span class="w"> </span><span class="s">&quot;es&quot;</span><span class="p">)</span>
+
+<span class="c1">;; Personalizar etiquetas comunes en español</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-export-language-setup</span>
+<span class="w">      </span><span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;es&quot;</span><span class="w"> </span><span class="s">&quot;Autor&quot;</span><span class="w"> </span><span class="s">&quot;Fecha&quot;</span><span class="w"> </span><span class="s">&quot;Índice&quot;</span><span class="w"> </span><span class="s">&quot;Notas de pie de página&quot;</span><span class="p">)))</span>
+
+<span class="c1">;; Para que no genere respaldos automáticamente</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">make-backup-files</span><span class="w"> </span><span class="no">nil</span><span class="p">)</span>
+
+<span class="c1">;; Se agrega otro repo</span>
+<span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">&#39;package-archives</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;melpa&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;https://melpa.org/packages/&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Bueno, en general con esta configuración quedarán algunas teclas configuradas para acceso rápido. Estas las configuré para mi, pero puedes usar las que mejor te hagan sentido. He intentado documentar lo que hace cada línea. En general lisp es algo confuso para algunos por el tema de los paréntesis, pero no es complejo una vez que se tiene cierta noción, aunque emacs use un <a href="https://www.gnu.org/software/emacs/manual/html_node/eintr/">dialecto</a>, es bastante similar al que conozco de <a href="https://clisp.sourceforge.io/">clisp</a>. Si eres programador, ahí te dejé los links por si quieres aprender o conocerlo. Si solo eres un usuario y no te interesa, sigue adelante... </p>
+<p>En esta configuración, también desactivé los archivos de respaldos, estos que terminan en ~, porque al usar pelican, y detectar archivos duplicados me quedaría la escoba al momento de generar las páginas estáticas...</p>
+<p><code>C-c j</code>: abre el diario, este archivo lo uso a modo de bitácora para anotar cosas que he ido realizando y que no se me olviden las cosas. Como por todo hay que hacer informe, acá me dejo unos apuntes de lo realizado día a día. Entonces así no me pierdo.</p>
+<p><code>C-c a a</code>: abre la agenda y se pueden ver los días de la semana y las actividades, las tareas en progreso...</p>
+<p><code>C-c i</code>: abre el <em>inbox</em>, digamos que es mi bandeja de entrada de tareas y actividades. Es diferente del diario porque acá estas tienen fechas límites, fechas programadas y algunos otros puntos que son importantes para la gestión en sí.</p>
+<p>Por ejemplo, al abrir el archivo inbox (teclas <code>C-x C-f</code> ~/org/inbox.org o usando <code>C-c i</code>), se puede comenzar a escribir una tarea comenzando con un * o presionando shift+enter, que pondrá el * al comienzo. Dependiendo de cuantos asteriscos hayan juntos será el nivel de la tarea, su profundidad por así decirlo, imagina una lista típica, mientras más apegadas al borde izquierdo son me mayor jerarquía mientras que más hacia la derecha, están contenidas... </p>
+<div class="highlight"><pre><span></span><code><span class="k">*</span> Tarea 1
+**.Subtarea de la tarea 1
+   <span class="k">-</span> También esto es una tarea dentro de Subtarea, puede ser una nota, en fin...
+</code></pre></div>
+
+<p>Si por ejemplo, tuvieras el contenido anterior, y te posicionas encima de Tarea 1, y luego presionas las teclas <code>C-c C-t</code>, puedes definir si es una tarea, es decir le agrega las palabras <strong>TODO</strong> - de hacer en inglés -, y puedes también poner <em>en progreso</em>,<em>esperando</em>, <em>finalizado</em>, por supuesto, todo eso en inglés. Siempre se recomienda tener al menos una poca noción de ello.</p>
+<p>Para setear una fecha para lo de <em>programado</em> - SCHEDULED -, pues <code>C-c C-s</code>, donde se abrirá una especie de calendario, donde se ingresará la fecha a mano si es diferente, y solo enter si es el mismo día. Para especificar la hora bastará con agregar un espacio y la hora en formato 24 hrs, es decir, <code>2025-08-06 09:00</code> o si tiene una hora de término sería <code>2025-08-06 09:00-10:00</code> y luego pulsar la tecla ENTER, con eso quedaría configurado.</p>
+<div class="highlight"><pre><span></span><code><span class="k">*</span> Tarea de ejemplo
+** DONE Búsqueda de documento para una actividad
+CLOSED: [2025-08-05 ma. 14:56] SCHEDULED: &lt;2025-08-05 ma.&gt;
+
+<span class="k">-</span> State &quot;DONE&quot;       from &quot;IN-PROGRESS&quot; [2025-08-05 ma. 14:56]
+</code></pre></div>
+
+<p>Otra de las cosas que me llamó la atención fue:</p>
+<h2>¿Correo en modo texto? Gnus: centralizando el correo y las noticias</h2>
+<p>Bueno, sí, es posible. Hay que configurar algo llamado <code>gnus</code>. Configuré mi cuenta de Gmail mediante un archivo <code>.authinfo.gpg</code> con cifrado usando GnuPG. Y con eso pude:</p>
+<ul>
+<li>Leer y enviar correos directamente desde Emacs.</li>
+<li>Archivar mensajes (<code>B m</code> hacia [Gmail]/Todos).</li>
+<li>Eliminar mensajes (<code>E</code> y luego <code>x</code> para aplicar).</li>
+<li>Usar etiquetas como <code>#</code> para marcar múltiples mensajes.</li>
+<li>Acceder a grupos de noticias mediante Gwene y Eternal September.</li>
+</ul>
+<p>Además, habilité la firma automática de correos... </p>
+<p>Acá te dejo el archivo de configuración que usé para gnus, deberías de dejarlo en la ruta de <code>.emacs.d/.gnus.el</code>, como para tener todo ordenadito digo yo...</p>
+<div class="highlight"><pre><span></span><code><span class="c1">;; Usa authinfo.gpg</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">auth-sources</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;~/.emacs.d/.authinfo.gpg&quot;</span><span class="p">))</span>
+
+<span class="c1">;; Tu nombre y correo</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">user-full-name</span><span class="w"> </span><span class="s">&quot;Tu nombre&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">user-mail-address</span><span class="w"> </span><span class="s">&quot;tu-correo@gmail.com&quot;</span><span class="p">)</span>
+
+<span class="c1">;; Configuración IMAP para Gmail</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">gnus-select-method</span>
+<span class="w">      </span><span class="o">&#39;</span><span class="p">(</span><span class="nv">nnimap</span><span class="w"> </span><span class="s">&quot;gmail&quot;</span>
+<span class="w">               </span><span class="p">(</span><span class="nv">nnimap-address</span><span class="w"> </span><span class="s">&quot;imap.gmail.com&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="nv">nnimap-server-port</span><span class="w"> </span><span class="mi">993</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="nv">nnimap-stream</span><span class="w"> </span><span class="nv">ssl</span><span class="p">)))</span>
+
+<span class="c1">;; SMTP con Gmail</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">message-send-mail-function</span><span class="w"> </span><span class="ss">&#39;smtpmail-send-it</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">smtpmail-smtp-server</span><span class="w"> </span><span class="s">&quot;smtp.gmail.com&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">smtpmail-smtp-service</span><span class="w"> </span><span class="mi">587</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">smtpmail-stream-type</span><span class="w"> </span><span class="ss">&#39;starttls</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">smtpmail-debug-info</span><span class="w"> </span><span class="no">t</span><span class="p">)</span><span class="w"> </span><span class="c1">; Para ver errores si ocurre algo</span>
+
+<span class="c1">;; Noticias</span>
+<span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">gnus-secondary-select-methods</span>
+<span class="w">      </span><span class="o">&#39;</span><span class="p">((</span><span class="nv">nntp</span><span class="w"> </span><span class="s">&quot;news.gwene.org&quot;</span><span class="p">)))</span>
+</code></pre></div>
+
+<p>Bueno, con esta configuración ya es posible de iniciar gnus... Para ello, bastará con que uses <code>M-x gnus</code> y se iniciará. Algo que no he dicho, es que el archivo authinfo obviamente tendrás que tener las credenciales para tu cuenta de correo, que obviamente encriptarás con gnupg, esto es harina de otro costal y por supuesto, hay muchos tutoriales para configurar eso...</p>
+<p>Llegados a este punto... Puedo decir que estoy contento, ya he hecho muchas cosas... ^_^... Incluso, he logrado ejecutar jupyter notebook en org-mode... </p>
+<p>¿Lo recomiendo? Sólo si quieres complicarte la vida... XDDD</p>
+<p>Lo recomendaría sólo si tienes tiempo suficiente para aprender, y que por cosas de la vida, tener muchas ventanas te distraen... Aunque, a la fecha de redacción de esta publicación, el sistema operativo de M$ ya trae algo llamado asistente de concentración, que en realidad lo que hace es silenciar las notificaciones para evitar que seas interrumpido... </p>
+<p>En mi caso personal, me alegró poder tener (casi) todo configurado en un solo lugar. </p>
+<p>Así es como se ve todo en la parte de la agenda...</p>
+<p><img alt="La agenda en emacs" src="/media/2025/agosto/agenda.png" style="width: auto; max-width: 100% !important;"><br>
+<em>La agenda. Lo cierto es que a pesar de lo minimalista que se ve, es tremendamente funcional... Y práctico.</em></p>
+<p>¿Cierto que se ve bonito?</p>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://counter4.whocame.ovh/private/contadorvisitasgratis.php?c=ytntbfglwxdg259x6h7frf6ybfzar8zb" title="contador de visitas" alt="contador de visitas"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
