@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
 
 
-<meta name="description" content="Fecha y hora de actualización: 2025-08-16 22:48:31 -04 Antiguamente tenía un sitio de estadísticas, en el que incluso publicaba la temperatura, porcentaje de uso de la CPU y voltaje... Pero como cambié la infraestructura, y consideré que no era necesario tener tanto detalle, pues... Así que hoy inauguro …">
+<meta name="description" content="Fecha y hora de actualización: 2025-08-17 22:09:07 -04 Antiguamente tenía un sitio de estadísticas, en el que incluso publicaba la temperatura, porcentaje de uso de la CPU y voltaje... Pero como cambié la infraestructura, y consideré que no era necesario tener tanto detalle, pues... Así que hoy inauguro …">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
   <div class="content">
     <script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
 
-<p>Fecha y hora de actualización: <strong>2025-08-16 22:48:31 -04</strong></p>
+<p>Fecha y hora de actualización: <strong>2025-08-17 22:09:07 -04</strong></p>
 <hr>
 <p>Antiguamente tenía un sitio de estadísticas, en el que incluso publicaba la temperatura, porcentaje de uso de la CPU y voltaje... Pero como cambié la infraestructura, y consideré que no era necesario tener tanto detalle, pues... </p>
 <p>Así que hoy inauguro nuevamente (creo que por 4ª vez) las estadísticas de mi sitio web. Estas las iré generando ojalá una vez al mes... Antiguamente se actualizaban cada 5 minutos, pero creo que mejor lo dejaré así para ir probando...</p>
@@ -86,7 +86,7 @@
 <div id='visitas_por_pais'></div>
 <script>
   Plotly.newPlot('visitas_por_pais', [{
-    type:'bar', x:["Chile", "Singapore", "United States", "Germany", "Spain", "Canada", "Argentina", "France"], y:[215, 46, 3, 2, 2, 1, 1, 1], name:'País'
+    type:'bar', x:["Chile", "Singapore", "United States", "Germany", "Spain", "Canada", "Argentina", "France"], y:[217, 48, 3, 2, 2, 1, 1, 1], name:'País'
   }], {
     title:'Visitas por país (Top)', xaxis:{title:'País'}, yaxis:{title:'Visitas'}, font:{size:12}
   }, {responsive:true});
@@ -96,7 +96,7 @@
 <div id='visitas_por_pagina'></div>
 <script>
   Plotly.newPlot('visitas_por_pagina', [{
-    type:'bar', x:["/", "/blog.html", "/statistic.html", "/posts/por-que-es-mejor-tener-servicios-autoalojados.html", "/pages/links.html", "/posts/2025-08-06-organizandome-con-org-mode.html", "/posts/2025-08-13-paseos-patrimoniales.html", "/pages/guestbook.html", "Desconocido", "/archives.html", "/posts/2021-creando-mi-propia-herramienta.html", "/blog2.html", "/posts/2025-01-03-mi-sistema-arch.html", "/posts/2014-03-11-playa-de-ramuntcho-concepcion.html", "/posts/2012-10-11-sin-contenido.html"], y:[93, 36, 29, 16, 14, 7, 6, 6, 4, 3, 3, 3, 3, 2, 2], name:'Página'
+    type:'bar', x:["/", "/blog.html", "/statistic.html", "/posts/por-que-es-mejor-tener-servicios-autoalojados.html", "/pages/links.html", "/posts/2025-08-13-paseos-patrimoniales.html", "/posts/2025-08-06-organizandome-con-org-mode.html", "/pages/guestbook.html", "Desconocido", "/posts/2021-creando-mi-propia-herramienta.html", "/archives.html", "/blog2.html", "/posts/2025-01-03-mi-sistema-arch.html", "/posts/2012-10-11-sin-contenido.html", "/posts/2014-03-11-playa-de-ramuntcho-concepcion.html"], y:[94, 36, 30, 16, 14, 7, 7, 6, 4, 3, 3, 3, 3, 2, 2], name:'Página'
   }], {
     title:'Visitas por página (Top)', xaxis:{title:'Ruta'}, yaxis:{title:'Visitas'}, font:{size:12}
   }, {responsive:true});
@@ -106,7 +106,7 @@
 <div id='visitas_diarias'></div>
 <script>
   Plotly.newPlot('visitas_diarias', [{
-    type:'scatter', mode:'lines+markers', x:["2025-08-09", "2025-08-10", "2025-08-11", "2025-08-12", "2025-08-13", "2025-08-14", "2025-08-15", "2025-08-16"], y:[82, 17, 44, 19, 16, 76, 13, 4], name:'Visitas'
+    type:'scatter', mode:'lines+markers', x:["2025-08-09", "2025-08-10", "2025-08-11", "2025-08-12", "2025-08-13", "2025-08-14", "2025-08-15", "2025-08-16", "2025-08-17"], y:[82, 17, 44, 19, 16, 76, 13, 4, 4], name:'Visitas'
   }], {
     title:'Visitas por día', xaxis:{title:'Fecha'}, yaxis:{title:'Visitas'}, font:{size:12}
   }, {responsive:true});
@@ -116,7 +116,7 @@
 <div id='bots_vs_humanos'></div>
 <script>
   Plotly.newPlot('bots_vs_humanos', [{
-    type:'pie', labels:['Humanos','Bots'], values:[225,46], textinfo:'label+percent', hole:0.3
+    type:'pie', labels:['Humanos','Bots'], values:[227,48], textinfo:'label+percent', hole:0.3
   }], { title:'Bots vs Humanos', font:{size:12} }, {responsive:true});
 </script>
 
@@ -124,7 +124,7 @@
 <div id='top_navegadores'></div>
 <script>
   Plotly.newPlot('top_navegadores', [{
-    type:'bar', x:["Firefox/141.0", "Firefox/142.0", "Safari/537.36", "Chrome/138.0.0.0", "Chrome/139.0.0.0", "Safari/604.1", "", "Chrome/70.0.0.0", "Chrome/131.0.0.0", "Chrome/126.0.0.0", "Chrome/117.0.5938.132", "Safari/605.1.15"], y:[115, 63, 44, 18, 13, 9, 2, 2, 2, 1, 1, 1], name:'Navegador'
+    type:'bar', x:["Firefox/141.0", "Firefox/142.0", "Safari/537.36", "Chrome/138.0.0.0", "Chrome/139.0.0.0", "Safari/604.1", "Chrome/70.0.0.0", "", "Chrome/131.0.0.0", "Chrome/126.0.0.0", "Chrome/117.0.5938.132", "Safari/605.1.15"], y:[117, 63, 45, 18, 13, 9, 3, 2, 2, 1, 1, 1], name:'Navegador'
   }], { title:'Top Navegadores', xaxis:{title:'Navegador'}, yaxis:{title:'Visitas'}, font:{size:12} }, {responsive:true});
 </script>
 
@@ -132,7 +132,7 @@
 <div id='top_sistemas'></div>
 <script>
   Plotly.newPlot('top_sistemas', [{
-    type:'bar', x:["X11; Linux x86_64; rv:141.0", "Windows NT 10.0; Win64; x64; rv:142.0", "Linux; Android 5.0", "Android 13; Mobile; rv:141.0", "Windows NT 10.0; Win64; x64", "Linux; Android 10; K", "iPhone; CPU iPhone OS 17_6_1 like Mac OS X", "Windows NT 10.0; Win64; x64; rv:141.0", "Macintosh; Intel Mac OS X 10_15_7", "Android 15; Mobile; rv:141.0", "compatible; Bytespider; spider-feedback@bytedance.com", "X11; Linux x86_64", "compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/", "Linux; Android 14; moto g53 5G", "+https://developers.facebook.com/docs/sharing/webmasters/crawler"], y:[82, 63, 44, 26, 19, 12, 9, 5, 2, 2, 2, 2, 1, 1, 1], name:'SO'
+    type:'bar', x:["X11; Linux x86_64; rv:141.0", "Windows NT 10.0; Win64; x64; rv:142.0", "Linux; Android 5.0", "Android 13; Mobile; rv:141.0", "Windows NT 10.0; Win64; x64", "Linux; Android 10; K", "iPhone; CPU iPhone OS 17_6_1 like Mac OS X", "Windows NT 10.0; Win64; x64; rv:141.0", "compatible; Bytespider; spider-feedback@bytedance.com", "Android 15; Mobile; rv:141.0", "Macintosh; Intel Mac OS X 10_15_7", "X11; Linux x86_64", "compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/", "Linux; Android 14; moto g53 5G", "+https://developers.facebook.com/docs/sharing/webmasters/crawler"], y:[82, 63, 45, 28, 19, 12, 9, 5, 3, 2, 2, 2, 1, 1, 1], name:'SO'
   }], { title:'Top Sistemas Operativos', xaxis:{title:'SO'}, yaxis:{title:'Visitas'}, font:{size:12} }, {responsive:true});
 </script>
   </div>
