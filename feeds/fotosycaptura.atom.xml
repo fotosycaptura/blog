@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2025-08-13T22:00:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Paseos patrimoniales</title><link href="https://fotosycaptura.cl/posts/2025-08-13-paseos-patrimoniales.html" rel="alternate"></link><published>2025-08-13T22:00:00-04:00</published><updated>2025-08-13T22:00:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-08-13:/posts/2025-08-13-paseos-patrimoniales.html</id><summary type="html">&lt;p&gt;Un día, una vez al año, cuando la luna está en la octava casa de acuario... No, creo que así no era... XDDD de nuevo, en cierta época del año, anualmente (que es otra manera de decir que cada año), en Chile, se abren las puertas de ciertas edificaciones que suelen ser patrimonio... Por ejemplo la moneda, algún castillo del cerro del mismo nombre en Viña del Mar por poner un par de ejemplos... Es el momento que uno espera para visitar y conocer ciertos lugares que normalmente suelen estar cerrados al público... Acompáñame en este lindo paseo de un día...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"></link><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"></link><id>https://fotosycaptura.cl/</id><updated>2025-08-18T20:00:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Recuperación forense de un pendrive dañado</title><link href="https://fotosycaptura.cl/posts/2025-08-18-recuperacion-forense-de-un-pendrive.html" rel="alternate"></link><published>2025-08-18T20:00:00-04:00</published><updated>2025-08-18T20:00:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-08-18:/posts/2025-08-18-recuperacion-forense-de-un-pendrive.html</id><summary type="html">&lt;p&gt;Los pendrives, aunque útiles, no son eternos. Después de un tiempo pueden presentar errores en sus particiones o incluso volverse ilegibles para el sistema operativo. Este fue el caso con un pendrive de 32 GB de una persona: Windows no lo reconocía. Aquí documenté cómo es que logré recuperar la información y luego formatear el dispositivo para dejarlo funcional, usando un par de herramientas... Aunque el pendrive sobrevivió, pero por poco tiempo... ¿O quizás sí? Quien sabe... Mejor pasa y lee un rato...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Pendrive, Flash Drive" src="/media/2025/agosto/pendrive.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
+&lt;p&gt;Los pendrives, aunque útiles, no son eternos. Después de un tiempo pueden presentar errores en sus particiones o incluso volverse ilegibles para el sistema operativo. Este fue el caso con un pendrive de 32 GB de una persona: Windows no lo reconocía. Aquí documenté cómo es que logré recuperar la información y luego formatear el dispositivo para dejarlo funcional, usando un par de herramientas... Aunque el pendrive sobrevivió, pero por poco tiempo... ¿O quizás sí? Quien sabe... Mejor pasa y lee un rato...&lt;/p&gt;
+&lt;h2&gt;Previamente&lt;/h2&gt;
+&lt;p&gt;Hoy estaba de lo más tranquilo realizando mis labores, cuando una funcionaria salvaje aparece... o.O ¿El motivo? Pues... Tenía dificultades técnicas... Ya veo... Osea, si no las tuviera ni se acordarían de mi existencia... XDDD&lt;/p&gt;
+&lt;p&gt;Pero bueno, cuento corto, tenía problemas con su pendrive, también conocido como unidad de almacenamiento USB - más que nada por si no conocías el nombre -. Así que, vamos revisando... Bueno, se ve algo carreteado, término coloquial en Chile para decir que tiene mucho tiempo de uso, o que está viejito... También se dicen otras expresiones como... Que ya a pasado mucha agua bajo el puente... Bueno, creo que se entiende ¿No?&lt;/p&gt;
+&lt;p&gt;Así que, marca, ah, un Max*ll.. Ya veo... En lo personal, no me gustan mucho que digamos... ¡Ejem! De 32 GB. Así que vamos... &lt;/p&gt;
+&lt;p&gt;El proceso incluyó dos fases... Bueno, más de 2, pero se puede resumir en dos... Lo primero es conectarlo y ver si el administrador de discos de Windows reconoce el dispositivo. &lt;/p&gt;
+&lt;p&gt;Uhm, en primera instancia lo reconoce... Entonces, vamos a utilizar la herramienta &lt;a href="https://www.cgsecurity.org/wiki/TestDisk_ES"&gt;TestDisk&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Entonces resumiendo:&lt;/p&gt;
+&lt;h2&gt;Fase 1: Análisis con TestDisk&lt;/h2&gt;
+&lt;p&gt;Lo primero es ejecutar &lt;code&gt;testdisk&lt;/code&gt; y seleccionar el disco correspondiente al pendrive, o si lo prefieres &lt;code&gt;flash drive&lt;/code&gt;...&lt;/p&gt;
+&lt;p&gt;Luego se realiza un análisis profundo, que tomó varias horas (unos 32 GB tardaron cerca de 3 horas, siendo USB versión 2.0).&lt;/p&gt;
+&lt;p&gt;Y... Me encontré con esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Invalid&lt;span class="w"&gt; &lt;/span&gt;FAT&lt;span class="w"&gt; &lt;/span&gt;boot&lt;span class="w"&gt; &lt;/span&gt;sector&lt;span class="w"&gt;  &lt;/span&gt;
+Bad&lt;span class="w"&gt; &lt;/span&gt;relative&lt;span class="w"&gt; &lt;/span&gt;sector.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;El análisis profundo (Analyse &amp;gt; Search) encontró varias estructuras de particiones FAT32 inconsistentes, con diferencias en geometría (heads/cylinder 64 != 255, sect/track 32 != 63) - seguro que si lees esto y no eres afín a la informática, es chino, o japonés, si es tu caso, deja la informática, no es para ti XDD -. &lt;/p&gt;
+&lt;p&gt;Después de que finalizara el escaneo, detectó - por fin - una unidad válida:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;FAT32&lt;span class="w"&gt; &lt;/span&gt;LBA&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;33&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;3786&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;55&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;14&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;60825537&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;DISK_IMG&lt;span class="o"&gt;]&lt;/span&gt;
+FAT32,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;blocksize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;16384&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;31&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;GB&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;29&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;GiB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Esto confirmaba la existencia de un sistema de archivos, y muy posiblemente  recuperable, teniendo como punto de partida el LBA 32.&lt;/p&gt;
+&lt;h2&gt;Exploración de directorios&lt;/h2&gt;
+&lt;p&gt;Desde el explorador de TestDisk (P), se puede listar los archivos, y por supuesto, extraerlos... Eso incluye las carpetas, o  directorios... (Viva la pirat... Digo, los respaldos... XDDD)&lt;/p&gt;
+&lt;p&gt;Ejem! Bueno, desde esta vista es posible observar también aquellos archivos que se pueden considerar válidos, con sus características intactas, y otros que parecen cualquier cosa -basura-. Esto es señal de que hay una inconsistencia en el sistema de archivos...&lt;/p&gt;
+&lt;p&gt;En este punto, si eres informático, como consejo personal: aunque TestDisk permite reescribir la tabla de particiones, no siempre funciona bien si el sector de arranque está corrupto, por eso lo más seguro es trabajar con una imagen de la unidad... Bueno, eso en términos generales. Pero, como no es para realizar auditorias, proceso a copiar los datos directamente a otra unidad con suficiente espacio para ello... &lt;/p&gt;
+&lt;h2&gt;Fase 2: Reinicialización del dispositivo, ¿Windows? Entonces con DiskPart&lt;/h2&gt;
+&lt;p&gt;Con los datos resguardados, libres de los daños virtuales, el siguiente paso consiste en lo que comúnmente se conoce como formatear. En términos más técnicos, hay que reconstruir o crear una nueva partición, es decir, hay que modificar la tabla de particiones en el pendrive. Generalmente, con Windows Disk Management es suficiente para realizar estas tareas, pero por alguna extraña razón, no me permitía eliminar el volumen ni crear uno nuevo para después formatearlo, así que, hecho manos de &lt;code&gt;DiskPart&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Básicamente, tengo una sola unidad, así que al momento de listar, solo me mostrará dos discos, el de menor tamaño -por lógica-, es el pendrive... Así que, acá te dejo las instrucciones utilizadas para dejar operativa la unidad:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Diskpart" src="/media/2025/agosto/usando-diskpart.png" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;Usando diskpart para establecer una partición válida para el almacenamiento de datos&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;En menos de un minuto app, el pendrive quedó operativo con una partición FAT32 nueva... Si te lo estás preguntando, sí, puedes usar exFat, u otro si usas/necesitas un sistema de archivos con soporte de archivos de más de 4 GB... Consulta la ayuda o documentación para ello, no pondré eso acá porque no es la finalidad de esta publicación...&lt;/p&gt;
+&lt;h2&gt;Como recomendación en un caso de emergencia&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Backup inmediato&lt;/strong&gt;: si un pendrive presenta errores FAT/MBR, la prioridad debiese ser la extracción de datos antes de intentar reparaciones destructivas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Herramientas clave&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TestDisk → Recuperación de particiones y archivos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DiskPart → Gestión avanzada de discos en Windows.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Uso futuro&lt;/strong&gt;: para unidades &amp;gt;32 GB, considerar exFAT en lugar de FAT32 para mayor compatibilidad con archivos grandes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Salud del dispositivo&lt;/strong&gt;: si tras este procedimiento el pendrive vuelve a corromperse, es indicio de desgaste físico de la &lt;a href="https://es.wikipedia.org/wiki/Memoria_flash"&gt;memoria NAND&lt;/a&gt; → mejor ve y cámbialo.&lt;/p&gt;
+&lt;h2&gt;¿Tiempo de la operación?:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Análisis y extracción de datos con TestDisk: ~3 horas.  &lt;/li&gt;
+&lt;li&gt;Reinicialización con DiskPart: &amp;lt;1 minuto.  &lt;/li&gt;
+&lt;li&gt;Traspaso de datos: ~3 horas más aproximadamente...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;En total, 6 horas y fracción aproximadamente... La gente suele pensar que recuperar archivos es algo rápido... Hay que tener paciencia, y ser metódico...&lt;/p&gt;
+&lt;h2&gt;Conclusión para este caso&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Causa probable: corrupción del sector de arranque FAT32 y FAT desincronizadas.  &lt;/li&gt;
+&lt;li&gt;Recuperación de datos: fue posible gracias a que los directorios y clusters estaban íntegros, aunque la FAT principal estaba dañada.  &lt;/li&gt;
+&lt;li&gt;Reutilización del dispositivo: con ayuda de &lt;code&gt;DiskPart&lt;/code&gt; realizando recreación de la tabla MBR se resolvió el problema de montaje, al menos por ese momento...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Eso por la parte técnica... Respecto al procedimiento en sí, pues tiene un enfoque forense y metódico, el cual permite no solo rescatar la información, sino también restaurar la usabilidad del medio físico, al menos de forma temporal. &lt;/p&gt;
+&lt;p&gt;Pero les ahorro cine, al conectarlo al equipo de esta persona, dejó de responder... Dada la marca y lo carreteado del Flash Drive, creo que es mejor comprarse otro... Pero ¡Oye! Los datos ya están a salvo...&lt;/p&gt;
+&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;</content><category term="Laboratorio"></category><category term="laboratorio"></category><category term="software"></category><category term="testdisk"></category><category term="pendrive"></category></entry><entry><title>Paseos patrimoniales</title><link href="https://fotosycaptura.cl/posts/2025-08-13-paseos-patrimoniales.html" rel="alternate"></link><published>2025-08-13T22:00:00-04:00</published><updated>2025-08-13T22:00:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-08-13:/posts/2025-08-13-paseos-patrimoniales.html</id><summary type="html">&lt;p&gt;Un día, una vez al año, cuando la luna está en la octava casa de acuario... No, creo que así no era... XDDD de nuevo, en cierta época del año, anualmente (que es otra manera de decir que cada año), en Chile, se abren las puertas de ciertas edificaciones que suelen ser patrimonio... Por ejemplo la moneda, algún castillo del cerro del mismo nombre en Viña del Mar por poner un par de ejemplos... Es el momento que uno espera para visitar y conocer ciertos lugares que normalmente suelen estar cerrados al público... Acompáñame en este lindo paseo de un día...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="Día patrimonial" src="/media/2014/2014_05_24/cover.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
 &lt;p&gt;Un día, una vez al año, cuando la luna está en la octava casa de acuario... No, creo que así no era... XDDD de nuevo, en cierta época del año, anualmente (que es otra manera de decir que cada año), en Chile, se abren las puertas de ciertas edificaciones que suelen ser patrimonio... Por ejemplo la moneda, algún castillo del cerro del mismo nombre en Viña del Mar por poner un par de ejemplos... Es el momento que uno espera para visitar y conocer ciertos lugares que normalmente suelen estar cerrados al público... Acompáñame en este lindo paseo de un día... &lt;/p&gt;
 &lt;h2&gt;¡Vamos!&lt;/h2&gt;
@@ -1875,19 +1938,4 @@ sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&g
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_06 (MTB)/IMG_20241006_121655.jpg"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_06 (MTB)/IMG_20241006_121706.jpg"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_06 (MTB)/IMG_20241006_124822.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_06 (MTB)/IMG_20241006_124824.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"></category><category term="galeria"></category><category term="fotos"></category></entry><entry><title>Galería 2024_10_05 (Cumple Tia Luly)</title><link href="https://fotosycaptura.cl/posts/galeria-2024_10_05%20(Cumple%20Tia%20Luly).html" rel="alternate"></link><published>2024-10-05T00:00:00-03:00</published><updated>2024-10-05T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-10-05:/posts/galeria-2024_10_05 (Cumple Tia Luly).html</id><summary type="html"></summary><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_172351.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_172419.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_172428.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_172431.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_172439.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_172526.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_172535.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_173837.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_173845.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_173857.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_210417.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_210435.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_210441.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_210445.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_210713.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_05 (Cumple Tia Luly)/IMG_20241005_210716.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"></category><category term="galeria"></category><category term="fotos"></category></entry></feed>
+&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_06 (MTB)/IMG_20241006_124824.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"></category><category term="galeria"></category><category term="fotos"></category></entry></feed>

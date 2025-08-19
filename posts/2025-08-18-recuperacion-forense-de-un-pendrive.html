@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Recuperación forense de un pendrive dañado | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2025-08-18-recuperacion-forense-de-un-pendrive.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Los pendrives, aunque útiles, no son eternos. Después de un tiempo pueden presentar errores en sus particiones o incluso volverse ilegibles para el sistema operativo. Este fue el caso con un pendrive de 32 GB de una persona: Windows no lo reconocía. Aquí documenté cómo es que logré recuperar la información y luego formatear el dispositivo para dejarlo funcional, usando un par de herramientas... Aunque el pendrive sobrevivió, pero por poco tiempo... ¿O quizás sí? Quien sabe... Mejor pasa y lee un rato...">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Acerca de</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-bar-chart" href="https://fotosycaptura.cl/statistic.html" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Recuperación forense de un pendrive dañado
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2025-08-18T20:00:00-04:00">
+        <i class="fa fa-clock-o"></i>
+        2025, lun 18 agosto
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>,         <a href="https://fotosycaptura.cl/tag/testdisk.html">#testdisk</a>,         <a href="https://fotosycaptura.cl/tag/pendrive.html">#pendrive</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <h2>Contexto</h2>
+<p><img alt="Pendrive, Flash Drive" src="/media/2025/agosto/pendrive.jpg" style="width: auto; max-width: 100% !important;">  </p>
+<p>Los pendrives, aunque útiles, no son eternos. Después de un tiempo pueden presentar errores en sus particiones o incluso volverse ilegibles para el sistema operativo. Este fue el caso con un pendrive de 32 GB de una persona: Windows no lo reconocía. Aquí documenté cómo es que logré recuperar la información y luego formatear el dispositivo para dejarlo funcional, usando un par de herramientas... Aunque el pendrive sobrevivió, pero por poco tiempo... ¿O quizás sí? Quien sabe... Mejor pasa y lee un rato...</p>
+<h2>Previamente</h2>
+<p>Hoy estaba de lo más tranquilo realizando mis labores, cuando una funcionaria salvaje aparece... o.O ¿El motivo? Pues... Tenía dificultades técnicas... Ya veo... Osea, si no las tuviera ni se acordarían de mi existencia... XDDD</p>
+<p>Pero bueno, cuento corto, tenía problemas con su pendrive, también conocido como unidad de almacenamiento USB - más que nada por si no conocías el nombre -. Así que, vamos revisando... Bueno, se ve algo carreteado, término coloquial en Chile para decir que tiene mucho tiempo de uso, o que está viejito... También se dicen otras expresiones como... Que ya a pasado mucha agua bajo el puente... Bueno, creo que se entiende ¿No?</p>
+<p>Así que, marca, ah, un Max*ll.. Ya veo... En lo personal, no me gustan mucho que digamos... ¡Ejem! De 32 GB. Así que vamos... </p>
+<p>El proceso incluyó dos fases... Bueno, más de 2, pero se puede resumir en dos... Lo primero es conectarlo y ver si el administrador de discos de Windows reconoce el dispositivo. </p>
+<p>Uhm, en primera instancia lo reconoce... Entonces, vamos a utilizar la herramienta <a href="https://www.cgsecurity.org/wiki/TestDisk_ES">TestDisk</a></p>
+<p>Entonces resumiendo:</p>
+<h2>Fase 1: Análisis con TestDisk</h2>
+<p>Lo primero es ejecutar <code>testdisk</code> y seleccionar el disco correspondiente al pendrive, o si lo prefieres <code>flash drive</code>...</p>
+<p>Luego se realiza un análisis profundo, que tomó varias horas (unos 32 GB tardaron cerca de 3 horas, siendo USB versión 2.0).</p>
+<p>Y... Me encontré con esto:</p>
+<div class="highlight"><pre><span></span><code>Invalid<span class="w"> </span>FAT<span class="w"> </span>boot<span class="w"> </span>sector<span class="w">  </span>
+Bad<span class="w"> </span>relative<span class="w"> </span>sector.
+</code></pre></div>
+
+<p>El análisis profundo (Analyse &gt; Search) encontró varias estructuras de particiones FAT32 inconsistentes, con diferencias en geometría (heads/cylinder 64 != 255, sect/track 32 != 63) - seguro que si lees esto y no eres afín a la informática, es chino, o japonés, si es tu caso, deja la informática, no es para ti XDD -. </p>
+<p>Después de que finalizara el escaneo, detectó - por fin - una unidad válida:</p>
+<div class="highlight"><pre><span></span><code>FAT32<span class="w"> </span>LBA<span class="w">                </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">33</span><span class="w">  </span><span class="m">3786</span><span class="w">  </span><span class="m">55</span><span class="w"> </span><span class="m">14</span><span class="w">   </span><span class="m">60825537</span><span class="w"> </span><span class="o">[</span>DISK_IMG<span class="o">]</span>
+FAT32,<span class="w"> </span><span class="nv">blocksize</span><span class="o">=</span><span class="m">16384</span>,<span class="w"> </span><span class="m">31</span><span class="w"> </span>GB<span class="w"> </span>/<span class="w"> </span><span class="m">29</span><span class="w"> </span>GiB
+</code></pre></div>
+
+<p>Esto confirmaba la existencia de un sistema de archivos, y muy posiblemente  recuperable, teniendo como punto de partida el LBA 32.</p>
+<h2>Exploración de directorios</h2>
+<p>Desde el explorador de TestDisk (P), se puede listar los archivos, y por supuesto, extraerlos... Eso incluye las carpetas, o  directorios... (Viva la pirat... Digo, los respaldos... XDDD)</p>
+<p>Ejem! Bueno, desde esta vista es posible observar también aquellos archivos que se pueden considerar válidos, con sus características intactas, y otros que parecen cualquier cosa -basura-. Esto es señal de que hay una inconsistencia en el sistema de archivos...</p>
+<p>En este punto, si eres informático, como consejo personal: aunque TestDisk permite reescribir la tabla de particiones, no siempre funciona bien si el sector de arranque está corrupto, por eso lo más seguro es trabajar con una imagen de la unidad... Bueno, eso en términos generales. Pero, como no es para realizar auditorias, proceso a copiar los datos directamente a otra unidad con suficiente espacio para ello... </p>
+<h2>Fase 2: Reinicialización del dispositivo, ¿Windows? Entonces con DiskPart</h2>
+<p>Con los datos resguardados, libres de los daños virtuales, el siguiente paso consiste en lo que comúnmente se conoce como formatear. En términos más técnicos, hay que reconstruir o crear una nueva partición, es decir, hay que modificar la tabla de particiones en el pendrive. Generalmente, con Windows Disk Management es suficiente para realizar estas tareas, pero por alguna extraña razón, no me permitía eliminar el volumen ni crear uno nuevo para después formatearlo, así que, hecho manos de <code>DiskPart</code>.</p>
+<p>Básicamente, tengo una sola unidad, así que al momento de listar, solo me mostrará dos discos, el de menor tamaño -por lógica-, es el pendrive... Así que, acá te dejo las instrucciones utilizadas para dejar operativa la unidad:</p>
+<p><img alt="Diskpart" src="/media/2025/agosto/usando-diskpart.png" style="width: auto; max-width: 100% !important;"><br>
+<em>Usando diskpart para establecer una partición válida para el almacenamiento de datos</em></p>
+<p>En menos de un minuto app, el pendrive quedó operativo con una partición FAT32 nueva... Si te lo estás preguntando, sí, puedes usar exFat, u otro si usas/necesitas un sistema de archivos con soporte de archivos de más de 4 GB... Consulta la ayuda o documentación para ello, no pondré eso acá porque no es la finalidad de esta publicación...</p>
+<h2>Como recomendación en un caso de emergencia</h2>
+<p><strong>Backup inmediato</strong>: si un pendrive presenta errores FAT/MBR, la prioridad debiese ser la extracción de datos antes de intentar reparaciones destructivas.</p>
+<p><strong>Herramientas clave</strong>:</p>
+<ul>
+<li>
+<p>TestDisk → Recuperación de particiones y archivos.</p>
+</li>
+<li>
+<p>DiskPart → Gestión avanzada de discos en Windows.</p>
+</li>
+</ul>
+<p><strong>Uso futuro</strong>: para unidades &gt;32 GB, considerar exFAT en lugar de FAT32 para mayor compatibilidad con archivos grandes.</p>
+<p><strong>Salud del dispositivo</strong>: si tras este procedimiento el pendrive vuelve a corromperse, es indicio de desgaste físico de la <a href="https://es.wikipedia.org/wiki/Memoria_flash">memoria NAND</a> → mejor ve y cámbialo.</p>
+<h2>¿Tiempo de la operación?:</h2>
+<ul>
+<li>Análisis y extracción de datos con TestDisk: ~3 horas.  </li>
+<li>Reinicialización con DiskPart: &lt;1 minuto.  </li>
+<li>Traspaso de datos: ~3 horas más aproximadamente...</li>
+</ul>
+<p>En total, 6 horas y fracción aproximadamente... La gente suele pensar que recuperar archivos es algo rápido... Hay que tener paciencia, y ser metódico...</p>
+<h2>Conclusión para este caso</h2>
+<ul>
+<li>Causa probable: corrupción del sector de arranque FAT32 y FAT desincronizadas.  </li>
+<li>Recuperación de datos: fue posible gracias a que los directorios y clusters estaban íntegros, aunque la FAT principal estaba dañada.  </li>
+<li>Reutilización del dispositivo: con ayuda de <code>DiskPart</code> realizando recreación de la tabla MBR se resolvió el problema de montaje, al menos por ese momento...</li>
+</ul>
+<p>Eso por la parte técnica... Respecto al procedimiento en sí, pues tiene un enfoque forense y metódico, el cual permite no solo rescatar la información, sino también restaurar la usabilidad del medio físico, al menos de forma temporal. </p>
+<p>Pero les ahorro cine, al conectarlo al equipo de esta persona, dejó de responder... Dada la marca y lo carreteado del Flash Drive, creo que es mejor comprarse otro... Pero ¡Oye! Los datos ya están a salvo...</p>
+<p>¡Hasta la próxima!</p>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://api.fotosycaptura.cl/contador.png" title="Contador de visitas" alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
