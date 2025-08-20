@@ -82,58 +82,98 @@
 <p>No sé de donde me visites, bueno, si sé, pero no os voy a decir XDDDD  </p>
 <p>En fin... Ya estais advertidos... Jijiji</p>
 <p>Acá se puede visualizar la cantidad de visitas que tiene mi sitio Web. Ya sean bots o no, todo es contabilizado XDDD.</p>
+<!-- Plotly -->
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
 <h2>Visitas por país</h2>
-<div id='visitas_por_pais'></div>
-<script>
-  Plotly.newPlot('visitas_por_pais', [{
-    type:'bar', x:["Chile", "Singapore", "United States", "Germany", "Spain", "Canada", "Argentina", "France"], y:[236, 51, 3, 2, 2, 1, 1, 1], name:'País'
-  }], {
-    title:'Visitas por país (Top)', xaxis:{title:'País'}, yaxis:{title:'Visitas'}, font:{size:12}
-  }, {responsive:true});
-</script>
+<div id="visitas_por_pais"></div>
 
 <h2>Visitas por página</h2>
-<div id='visitas_por_pagina'></div>
-<script>
-  Plotly.newPlot('visitas_por_pagina', [{
-    type:'bar', x:["/", "/blog.html", "/statistic.html", "/posts/por-que-es-mejor-tener-servicios-autoalojados.html", "/pages/links.html", "/posts/2025-08-13-paseos-patrimoniales.html", "/posts/2025-08-06-organizandome-con-org-mode.html", "/pages/guestbook.html", "/posts/2021-creando-mi-propia-herramienta.html", "Desconocido", "/archives.html", "/posts/2025-01-03-mi-sistema-arch.html", "/tags.html", "/blog2.html", "/posts/2021-06-25-fs2020-se-cierra-solo-que-hacer.html"], y:[105, 39, 31, 16, 14, 8, 7, 6, 5, 4, 3, 3, 3, 3, 2], name:'Página'
-  }], {
-    title:'Visitas por página (Top)', xaxis:{title:'Ruta'}, yaxis:{title:'Visitas'}, font:{size:12}
-  }, {responsive:true});
-</script>
+<div id="visitas_por_pagina"></div>
 
 <h2>Visitas por día</h2>
-<div id='visitas_diarias'></div>
-<script>
-  Plotly.newPlot('visitas_diarias', [{
-    type:'scatter', mode:'lines+markers', x:["2025-08-09", "2025-08-10", "2025-08-11", "2025-08-12", "2025-08-13", "2025-08-14", "2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19"], y:[82, 17, 44, 19, 16, 76, 13, 4, 4, 15, 7], name:'Visitas'
-  }], {
-    title:'Visitas por día', xaxis:{title:'Fecha'}, yaxis:{title:'Visitas'}, font:{size:12}
-  }, {responsive:true});
-</script>
+<div id="visitas_diarias"></div>
 
 <h2>Bots vs Humanos</h2>
-<div id='bots_vs_humanos'></div>
-<script>
-  Plotly.newPlot('bots_vs_humanos', [{
-    type:'pie', labels:['Humanos','Bots'], values:[246,51], textinfo:'label+percent', hole:0.3
-  }], { title:'Bots vs Humanos', font:{size:12} }, {responsive:true});
-</script>
+<div id="bots_vs_humanos"></div>
 
 <h2>Top Navegadores</h2>
-<div id='top_navegadores'></div>
-<script>
-  Plotly.newPlot('top_navegadores', [{
-    type:'bar', x:["Firefox/141.0", "Firefox/142.0", "Safari/537.36", "Chrome/138.0.0.0", "Chrome/139.0.0.0", "Safari/604.1", "Chrome/70.0.0.0", "", "Chrome/131.0.0.0", "Chrome/126.0.0.0", "Chrome/117.0.5938.132", "Safari/605.1.15"], y:[129, 67, 48, 18, 16, 9, 3, 2, 2, 1, 1, 1], name:'Navegador'
-  }], { title:'Top Navegadores', xaxis:{title:'Navegador'}, yaxis:{title:'Visitas'}, font:{size:12} }, {responsive:true});
-</script>
+<div id="top_navegadores"></div>
 
 <h2>Top Sistemas Operativos</h2>
-<div id='top_sistemas'></div>
+<div id="top_sistemas"></div>
+
 <script>
-  Plotly.newPlot('top_sistemas', [{
-    type:'bar', x:["X11; Linux x86_64; rv:141.0", "Windows NT 10.0; Win64; x64; rv:142.0", "Linux; Android 5.0", "Android 13; Mobile; rv:141.0", "Windows NT 10.0; Win64; x64", "Linux; Android 10; K", "iPhone; CPU iPhone OS 17_6_1 like Mac OS X", "Windows NT 10.0; Win64; x64; rv:141.0", "compatible; Bytespider; spider-feedback@bytedance.com", "Android 15; Mobile; rv:141.0", "Macintosh; Intel Mac OS X 10_15_7", "X11; Linux x86_64", "compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/", "Linux; Android 14; moto g53 5G", "+https://developers.facebook.com/docs/sharing/webmasters/crawler"], y:[94, 67, 48, 28, 22, 12, 9, 5, 3, 2, 2, 2, 1, 1, 1], name:'SO'
-  }], { title:'Top Sistemas Operativos', xaxis:{title:'SO'}, yaxis:{title:'Visitas'}, font:{size:12} }, {responsive:true});
+(async () => {
+  // Sufijo para evitar caché (cache-busting)
+  const url = "https://api.fotosycaptura.cl/static/data/site_stats.json?v=" + Date.now();
+
+  let data;
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    data = await resp.json();
+  } catch (err) {
+    console.error("No se pudo cargar el JSON de estadísticas:", err);
+    const warn = document.createElement("p");
+    warn.textContent = "No se pudo cargar el JSON de estadísticas.";
+    document.body.prepend(warn);
+    return;
+  }
+
+  // Config responsive (4to argumento en Plotly.newPlot)
+  const config = {responsive: true};
+
+  // 1) País
+  Plotly.newPlot(
+    'visitas_por_pais',
+    [{type: 'bar', x: data.country.labels, y: data.country.counts, name: 'País'}],
+    {title: 'Visitas por país (Top)', xaxis: {title:'País'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    config
+  );
+
+  // 2) Página
+  Plotly.newPlot(
+    'visitas_por_pagina',
+    [{type: 'bar', x: data.path.labels, y: data.path.counts, name: 'Página'}],
+    {title: 'Visitas por página (Top)', xaxis: {title:'Ruta'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    config
+  );
+
+  // 3) Serie diaria
+  Plotly.newPlot(
+    'visitas_diarias',
+    [{type: 'scatter', mode:'lines+markers', x: data.daily.dates, y: data.daily.visits, name: 'Visitas'}],
+    {title: 'Visitas por día', xaxis: {title:'Fecha'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    config
+  );
+
+  // 4) Bots vs Humanos
+  Plotly.newPlot(
+    'bots_vs_humanos',
+    [{type: 'pie', labels: data.bots_vs_humans.labels, values: data.bots_vs_humans.values, textinfo:'label+percent', hole:0.3}],
+    {title:'Bots vs Humanos', font:{size:12}},
+    config
+  );
+
+  // 5) Navegadores
+  Plotly.newPlot(
+    'top_navegadores',
+    [{type: 'bar', x: data.browsers.labels, y: data.browsers.counts, name: 'Navegador'}],
+    {title:'Top Navegadores', xaxis:{title:'Navegador'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    config
+  );
+
+  // 6) Sistemas Operativos
+  Plotly.newPlot(
+    'top_sistemas',
+    [{type: 'bar', x: data.os.labels, y: data.os.counts, name: 'SO'}],
+    {title:'Top Sistemas Operativos', xaxis:{title:'SO'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    config
+  );
+
+  console.log("Generado:", data.generated_at);
+})();
 </script>
   </div>
 </article>
