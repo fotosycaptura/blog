@@ -116,7 +116,7 @@ FAT32,<span class="w"> </span><span class="nv">blocksize</span><span class="o">=
 <h2>Exploración de directorios</h2>
 <p>Desde el explorador de TestDisk (P), se puede listar los archivos, y por supuesto, extraerlos... Eso incluye las carpetas, o  directorios... (Viva la pirat... Digo, los respaldos... XDDD)</p>
 <p>Ejem! Bueno, desde esta vista es posible observar también aquellos archivos que se pueden considerar válidos, con sus características intactas, y otros que parecen cualquier cosa -basura-. Esto es señal de que hay una inconsistencia en el sistema de archivos...</p>
-<p>En este punto, si eres informático, como consejo personal: aunque TestDisk permite reescribir la tabla de particiones, no siempre funciona bien si el sector de arranque está corrupto, por eso lo más seguro es trabajar con una imagen de la unidad... Bueno, eso en términos generales. Pero, como no es para realizar auditorias, proceso a copiar los datos directamente a otra unidad con suficiente espacio para ello... </p>
+<p>En este punto, si eres informático, como consejo personal: aunque TestDisk permite reescribir la tabla de particiones, no siempre funciona bien si el sector de arranque está corrupto, por eso lo más seguro es trabajar con una imagen de la unidad... Bueno, eso en términos generales. Pero, como no es para realizar auditorias, procedo a copiar los datos directamente a otra unidad con suficiente espacio para ello... </p>
 <h2>Fase 2: Reinicialización del dispositivo, ¿Windows? Entonces con DiskPart</h2>
 <p>Con los datos resguardados, libres de los daños virtuales, el siguiente paso consiste en lo que comúnmente se conoce como formatear. En términos más técnicos, hay que reconstruir o crear una nueva partición, es decir, hay que modificar la tabla de particiones en el pendrive. Generalmente, con Windows Disk Management es suficiente para realizar estas tareas, pero por alguna extraña razón, no me permitía eliminar el volumen ni crear uno nuevo para después formatearlo, así que, hecho manos de <code>DiskPart</code>.</p>
 <p>Básicamente, tengo una sola unidad, así que al momento de listar, solo me mostrará dos discos, el de menor tamaño -por lógica-, es el pendrive... Así que, acá te dejo las instrucciones utilizadas para dejar operativa la unidad:</p>
@@ -151,6 +151,11 @@ FAT32,<span class="w"> </span><span class="nv">blocksize</span><span class="o">=
 </ul>
 <p>Eso por la parte técnica... Respecto al procedimiento en sí, pues tiene un enfoque forense y metódico, el cual permite no solo rescatar la información, sino también restaurar la usabilidad del medio físico, al menos de forma temporal. </p>
 <p>Pero les ahorro cine, al conectarlo al equipo de esta persona, dejó de responder... Dada la marca y lo carreteado del Flash Drive, creo que es mejor comprarse otro... Pero ¡Oye! Los datos ya están a salvo...</p>
+<p>Antes de irme, si te interesa el tema forense, quizás te interese revisar:</p>
+<ul>
+<li><a href="https://fotosycaptura.cl/posts/2023-06-16-forenseando-un-disco-antiguo-parte-1.html">Forenseando un disco añejo (Parte 1)</a>  </li>
+<li><a href="/posts/2023-12-29-forenseando-un-disco-antiguo-parte-2.html">Forenseando un disco añejo (Parte 2)</a></li>
+</ul>
 <p>¡Hasta la próxima!</p>
   </div>
 </article>
