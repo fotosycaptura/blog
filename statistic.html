@@ -72,7 +72,6 @@
   <div class="content">
     <script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
 
-<hr>
 <p>Antiguamente tenía un sitio de estadísticas, en el que incluso publicaba la temperatura, porcentaje de uso de la CPU y voltaje... Pero como cambié la infraestructura, y consideré que no era necesario tener tanto detalle, pues... </p>
 <p>Así que hoy inauguro nuevamente (creo que por 4ª vez) las estadísticas de mi sitio web. Estas las iré generando ojalá una vez al mes... Antiguamente se actualizaban cada 5 minutos, pero creo que mejor lo dejaré así para ir probando...</p>
 <p>No he tenido mucho tiempo para ir pensando en automatizarlo como lo tenía antes, pero bueno, como lo implementé recién hoy, habrán pocas visitas seguramente... Antiguamente tenía visitas por miles pero principalmente bots. Ahora todo eso está más controlado, por lo que deberían de ser datos más fidedignos...</p>
@@ -102,7 +101,8 @@
 <h2>Top Sistemas Operativos</h2>
 <div id="top_sistemas"></div>
 
-<p>Estadísticas generadas el: <div id="stat_fecha"></div></p>
+<p>Última actualización: <span id="stat_fecha"></span></p>
+
 <script>
 (async () => {
   // Sufijo para evitar caché (cache-busting)
