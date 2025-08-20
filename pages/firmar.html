@@ -95,11 +95,17 @@ Este libro de visitas es un gesto simple, pero profundamente humano.<br>
 </blockquote>
 <p>Si no vez luego tu mensaje, es porque será revisado antes de publicarse. Pero dale, con confianza ^_~</p>
 <form action="https://api.fotosycaptura.cl/api/firmar" method="post" id="form-libro" onsubmit="enviarFormulario(event)">
-  <label for="nombre">Nombre:</label><br>
-  <input type="text" name="nombre" required class="form-control" placeholder="Ingresa tu nombre" autocomplete="off"><br><br>
+  <label for="nombre">Tu nombre o un nick:</label><br>
+  <input type="text" name="nombre" required class="form-control" placeholder="Ingresa un nombre o nick" autocomplete="off"><br><br>
 
-  <label for="mensaje">Mensaje:</label><br>
-  <textarea name="mensaje" rows="4" cols="50" required class="form-control" autocomplete="off" placeholder="Dime algo..."></textarea><br><br>
+  <label for="mensaje">Algún mensaje:</label><br>
+  <textarea name="mensaje" rows="4" cols="50" required class="form-control" autocomplete="off" placeholder="Dime algo..."></textarea><br>
+
+<p style="font-size: small; color: gray;">
+Lo siguiente lo coloco para dar cumplimiento a ciertas políticas de por ahí en algun lugar, que no afecta en mi zona, pero... Mejor asegurarse... Cuyo nombre blablabla... Ejem!
+Al enviar tu mensaje, estás aceptando que tanto el nombre/nick como el texto ingresado se publiquen en el libro de visitas tras revisión. 
+No se recopilan más datos ni se comparten con terceros.
+</p>
 
   <input type="submit" value="Firmar" class="btn btn-primary">
 </form>
