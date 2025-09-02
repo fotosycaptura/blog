@@ -2,7 +2,7 @@
 #+NICK: fotosycaptura
 #+DESCRIPTION: Bitácora personal del capitán @fotosycaptura
 #+AVATAR: https://fotosycaptura.cl/images/logo.jpg
-#+LINK: https://fotosycaptura.cl
+#+LINK: https://fotosycaptura.cl/social.org
 #+CONTACT: mailto:5ax138cye@mozmail.com
 #+CONTACT: https://mastodon.social/@netmages
 #+FOLLOW: https://andros.dev/static/social.org
