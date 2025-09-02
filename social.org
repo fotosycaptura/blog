@@ -23,7 +23,7 @@
 :LANG: es
 :TAGS: org-social saludo
 :CLIENT: org-social.el
-:MOOD: 
+:MOOD:  🎉
 :END:
 
 Este es el primer post que voy a realizar en esta "nueva" red social descentralizada... Que increíble que dedique tiempo a este tipo de experimentos en vez de avanzar con mi proyecto de título, pero digamos que uno necesita algo de esparcimiento también, jejeje... En fin... Primer comentario, tomen esto como un "Hola Mundo" XDDD.
