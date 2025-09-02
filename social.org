@@ -1,0 +1,41 @@
+#+TITLE: fotosycaptura
+#+NICK: fotosycaptura
+#+DESCRIPTION: Bitácora personal del capitán @fotosycaptura
+#+AVATAR: https://fotosycaptura.cl/images/logo.jpg
+#+LINK: https://fotosycaptura.cl
+#+CONTACT: mailto:5ax138cye@mozmail.com
+#+CONTACT: https://mastodon.social/@netmages
+#+FOLLOW: https://andros.dev/static/social.org
+#+FOLLOW: https://rossabaker.com/social.org
+#+FOLLOW: https://omidmash.de/social.org
+#+FOLLOW: https://johnhame.link/social.org
+#+FOLLOW: https://eoin.site/social.org
+#+FOLLOW: https://adsan.dev/social.org
+#+FOLLOW: https://emillo.net/social.org
+#+FOLLOW: https://cmdln.org/social.org
+#+FOLLOW: https://notxor.nueva-actitud.org/social.org
+
+* Posts
+**
+:PROPERTIES:
+:ID: 2025-09-02T11:14:12-0400
+:TITLE: Primer post
+:LANG: es
+:TAGS: org-social saludo
+:CLIENT: org-social.el
+:MOOD: 
+:END:
+
+Este es el primer post que voy a realizar en esta "nueva" red social descentralizada... Que increíble que dedique tiempo a este tipo de experimentos en vez de avanzar con mi proyecto de título, pero digamos que uno necesita algo de esparcimiento también, jejeje... En fin... Primer comentario, tomen esto como un "Hola Mundo" XDDD.
+
+**
+:PROPERTIES:
+:ID: 2025-09-02T11:49:24-0400
+:LANG: es
+:TAGS: emacs org-social
+:CLIENT: org-social.el
+:REPLY_TO: https://notxor.nueva-actitud.org/social.org#2025-08-31T15:22:52+0200
+:MOOD: 
+:END:
+
+Llegué a esto gracias a tu artículo... Estuvo entretenido mientras lo leía, ahora estoy experimentando y viendo como funciona y su comportamiento... 
