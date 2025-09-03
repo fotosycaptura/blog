@@ -51,3 +51,15 @@ Llegué a esto gracias a tu artículo... Estuvo entretenido mientras lo leía, a
 :END:
 
 Ya queda tan poco para finalizar la carrera... He estado estos últimos años estudiando y esforzándome mucho... Estudiar y trabajar implica eso... Pero vamos que se puede, ya queda poco... El 16 es mi defensa... Así que habrá que darle con todo... Pero vamos, ya es un mero trámite... 
+
+**
+:PROPERTIES:
+:ID: 2025-09-03T15:31:26-0400
+:LANG: es
+:TAGS: org-social
+:CLIENT: org-social.el
+:REPLY_TO: https://andros.dev/static/social.org#2025-09-03T12:12:57+0200
+:POLL_OPTION: Yes
+:MOOD: 
+:END:
+
