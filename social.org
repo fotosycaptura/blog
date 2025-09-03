@@ -39,3 +39,15 @@ Este es el primer post que voy a realizar en esta "nueva" red social descentrali
 :END:
 
 Llegué a esto gracias a tu artículo... Estuvo entretenido mientras lo leía, ahora estoy experimentando y viendo como funciona y su comportamiento... 
+
+**
+:PROPERTIES:
+:ID: 2025-09-02T22:24:39-0400
+:TITLE: Ya queda tan poco...
+:LANG: es
+:TAGS: org-social
+:CLIENT: org-social.el
+:MOOD: 
+:END:
+
+Ya queda tan poco para finalizar la carrera... He estado estos últimos años estudiando y esforzándome mucho... Estudiar y trabajar implica eso... Pero vamos que se puede, ya queda poco... El 16 es mi defensa... Así que habrá que darle con todo... Pero vamos, ya es un mero trámite... 
