@@ -63,3 +63,15 @@ Ya queda tan poco para finalizar la carrera... He estado estos últimos años es
 :MOOD: 
 :END:
 
+
+**
+:PROPERTIES:
+:ID: 2025-09-03T15:54:44-0400
+:LANG: es
+:TAGS: org-social
+:CLIENT: org-social.el
+:REPLY_TO: https://andros.dev/static/social.org#2025-08-18T10:49:34+0200
+:POLL_OPTION: No, I prefer to use the current model (micro blogging).
+:MOOD: 
+:END:
+
