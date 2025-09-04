@@ -75,3 +75,18 @@ Ya queda tan poco para finalizar la carrera... He estado estos últimos años es
 :MOOD: 
 :END:
 
+
+**
+:PROPERTIES:
+:ID: 2025-09-03T23:03:06-0400
+:TITLE: Nuevo post en mi sitio personal
+:LANG: es
+:TAGS: org-social
+:CLIENT: org-social.el
+:MOOD: 🎉
+:END:
+
+Bueno, solo para los que quieran ir y visitar, hay nueva publicación en mi sitio Web, no olvides firmar el libro de visitas!!!
+[[https://fotosycaptura.cl/media/2025/septiembre/cover.jpg]]
+
+Espero que te guste la historia que he publicado. Con mucho cariño, supongo... XDDD
