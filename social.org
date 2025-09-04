@@ -90,3 +90,15 @@ Bueno, solo para los que quieran ir y visitar, hay nueva publicación en mi siti
 [[https://fotosycaptura.cl/media/2025/septiembre/cover.jpg]]
 
 Espero que te guste la historia que he publicado. Con mucho cariño, supongo... XDDD
+
+**
+:PROPERTIES:
+:ID: 2025-09-04T13:39:50-0400
+:TITLE: Otro día
+:LANG: es
+:TAGS: org-social
+:CLIENT: org-social.el
+:MOOD: 
+:END:
+
+Bueno, ayer estuve revisando si era posible o no visualizar una imagen que estuviera, digamos, incrustada mediante las etiquetas aceptadas por org-mode, pero no se visualizan... Así que... Pero bueno, cosas de la vida... Estoy como con flojera, quiero hacer varias cosas, pero creo que me está pasando la factura el tema de haber estado muy intensamente estudiando... Ahora como que para mover mis pensamientos hay que enfocarse mucho en eso... XDDD En fin... Vamos que ya queda poco, un último esfuerzo por favor... Tú puedes, en realidad debería de ser, yo puedo, siempre puedo... 
