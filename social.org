@@ -102,3 +102,15 @@ Espero que te guste la historia que he publicado. Con mucho cariño, supongo... 
 :END:
 
 Bueno, ayer estuve revisando si era posible o no visualizar una imagen que estuviera, digamos, incrustada mediante las etiquetas aceptadas por org-mode, pero no se visualizan... Así que... Pero bueno, cosas de la vida... Estoy como con flojera, quiero hacer varias cosas, pero creo que me está pasando la factura el tema de haber estado muy intensamente estudiando... Ahora como que para mover mis pensamientos hay que enfocarse mucho en eso... XDDD En fin... Vamos que ya queda poco, un último esfuerzo por favor... Tú puedes, en realidad debería de ser, yo puedo, siempre puedo... 
+
+**
+:PROPERTIES:
+:ID: 2025-09-09T15:29:53-0300
+:TITLE: Actualización de formato de estadísticas
+:LANG: es
+:TAGS: org-social.el
+:CLIENT: org-social.el
+:MOOD: 
+:END:
+
+Anoche, actualicé el tema de las estadísticas, llevaba algunos días en que estaba pensando en cambiar el formato de como se presentaba para que se pudiera visualizar mejor desde un celular. Lo que ocurría, es que al usar firefox, no se visualizaba porque por alguna razón que desconocía, el archivo /JSON/ no lograba descargarse. Después en conversaciones con un amigo, me comentó que problablemente podría deberse al nombre del archivo que, /coincidentemente/ el nombre contenía una parte que normalmente era filtrada... Así que, con solo un cambio de nombre quedo listo. Muchas gracias.
