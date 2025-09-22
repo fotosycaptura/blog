@@ -114,3 +114,39 @@ Bueno, ayer estuve revisando si era posible o no visualizar una imagen que estuv
 :END:
 
 Anoche, actualicé el tema de las estadísticas, llevaba algunos días en que estaba pensando en cambiar el formato de como se presentaba para que se pudiera visualizar mejor desde un celular. Lo que ocurría, es que al usar firefox, no se visualizaba porque por alguna razón que desconocía, el archivo /JSON/ no lograba descargarse. Después en conversaciones con un amigo, me comentó que problablemente podría deberse al nombre del archivo que, /coincidentemente/ el nombre contenía una parte que normalmente era filtrada... Así que, con solo un cambio de nombre quedo listo. Muchas gracias.
+
+**
+:PROPERTIES:
+:ID: 2025-09-22T13:50:29-0300
+:TITLE: Díganme licenciado XDD
+:LANG: es
+:TAGS: org-social
+:CLIENT: org-social.el
+:MOOD: 
+:END:
+
+Hoy quiero compartir con uds una gran noticia... No, no son las buenas nuevas...
+¿Qué es?
+
+Ejem... He terminado con éxito mi defensa del proyecto de título, así que, oficialmente soy Ingeniero en Ciberseguridad.
+
+Estos años transcurridos, han ido muy rápido... O al menos así me pareció... El camino no fue fácil...
+
+Hace casi tres años tomé la decisión de volver a estudiar. No fue una decisión fácil: significaba compatibilizar el trabajo, la vida personal y el desafío de volver al estudio después de mucho tiempo...
+
+Pero, tenía claro que quería actualizarme, lo que otros a veces llaman formalizar conocimientos... Pero también quería aprender y crecer en un área que siempre me llamó la atención: la ciberseguridad.
+
+El camino no fue lineal. Hubo asignaturas más desafiantes que otras (que lindo suena eso), desde y hasta materias ligadas a la seguridad informática entre otras. Algunas despertaron de inmediato mi interés y entusiasmo, otras requirieron más disciplina y constancia.
+
+Pero en todas encontré ciertos aprendizajes... Que puedo decir, en cada una hubo algo valioso que hoy forman parte de mi base profesional... (Otra vez, que lindo suena eso XDDD)
+
+Más allá del contenido académico, estos años significaron un crecimiento personal. Aprendí a organizarme mejor, a perseverar cuando las cosas parecían cuesta arriba, y a valorar cada pequeño logro como parte de un proceso más grande. Y, aunque algunas cosas fueron como un cristal que se rompe, también tuve la oportunidad de compartir con compañeros y profesores que aportaron distintas miradas y experiencias, lo que enriqueció aún más el camino de la experiencia...
+
+Hoy, con la satisfacción de haber alcanzado la meta, miro atrás y me siento orgulloso... No solo por lo aprendido, sino por haber demostrado que con esfuerzo, dedicación y ganas de superarse, se pueden cumplir las metas que uno se propone. Cuánto daría para que mi padre lo viera...
+
+Estoy contento y agradecido de haber recorrido este camino...
+
+Gracias a todos y cada uno de uds por sus palabras de ánimo, por su apoyo, por su comprensión cuando de repente no podía ir a algún evento, por "perderme" un poquito... Muchas gracias a todos!!!
+
+También, muchas gracias a mi esposa por estar siempre presente, por estar pendiente, por tener paciencia en ocasiones... 
+
