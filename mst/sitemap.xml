@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/mst/</loc>
+    <lastmod>2025-10-20T19:39:29-03:00</lastmod>
+  </url><url>
     <loc>/mst/articulos/</loc>
     <lastmod>2025-10-20T19:28:47-03:00</lastmod>
   </url><url>
@@ -34,9 +37,6 @@
   </url><url>
     <loc>/mst/tags/</loc>
     <lastmod>2025-10-20T19:28:47-03:00</lastmod>
-  </url><url>
-    <loc>/mst/</loc>
-    <lastmod>2025-10-18T22:13:11-03:00</lastmod>
   </url><url>
     <loc>/mst/articulos/lecturas/</loc>
     <lastmod>2025-10-19T11:33:30-03:00</lastmod>
