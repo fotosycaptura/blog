@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Historia on Aquello que no debe de ver la luz...</title>
-    <link>/tags/historia/</link>
+    <link>/mst/tags/historia/</link>
     <description>Recent content in Historia on Aquello que no debe de ver la luz...</description>
     <generator>Hugo</generator>
     <language>es-cl</language>
     <lastBuildDate>Tue, 21 Oct 2025 22:03:51 -0300</lastBuildDate>
-    <atom:link href="/tags/historia/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/mst/tags/historia/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>La leyenda del “Hombre de Taured”</title>
-      <link>/articulos/el-hombre-de-taured/</link>
+      <link>/mst/articulos/el-hombre-de-taured/</link>
       <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>/articulos/el-hombre-de-taured/</guid>
+      <guid>/mst/articulos/el-hombre-de-taured/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Era un verdadero hombre de ninguna parte, sentado en su tierra de ninguna parte…&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;Imagina estar en un control de pasaportes y descubrir entre la multitud de personas que viajan constántemente, a alguien con sus documentos en perfecto orden, aparentemente válidos&amp;hellip; Pero de un país que no existe.&lt;/p&gt;&#xA;&lt;p&gt;Así comienza la historia del llamado &lt;strong&gt;Hombre de Taured&lt;/strong&gt;, que combina tanto misterio como fraude y lecciones valiosas sobre autenticación de identidad. Pero antes del análisis, ¿Por qué no lees algo de ello? Si aún no lo conoces, cosa que dudo, pues fue muy mediático en aquel entonces&amp;hellip; Pero vamos, aquí está.&lt;/p&gt;</description>
     </item>
   </channel>

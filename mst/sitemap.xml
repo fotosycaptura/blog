@@ -2,49 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
+    <loc>/mst/</loc>
     <lastmod>2025-10-20T21:32:09-03:00</lastmod>
   </url><url>
-    <loc>/articulos/</loc>
+    <loc>/mst/articulos/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>/mst/categories/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/tags/historia/</loc>
+    <loc>/mst/tags/historia/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/tags/identidad/</loc>
+    <loc>/mst/tags/identidad/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/articulos/el-hombre-de-taured/</loc>
+    <loc>/mst/articulos/el-hombre-de-taured/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/tags/misterios/</loc>
+    <loc>/mst/tags/misterios/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/tags/pasaportes/</loc>
+    <loc>/mst/tags/pasaportes/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/categories/reflexiones/</loc>
+    <loc>/mst/categories/reflexiones/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>/mst/tags/</loc>
     <lastmod>2025-10-21T22:03:51-03:00</lastmod>
   </url><url>
-    <loc>/articulos/lecturas/</loc>
+    <loc>/mst/articulos/lecturas/</loc>
     <lastmod>2025-10-20T21:24:38-03:00</lastmod>
   </url><url>
-    <loc>/articulos/piramides/</loc>
+    <loc>/mst/articulos/piramides/</loc>
     <lastmod>2025-10-18T22:13:51-03:00</lastmod>
   </url><url>
-    <loc>/articulos/stonehenge/</loc>
+    <loc>/mst/articulos/stonehenge/</loc>
     <lastmod>2025-10-18T22:14:43-03:00</lastmod>
   </url><url>
-    <loc>/articulos/experiencias-presagios/</loc>
+    <loc>/mst/articulos/experiencias-presagios/</loc>
     <lastmod>2025-10-18T22:14:21-03:00</lastmod>
   </url><url>
-    <loc>/articulos/mitos-y-leyendas/</loc>
+    <loc>/mst/articulos/mitos-y-leyendas/</loc>
     <lastmod>2025-10-18T22:14:05-03:00</lastmod>
   </url>
 </urlset>
