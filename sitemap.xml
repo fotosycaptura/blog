@@ -5,66 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/</loc>
-<<<<<<< HEAD
-<lastmod>2025-10-27T11:16:16-00:00</lastmod>
-=======
-<lastmod>2025-10-26T23:22:05-00:00</lastmod>
->>>>>>> 37867f7a42a38c6c16c69f72d045894d13494382
+<lastmod>2025-10-27T11:26:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tags.html</loc>
-<<<<<<< HEAD
-<lastmod>2025-10-27T11:16:16-00:00</lastmod>
-=======
-<lastmod>2025-10-26T23:22:05-00:00</lastmod>
->>>>>>> 37867f7a42a38c6c16c69f72d045894d13494382
+<lastmod>2025-10-27T11:26:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/categories.html</loc>
-<<<<<<< HEAD
-<lastmod>2025-10-27T11:16:16-00:00</lastmod>
-=======
-<lastmod>2025-10-26T23:22:05-00:00</lastmod>
->>>>>>> 37867f7a42a38c6c16c69f72d045894d13494382
+<lastmod>2025-10-27T11:26:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/authors.html</loc>
-<<<<<<< HEAD
-<lastmod>2025-10-27T11:16:16-00:00</lastmod>
-=======
-<lastmod>2025-10-26T23:22:05-00:00</lastmod>
->>>>>>> 37867f7a42a38c6c16c69f72d045894d13494382
+<lastmod>2025-10-27T11:26:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/archives.html</loc>
-<<<<<<< HEAD
-<lastmod>2025-10-27T11:16:16-00:00</lastmod>
-=======
-<lastmod>2025-10-26T23:22:05-00:00</lastmod>
->>>>>>> 37867f7a42a38c6c16c69f72d045894d13494382
+<lastmod>2025-10-27T11:26:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/pages/index.html</loc>
-<<<<<<< HEAD
-<lastmod>2025-10-27T11:16:16-00:00</lastmod>
-=======
-<lastmod>2025-10-26T23:22:05-00:00</lastmod>
->>>>>>> 37867f7a42a38c6c16c69f72d045894d13494382
+<lastmod>2025-10-27T11:26:26-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
