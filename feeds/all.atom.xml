@@ -1,5 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/all.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2025-10-29T11:00:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Escritorio remoto en GNU/Linux</title><link href="https://fotosycaptura.cl/posts/2025-10-29-escritorio-remoto-en-gnu-linux.html" rel="alternate"/><published>2025-10-29T11:00:00-03:00</published><updated>2025-10-29T11:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-10-29:/posts/2025-10-29-escritorio-remoto-en-gnu-linux.html</id><summary type="html">&lt;p&gt;En más de alguna ocasión te habrás planteado algo como &lt;em&gt;ojalá pudiera conectarme de forma remota a un equipo&lt;/em&gt;, pero ese equipo resulta que tiene un sistema operativo diferente del que usas (GNU/Linux), y ese otro equipo es un Windows algo... Déjame comentarte que... Sí se puede y es muy sencillo...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/all.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2025-10-31T15:47:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Compilando con hugo en org mode</title><link href="https://fotosycaptura.cl/posts/2025-10-31-compilando-con-hugo-en-org-mode.html" rel="alternate"/><published>2025-10-31T15:47:00-03:00</published><updated>2025-10-31T15:47:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-10-31:/posts/2025-10-31-compilando-con-hugo-en-org-mode.html</id><summary type="html">&lt;p&gt;Una de las grandes ventajas de &lt;em&gt;Emacs&lt;/em&gt; es su capacidad para integrarse con casi cualquier flujo de trabajo. Y si escribes contenido para la web, &lt;em&gt;Org-mode&lt;/em&gt; junto con el paquete &lt;code&gt;ox-hugo&lt;/code&gt; se convierten en una herramienta poderosa para generar publicaciones que luego Hugo transforma en un sitio web estático, limpio y profesional. Actualmente, si has estado leyendo sobre mi sitio Web, sabrás que utilizo pelican para su generación. Sin embargo, las nuevas secciones, o mas bien, las secciones migradas, utilicé Hugo en combinación con Org-mode y por supuesto Emacs como editor. En este artículo les mostraré un poco de lo que hice... Desde la instalación y el cómo exportar un documento de Org-mode a un sitio Hugo, cómo configurar los metadatos, entre otras cosas...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Exportando Hugo" src="/media/2025/octubre/exportando.png" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
+&lt;p&gt;Una de las grandes ventajas de &lt;em&gt;Emacs&lt;/em&gt; es su capacidad para integrarse con casi cualquier flujo de trabajo.&lt;br&gt;
+Y si escribes contenido para la web, &lt;em&gt;Org-mode&lt;/em&gt; junto con el paquete &lt;code&gt;ox-hugo&lt;/code&gt; se convierten en una herramienta muy versátil y lo suficientemente poderosa para generar publicaciones que luego &lt;code&gt;Hugo&lt;/code&gt; transforma en un sitio web estático, limpio y profesional.&lt;/p&gt;
+&lt;p&gt;Actualmente, si has estado leyendo sobre mi sitio Web, sabrás que utilizo &lt;code&gt;pelican&lt;/code&gt; para su generación. Sin embargo, las nuevas secciones, o mas bien, las secciones migradas, utilicé &lt;code&gt;Hugo&lt;/code&gt; en combinación con org-mode y por supuesto Emacs como editor.&lt;/p&gt;
+&lt;p&gt;En este artículo les mostraré un poco de lo que hice... Desde la instalación y el cómo exportar un documento de Org-mode a un sitio Hugo, cómo configurar los metadatos, entre otras cosas...&lt;/p&gt;
+&lt;h2&gt;Instalación&lt;/h2&gt;
+&lt;p&gt;La instalación de Hugo se hace muy fácil en Arch... Tan solo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En Emacs, hay que tener instalado &lt;code&gt;ox-hugo&lt;/code&gt;. Eso lo puedes instalar desde la paquetería de Emacs, si lo que deseas es trabajar desde Org-mode y exportar al formato &lt;code&gt;md&lt;/code&gt; que usa el programa Hugo.&lt;/p&gt;
+&lt;p&gt;Para la revisión y prueba, si usas una URL diferente como en mi caso, es decir, si revisas de manera local antes de publicar, puedes usar el siguiente comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hugo&lt;span class="w"&gt; &lt;/span&gt;serve&lt;span class="w"&gt; &lt;/span&gt;-D&lt;span class="w"&gt; &lt;/span&gt;--baseURL&lt;span class="o"&gt;=&lt;/span&gt;http://localhost:1313
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;¿Qué es ox-hugo?&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;ox-hugo&lt;/code&gt; es un &lt;em&gt;exportador&lt;/em&gt; (back-end de Org) que convierte tus archivos &lt;code&gt;.org&lt;/code&gt; en archivos &lt;code&gt;.md&lt;/code&gt; con el formato de metadatos (&lt;em&gt;front matter&lt;/em&gt;) que &lt;code&gt;Hugo&lt;/code&gt; necesita.&lt;/p&gt;
+&lt;p&gt;Cada encabezado (título) dentro del documento puede convertirse en una página o entrada de blog independiente, y el proceso completo puede automatizarse con una simple combinación de teclas.&lt;/p&gt;
+&lt;p&gt;Para instalarlo basta con tenerlo en la lista de paquetes de Emacs:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;use-package&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ox-hugo&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;:after&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ox&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Una vez cargado, cualquier archivo &lt;code&gt;.org&lt;/code&gt; puede exportarse directamente a Hugo.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Estructura básica de un archivo Org para Hugo&lt;/h2&gt;
+&lt;p&gt;Cada publicación se define mediante un conjunto de variables en la parte superior del archivo.&lt;br&gt;
+Estas líneas comienzan con &lt;code&gt;#+&lt;/code&gt; y describen cómo ox-hugo debe generar el archivo final.&lt;/p&gt;
+&lt;p&gt;Ejemplo real:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nn"&gt;#+TITLE:&lt;/span&gt; Mi primera publicación con Org y Hugo
+&lt;span class="nn"&gt;#+AUTHOR:&lt;/span&gt; Tu nombre
+&lt;span class="nn"&gt;#+DATE:&lt;/span&gt; 2025-10-27
+&lt;span class="nn"&gt;#+HUGO_BASE_DIR:&lt;/span&gt; ../
+&lt;span class="nn"&gt;#+HUGO_SECTION:&lt;/span&gt; posts
+&lt;span class="nn"&gt;#+HUGO_TAGS:&lt;/span&gt; emacs hugo org-mode
+&lt;span class="nn"&gt;#+HUGO_CATEGORIES:&lt;/span&gt; Emacs
+&lt;span class="nn"&gt;#+HUGO_AUTO_SET_LASTMOD:&lt;/span&gt; t
+&lt;span class="nn"&gt;#+HUGO_CUSTOM_FRONT_MATTER:&lt;/span&gt; :showToc true :draft false
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Luego escribes tu contenido normalmente con formato Org.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Exportar el documento&lt;/h2&gt;
+&lt;p&gt;El comando principal es: &lt;code&gt;M-x org-hugo-export-to-md&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Esto genera un archivo &lt;code&gt;.md&lt;/code&gt; dentro del directorio que definas con &lt;code&gt;#+HUGO_BASE_DIR&lt;/code&gt;, respetando la estructura de Hugo (por ejemplo, &lt;code&gt;content/posts/mi-articulo.md&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;También puedes exportar directamente con &lt;code&gt;C-c C-e H H&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Cuando ejecutas el comando, &lt;em&gt;ox-hugo&lt;/em&gt;, lo que hace por debajo es:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Toma el contenido de tu archivo Org.&lt;/li&gt;
+&lt;li&gt;Genera el Markdown con front matter YAML.&lt;/li&gt;
+&lt;li&gt;Lo guarda en la carpeta correspondiente de tu sitio Hugo.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Integrar con tu proyecto Hugo&lt;/h2&gt;
+&lt;p&gt;Si ya tienes configurado un sitio Hugo (por ejemplo, con el tema PaperMod o Ananke), bastará con tener una estructura como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mi-sitio/
+&lt;span class="w"&gt; &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;content/
+&lt;span class="w"&gt; &lt;/span&gt;│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;posts/
+&lt;span class="w"&gt; &lt;/span&gt;│&lt;span class="w"&gt;   &lt;/span&gt;│&lt;span class="w"&gt;   &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;mi-articulo.md
+&lt;span class="w"&gt; &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;themes/
+&lt;span class="w"&gt; &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;static/
+&lt;span class="w"&gt; &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;config.toml
+&lt;span class="w"&gt; &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;resources/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Después de exportar, ejecuta en la terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hugo&lt;span class="w"&gt; &lt;/span&gt;serve&lt;span class="w"&gt; &lt;/span&gt;-D&lt;span class="w"&gt; &lt;/span&gt;--baseURL&lt;span class="o"&gt;=&lt;/span&gt;http://localhost:1313
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Esto generará la vista previa en http://localhost:1313/&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Ventajas del flujo Org → Hugo&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Puedes escribir en un formato legible, con listas, tablas, código fuente, y aprovechar todo lo que sabes hacer en Org-mode.&lt;/li&gt;
+&lt;li&gt;Todo el &lt;em&gt;front matter&lt;/em&gt; se genera automáticamente.&lt;/li&gt;
+&lt;li&gt;Se pueden usar bloques de código en cualquier lenguaje con resaltado automático.&lt;/li&gt;
+&lt;li&gt;Las imágenes pueden referenciarse directamente desde tu carpeta de &lt;code&gt;static/images/&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Puedes mantener todas tus publicaciones dentro de un único archivo Org y exportarlas por secciones, aunque esto no lo hago, prefiero tener todos los archivos - digamos - artículos o post por separado...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Ejemplo de exportación completa&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nn"&gt;#+TITLE:&lt;/span&gt; Ejemplo práctico
+&lt;span class="nn"&gt;#+HUGO_BASE_DIR:&lt;/span&gt; ../
+&lt;span class="nn"&gt;#+HUGO_SECTION:&lt;/span&gt; posts
+&lt;span class="nn"&gt;#+HUGO_TAGS:&lt;/span&gt; ejemplo práctica hugo
+&lt;span class="nn"&gt;#+HUGO_CATEGORIES:&lt;/span&gt; Tutoriales
+&lt;span class="nn"&gt;#+HUGO_AUTO_SET_LASTMOD:&lt;/span&gt; t
+&lt;span class="nn"&gt;#+HUGO_CUSTOM_FRONT_MATTER:&lt;/span&gt; :showToc true :draft false
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Este es un ejemplo rápido de cómo se vería un artículo exportado.&lt;/p&gt;
+&lt;h2&gt;Sección 1: Introducción&lt;/h2&gt;
+&lt;p&gt;Escribes tu texto con formato Org.&lt;br&gt;
+Puedes usar &lt;em&gt;negritas&lt;/em&gt;, /cursivas/, +tachado+, o incluso &lt;a href="https://orgmode.org"&gt;enlaces&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Sección 2: Código&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hola desde Emacs y Hugo!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Sección 3: Imagen&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="na"&gt;../images/hugo-export.png&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h2&gt;Consejos finales&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Usa &lt;code&gt;:draft false&lt;/code&gt; para publicar el artículo, o elimínalo... En mi caso, lo quité porque me comenzó a arrojar problemas al momento de exportar.&lt;/li&gt;
+&lt;li&gt;Si tienes varias publicaciones en un solo archivo, define un encabezado con la propiedad &lt;code&gt;:EXPORT_FILE_NAME:&lt;/code&gt; para cada una.&lt;/li&gt;
+&lt;li&gt;Puedes combinar esto con &lt;em&gt;denote&lt;/em&gt; o &lt;em&gt;org-roam&lt;/em&gt; para tener notas y artículos sincronizados, aunque esto no lo uso, pero leí que se puede...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Exportar desde Org-mode a Hugo no solo acelera tu flujo de escritura, sino que convierte Emacs en una plataforma completa de publicación.&lt;br&gt;
+Si ya usas Org-mode para notas o documentación, integrar Hugo te permitirá transformar esas notas en artículos profesionales con apenas un par de comandos.&lt;/p&gt;
+&lt;p&gt;Ahora que tienes el flujo configurado, el siguiente paso será automatizarlo aún más: exportar, validar y publicar con un simple atajo de teclado.&lt;br&gt;
+Pero eso te lo dejaré de tarea... &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“El poder de Emacs no está en lo que hace, sino en lo que puedes enseñarle a hacer.”&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="Laboratorio"/><category term="laboratorio"/><category term="linux"/><category term="software"/></entry><entry><title>Escritorio remoto en GNU/Linux</title><link href="https://fotosycaptura.cl/posts/2025-10-29-escritorio-remoto-en-gnu-linux.html" rel="alternate"/><published>2025-10-29T11:00:00-03:00</published><updated>2025-10-29T11:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-10-29:/posts/2025-10-29-escritorio-remoto-en-gnu-linux.html</id><summary type="html">&lt;p&gt;En más de alguna ocasión te habrás planteado algo como &lt;em&gt;ojalá pudiera conectarme de forma remota a un equipo&lt;/em&gt;, pero ese equipo resulta que tiene un sistema operativo diferente del que usas (GNU/Linux), y ese otro equipo es un Windows algo... Déjame comentarte que... Sí se puede y es muy sencillo...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="RDesktop" src="/media/2025/octubre/rdesktop.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
 &lt;p&gt;En más de alguna ocasión te habrás planteado algo como &lt;em&gt;ojalá pudiera conectarme de forma remota a un equipo&lt;/em&gt;, pero ese equipo resulta que tiene un sistema operativo diferente del que usas (GNU/Linux), y ese otro equipo es un Windows algo... Déjame comentarte que... Sí se puede y es muy sencillo...&lt;/p&gt;
 &lt;h2&gt;Lo primero&lt;/h2&gt;
@@ -180,7 +299,13 @@ ni los que se van regresan de nuevo a la tierra.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Mausoleos" src="/media/2025/octubre/mausoleos-19.jpg" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
 &lt;em&gt;Una estatua de una mapuche, que detalles... Se nota que los trabajos antiguamente le ponían más sentimiento...&lt;/em&gt;&lt;/p&gt;
 &lt;h2&gt;En conclusión&lt;/h2&gt;
-&lt;p&gt;Bueno, mi señora resumió un poco lo que iba a decir... Pero bueno... Ya les mostré algunas fotitos... Espero que les haya gustado... Nos vemos en otro momento... &lt;/p&gt;</content><category term="Galeria"/><category term="blog"/><category term="paseo"/><category term="fotos"/><category term="galeria"/><category term="paseos"/><category term="sentimientos"/></entry><entry><title>Mi cumple</title><link href="https://fotosycaptura.cl/posts/2025-09-28-mi-cumple.html" rel="alternate"/><published>2025-09-28T23:00:00-03:00</published><updated>2025-09-28T23:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-09-28:/posts/2025-09-28-mi-cumple.html</id><summary type="html">&lt;p&gt;Un año más en que la tierra da la vuelta al sol... Feliz cumpleaños para este humilde servidor... Y no, no hablo de la raspberry o de algún servidor Linux...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+&lt;p&gt;Bueno, mi señora resumió un poco lo que iba a decir... Pero bueno... Ya les mostré algunas fotitos... Espero que les haya gustado... Nos vemos en otro momento... &lt;/p&gt;</content><category term="Galeria"/><category term="blog"/><category term="paseo"/><category term="fotos"/><category term="galeria"/><category term="paseos"/><category term="sentimientos"/></entry><entry><title>Cita romántica</title><link href="https://fotosycaptura.cl/posts/2025-10-13-cita-romantica.html" rel="alternate"/><published>2025-10-13T17:51:00-03:00</published><updated>2025-10-13T17:51:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-10-13:/posts/2025-10-13-cita-romantica.html</id><summary type="html">&lt;p&gt;Hace unos días&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nadie espera una cita como esta, sin embargo con mi esposa lo tuvimos, siempre lo conversamos que podríamos ir un dia, sin embargo los dias, los meses y los años fueron pasando, al punto que me puse a estudiar; terminé la carrera, solo falta la graduación, hasta que por fin llego el dia...
+Si señores y señoras o como se usa ahora mis seguidores :)  un domingo por la tarde nos fuimos para allí tomamos el metro línea 2 y directo a la estación cementerio, si porque nuestro destino era ahí, llegar al cementerio general de Santiago, y dar un paseo entre tumbas y mausoleos.&lt;/p&gt;
+&lt;p&gt;Ver la historia y sentirla, aquellas familias que dejaron de existir y de ver que también ya no eran visitadas, sentir y ver ese abandono de mantención de algunas tumbas unas muy sencillas y otras más ostentosas, algunas que ya no tenían flores y otras que si tienen flores,y decoración extra.
+Algunos mausoleos con vidrios rotos, desmoronándose, que ya no eran visitados y si veías por dentro eran de más de 100 años, cuerpos que fueron enterrados y/guardados que son del pasado cuánta historia habrá habido en esa familia y en muchas otras mas, te pones a pensar quizás esas familia ya no existe más en esta tierra y por eso ves el abandono y el tiempo pasa, y la destrucción se ve porque están expuestas al clima la lluvia, los temblores, el terremoto del 2010 todo ello sin la mantención van destruyendo esa construcción que decidieron las familia para guardar sus cuerpos y ser visitados, pero que pasa cuando ya dejan de existir el último de la familia?... ahí los resultados quedan expuestos y que visitantes como nosotros vemos con tristeza y te cuestionas qué quieres para ti?, cuando ya no haya nadie más que te visite y tu tumba queda en total abandono sin mantención sin una flor o decoracion?.&lt;/p&gt;
+&lt;p&gt;Pero sin embargo y lo que más nos llamó la atención lo grande que es la cantidad de tumbas y mausoleos alberga; como una miniciudad de pobladores muertos, pero rodeados de naturaleza, árboles, plantas y flores, hasta el pasto que uno va caminando hace ver hermoso a los olvidados de esa mini ciudad por no decir cementerio.
+La otra historia que cuenta es que también están enterrados los expresidentes de este País y las frases que algunas familia escriben en sus tumbas, recordandolas y rememorando su enseñanzas y crianzas que han recibido, te das cuenta que has dejado huella, y que nosotros nos enteramos de lo buenos que fueronas esta personas en vida.&lt;/p&gt;
+&lt;p&gt;Aunque no recorrimos todo el cementerio pero sí gran parte y ver algunas estatuas muy bonitas que llaman la atención, el trabajo de las empresas dedicadas hacer estos mausoleos, también ver algunas instituciones como bomberos, carabineros, militares, fuerza aérea y algunas comunidades de otros países como de la india , francia, israelies tambien tenian su recinto para que sean guardado sus cuerpos.&lt;/p&gt;</content><category term="Galeria"/><category term="paseo"/><category term="paseando"/><category term="cementerio"/></entry><entry><title>Mi cumple</title><link href="https://fotosycaptura.cl/posts/2025-09-28-mi-cumple.html" rel="alternate"/><published>2025-09-28T23:00:00-03:00</published><updated>2025-09-28T23:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-09-28:/posts/2025-09-28-mi-cumple.html</id><summary type="html">&lt;p&gt;Un año más en que la tierra da la vuelta al sol... Feliz cumpleaños para este humilde servidor... Y no, no hablo de la raspberry o de algún servidor Linux...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="Mi cumple" src="/media/2025/septiembre/cumple/cumple-09.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
 &lt;p&gt;Un año más en que la tierra da la vuelta al sol... Feliz cumpleaños para este humilde servidor... Y no, no hablo de la raspberry o de algún servidor Linux... &lt;/p&gt;
 &lt;p&gt;Muchas gracias a todos por sus saludos, sus buenos deseos y sus comentarios de haber cumplido el centenario... XDD&lt;/p&gt;
@@ -1970,48 +2095,4 @@ sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&g
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_194838.jpg"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_195437.jpg"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_195557.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_195601.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2024_10_31 (Quebrada Macul)</title><link href="https://fotosycaptura.cl/posts/galeria-2024_10_31%20(Quebrada%20Macul).html" rel="alternate"/><published>2024-10-31T00:00:00-03:00</published><updated>2024-10-31T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-10-31:/posts/galeria-2024_10_31 (Quebrada Macul).html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_121906.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_121942.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_123521.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_123524.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_131950.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_132001.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_132026.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_132032.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_133757.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_133800.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_133806.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_133807.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141258.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141302.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141308.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141310.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141312.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141315.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141318.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141322.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141330.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141334.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141339.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_141848.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_142031.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_142744.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_142747.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_142748.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143348.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143350.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143356.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143400.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143413.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143441.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143445.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143453.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143502.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143503.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_143504.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_144940.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_144942.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_151645.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_151652.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_151735.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_31 (Quebrada Macul)/IMG_20241031_151748.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2024_10_29</title><link href="https://fotosycaptura.cl/posts/galeria-2024_10_29.html" rel="alternate"/><published>2024-10-29T00:00:00-03:00</published><updated>2024-10-29T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-10-29:/posts/galeria-2024_10_29.html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_10_29/IMG_20241029_075949.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
+&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_195601.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>

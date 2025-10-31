@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Compilando con hugo en org mode | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2025-10-31-compilando-con-hugo-en-org-mode.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Una de las grandes ventajas de Emacs es su capacidad para integrarse con casi cualquier flujo de trabajo. Y si escribes contenido para la web, Org-mode junto con el paquete ox-hugo se convierten en una herramienta poderosa para generar publicaciones que luego Hugo transforma en un sitio web estático, limpio y profesional. Actualmente, si has estado leyendo sobre mi sitio Web, sabrás que utilizo pelican para su generación. Sin embargo, las nuevas secciones, o mas bien, las secciones migradas, utilicé Hugo en combinación con Org-mode y por supuesto Emacs como editor. En este artículo les mostraré un poco de lo que hice... Desde la instalación y el cómo exportar un documento de Org-mode a un sitio Hugo, cómo configurar los metadatos, entre otras cosas...">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Acerca de</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-bar-chart" href="https://fotosycaptura.cl/statistic.html" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Compilando con hugo en org mode
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2025-10-31T15:47:00-03:00">
+        <i class="fa fa-clock-o"></i>
+        2025, vie 31 octubre
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/linux.html">#linux</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <h2>Contexto</h2>
+<p><img alt="Exportando Hugo" src="/media/2025/octubre/exportando.png" style="width: auto; max-width: 100% !important;">  </p>
+<p>Una de las grandes ventajas de <em>Emacs</em> es su capacidad para integrarse con casi cualquier flujo de trabajo.<br>
+Y si escribes contenido para la web, <em>Org-mode</em> junto con el paquete <code>ox-hugo</code> se convierten en una herramienta muy versátil y lo suficientemente poderosa para generar publicaciones que luego <code>Hugo</code> transforma en un sitio web estático, limpio y profesional.</p>
+<p>Actualmente, si has estado leyendo sobre mi sitio Web, sabrás que utilizo <code>pelican</code> para su generación. Sin embargo, las nuevas secciones, o mas bien, las secciones migradas, utilicé <code>Hugo</code> en combinación con org-mode y por supuesto Emacs como editor.</p>
+<p>En este artículo les mostraré un poco de lo que hice... Desde la instalación y el cómo exportar un documento de Org-mode a un sitio Hugo, cómo configurar los metadatos, entre otras cosas...</p>
+<h2>Instalación</h2>
+<p>La instalación de Hugo se hace muy fácil en Arch... Tan solo:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>hugo
+</code></pre></div>
+
+<p>En Emacs, hay que tener instalado <code>ox-hugo</code>. Eso lo puedes instalar desde la paquetería de Emacs, si lo que deseas es trabajar desde Org-mode y exportar al formato <code>md</code> que usa el programa Hugo.</p>
+<p>Para la revisión y prueba, si usas una URL diferente como en mi caso, es decir, si revisas de manera local antes de publicar, puedes usar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>hugo<span class="w"> </span>serve<span class="w"> </span>-D<span class="w"> </span>--baseURL<span class="o">=</span>http://localhost:1313
+</code></pre></div>
+
+<h2>¿Qué es ox-hugo?</h2>
+<p><code>ox-hugo</code> es un <em>exportador</em> (back-end de Org) que convierte tus archivos <code>.org</code> en archivos <code>.md</code> con el formato de metadatos (<em>front matter</em>) que <code>Hugo</code> necesita.</p>
+<p>Cada encabezado (título) dentro del documento puede convertirse en una página o entrada de blog independiente, y el proceso completo puede automatizarse con una simple combinación de teclas.</p>
+<p>Para instalarlo basta con tenerlo en la lista de paquetes de Emacs:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">use-package</span><span class="w"> </span><span class="nv">ox-hugo</span>
+<span class="w">  </span><span class="nb">:after</span><span class="w"> </span><span class="nv">ox</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Una vez cargado, cualquier archivo <code>.org</code> puede exportarse directamente a Hugo.</p>
+<hr>
+<h2>Estructura básica de un archivo Org para Hugo</h2>
+<p>Cada publicación se define mediante un conjunto de variables en la parte superior del archivo.<br>
+Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe generar el archivo final.</p>
+<p>Ejemplo real:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">#+TITLE:</span> Mi primera publicación con Org y Hugo
+<span class="nn">#+AUTHOR:</span> Tu nombre
+<span class="nn">#+DATE:</span> 2025-10-27
+<span class="nn">#+HUGO_BASE_DIR:</span> ../
+<span class="nn">#+HUGO_SECTION:</span> posts
+<span class="nn">#+HUGO_TAGS:</span> emacs hugo org-mode
+<span class="nn">#+HUGO_CATEGORIES:</span> Emacs
+<span class="nn">#+HUGO_AUTO_SET_LASTMOD:</span> t
+<span class="nn">#+HUGO_CUSTOM_FRONT_MATTER:</span> :showToc true :draft false
+</code></pre></div>
+
+<p>Luego escribes tu contenido normalmente con formato Org.</p>
+<hr>
+<h2>Exportar el documento</h2>
+<p>El comando principal es: <code>M-x org-hugo-export-to-md</code></p>
+<p>Esto genera un archivo <code>.md</code> dentro del directorio que definas con <code>#+HUGO_BASE_DIR</code>, respetando la estructura de Hugo (por ejemplo, <code>content/posts/mi-articulo.md</code>).</p>
+<p>También puedes exportar directamente con <code>C-c C-e H H</code>.</p>
+<p>Cuando ejecutas el comando, <em>ox-hugo</em>, lo que hace por debajo es:</p>
+<ol>
+<li>Toma el contenido de tu archivo Org.</li>
+<li>Genera el Markdown con front matter YAML.</li>
+<li>Lo guarda en la carpeta correspondiente de tu sitio Hugo.</li>
+</ol>
+<hr>
+<h2>Integrar con tu proyecto Hugo</h2>
+<p>Si ya tienes configurado un sitio Hugo (por ejemplo, con el tema PaperMod o Ananke), bastará con tener una estructura como:</p>
+<div class="highlight"><pre><span></span><code>mi-sitio/
+<span class="w"> </span>├──<span class="w"> </span>content/
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>posts/
+<span class="w"> </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>mi-articulo.md
+<span class="w"> </span>├──<span class="w"> </span>themes/
+<span class="w"> </span>├──<span class="w"> </span>static/
+<span class="w"> </span>├──<span class="w"> </span>config.toml
+<span class="w"> </span>└──<span class="w"> </span>resources/
+</code></pre></div>
+
+<p>Después de exportar, ejecuta en la terminal:</p>
+<div class="highlight"><pre><span></span><code>hugo<span class="w"> </span>serve<span class="w"> </span>-D<span class="w"> </span>--baseURL<span class="o">=</span>http://localhost:1313
+</code></pre></div>
+
+<p>Esto generará la vista previa en http://localhost:1313/</p>
+<hr>
+<h2>Ventajas del flujo Org → Hugo</h2>
+<ul>
+<li>Puedes escribir en un formato legible, con listas, tablas, código fuente, y aprovechar todo lo que sabes hacer en Org-mode.</li>
+<li>Todo el <em>front matter</em> se genera automáticamente.</li>
+<li>Se pueden usar bloques de código en cualquier lenguaje con resaltado automático.</li>
+<li>Las imágenes pueden referenciarse directamente desde tu carpeta de <code>static/images/</code>.</li>
+<li>Puedes mantener todas tus publicaciones dentro de un único archivo Org y exportarlas por secciones, aunque esto no lo hago, prefiero tener todos los archivos - digamos - artículos o post por separado...</li>
+</ul>
+<hr>
+<h2>Ejemplo de exportación completa</h2>
+<div class="highlight"><pre><span></span><code><span class="nn">#+TITLE:</span> Ejemplo práctico
+<span class="nn">#+HUGO_BASE_DIR:</span> ../
+<span class="nn">#+HUGO_SECTION:</span> posts
+<span class="nn">#+HUGO_TAGS:</span> ejemplo práctica hugo
+<span class="nn">#+HUGO_CATEGORIES:</span> Tutoriales
+<span class="nn">#+HUGO_AUTO_SET_LASTMOD:</span> t
+<span class="nn">#+HUGO_CUSTOM_FRONT_MATTER:</span> :showToc true :draft false
+</code></pre></div>
+
+<p>Este es un ejemplo rápido de cómo se vería un artículo exportado.</p>
+<h2>Sección 1: Introducción</h2>
+<p>Escribes tu texto con formato Org.<br>
+Puedes usar <em>negritas</em>, /cursivas/, +tachado+, o incluso <a href="https://orgmode.org">enlaces</a></p>
+<h2>Sección 2: Código</h2>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola desde Emacs y Hugo!&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Sección 3: Imagen</h2>
+<div class="highlight"><pre><span></span><code><span class="p">[[</span><span class="na">../images/hugo-export.png</span><span class="p">]]</span>
+</code></pre></div>
+
+<hr>
+<h2>Consejos finales</h2>
+<ul>
+<li>Usa <code>:draft false</code> para publicar el artículo, o elimínalo... En mi caso, lo quité porque me comenzó a arrojar problemas al momento de exportar.</li>
+<li>Si tienes varias publicaciones en un solo archivo, define un encabezado con la propiedad <code>:EXPORT_FILE_NAME:</code> para cada una.</li>
+<li>Puedes combinar esto con <em>denote</em> o <em>org-roam</em> para tener notas y artículos sincronizados, aunque esto no lo uso, pero leí que se puede...</li>
+</ul>
+<hr>
+<h2>Conclusión</h2>
+<p>Exportar desde Org-mode a Hugo no solo acelera tu flujo de escritura, sino que convierte Emacs en una plataforma completa de publicación.<br>
+Si ya usas Org-mode para notas o documentación, integrar Hugo te permitirá transformar esas notas en artículos profesionales con apenas un par de comandos.</p>
+<p>Ahora que tienes el flujo configurado, el siguiente paso será automatizarlo aún más: exportar, validar y publicar con un simple atajo de teclado.<br>
+Pero eso te lo dejaré de tarea... </p>
+<blockquote>
+<p>“El poder de Emacs no está en lo que hace, sino en lo que puedes enseñarle a hacer.”</p>
+</blockquote>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://api.fotosycaptura.cl/contador.png" title="Contador de visitas" alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
