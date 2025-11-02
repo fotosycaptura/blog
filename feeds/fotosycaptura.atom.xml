@@ -1,5 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2025-10-31T15:47:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Compilando con hugo en org mode</title><link href="https://fotosycaptura.cl/posts/2025-10-31-compilando-con-hugo-en-org-mode.html" rel="alternate"/><published>2025-10-31T15:47:00-03:00</published><updated>2025-10-31T15:47:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-10-31:/posts/2025-10-31-compilando-con-hugo-en-org-mode.html</id><summary type="html">&lt;p&gt;Una de las grandes ventajas de &lt;em&gt;Emacs&lt;/em&gt; es su capacidad para integrarse con casi cualquier flujo de trabajo. Y si escribes contenido para la web, &lt;em&gt;Org-mode&lt;/em&gt; junto con el paquete &lt;code&gt;ox-hugo&lt;/code&gt; se convierten en una herramienta poderosa para generar publicaciones que luego Hugo transforma en un sitio web estático, limpio y profesional. Actualmente, si has estado leyendo sobre mi sitio Web, sabrás que utilizo pelican para su generación. Sin embargo, las nuevas secciones, o mas bien, las secciones migradas, utilicé Hugo en combinación con Org-mode y por supuesto Emacs como editor. En este artículo les mostraré un poco de lo que hice... Desde la instalación y el cómo exportar un documento de Org-mode a un sitio Hugo, cómo configurar los metadatos, entre otras cosas...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2025-11-02T18:42:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Marcadores con emacs y firefox</title><link href="https://fotosycaptura.cl/posts/2025-11-02-marcadores-con-emacs-y-firefox.html" rel="alternate"/><published>2025-11-02T18:42:00-03:00</published><updated>2025-11-02T18:42:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-11-02:/posts/2025-11-02-marcadores-con-emacs-y-firefox.html</id><summary type="html">&lt;p&gt;Una de las ventajas de tener todo tu flujo de trabajo en Emacs es poder centralizar también tus lecturas, notas y enlaces interesantes. En este artículo te muestro cómo crear un botón en Firefox que te permita agregar la URL de la pestaña activa directamente a un archivo de marcadores en Emacs, sin ventanas intermedias, gracias a org-protocol.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Marcadores con Emacs" src="/media/2025/noviembre/marcadores.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
+&lt;p&gt;Una de las ventajas de tener todo tu flujo de trabajo en Emacs es poder centralizar también tus lecturas, notas y enlaces interesantes.
+En este artículo te muestro cómo crear un botón en Firefox que te permita agregar la URL de la pestaña activa directamente a un archivo de marcadores en Emacs, sin ventanas intermedias, gracias a &lt;code&gt;org-protocol&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;¿Por qué debería?&lt;/h2&gt;
+&lt;p&gt;Uhm, a lo largo de mi vida he ocupado lo primero que había, ya sea marcadores, o favoritos - así se llamaban en IE -, y digamos que, con el tiempo, nacieron otros servicios para poder tener estos enlaces o URL en la nube... En ese entonces ocupaba un servicio llamado del.icio.us o algo así creo que se llamaba... No me acuerdo bien en el momento de redactar estas líneas, pero ese servicio murió hace muchos años ya... &lt;/p&gt;
+&lt;p&gt;Entonces, por ejemplo con el auge de los navegadores y el ofrecimiento de servicios, disponen de guardar muchas cosas en sus propios servidores... Y por supuesto en esto están los marcadores... Pero, ¿y si esos enlaces los usan para ofrecerte publicidad? ¿O si venden esa información para hacer un perfil sobre ti y finalmente ofrecer publicidad? Y quizás cuantas cosas más... &lt;/p&gt;
+&lt;p&gt;Y no se en tu caso, pero yo preferiría no más publicidad... Ya es suficiente...&lt;/p&gt;
+&lt;p&gt;Así que, ¿Qué mejor que manejarlos directamente desde &lt;code&gt;org-mode&lt;/code&gt; con Emacs?&lt;/p&gt;
+&lt;h2&gt;Activar &lt;code&gt;org-protocol&lt;/code&gt; en Emacs&lt;/h2&gt;
+&lt;p&gt;Primero, necesitamos que Emacs pueda recibir llamadas externas.
+Esto se logra habilitando el servidor integrado y cargando org-protocol.&lt;/p&gt;
+&lt;p&gt;Agrega lo siguiente a tu configuración:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;;; Activa org-protocol y servidor&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;org-protocol&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;server-start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;;; Archivo destino&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;defconst&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my/bookmarks-file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;~/org/bookmarks.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my/add-link-directly&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Guardar un enlace recibido por org-protocol STORE-LINK en `my/bookmarks-file`.&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;plist-get&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:link&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;plist-get&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:url&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;desc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;plist-get&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:description&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;plist-get&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:title&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;
+&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Sin título&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;expand-file-name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my/bookmarks-file&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;file-exists-p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;with-temp-file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;file&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#+title: Bookmarks\n\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;with-current-buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;find-file-noselect&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;goto-char&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;point-max&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;* [[%s][%s]]\nADDED: %s\n\n&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;                      &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;desc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format-time-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%Y-%m-%d %H:%M&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;save-buffer&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;org-protocol-protocol-alist&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Guardar enlace directo&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="nb"&gt;:protocol&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;store-link&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="nb"&gt;:function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my/add-link-directly&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Esto crea una función que recibe el enlace y lo guarda en &lt;code&gt;~/org/bookmarks.org&lt;/code&gt;, sin pasar por el sistema de &lt;code&gt;org-capture&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Registrar el esquema &lt;code&gt;org-protocol://&lt;/code&gt; en Linux&lt;/h2&gt;
+&lt;p&gt;Para que el navegador pueda llamar a Emacs, hay que decirle al sistema operativo que maneje las URLs con el esquema &lt;code&gt;org-protocol&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Crea el archivo &lt;code&gt;/usr/share/applications/org-protocol.desktop&lt;/code&gt; con el siguiente contenido:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[Desktop Entry]&lt;/span&gt;
+&lt;span class="na"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;org-protocol&lt;/span&gt;
+&lt;span class="na"&gt;Exec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;emacsclient %u&lt;/span&gt;
+&lt;span class="na"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Application&lt;/span&gt;
+&lt;span class="na"&gt;Terminal&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;false&lt;/span&gt;
+&lt;span class="na"&gt;MimeType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;x-scheme-handler/org-protocol&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Luego, desde una terminal ejecuta lo siguiente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;xdg-mime&lt;span class="w"&gt; &lt;/span&gt;default&lt;span class="w"&gt; &lt;/span&gt;org-protocol.desktop&lt;span class="w"&gt; &lt;/span&gt;x-scheme-handler/org-protocol
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Crear el botón en Firefox (bookmarklet)&lt;/h2&gt;
+&lt;p&gt;Bueno, recomiendo Firefox porque es el navegador que suelo usar, no uso ningún otro por principios, a excepción de links, o eww si es necesario...&lt;/p&gt;
+&lt;p&gt;Luego de haber aclarado eso, entonces lo que tienes que hacer es lo siguiente... De hecho, ahora viene la parte divertida: el botón mágico.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Abre tu barra de marcadores.  &lt;/li&gt;
+&lt;li&gt;Crea un nuevo marcador con el nombre que quieras, por ejemplo: Guardar en Emacs.  &lt;/li&gt;
+&lt;li&gt;En el campo URL, pega este código:  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;javascript&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;href&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;org-protocol://store-link?url=&amp;#39;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nb"&gt;encodeURIComponent&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;amp;title=&amp;#39;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nb"&gt;encodeURIComponent&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;})();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Guarda los cambios, y listo.
+Ese &lt;code&gt;marcador&lt;/code&gt; actuará como un botón que dispara la acción directamente en Emacs.&lt;/p&gt;
+&lt;h2&gt;Probando el flujo completo&lt;/h2&gt;
+&lt;p&gt;Abre cualquier sitio que quieras guardar, haz clic en tu nuevo botón y observa cómo Emacs registra el enlace al final del archivo bookmarks.org, con su título y la fecha de agregado.&lt;/p&gt;
+&lt;p&gt;El resultado que verás será algo más o menos así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;* [[https://fotosycaptura.cl][Fotos y Captura]]&lt;/span&gt;
+ADDED: 2025-11-02 16:37
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;¿Y cómo es que funciona todo esto?&lt;/h2&gt;
+&lt;p&gt;Detrás de todo lo anterior, más o menos ocurre lo siguiente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El bookmarklet en JavaScript toma la URL y el título de la pestaña activa.&lt;/li&gt;
+&lt;li&gt;Luego se llama a &lt;code&gt;org-protocol://store-link?...&lt;/code&gt;, un esquema personalizado.&lt;/li&gt;
+&lt;li&gt;Linux redirige esa llamada a Emacs mediante &lt;code&gt;emacsclient&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;org-protocol&lt;/code&gt; interpreta los parámetros y ejecuta la función &lt;code&gt;my/add-link-directly&lt;/code&gt;, función que se agregó en el &lt;code&gt;init.el&lt;/code&gt; o como en mi caso &lt;code&gt;custom.el&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;El enlace se guarda directamente en el archivo de Org.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Como puedes observar, es un flujo rápido y completamente local.&lt;/p&gt;
+&lt;h2&gt;Ventajas&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Sin ventanas de confirmación: todo se guarda directo.  &lt;/li&gt;
+&lt;li&gt;Integrado en tu sistema: no dependes de extensiones externas.  &lt;/li&gt;
+&lt;li&gt;Funciona en Firefox, aunque en teoría, debería de funcionar en cualquier navegador que permita bookmarklets.  &lt;/li&gt;
+&lt;li&gt;Los enlaces quedan en texto plano dentro de tu flujo de org-mode, nada de que en la nube o servicios de terceros que venden tus datos o que por abc motivo, dejen de existir...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Con unos pocos ajustes en Emacs y un pequeño script en Firefox, puedes transformar tu navegador en una herramienta que colabora directamente con tu flujo de trabajo en texto plano.
+Para quienes trabajamos con org-mode, esta integración resulta natural: cada clic se convierte en conocimiento archivado, listo para buscar, enlazar o reanudar más adelante desde Emacs.&lt;/p&gt;</content><category term="Laboratorio"/><category term="laboratorio"/><category term="software"/><category term="emacs"/><category term="linux"/><category term="org-mode"/></entry><entry><title>Compilando con hugo en org mode</title><link href="https://fotosycaptura.cl/posts/2025-10-31-compilando-con-hugo-en-org-mode.html" rel="alternate"/><published>2025-10-31T15:47:00-03:00</published><updated>2025-10-31T15:47:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-10-31:/posts/2025-10-31-compilando-con-hugo-en-org-mode.html</id><summary type="html">&lt;p&gt;Una de las grandes ventajas de &lt;em&gt;Emacs&lt;/em&gt; es su capacidad para integrarse con casi cualquier flujo de trabajo. Y si escribes contenido para la web, &lt;em&gt;Org-mode&lt;/em&gt; junto con el paquete &lt;code&gt;ox-hugo&lt;/code&gt; se convierten en una herramienta poderosa para generar publicaciones que luego Hugo transforma en un sitio web estático, limpio y profesional. Actualmente, si has estado leyendo sobre mi sitio Web, sabrás que utilizo pelican para su generación. Sin embargo, las nuevas secciones, o mas bien, las secciones migradas, utilicé Hugo en combinación con Org-mode y por supuesto Emacs como editor. En este artículo les mostraré un poco de lo que hice... Desde la instalación y el cómo exportar un documento de Org-mode a un sitio Hugo, cómo configurar los metadatos, entre otras cosas...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="Exportando Hugo" src="/media/2025/octubre/exportando.png" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
 &lt;p&gt;Una de las grandes ventajas de &lt;em&gt;Emacs&lt;/em&gt; es su capacidad para integrarse con casi cualquier flujo de trabajo.&lt;br&gt;
 Y si escribes contenido para la web, &lt;em&gt;Org-mode&lt;/em&gt; junto con el paquete &lt;code&gt;ox-hugo&lt;/code&gt; se convierten en una herramienta muy versátil y lo suficientemente poderosa para generar publicaciones que luego &lt;code&gt;Hugo&lt;/code&gt; transforma en un sitio web estático, limpio y profesional.&lt;/p&gt;
@@ -2083,16 +2188,4 @@ sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&g
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_16 (Cumple Marisol)/IMG_20241116_202827.jpg"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_16 (Cumple Marisol)/IMG_20241116_202828.jpg"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_16 (Cumple Marisol)/IMG_20241116_202832.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_16 (Cumple Marisol)/IMG_20241116_202833.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2024_11_04</title><link href="https://fotosycaptura.cl/posts/galeria-2024_11_04.html" rel="alternate"/><published>2024-11-04T00:00:00-03:00</published><updated>2024-11-04T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-11-04:/posts/galeria-2024_11_04.html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_04/IMG_20241104_134315.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2024_11_02 (Concierto Harry Music)</title><link href="https://fotosycaptura.cl/posts/galeria-2024_11_02%20(Concierto%20Harry%20Music).html" rel="alternate"/><published>2024-11-02T00:00:00-03:00</published><updated>2024-11-02T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-11-02:/posts/galeria-2024_11_02 (Concierto Harry Music).html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_110946.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_193146.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_193149.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_193420.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_193422.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_193430.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_193432.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_193445.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_193447.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_194838.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_195437.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_195557.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_02 (Concierto Harry Music)/IMG_20241102_195601.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
+&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_16 (Cumple Marisol)/IMG_20241116_202833.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2024_11_04</title><link href="https://fotosycaptura.cl/posts/galeria-2024_11_04.html" rel="alternate"/><published>2024-11-04T00:00:00-03:00</published><updated>2024-11-04T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-11-04:/posts/galeria-2024_11_04.html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_11_04/IMG_20241104_134315.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>

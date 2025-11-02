@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Marcadores con emacs y firefox | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2025-11-02-marcadores-con-emacs-y-firefox.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Una de las ventajas de tener todo tu flujo de trabajo en Emacs es poder centralizar también tus lecturas, notas y enlaces interesantes. En este artículo te muestro cómo crear un botón en Firefox que te permita agregar la URL de la pestaña activa directamente a un archivo de marcadores en Emacs, sin ventanas intermedias, gracias a org-protocol.">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Acerca de</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-bar-chart" href="https://fotosycaptura.cl/statistic.html" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Marcadores con emacs y firefox
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2025-11-02T18:42:00-03:00">
+        <i class="fa fa-clock-o"></i>
+        2025, dom 02 noviembre
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>,         <a href="https://fotosycaptura.cl/tag/emacs.html">#emacs</a>,         <a href="https://fotosycaptura.cl/tag/linux.html">#linux</a>,         <a href="https://fotosycaptura.cl/tag/org-mode.html">#org-mode</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <h2>Contexto</h2>
+<p><img alt="Marcadores con Emacs" src="/media/2025/noviembre/marcadores.jpg" style="width: auto; max-width: 100% !important;">  </p>
+<p>Una de las ventajas de tener todo tu flujo de trabajo en Emacs es poder centralizar también tus lecturas, notas y enlaces interesantes.
+En este artículo te muestro cómo crear un botón en Firefox que te permita agregar la URL de la pestaña activa directamente a un archivo de marcadores en Emacs, sin ventanas intermedias, gracias a <code>org-protocol</code>.</p>
+<h2>¿Por qué debería?</h2>
+<p>Uhm, a lo largo de mi vida he ocupado lo primero que había, ya sea marcadores, o favoritos - así se llamaban en IE -, y digamos que, con el tiempo, nacieron otros servicios para poder tener estos enlaces o URL en la nube... En ese entonces ocupaba un servicio llamado del.icio.us o algo así creo que se llamaba... No me acuerdo bien en el momento de redactar estas líneas, pero ese servicio murió hace muchos años ya... </p>
+<p>Entonces, por ejemplo con el auge de los navegadores y el ofrecimiento de servicios, disponen de guardar muchas cosas en sus propios servidores... Y por supuesto en esto están los marcadores... Pero, ¿y si esos enlaces los usan para ofrecerte publicidad? ¿O si venden esa información para hacer un perfil sobre ti y finalmente ofrecer publicidad? Y quizás cuantas cosas más... </p>
+<p>Y no se en tu caso, pero yo preferiría no más publicidad... Ya es suficiente...</p>
+<p>Así que, ¿Qué mejor que manejarlos directamente desde <code>org-mode</code> con Emacs?</p>
+<h2>Activar <code>org-protocol</code> en Emacs</h2>
+<p>Primero, necesitamos que Emacs pueda recibir llamadas externas.
+Esto se logra habilitando el servidor integrado y cargando org-protocol.</p>
+<p>Agrega lo siguiente a tu configuración:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">;; Activa org-protocol y servidor</span>
+<span class="p">(</span><span class="nb">require</span><span class="w"> </span><span class="ss">&#39;org-protocol</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">server-start</span><span class="p">)</span>
+
+<span class="c1">;; Archivo destino</span>
+<span class="p">(</span><span class="k">defconst</span><span class="w"> </span><span class="nv">my/bookmarks-file</span><span class="w"> </span><span class="s">&quot;~/org/bookmarks.org&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">my/add-link-directly</span><span class="w"> </span><span class="p">(</span><span class="nv">info</span><span class="p">)</span>
+<span class="w">  </span><span class="s">&quot;Guardar un enlace recibido por org-protocol STORE-LINK en `my/bookmarks-file`.&quot;</span>
+<span class="w">  </span><span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">((</span><span class="nv">link</span><span class="w"> </span><span class="p">(</span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="nf">plist-get</span><span class="w"> </span><span class="nv">info</span><span class="w"> </span><span class="nb">:link</span><span class="p">)</span>
+<span class="w">                   </span><span class="p">(</span><span class="nf">plist-get</span><span class="w"> </span><span class="nv">info</span><span class="w"> </span><span class="nb">:url</span><span class="p">)))</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">desc</span><span class="w"> </span><span class="p">(</span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="nf">plist-get</span><span class="w"> </span><span class="nv">info</span><span class="w"> </span><span class="nb">:description</span><span class="p">)</span>
+<span class="w">                   </span><span class="p">(</span><span class="nf">plist-get</span><span class="w"> </span><span class="nv">info</span><span class="w"> </span><span class="nb">:title</span><span class="p">)</span>
+<span class="w">                   </span><span class="nv">link</span>
+<span class="w">                   </span><span class="s">&quot;Sin título&quot;</span><span class="p">))</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">file</span><span class="w"> </span><span class="p">(</span><span class="nf">expand-file-name</span><span class="w"> </span><span class="nv">my/bookmarks-file</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">unless</span><span class="w"> </span><span class="p">(</span><span class="nf">file-exists-p</span><span class="w"> </span><span class="nv">file</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">with-temp-file</span><span class="w"> </span><span class="nv">file</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">insert</span><span class="w"> </span><span class="s">&quot;#+title: Bookmarks\n\n&quot;</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">with-current-buffer</span><span class="w"> </span><span class="p">(</span><span class="nv">find-file-noselect</span><span class="w"> </span><span class="nv">file</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">goto-char</span><span class="w"> </span><span class="p">(</span><span class="nf">point-max</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">insert</span><span class="w"> </span><span class="p">(</span><span class="nf">format</span><span class="w"> </span><span class="s">&quot;* [[%s][%s]]\nADDED: %s\n\n&quot;</span>
+<span class="w">                      </span><span class="nv">link</span><span class="w"> </span><span class="nv">desc</span><span class="w"> </span><span class="p">(</span><span class="nf">format-time-string</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d %H:%M&quot;</span><span class="p">)))</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
+<span class="w">  </span><span class="no">nil</span><span class="p">)</span>
+
+<span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">&#39;org-protocol-protocol-alist</span>
+<span class="w">             </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;Guardar enlace directo&quot;</span>
+<span class="w">               </span><span class="nb">:protocol</span><span class="w"> </span><span class="s">&quot;store-link&quot;</span>
+<span class="w">               </span><span class="nb">:function</span><span class="w"> </span><span class="nv">my/add-link-directly</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Esto crea una función que recibe el enlace y lo guarda en <code>~/org/bookmarks.org</code>, sin pasar por el sistema de <code>org-capture</code>.</p>
+<h2>Registrar el esquema <code>org-protocol://</code> en Linux</h2>
+<p>Para que el navegador pueda llamar a Emacs, hay que decirle al sistema operativo que maneje las URLs con el esquema <code>org-protocol</code>.</p>
+<p>Crea el archivo <code>/usr/share/applications/org-protocol.desktop</code> con el siguiente contenido:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[Desktop Entry]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">org-protocol</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">emacsclient %u</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">Terminal</span><span class="o">=</span><span class="s">false</span>
+<span class="na">MimeType</span><span class="o">=</span><span class="s">x-scheme-handler/org-protocol</span><span class="c1">;</span>
+</code></pre></div>
+
+<p>Luego, desde una terminal ejecuta lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>xdg-mime<span class="w"> </span>default<span class="w"> </span>org-protocol.desktop<span class="w"> </span>x-scheme-handler/org-protocol
+</code></pre></div>
+
+<h2>Crear el botón en Firefox (bookmarklet)</h2>
+<p>Bueno, recomiendo Firefox porque es el navegador que suelo usar, no uso ningún otro por principios, a excepción de links, o eww si es necesario...</p>
+<p>Luego de haber aclarado eso, entonces lo que tienes que hacer es lo siguiente... De hecho, ahora viene la parte divertida: el botón mágico.</p>
+<ul>
+<li>Abre tu barra de marcadores.  </li>
+<li>Crea un nuevo marcador con el nombre que quieras, por ejemplo: Guardar en Emacs.  </li>
+<li>En el campo URL, pega este código:  </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">javascript</span><span class="o">:</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">url</span><span class="o">=</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="s1">&#39;org-protocol://store-link?url=&#39;</span>
+<span class="w">    </span><span class="o">+</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&amp;title=&#39;</span>
+<span class="w">    </span><span class="o">+</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div>
+
+<p>Guarda los cambios, y listo.
+Ese <code>marcador</code> actuará como un botón que dispara la acción directamente en Emacs.</p>
+<h2>Probando el flujo completo</h2>
+<p>Abre cualquier sitio que quieras guardar, haz clic en tu nuevo botón y observa cómo Emacs registra el enlace al final del archivo bookmarks.org, con su título y la fecha de agregado.</p>
+<p>El resultado que verás será algo más o menos así:</p>
+<div class="highlight"><pre><span></span><code><span class="gh">* [[https://fotosycaptura.cl][Fotos y Captura]]</span>
+ADDED: 2025-11-02 16:37
+</code></pre></div>
+
+<h2>¿Y cómo es que funciona todo esto?</h2>
+<p>Detrás de todo lo anterior, más o menos ocurre lo siguiente:</p>
+<ul>
+<li>El bookmarklet en JavaScript toma la URL y el título de la pestaña activa.</li>
+<li>Luego se llama a <code>org-protocol://store-link?...</code>, un esquema personalizado.</li>
+<li>Linux redirige esa llamada a Emacs mediante <code>emacsclient</code>.</li>
+<li><code>org-protocol</code> interpreta los parámetros y ejecuta la función <code>my/add-link-directly</code>, función que se agregó en el <code>init.el</code> o como en mi caso <code>custom.el</code>.</li>
+<li>El enlace se guarda directamente en el archivo de Org.</li>
+</ul>
+<p>Como puedes observar, es un flujo rápido y completamente local.</p>
+<h2>Ventajas</h2>
+<ul>
+<li>Sin ventanas de confirmación: todo se guarda directo.  </li>
+<li>Integrado en tu sistema: no dependes de extensiones externas.  </li>
+<li>Funciona en Firefox, aunque en teoría, debería de funcionar en cualquier navegador que permita bookmarklets.  </li>
+<li>Los enlaces quedan en texto plano dentro de tu flujo de org-mode, nada de que en la nube o servicios de terceros que venden tus datos o que por abc motivo, dejen de existir...</li>
+</ul>
+<h2>Conclusión</h2>
+<p>Con unos pocos ajustes en Emacs y un pequeño script en Firefox, puedes transformar tu navegador en una herramienta que colabora directamente con tu flujo de trabajo en texto plano.
+Para quienes trabajamos con org-mode, esta integración resulta natural: cada clic se convierte en conocimiento archivado, listo para buscar, enlazar o reanudar más adelante desde Emacs.</p>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://api.fotosycaptura.cl/contador.png" title="Contador de visitas" alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
