@@ -5,42 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/</loc>
-<lastmod>2025-11-05T23:13:48-00:00</lastmod>
+<lastmod>2025-11-29T23:05:31-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tags.html</loc>
-<lastmod>2025-11-05T23:13:48-00:00</lastmod>
+<lastmod>2025-11-29T23:05:31-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/categories.html</loc>
-<lastmod>2025-11-05T23:13:48-00:00</lastmod>
+<lastmod>2025-11-29T23:05:31-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/authors.html</loc>
-<lastmod>2025-11-05T23:13:48-00:00</lastmod>
+<lastmod>2025-11-29T23:05:31-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/archives.html</loc>
-<lastmod>2025-11-05T23:13:48-00:00</lastmod>
+<lastmod>2025-11-29T23:05:31-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/pages/index.html</loc>
-<lastmod>2025-11-05T23:13:48-00:00</lastmod>
+<lastmod>2025-11-29T23:05:31-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -64,6 +64,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2025-05-13T15:00:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/posts/2025-11-28-ya-casi-fin-de.html</loc>
+<lastmod>2025-11-28T23:00:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
@@ -7999,7 +8006,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/category/pensamientos.html</loc>
-<lastmod>2025-09-03T23:00:00-04:43</lastmod>
+<lastmod>2025-11-28T23:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -8014,6 +8021,41 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://fotosycaptura.cl/category/retro.html</loc>
 <lastmod>2024-10-23T20:30:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/pensamientos.html</loc>
+<lastmod>2025-11-28T23:00:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/blog.html</loc>
+<lastmod>2025-11-28T23:00:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/emociones.html</loc>
+<lastmod>2025-11-28T23:00:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/personal.html</loc>
+<lastmod>2025-11-28T23:00:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/sentimientos.html</loc>
+<lastmod>2025-11-28T23:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -8049,13 +8091,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://fotosycaptura.cl/tag/org-mode.html</loc>
 <lastmod>2025-11-02T18:42:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/tag/blog.html</loc>
-<lastmod>2025-10-27T13:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -8117,36 +8152,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://fotosycaptura.cl/tag/sentimientos.html</loc>
-<lastmod>2025-10-14T19:10:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/tag/personal.html</loc>
-<lastmod>2025-09-28T23:00:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://fotosycaptura.cl/tag/cumple.html</loc>
 <lastmod>2025-09-28T23:00:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/tag/pensamientos.html</loc>
-<lastmod>2025-09-16T22:50:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/tag/emociones.html</loc>
-<lastmod>2025-09-16T22:50:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -8685,7 +8692,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/author/fotosycaptura.html</loc>
-<lastmod>2025-11-02T18:42:00-04:43</lastmod>
+<lastmod>2025-11-28T23:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
