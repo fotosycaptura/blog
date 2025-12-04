@@ -170,8 +170,8 @@
   // 6) Sistemas Operativos
   Plotly.newPlot(
     'top_sistemas',
-    [{type: 'bar', x: data.os.labels, y: data.os.counts, name: 'SO'}],
-    {title:'Top Sistemas Operativos', xaxis:{title:'SO'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    [{type: 'pie', labels: data.os.labels, values: data.os.counts, textinfo:'label+percent', hole:0.3}],
+    {title:'Sistemas Operativos', font:{size:12}},
     config
   );
   document.getElementById("stat_fecha").textContent = data.generated_at;
