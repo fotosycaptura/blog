@@ -118,15 +118,15 @@ Y si escribes contenido para la web, <em>Org-mode</em> junto con el paquete <cod
 <p>Cada publicación se define mediante un conjunto de variables en la parte superior del archivo.<br>
 Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe generar el archivo final.</p>
 <p>Ejemplo real:</p>
-<div class="highlight"><pre><span></span><code><span class="gh">#</span>+TITLE: Mi primera publicación con Org y Hugo
-<span class="gh">#</span>+AUTHOR: Tu nombre
-<span class="gh">#</span>+DATE: 2025-10-27
-<span class="gh">#</span>+HUGO_BASE_DIR: ../
-<span class="gh">#</span>+HUGO_SECTION: posts
-<span class="gh">#</span>+HUGO_TAGS: emacs hugo org-mode
-<span class="gh">#</span>+HUGO_CATEGORIES: Emacs
-<span class="gh">#</span>+HUGO_AUTO_SET_LASTMOD: t
-<span class="gh">#</span>+HUGO_CUSTOM_FRONT_MATTER: :showToc true :draft false
+<div class="highlight"><pre><span></span><code><span class="nn">#+TITLE:</span> Mi primera publicación con Org y Hugo
+<span class="nn">#+AUTHOR:</span> Tu nombre
+<span class="nn">#+DATE:</span> 2025-10-27
+<span class="nn">#+HUGO_BASE_DIR:</span> ../
+<span class="nn">#+HUGO_SECTION:</span> posts
+<span class="nn">#+HUGO_TAGS:</span> emacs hugo org-mode
+<span class="nn">#+HUGO_CATEGORIES:</span> Emacs
+<span class="nn">#+HUGO_AUTO_SET_LASTMOD:</span> t
+<span class="nn">#+HUGO_CUSTOM_FRONT_MATTER:</span> :showToc true :draft false
 </code></pre></div>
 
 <p>Luego escribes tu contenido normalmente con formato Org.</p>
@@ -170,13 +170,13 @@ Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe gener
 </ul>
 <hr>
 <h2>Ejemplo de exportación completa</h2>
-<div class="highlight"><pre><span></span><code><span class="gh">#</span>+TITLE: Ejemplo práctico
-<span class="gh">#</span>+HUGO_BASE_DIR: ../
-<span class="gh">#</span>+HUGO_SECTION: posts
-<span class="gh">#</span>+HUGO_TAGS: ejemplo práctica hugo
-<span class="gh">#</span>+HUGO_CATEGORIES: Tutoriales
-<span class="gh">#</span>+HUGO_AUTO_SET_LASTMOD: t
-<span class="gh">#</span>+HUGO_CUSTOM_FRONT_MATTER: :showToc true :draft false
+<div class="highlight"><pre><span></span><code><span class="nn">#+TITLE:</span> Ejemplo práctico
+<span class="nn">#+HUGO_BASE_DIR:</span> ../
+<span class="nn">#+HUGO_SECTION:</span> posts
+<span class="nn">#+HUGO_TAGS:</span> ejemplo práctica hugo
+<span class="nn">#+HUGO_CATEGORIES:</span> Tutoriales
+<span class="nn">#+HUGO_AUTO_SET_LASTMOD:</span> t
+<span class="nn">#+HUGO_CUSTOM_FRONT_MATTER:</span> :showToc true :draft false
 </code></pre></div>
 
 <p>Este es un ejemplo rápido de cómo se vería un artículo exportado.</p>
@@ -189,7 +189,7 @@ Puedes usar <em>negritas</em>, /cursivas/, +tachado+, o incluso <a href="https:/
 </code></pre></div>
 
 <h2>Sección 3: Imagen</h2>
-<div class="highlight"><pre><span></span><code><span class="p">[[</span><span class="o">../</span><span class="n">images</span><span class="o">/</span><span class="n">hugo</span><span class="o">-</span><span class="k">export</span><span class="o">.</span><span class="n">png</span><span class="p">]]</span>
+<div class="highlight"><pre><span></span><code><span class="p">[[</span><span class="na">../images/hugo-export.png</span><span class="p">]]</span>
 </code></pre></div>
 
 <hr>
