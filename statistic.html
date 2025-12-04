@@ -90,8 +90,10 @@
 
 <div id="visitas_por_pais"></div>
 
+<p>Me llama la atención los países que visitan mi página personal... ¿Qué hace Singapur visitándome?... </p>
 <div id="bots_vs_humanos"></div>
 
+<p>Puedo entender que haya un cierto porcentaje de bots visitando la página, hay que tratar de disminuir eso...</p>
 <div id="top_navegadores"></div>
 
 <div id="top_sistemas"></div>
@@ -133,7 +135,7 @@
   Plotly.newPlot(
     'visitas_por_pagina',
     [{type: 'bar', x: data.path.labels, y: data.path.counts, name: 'Página'}],
-    {title: 'Visitas por página (Top)', xaxis: {title:'Ruta'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    {title: 'Visitas por página (Top)', xaxis: {title:''}, yaxis:{title:'Visitas'}, font:{size:12}},
     config
   );
 
