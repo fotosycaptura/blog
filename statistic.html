@@ -77,21 +77,21 @@
 <p>No he tenido mucho tiempo para ir pensando en automatizarlo como lo tenía antes, pero bueno, como lo implementé recién hoy, habrán pocas visitas seguramente... Antiguamente tenía visitas por miles pero principalmente bots. Ahora todo eso está más controlado, por lo que deberían de ser datos más fidedignos...</p>
 <p>También, comentarles que en general, mi sitio Web no usa JS, o javascript. No usa nada de cookies... - Es gluten free XD -... Creo que esta es la única página que usará JS por temas de visualización de las gráficas. Por lo mismo, no uso <s>Analytics</s> porque encuentro que es muy intruso, así que decidí mejor programar algo por mi mismo, y puedes notar que éste es el resultado de todo ese esfuerzo...</p>
 <blockquote>
-<p>Aprovecho de comentar que en mi sitio personal no recojo datos personales, ni siquiera los conservo - benditos logs rotativos, si no me llenaban el disco :/ -, mucho menos venderlos... No, no se hace nada de eso, así que pueden estar tranquilos... </p>
+<p>Aprovecho de comentar que en mi sitio personal no recojo datos personales, ni siquiera los conservo - benditos logs rotativos, si no me llenaban el disco :/ -...</p>
 </blockquote>
 <p>Creo que el resultado quedó mucho más amigable, al menos para mi... ¿No les parece? XDD</p>
-<p>Acá se puede visualizar la cantidad de visitas que tiene mi sitio Web. </p>
+<p>Acá se puede visualizar la cantidad de visitas que tiene mi sitio Web en los últimos 30 días.</p>
 <!-- Plotly -->
 <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
-<h2>Visitas por país</h2>
-<div id="visitas_por_pais"></div>
+<h2>Visitas por día</h2>
+<div id="visitas_diarias"></div>
 
 <h2>Visitas por página</h2>
 <div id="visitas_por_pagina"></div>
 
-<h2>Visitas por día</h2>
-<div id="visitas_diarias"></div>
+<h2>Visitas por país</h2>
+<div id="visitas_por_pais"></div>
 
 <h2>Bots vs Humanos</h2>
 <div id="bots_vs_humanos"></div>
@@ -147,7 +147,7 @@
   Plotly.newPlot(
     'visitas_diarias',
     [{type: 'scatter', mode:'lines+markers', x: data.daily.dates, y: data.daily.visits, name: 'Visitas'}],
-    {title: 'Visitas por día', xaxis: {title:'Fecha'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    {title: 'Visitas últimos 30 días', xaxis: {title:'Fecha'}, yaxis:{title:'Visitas'}, font:{size:12}},
     config
   );
 
