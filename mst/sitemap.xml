@@ -2,58 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/mst/</loc>
-    <lastmod>2025-10-20T21:32:09-03:00</lastmod>
-  </url><url>
     <loc>/mst/articulos/</loc>
-    <lastmod>2025-10-23T20:26:00-03:00</lastmod>
+    <lastmod>2026-02-15T12:36:03-03:00</lastmod>
   </url><url>
     <loc>/mst/categories/</loc>
-    <lastmod>2025-10-23T20:26:00-03:00</lastmod>
+    <lastmod>2026-02-15T12:36:03-03:00</lastmod>
+  </url><url>
+    <loc>/mst/articulos/el-llanto-del-sauce/</loc>
+    <lastmod>2026-02-15T12:36:03-03:00</lastmod>
   </url><url>
     <loc>/mst/tags/historia/</loc>
-    <lastmod>2025-10-21T22:03:51-03:00</lastmod>
-  </url><url>
-    <loc>/mst/tags/identidad/</loc>
-    <lastmod>2025-10-21T22:03:51-03:00</lastmod>
-  </url><url>
-    <loc>/mst/articulos/el-hombre-de-taured/</loc>
-    <lastmod>2025-10-21T22:03:51-03:00</lastmod>
+    <lastmod>2026-02-15T12:36:03-03:00</lastmod>
   </url><url>
     <loc>/mst/tags/misterios/</loc>
-    <lastmod>2025-10-23T20:26:00-03:00</lastmod>
-  </url><url>
-    <loc>/mst/tags/pasaportes/</loc>
-    <lastmod>2025-10-21T22:03:51-03:00</lastmod>
+    <lastmod>2026-02-15T12:36:03-03:00</lastmod>
   </url><url>
     <loc>/mst/categories/reflexiones/</loc>
-    <lastmod>2025-10-23T20:26:00-03:00</lastmod>
+    <lastmod>2026-02-15T12:36:03-03:00</lastmod>
   </url><url>
     <loc>/mst/tags/</loc>
-    <lastmod>2025-10-23T20:26:00-03:00</lastmod>
+    <lastmod>2026-02-15T12:36:03-03:00</lastmod>
+  </url><url>
+    <loc>/mst/</loc>
+    <lastmod>2026-02-14T17:26:32-03:00</lastmod>
+  </url><url>
+    <loc>/mst/tags/identidad/</loc>
+    <lastmod>2026-02-14T17:27:21-03:00</lastmod>
+  </url><url>
+    <loc>/mst/articulos/el-hombre-de-taured/</loc>
+    <lastmod>2026-02-14T17:27:21-03:00</lastmod>
+  </url><url>
+    <loc>/mst/tags/pasaportes/</loc>
+    <lastmod>2026-02-14T17:27:21-03:00</lastmod>
   </url><url>
     <loc>/mst/tags/extraterrestres/</loc>
-    <lastmod>2025-10-23T20:26:00-03:00</lastmod>
+    <lastmod>2026-02-14T17:29:08-03:00</lastmod>
   </url><url>
     <loc>/mst/tags/ovnis/</loc>
-    <lastmod>2025-10-23T20:26:00-03:00</lastmod>
+    <lastmod>2026-02-14T17:29:08-03:00</lastmod>
   </url><url>
     <loc>/mst/articulos/ovnis-extraterrestres/</loc>
-    <lastmod>2025-10-23T20:26:00-03:00</lastmod>
+    <lastmod>2026-02-14T17:29:08-03:00</lastmod>
   </url><url>
     <loc>/mst/articulos/lecturas/</loc>
-    <lastmod>2025-10-20T21:24:38-03:00</lastmod>
+    <lastmod>2026-02-14T17:28:46-03:00</lastmod>
   </url><url>
     <loc>/mst/articulos/piramides/</loc>
-    <lastmod>2025-10-18T22:13:51-03:00</lastmod>
+    <lastmod>2026-02-14T17:29:19-03:00</lastmod>
   </url><url>
     <loc>/mst/articulos/stonehenge/</loc>
-    <lastmod>2025-10-18T22:14:43-03:00</lastmod>
+    <lastmod>2026-02-14T17:29:40-03:00</lastmod>
   </url><url>
     <loc>/mst/articulos/experiencias-presagios/</loc>
-    <lastmod>2025-10-18T22:14:21-03:00</lastmod>
+    <lastmod>2026-02-14T17:28:30-03:00</lastmod>
   </url><url>
     <loc>/mst/articulos/mitos-y-leyendas/</loc>
-    <lastmod>2025-10-23T19:05:25-03:00</lastmod>
+    <lastmod>2026-02-14T17:28:57-03:00</lastmod>
   </url>
 </urlset>

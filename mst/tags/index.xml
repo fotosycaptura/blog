@@ -6,13 +6,20 @@
     <description>Recent content in Tags on Aquello que no debe de ver la luz...</description>
     <generator>Hugo</generator>
     <language>es-cl</language>
-    <lastBuildDate>Thu, 23 Oct 2025 20:26:00 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 15 Feb 2026 12:36:03 -0300</lastBuildDate>
     <atom:link href="/mst/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Historia</title>
       <link>/mst/tags/historia/</link>
-      <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
       <guid>/mst/tags/historia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Misterios</title>
+      <link>/mst/tags/misterios/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/mst/tags/misterios/</guid>
       <description></description>
     </item>
     <item>
@@ -20,13 +27,6 @@
       <link>/mst/tags/identidad/</link>
       <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
       <guid>/mst/tags/identidad/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Misterios</title>
-      <link>/mst/tags/misterios/</link>
-      <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>/mst/tags/misterios/</guid>
       <description></description>
     </item>
     <item>
