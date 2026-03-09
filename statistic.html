@@ -128,7 +128,7 @@
   Plotly.newPlot(
     'visitas_por_pais',
     [{type: 'bar', x: data.country.labels, y: data.country.counts, name: 'País'}],
-    {title: 'Visitas por país (Top)', xaxis: {title:'País'}, yaxis:{title:'Visitas'}, font:{size:12}},
+    {title: 'Visitas por país (Top 5)', xaxis: {title:'País'}, yaxis:{title:'Visitas'}, font:{size:12}},
     config
   );
 
@@ -136,7 +136,7 @@
   Plotly.newPlot(
     'visitas_por_pagina',
     [{type: 'bar', x: data.path.labels, y: data.path.counts, name: 'Página'}],
-    {title: 'Visitas por página (Top)', xaxis: {title:''}, yaxis:{title:'Visitas'}, font:{size:12}},
+    {title: 'Visitas por página (Top 5)', xaxis: {title:''}, yaxis:{title:'Visitas'}, font:{size:12}},
     config
   );
 
@@ -160,11 +160,11 @@
   Plotly.newPlot(
     'top_navegadores',
     [{type: 'bar', x: data.browsers.labels, y: data.browsers.counts, name: 'Navegador'}],
-    {title:'Top Navegadores', xaxis:{title:''}, yaxis:{title:'Visitas'}, font:{size:12}},
+    {title:'Top 5 Navegadores', xaxis:{title:''}, yaxis:{title:'Visitas'}, font:{size:12}},
     config
   );
 
-  // 6) Sistemas Operativos
+  // 6) Sistemas Operativos (Top 5)
   Plotly.newPlot(
     'top_sistemas',
     [{type: 'pie', labels: data.os.labels, values: data.os.counts, textinfo:'label+percent', hole:0.3}],
