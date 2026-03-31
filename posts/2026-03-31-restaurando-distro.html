@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Restaurando distribución de Linux | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2026-03-31-restaurando-distro.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Hace poco instalé una distro nueva a un disco externo, con la finalidad de tener una especie de sistema operativo viajero. En esta ocasión, en vez de ocupar el confiable Arch EndavourOS de la vida - mi distro predilecta -, quise usar otra para laboratorio y testear un poco acerca de su uso, y de las maravillas que suelen hablar...">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/historial-cambios.html">Logs</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Yo</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-bar-chart" href="https://fotosycaptura.cl/statistic.html" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Restaurando distribución de Linux
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2026-03-31T14:26:00-03:00">
+        <i class="fa fa-clock-o"></i>
+        2026, mar 31 marzo
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <h2>Contexto</h2>
+<p><img alt="Distro rota" src="/media/2026/marzo/distro/distro-02.jpg" style="width: auto; max-width: 100% !important;">  </p>
+<p>Hace poco instalé una distro nueva a un disco externo, con la finalidad de tener una especie de sistema operativo viajero. En esta ocasión, en vez de ocupar el confiable Arch EndavourOS de la vida - mi distro predilecta -, quise usar otra para laboratorio y testear un poco acerca de su uso, y de las maravillas que suelen hablar...</p>
+<h2>La distro</h2>
+<p>En esta ocasión les hablaré un poco de la poca experiencia y de la incidencia que tuve...</p>
+<p>Todo iba bien, la instalación se llevó a cabo con éxito y no hubo mayores problemas, el escritorio <em>Gnome</em>, inició correctamente y llegaba el momento de instalar las aplicaciones con las que suelo trabajar:</p>
+<ul>
+<li>Emacs</li>
+<li>Texlive (Latex)</li>
+<li>mc</li>
+<li>Jupyter Lab</li>
+<li>...</li>
+</ul>
+<p>Y en otras ocasiones serían más, pero muchas de las aplicaciones que requiero ya vienen preinstaladas... Así que comienzo...</p>
+<h2>Instalando</h2>
+<p>Parto por instalar las aplicaciones, pero leyendo un poco, en su página oficial, indican que la instalación de las aplicaciones deberían de realizarse mediante ¿Contenedores?, es decir, la opción de /Flatpak/. Me parece bien en un comienzo, con excepción de que no encuentro Latex. Así que, sigo leyendo y habla de usar /distrobox/. Así que comienzo con</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>distrobox<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>latex<span class="w"> </span>--image<span class="w"> </span>fedora:latest
+<span class="w">  </span>distrobox<span class="w"> </span>enter<span class="w"> </span>latex
+<span class="w">  </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>texlive-scheme-medium<span class="w"> </span>latexmk<span class="w"> </span>make<span class="w"> </span>emacs
+</code></pre></div>
+
+<p>De momento pareciera que no necesitaría nada más, pero luego recuerdo, me falta mc.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>mc
+</code></pre></div>
+
+<p>La instalación se lleva a cabo correctamente, y comienzo a probar. Inicio emacs y abro un documento org que tengo, y al intentar exportarlo a pdf, me percato que la instalación de Texlive no está completa con lo que requiero, así que buscando un poco más en la documentación de la Internet, ejecuto otra instrucción:</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>texlive-scheme-full
+</code></pre></div>
+
+<p>Lógicamente me indica que requiere mucho más espacio y le doy que proceda, por lo que comienza la instalación de los paquetes.</p>
+<p>Todo va bien, mientras ese proceso está siendo ejecutado en una sambox, digamos una especie de caja de arena, que se supone es aislada del resto del sistema, así que mi mente está sin preocupaciones... Hasta que noto en la aplicación de monitoreo que el procesador comienza a estar en su máxima capacidad, así como también la RAM ocupada.</p>
+<p><img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-01.jpg" style="width: auto; max-width: 100% !important;">  </p>
+<p>Por norma general, espero unos minutos, pero creo que ya habían pasado más de 5 minutos cuando decidí apagar el equipo y al cabo de un rato volverlo a encender.</p>
+<p>Cual sería mi sorpresa, que luego de iniciar el botteo, y de preguntar la contraseña, sí, disco cifrado, se me indique que puedo ingresar a la consola de emergencia porque hay daños...</p>
+<p><img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-02.jpg" style="width: auto; max-width: 100% !important;">  </p>
+<h2>Analizando el disco</h2>
+<p>Al revisar el mensaje, y al cabo de no lograr ingresar ya sea por la imagen os-tree 0 y la imagen os-tree 1 de esta distro, que se supone, no se rompe, desconecto el disco y lo conecto en mi equipo principal con Arch EndeavourOS.
+Lo examino con la herramienta <code>Discos</code> que incluye Gnome me percato que el disco es posible ingresar luego de colocar la contraseña, veo la partición que supuestamente debería de contener los datos, pero por alguna razón, no se puede montar.</p>
+<p><img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-03.jpg" style="width: auto; max-width: 100% !important;"><br>
+<em>Visualizando en la aplicación Discos</em></p>
+<p>Al utilizar las herramientas de montaje para verificar, indica que hay un error con el sistema de archivos.</p>
+<p><img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-04.jpg" style="width: auto; max-width: 100% !important;"><br>
+<em>Error comprobar el sistema de archivos y tratar de montar la unidad</em></p>
+<p>Así que, buscando alguna ayuda de referencia, procedo con los siguientes pasos descritos a continuación.</p>
+<h2>Vamos con la reparación</h2>
+<p>Después de leer un poco - harto -, procedo con las siguientes instrucciones</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>btrfs<span class="w"> </span>rescue<span class="w"> </span>zero-log<span class="w"> </span>/dev/mapper/luks-33f8bcb4-ef5b-479c-bbca-bac8690110b9
+</code></pre></div>
+
+<p>El sistema luego de trabajar, arroja el siguiente mensaje:</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>checksum<span class="w"> </span>verify<span class="w"> </span>failed<span class="w"> </span>on<span class="w"> </span><span class="m">18810486784</span><span class="w"> </span>wanted<span class="w"> </span>0x04760ff9<span class="w"> </span>found<span class="w"> </span>0x12427e84
+<span class="w">  </span>checksum<span class="w"> </span>verify<span class="w"> </span>failed<span class="w"> </span>on<span class="w"> </span><span class="m">18810486784</span><span class="w"> </span>wanted<span class="w"> </span>0x04760ff9<span class="w"> </span>found<span class="w"> </span>0x12427e84
+<span class="w">  </span>Couldn<span class="err">&#39;</span>t<span class="w"> </span>setup<span class="w"> </span>log<span class="w"> </span>root<span class="w"> </span>tree
+<span class="w">  </span>Clearing<span class="w"> </span>log<span class="w"> </span>on<span class="w"> </span>/dev/mapper/luks-33f8bcb4-ef5b-479c-bbca-bac8690110b9,<span class="w"> </span>previous<span class="w"> </span>log_root<span class="w"> </span><span class="m">18810486784</span>,<span class="w"> </span>level<span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+
+<p>Encuentra que hay fallas en la suma de verificación, pero que ha logrado limpiar el log. En teoría con un log limpio, deberíamos de poder montar la unidad sin mayores problemas, por lo que lo intentamos...</p>
+<p>Para ello, creamos dentro de mnt la carpeta llamada bazzite, y a continuación procedemos con el montaje y su posterior lectura si es posible.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/mapper/luks-33f8bcb4-ef5b-479c-bbca-bac8690110b9<span class="w"> </span>/mnt/bazzite
+<span class="w">  </span>ls<span class="w"> </span>/mnt/bazzite/
+<span class="w">  </span>total<span class="w"> </span><span class="m">0</span>
+<span class="w">  </span>drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">24</span><span class="w"> </span>mar<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">13</span>:44<span class="w"> </span>home
+<span class="w">  </span>drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">74</span><span class="w"> </span>mar<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">10</span>:35<span class="w"> </span>root
+<span class="w">  </span>drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">228</span><span class="w"> </span>mar<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">15</span>:08<span class="w"> </span>var
+</code></pre></div>
+
+<p>En este punto, ya se puede ingresar, y lo recomendable sería comenzar con respaldar los datos. Pero como es una distro nueva en mi caso, no es necesario, pero ejecutaré una verificación de checksums para asegurarme de que todo está correcto.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>btrfs<span class="w"> </span>scrub<span class="w"> </span>start<span class="w"> </span>/mnt/bazzite
+<span class="w">  </span>scrub<span class="w"> </span>started<span class="w"> </span>on<span class="w"> </span>/mnt/bazzite,<span class="w"> </span>fsid<span class="w"> </span>9886fb7d-b8d4-4c4c-a74f-4d0302832e17<span class="w"> </span><span class="o">(</span><span class="nv">pid</span><span class="o">=</span><span class="m">14602</span><span class="o">)</span>
+<span class="w">  </span>Starting<span class="w"> </span>scrub<span class="w"> </span>on<span class="w"> </span>devid<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+
+<p>Lo dejo correr un rato y después de unos minutos vuelvo a comprobar...</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>btrfs<span class="w"> </span>scrub<span class="w"> </span>status<span class="w"> </span>/mnt/bazzite/
+<span class="w">  </span>UUID:<span class="w">             </span>9886fb7d-b8d4-4c4c-a74f-4d0302832e17
+<span class="w">  </span>Scrub<span class="w"> </span>started:<span class="w">    </span>Mon<span class="w"> </span>Mar<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">18</span>:36:36<span class="w"> </span><span class="m">2026</span>
+<span class="w">  </span>Status:<span class="w">           </span>running
+<span class="w">  </span>Duration:<span class="w">         </span><span class="m">0</span>:00:20
+<span class="w">  </span>Time<span class="w"> </span>left:<span class="w">        </span><span class="m">0</span>:00:52
+<span class="w">  </span>ETA:<span class="w">              </span>Mon<span class="w"> </span>Mar<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">18</span>:37:52<span class="w"> </span><span class="m">2026</span>
+<span class="w">  </span>Total<span class="w"> </span>to<span class="w"> </span>scrub:<span class="w">   </span><span class="m">26</span>.06GiB
+<span class="w">  </span>Bytes<span class="w"> </span>scrubbed:<span class="w">   </span><span class="m">7</span>.19GiB<span class="w">  </span><span class="o">(</span><span class="m">27</span>.60%<span class="o">)</span>
+<span class="w">  </span>Rate:<span class="w">             </span><span class="m">368</span>.30MiB/s
+<span class="w">  </span>Error<span class="w"> </span>summary:<span class="w">    </span>no<span class="w"> </span>errors<span class="w"> </span>found
+</code></pre></div>
+
+<p>Hasta ahora va bien, indica que no ha encontrado errores...</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>btrfs<span class="w"> </span>scrub<span class="w"> </span>status<span class="w"> </span>/mnt/bazzite/
+UUID:<span class="w">             </span>9886fb7d-b8d4-4c4c-a74f-4d0302832e17
+Scrub<span class="w"> </span>started:<span class="w">    </span>Mon<span class="w"> </span>Mar<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">18</span>:36:36<span class="w"> </span><span class="m">2026</span>
+Status:<span class="w">           </span>finished
+Duration:<span class="w">         </span><span class="m">0</span>:01:10
+Total<span class="w"> </span>to<span class="w"> </span>scrub:<span class="w">   </span><span class="m">26</span>.06GiB
+Rate:<span class="w">             </span><span class="m">381</span>.23MiB/s
+Error<span class="w"> </span>summary:<span class="w">    </span>no<span class="w"> </span>errors<span class="w"> </span>found
+</code></pre></div>
+
+<p>Ya terminó, y felizmente indica que no hay errores, por lo que procedo con la desconexión y volver a iniciar desde este disco externo.</p>
+<p>Todo funcionando correctamente.</p>
+<h2>En conclusión</h2>
+<p>En conclusión, siempre es bueno contar con un respaldo de los datos importantes... En el caso de la recuperación es bueno realizar una copia, ¿en mi caso? No era necesario, era una instalación limpia que se había corrompido por quizás que motivo o misterio... Pero ya está funcionando nuevamente...</p>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://api.fotosycaptura.cl/contador.png" title="Contador de visitas" alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

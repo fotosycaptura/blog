@@ -1,5 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/all.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-03-09T19:00:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Vacaciones y algo más...</title><link href="https://fotosycaptura.cl/posts/2026-03-08-vacaciones-y-algo-mas.html" rel="alternate"/><published>2026-03-09T19:00:00-03:00</published><updated>2026-03-09T19:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-03-09:/posts/2026-03-08-vacaciones-y-algo-mas.html</id><summary type="html">&lt;p&gt;Este año, las vacaciones sufrieron un ligero retraso... Desde que alguien se marchó del equipo... Digamos que... Ah, ¿Qué importa? Ya es hora de salir y disfrutar... Así que.. ¡Aquí van algunas fotos de la galería de estas vacaciones! ¡A disfrutar!&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/all.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-03-31T14:26:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Restaurando distribución de Linux</title><link href="https://fotosycaptura.cl/posts/2026-03-31-restaurando-distro.html" rel="alternate"/><published>2026-03-31T14:26:00-03:00</published><updated>2026-03-31T14:26:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-03-31:/posts/2026-03-31-restaurando-distro.html</id><summary type="html">&lt;p&gt;Hace poco instalé una distro nueva a un disco externo, con la finalidad de tener una especie de sistema operativo viajero. En esta ocasión, en vez de ocupar el confiable Arch EndavourOS de la vida - mi distro predilecta -, quise usar otra para laboratorio y testear un poco acerca de su uso, y de las maravillas que suelen hablar...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Distro rota" src="/media/2026/marzo/distro/distro-02.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
+&lt;p&gt;Hace poco instalé una distro nueva a un disco externo, con la finalidad de tener una especie de sistema operativo viajero. En esta ocasión, en vez de ocupar el confiable Arch EndavourOS de la vida - mi distro predilecta -, quise usar otra para laboratorio y testear un poco acerca de su uso, y de las maravillas que suelen hablar...&lt;/p&gt;
+&lt;h2&gt;La distro&lt;/h2&gt;
+&lt;p&gt;En esta ocasión les hablaré un poco de la poca experiencia y de la incidencia que tuve...&lt;/p&gt;
+&lt;p&gt;Todo iba bien, la instalación se llevó a cabo con éxito y no hubo mayores problemas, el escritorio &lt;em&gt;Gnome&lt;/em&gt;, inició correctamente y llegaba el momento de instalar las aplicaciones con las que suelo trabajar:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Emacs&lt;/li&gt;
+&lt;li&gt;Texlive (Latex)&lt;/li&gt;
+&lt;li&gt;mc&lt;/li&gt;
+&lt;li&gt;Jupyter Lab&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Y en otras ocasiones serían más, pero muchas de las aplicaciones que requiero ya vienen preinstaladas... Así que comienzo...&lt;/p&gt;
+&lt;h2&gt;Instalando&lt;/h2&gt;
+&lt;p&gt;Parto por instalar las aplicaciones, pero leyendo un poco, en su página oficial, indican que la instalación de las aplicaciones deberían de realizarse mediante ¿Contenedores?, es decir, la opción de /Flatpak/. Me parece bien en un comienzo, con excepción de que no encuentro Latex. Así que, sigo leyendo y habla de usar /distrobox/. Así que comienzo con&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;  &lt;/span&gt;distrobox&lt;span class="w"&gt; &lt;/span&gt;create&lt;span class="w"&gt; &lt;/span&gt;--name&lt;span class="w"&gt; &lt;/span&gt;latex&lt;span class="w"&gt; &lt;/span&gt;--image&lt;span class="w"&gt; &lt;/span&gt;fedora:latest
+&lt;span class="w"&gt;  &lt;/span&gt;distrobox&lt;span class="w"&gt; &lt;/span&gt;enter&lt;span class="w"&gt; &lt;/span&gt;latex
+&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;texlive-scheme-medium&lt;span class="w"&gt; &lt;/span&gt;latexmk&lt;span class="w"&gt; &lt;/span&gt;make&lt;span class="w"&gt; &lt;/span&gt;emacs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;De momento pareciera que no necesitaría nada más, pero luego recuerdo, me falta mc.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;mc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La instalación se lleva a cabo correctamente, y comienzo a probar. Inicio emacs y abro un documento org que tengo, y al intentar exportarlo a pdf, me percato que la instalación de Texlive no está completa con lo que requiero, así que buscando un poco más en la documentación de la Internet, ejecuto otra instrucción:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;texlive-scheme-full
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lógicamente me indica que requiere mucho más espacio y le doy que proceda, por lo que comienza la instalación de los paquetes.&lt;/p&gt;
+&lt;p&gt;Todo va bien, mientras ese proceso está siendo ejecutado en una sambox, digamos una especie de caja de arena, que se supone es aislada del resto del sistema, así que mi mente está sin preocupaciones... Hasta que noto en la aplicación de monitoreo que el procesador comienza a estar en su máxima capacidad, así como también la RAM ocupada.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-01.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
+&lt;p&gt;Por norma general, espero unos minutos, pero creo que ya habían pasado más de 5 minutos cuando decidí apagar el equipo y al cabo de un rato volverlo a encender.&lt;/p&gt;
+&lt;p&gt;Cual sería mi sorpresa, que luego de iniciar el botteo, y de preguntar la contraseña, sí, disco cifrado, se me indique que puedo ingresar a la consola de emergencia porque hay daños...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-02.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
+&lt;h2&gt;Analizando el disco&lt;/h2&gt;
+&lt;p&gt;Al revisar el mensaje, y al cabo de no lograr ingresar ya sea por la imagen os-tree 0 y la imagen os-tree 1 de esta distro, que se supone, no se rompe, desconecto el disco y lo conecto en mi equipo principal con Arch EndeavourOS.
+Lo examino con la herramienta &lt;code&gt;Discos&lt;/code&gt; que incluye Gnome me percato que el disco es posible ingresar luego de colocar la contraseña, veo la partición que supuestamente debería de contener los datos, pero por alguna razón, no se puede montar.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-03.jpg" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;Visualizando en la aplicación Discos&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Al utilizar las herramientas de montaje para verificar, indica que hay un error con el sistema de archivos.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-04.jpg" style="width: auto; max-width: 100% !important;"&gt;&lt;br&gt;
+&lt;em&gt;Error comprobar el sistema de archivos y tratar de montar la unidad&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Así que, buscando alguna ayuda de referencia, procedo con los siguientes pasos descritos a continuación.&lt;/p&gt;
+&lt;h2&gt;Vamos con la reparación&lt;/h2&gt;
+&lt;p&gt;Después de leer un poco - harto -, procedo con las siguientes instrucciones&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;btrfs&lt;span class="w"&gt; &lt;/span&gt;rescue&lt;span class="w"&gt; &lt;/span&gt;zero-log&lt;span class="w"&gt; &lt;/span&gt;/dev/mapper/luks-33f8bcb4-ef5b-479c-bbca-bac8690110b9
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;El sistema luego de trabajar, arroja el siguiente mensaje:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;  &lt;/span&gt;checksum&lt;span class="w"&gt; &lt;/span&gt;verify&lt;span class="w"&gt; &lt;/span&gt;failed&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;18810486784&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;wanted&lt;span class="w"&gt; &lt;/span&gt;0x04760ff9&lt;span class="w"&gt; &lt;/span&gt;found&lt;span class="w"&gt; &lt;/span&gt;0x12427e84
+&lt;span class="w"&gt;  &lt;/span&gt;checksum&lt;span class="w"&gt; &lt;/span&gt;verify&lt;span class="w"&gt; &lt;/span&gt;failed&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;18810486784&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;wanted&lt;span class="w"&gt; &lt;/span&gt;0x04760ff9&lt;span class="w"&gt; &lt;/span&gt;found&lt;span class="w"&gt; &lt;/span&gt;0x12427e84
+&lt;span class="w"&gt;  &lt;/span&gt;Couldn&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t&lt;span class="w"&gt; &lt;/span&gt;setup&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;root&lt;span class="w"&gt; &lt;/span&gt;tree
+&lt;span class="w"&gt;  &lt;/span&gt;Clearing&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;/dev/mapper/luks-33f8bcb4-ef5b-479c-bbca-bac8690110b9,&lt;span class="w"&gt; &lt;/span&gt;previous&lt;span class="w"&gt; &lt;/span&gt;log_root&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;18810486784&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;level&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Encuentra que hay fallas en la suma de verificación, pero que ha logrado limpiar el log. En teoría con un log limpio, deberíamos de poder montar la unidad sin mayores problemas, por lo que lo intentamos...&lt;/p&gt;
+&lt;p&gt;Para ello, creamos dentro de mnt la carpeta llamada bazzite, y a continuación procedemos con el montaje y su posterior lectura si es posible.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;mount&lt;span class="w"&gt; &lt;/span&gt;/dev/mapper/luks-33f8bcb4-ef5b-479c-bbca-bac8690110b9&lt;span class="w"&gt; &lt;/span&gt;/mnt/bazzite
+&lt;span class="w"&gt;  &lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;/mnt/bazzite/
+&lt;span class="w"&gt;  &lt;/span&gt;total&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;drwxr-xr-x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;root&lt;span class="w"&gt; &lt;/span&gt;root&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;24&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;13&lt;/span&gt;:44&lt;span class="w"&gt; &lt;/span&gt;home
+&lt;span class="w"&gt;  &lt;/span&gt;drwxr-xr-x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;root&lt;span class="w"&gt; &lt;/span&gt;root&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;74&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:35&lt;span class="w"&gt; &lt;/span&gt;root
+&lt;span class="w"&gt;  &lt;/span&gt;drwxr-xr-x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;root&lt;span class="w"&gt; &lt;/span&gt;root&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;228&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;:08&lt;span class="w"&gt; &lt;/span&gt;var
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En este punto, ya se puede ingresar, y lo recomendable sería comenzar con respaldar los datos. Pero como es una distro nueva en mi caso, no es necesario, pero ejecutaré una verificación de checksums para asegurarme de que todo está correcto.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;btrfs&lt;span class="w"&gt; &lt;/span&gt;scrub&lt;span class="w"&gt; &lt;/span&gt;start&lt;span class="w"&gt; &lt;/span&gt;/mnt/bazzite
+&lt;span class="w"&gt;  &lt;/span&gt;scrub&lt;span class="w"&gt; &lt;/span&gt;started&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;/mnt/bazzite,&lt;span class="w"&gt; &lt;/span&gt;fsid&lt;span class="w"&gt; &lt;/span&gt;9886fb7d-b8d4-4c4c-a74f-4d0302832e17&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;14602&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;Starting&lt;span class="w"&gt; &lt;/span&gt;scrub&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;devid&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lo dejo correr un rato y después de unos minutos vuelvo a comprobar...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;btrfs&lt;span class="w"&gt; &lt;/span&gt;scrub&lt;span class="w"&gt; &lt;/span&gt;status&lt;span class="w"&gt; &lt;/span&gt;/mnt/bazzite/
+&lt;span class="w"&gt;  &lt;/span&gt;UUID:&lt;span class="w"&gt;             &lt;/span&gt;9886fb7d-b8d4-4c4c-a74f-4d0302832e17
+&lt;span class="w"&gt;  &lt;/span&gt;Scrub&lt;span class="w"&gt; &lt;/span&gt;started:&lt;span class="w"&gt;    &lt;/span&gt;Mon&lt;span class="w"&gt; &lt;/span&gt;Mar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;18&lt;/span&gt;:36:36&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2026&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;Status:&lt;span class="w"&gt;           &lt;/span&gt;running
+&lt;span class="w"&gt;  &lt;/span&gt;Duration:&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;:00:20
+&lt;span class="w"&gt;  &lt;/span&gt;Time&lt;span class="w"&gt; &lt;/span&gt;left:&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;:00:52
+&lt;span class="w"&gt;  &lt;/span&gt;ETA:&lt;span class="w"&gt;              &lt;/span&gt;Mon&lt;span class="w"&gt; &lt;/span&gt;Mar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;18&lt;/span&gt;:37:52&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2026&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;Total&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;scrub:&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;26&lt;/span&gt;.06GiB
+&lt;span class="w"&gt;  &lt;/span&gt;Bytes&lt;span class="w"&gt; &lt;/span&gt;scrubbed:&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;.19GiB&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;27&lt;/span&gt;.60%&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;Rate:&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;368&lt;/span&gt;.30MiB/s
+&lt;span class="w"&gt;  &lt;/span&gt;Error&lt;span class="w"&gt; &lt;/span&gt;summary:&lt;span class="w"&gt;    &lt;/span&gt;no&lt;span class="w"&gt; &lt;/span&gt;errors&lt;span class="w"&gt; &lt;/span&gt;found
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Hasta ahora va bien, indica que no ha encontrado errores...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;btrfs&lt;span class="w"&gt; &lt;/span&gt;scrub&lt;span class="w"&gt; &lt;/span&gt;status&lt;span class="w"&gt; &lt;/span&gt;/mnt/bazzite/
+UUID:&lt;span class="w"&gt;             &lt;/span&gt;9886fb7d-b8d4-4c4c-a74f-4d0302832e17
+Scrub&lt;span class="w"&gt; &lt;/span&gt;started:&lt;span class="w"&gt;    &lt;/span&gt;Mon&lt;span class="w"&gt; &lt;/span&gt;Mar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;18&lt;/span&gt;:36:36&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2026&lt;/span&gt;
+Status:&lt;span class="w"&gt;           &lt;/span&gt;finished
+Duration:&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;:01:10
+Total&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;scrub:&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;26&lt;/span&gt;.06GiB
+Rate:&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;381&lt;/span&gt;.23MiB/s
+Error&lt;span class="w"&gt; &lt;/span&gt;summary:&lt;span class="w"&gt;    &lt;/span&gt;no&lt;span class="w"&gt; &lt;/span&gt;errors&lt;span class="w"&gt; &lt;/span&gt;found
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ya terminó, y felizmente indica que no hay errores, por lo que procedo con la desconexión y volver a iniciar desde este disco externo.&lt;/p&gt;
+&lt;p&gt;Todo funcionando correctamente.&lt;/p&gt;
+&lt;h2&gt;En conclusión&lt;/h2&gt;
+&lt;p&gt;En conclusión, siempre es bueno contar con un respaldo de los datos importantes... En el caso de la recuperación es bueno realizar una copia, ¿en mi caso? No era necesario, era una instalación limpia que se había corrompido por quizás que motivo o misterio... Pero ya está funcionando nuevamente...&lt;/p&gt;</content><category term="Laboratorio"/><category term="laboratorio"/></entry><entry><title>Vacaciones y algo más...</title><link href="https://fotosycaptura.cl/posts/2026-03-08-vacaciones-y-algo-mas.html" rel="alternate"/><published>2026-03-09T19:00:00-03:00</published><updated>2026-03-09T19:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-03-09:/posts/2026-03-08-vacaciones-y-algo-mas.html</id><summary type="html">&lt;p&gt;Este año, las vacaciones sufrieron un ligero retraso... Desde que alguien se marchó del equipo... Digamos que... Ah, ¿Qué importa? Ya es hora de salir y disfrutar... Así que.. ¡Aquí van algunas fotos de la galería de estas vacaciones! ¡A disfrutar!&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Contexto&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="Vacaciones" src="/media/2026/marzo/vacaciones03.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
 &lt;p&gt;Este año, las vacaciones sufrieron un ligero retraso... Desde que alguien se marchó del equipo... Digamos que... Ah, ¿Qué importa? Ya es hora de salir y disfrutar... Así que.. ¡Aquí van algunas fotos de la galería de estas vacaciones! ¡A disfrutar!&lt;/p&gt;
 &lt;h2&gt;Vacaciones... ¿En marzo?&lt;/h2&gt;
@@ -2396,6 +2496,4 @@ sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&g
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_21/IMG_20241221_202057.jpg"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_21/IMG_20241221_212209.jpg"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_21/IMG_20241221_212222.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_21/IMG_20241221_212253.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2024_12_19</title><link href="https://fotosycaptura.cl/posts/galeria-2024_12_19.html" rel="alternate"/><published>2024-12-19T00:00:00-03:00</published><updated>2024-12-19T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-12-19:/posts/galeria-2024_12_19.html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_19/IMG_20241219_141712.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_19/IMG_20241219_184200.jpg"&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_19/IMG_20241219_192310.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
+&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_21/IMG_20241221_212253.jpg"&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
