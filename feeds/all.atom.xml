@@ -29,10 +29,10 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Lógicamente me indica que requiere mucho más espacio y le doy que proceda, por lo que comienza la instalación de los paquetes.&lt;/p&gt;
-&lt;p&gt;Todo va bien, mientras ese proceso está siendo ejecutado en una sambox, digamos una especie de caja de arena, que se supone es aislada del resto del sistema, así que mi mente está sin preocupaciones... Hasta que noto en la aplicación de monitoreo que el procesador comienza a estar en su máxima capacidad, así como también la RAM ocupada.&lt;/p&gt;
+&lt;p&gt;Todo va bien, mientras ese proceso está siendo ejecutado en una sanbox, digamos una especie de caja de arena, que se supone es aislada del resto del sistema, así que mi mente está sin preocupaciones... Hasta que noto en la aplicación de monitoreo que el procesador comienza a estar en su máxima capacidad, así como también la RAM ocupada.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-01.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
 &lt;p&gt;Por norma general, espero unos minutos, pero creo que ya habían pasado más de 5 minutos cuando decidí apagar el equipo y al cabo de un rato volverlo a encender.&lt;/p&gt;
-&lt;p&gt;Cual sería mi sorpresa, que luego de iniciar el botteo, y de preguntar la contraseña, sí, disco cifrado, se me indique que puedo ingresar a la consola de emergencia porque hay daños...&lt;/p&gt;
+&lt;p&gt;Cual sería mi sorpresa, que luego de iniciar el booteo, y de preguntar la contraseña, sí, disco cifrado, se me indique que puedo ingresar a la consola de emergencia porque hay daños...&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/marzo/distro/distro-02.jpg" style="width: auto; max-width: 100% !important;"&gt;  &lt;/p&gt;
 &lt;h2&gt;Analizando el disco&lt;/h2&gt;
 &lt;p&gt;Al revisar el mensaje, y al cabo de no lograr ingresar ya sea por la imagen os-tree 0 y la imagen os-tree 1 de esta distro, que se supone, no se rompe, desconecto el disco y lo conecto en mi equipo principal con Arch EndeavourOS.
