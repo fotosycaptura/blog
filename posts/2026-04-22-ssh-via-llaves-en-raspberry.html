@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>SSH vía llaves en una Raspberry pi | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2026-04-22-ssh-via-llaves-en-raspberry.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="En ocasiones, estás buscando una manera en la que quieres conectarte a una raspberry, o digamos un servidor mediante ssh pero sin usar usuario y contraseña, y dices un certificado... En realidad, es una conexión mediante una combinación entre llaves públicas y privadas, mal llamado a veces certificado... Pasa a ver cómo es que se configura todo esto en tu servidor...">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/historial-cambios.html">Logs</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Yo</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-bar-chart" href="https://fotosycaptura.cl/statistic.html" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>SSH vía llaves en una Raspberry pi
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2026-04-22T15:04:00-04:00">
+        <i class="fa fa-clock-o"></i>
+        2026, mié 22 abril
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/linux.html">#linux</a>,         <a href="https://fotosycaptura.cl/tag/raspberrypi.html">#raspberrypi</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><img alt="ssh" src="/media/2026/abril/ssh.jpg" style="width: auto; max-width: 100% !important;" />  </p>
+<p>En ocasiones, estás buscando una manera en la que quieres conectarte a una raspberry, o digamos un servidor mediante ssh pero sin usar usuario y contraseña, y dices un certificado... En realidad, es una conexión mediante una combinación entre llaves públicas y privadas, mal llamado a veces certificado... Pasa a ver cómo es que se configura todo esto en tu servidor...</p>
+<p>Vamos por parte.</p>
+<div class="toc">
+<ul>
+<li><a href="#es-recomendable">¿Es recomendable?</a></li>
+<li><a href="#como-funciona">¿Cómo funciona?</a></li>
+<li><a href="#me-gusta-como-procedo">Me gusta, ¿Cómo procedo?</a></li>
+<li><a href="#copiar-la-clave-publica-a-la-raspberry-pi">Copiar la clave pública a la Raspberry Pi</a></li>
+<li><a href="#me-puedo-conectar-sin-clave-ahora">¿Me puedo conectar sin clave ahora?</a></li>
+<li><a href="#pero-la-raspberry-sigue-preguntando-usuario-y-clave-y-si">Pero la Raspberry sigue preguntando usuario y clave y si...</a></li>
+<li><a href="#ya-muy-bonito-pero-me-ayuda-en-algo">Ya, muy bonito, ¿Pero, me ayuda en algo?</a></li>
+<li><a href="#referencias">Referencias</a></li>
+</ul>
+</div>
+<h2 id="es-recomendable">¿Es recomendable?</h2>
+<p>Por supuesto que sí, es mucho más recomendable que usuario + contraseña si se configura correctamente.</p>
+<h2 id="como-funciona">¿Cómo funciona?</h2>
+<p>Una conexión mediante <abbr title="Secure Shell">SSH</abbr> con claves usa criptografía asimétrica:</p>
+<ul>
+<li>Clave privada → se queda en tu PC (NUNCA se comparte).</li>
+<li>Clave pública → se copia a la Raspberry Pi, o a un servidor.</li>
+</ul>
+<p>Cuando te conectas:</p>
+<ul>
+<li>Tu cliente <abbr title="Secure Shell">SSH</abbr> demuestra que tiene la clave privada.</li>
+<li>El servidor valida con la pública.</li>
+<li>No necesitas contraseña.</li>
+</ul>
+<p>Es como una cerradura (Raspberry) que acepta solo llaves específicas (tu clave privada), sin pedir PIN ni nada más...</p>
+<h2 id="me-gusta-como-procedo">Me gusta, ¿Cómo procedo?</h2>
+<p>En tu equipo - que obviamente tendrás Linux -, harás lo siguiente desde una terminal:</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;tu_email@ejemplo.com&quot;</span>
+</code></pre></div>
+
+<p>Luego sigue las instrucciones, que en general sería un siguiente, siguiente XD, osea, anda dando Enter a todo, eventualmente te pedirá una contraseña, no olvides lo que coloques porque lo usarás...</p>
+<p>Una vez completado estos pasos, generarás:</p>
+<div class="highlight"><pre><span></span><code>~/.ssh/id_ed25519<span class="w"> </span>→<span class="w"> </span>privada
+~/.ssh/id_ed25519.pub<span class="w"> </span>→<span class="w"> </span>pública
+</code></pre></div>
+
+<h2 id="copiar-la-clave-publica-a-la-raspberry-pi">Copiar la clave pública a la Raspberry Pi</h2>
+<p>La manera más fácil para esto es usar el siguiente comando desde la terminal:</p>
+<div class="highlight"><pre><span></span><code>ssh-copy-id<span class="w"> </span>usuario@IP_RASPBERRY
+</code></pre></div>
+
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>ssh-copy-id<span class="w"> </span>pi@192.168.1.50
+</code></pre></div>
+
+<p>Luego de ello, te pedirá la contraseña <em>una última vez</em>, al menos en teoría, pero es mejor que no olvides la contraseña... Luego de ello, lo que hará sin que tú hagas nada será agregarlo a <code>~/.ssh/authorized_keys</code> en tu Raspberry.</p>
+<h2 id="me-puedo-conectar-sin-clave-ahora">¿Me puedo conectar sin clave ahora?</h2>
+<p>Sí, simplemente podrías ejecutar por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>pi@192.168.1.50
+</code></pre></div>
+
+<p>Si los pasos fueron realizados correctamente, ya no te pedirá contraseña. </p>
+<h2 id="pero-la-raspberry-sigue-preguntando-usuario-y-clave-y-si">Pero la Raspberry sigue preguntando usuario y clave y si...</h2>
+<p>Sí, tanto como si agregas una <code>Passphrase</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> con la llave, o si escribes usuario y contraseña y luego ingresas, sí... Pero eso se puede desactivar... Para ello tendrías que editar:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>emacs<span class="w"> </span>/etc/ssh/sshd_config
+</code></pre></div>
+
+<p>Bueno, puedes usar emacs, vim, nano, lo que sea de tu gusto...</p>
+<p>Busca y modifica lo siguiente por lo que te dejo a continuación:</p>
+<div class="highlight"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>no
+PermitRootLogin<span class="w"> </span>no
+PubkeyAuthentication<span class="w"> </span>yes
+PermitRootLogin<span class="w"> </span>no
+</code></pre></div>
+
+<p>Por último, reinicia el servicio mediante:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
+</code></pre></div>
+
+<h2 id="ya-muy-bonito-pero-me-ayuda-en-algo">Ya, muy bonito, ¿Pero, me ayuda en algo?</h2>
+<p>Sí, principalmente la comodidad de no escribir contraseñas XD a cada rato, pero también aporta seguridad ya que evitarás ataques de fuerza bruta, es mucho más seguro que una contraseña tradicional, y si eres más que un usuario, puedes automatizar labores de respaldos por ejemplo...</p>
+<p>El único riesgo importante es que, si alguien te roba tu llave clave privada, tendrá acceso total al equipo. Así que deberías de resguardarla bien, por ejemplo cifrando el disco, pero eso sería para otra ocasión... También, ten en cuenta que a diferencia de [<abbr title="GnuPG, GNU Privacy Guard">GPG</abbr>], estas llaves no expiran, así que estarán vigentes <code>siempre</code>.</p>
+<p>Si colocaste una <code>passphrase</code>, mitigarás esto, pero te la estará pidiendo en ciertos momentos, pero para no tener que escribirla cada vez, en la terminal mientras la mantengas iniciada puedes usar:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+ssh-add<span class="w"> </span>~/.ssh/id_ed25519
+</code></pre></div>
+
+<p>Eso es todo... </p>
+<p>Si hacemos una tabla comparativa, podría resumirte lo siguiente en materia de Ciberseguridad:</p>
+<div class="highlight"><pre><span></span><code>| Método                   | Seguridad | Automatización | Riesgo        |
+|--------------------------|-----------|----------------|---------------|
+| Usuario + contraseña     | Baja      | Mala           | Fuerza bruta  |
+| SSH con claves           | Alta      | Excelente      | Robo de clave |
+| SSH + clave + passphrase | Muy alta  | Buena          | Mínimo        |
+</code></pre></div>
+
+<p>Además, siempre puedes realizar cambios de puertos para evitar usar lo estándar, si eres más paranóico, puedes limitar el acceso mencionando al o a los usuarios mediante </p>
+<div class="highlight"><pre><span></span><code>AllowUsers<span class="w"> </span>pi
+</code></pre></div>
+
+<p>Aunque, en ese caso, también recomendaría el uso de <code>fail2ban</code>. </p>
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li>Secure Shell - Wikipedia, la enciclopedia libre, <a href="https://es.wikipedia.org/wiki/Secure_Shell">https://es.wikipedia.org/wiki/Secure_Shell</a></li>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>También se le dice frase de contraseña&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://api.fotosycaptura.cl/contador.png" title="Contador de visitas" alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

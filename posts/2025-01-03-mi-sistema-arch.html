@@ -89,10 +89,10 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Mi Experiencia con Arch Linux: Un Viaje Desde Windows y Otras Distros</h2>
+    <h2 id="mi-experiencia-con-arch-linux-un-viaje-desde-windows-y-otras-distros">Mi Experiencia con Arch Linux: Un Viaje Desde Windows y Otras Distros</h2>
 <p>Todo comenzó con un simple intento de actualizar los drivers de mi tarjeta de video en Windows 11. Lo que debería haber sido un proceso sencillo, de hecho lo fue.. Al menos en un comienzo... Terminó desencadenando una serie de pantallazos azules que transformaron mi equipo en una fuente de frustración constante. Dejó de ser el wintendo que era... Snife, snife... Bueno, fue en ese momento que tomé una decisión trascendental: sería la última vez que usaría un sistema operativo Windows en este equipo.</p>
 <p>Así comenzó mi retorno al mundo de Linux. No pisaba Linux desde... Uff, ya varios años... Exporádicamente accedía a un servidor por tareas de respaldos o de alguna actualización...Pero no era algo ajeno... A lo largo de los años ya había explorado diversas distribuciones. Mi historial incluía distros como Debian, Mandrake, después su evolución hacia Mandriva, SUSE, Red Hat, Centos, Gentoo y Linux Mint, por solo mencionar las que me acuerdo en el momento en que escribo estas líneas. Cada una de estas distros dejó su huella, pero ninguna como Debian, hasta ahora... Hasta que llegué a Arch Linux.</p>
-<p><img alt="Mi viaje por las distintas distros" src="/media/2025/enero/evolucion.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Mi viaje por las distintas distros" src="/media/2025/enero/evolucion.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Mi viaje por las distintas distros</em></p>
 <p>Desde que comencé a estudiar ciberseguridad, pasé por Kali como distro de pruebas, también probé Parrot, pero finalmente me decanté por Arch Linux. La experiencia ha sido buena, osea, siempre he pensado que Linux es uno solo y que las distros agregan temas de paquetería, y alguna que otra personalización, pero en términos tanto a nivel profesional como personal, no eran relevantes. Hasta ahora... Arch me ha desafiado a aprender y entender profundamente en mayor medida el funcionamiento del sistema, algo muy importante en mi área de estudio. La filosofía KISS ("Keep It Simple, Stupid") de Arch XDDDD, junto con su enfoque en la personalización y el control absoluto, resuena con mi necesidad de tener un entorno optimizado y a la medida de mis necesidades.</p>
 <p>Una de las primeras cosas que noté fue la velocidad y fluidez del sistema. Arch Linux no solo es liviano, sino que también me permite instalar únicamente lo que realmente necesito. Siempre pensaba por qué un sistema operativo es tan pesado? Es decir, partí mi vida informática en MS-DOS, pasando por Win 3.11, que eran bastante livianos, pero cada vez, a medida que evolucionaban en el tiempo, se hacían más y más pesados... Consumiendo tantos recursos... Esto contrasta marcadamente con la experiencia de otras distribuciones que, aunque son más amigables para principiantes, a menudo traen software innecesario preinstalado. Podría desinstalarlo, sí, y en ocasiones lo hice, pero en otras... En fin...</p>
@@ -101,20 +101,20 @@
 <p>Mirando atrás en el tiempo, puedo decir que cada distribución que utilicé me preparó para este momento. Estaba pensando, esto último suena a que estoy más viejo? O poeta? Pensativo? Filosófico? XDDDD En fin, Debian me enseñó estabilidad; Gentoo, la paciencia y la personalización extrema; y Linux Mint, la importancia de una interfaz amigable. Pero Arch Linux combina todos estos elementos en un paquete que, para mí, es... Solo puedo decir que es simplemente perfecto, al menos para mi...</p>
 <p>Si estás buscando una distribución para tu equipo personal, que sea desafiante en medida de que te enseñe y te dé control total sobre tu sistema, no puedo recomendar Arch Linux lo suficiente. Es una experiencia que va más allá del simple uso de un sistema operativo; es un viaje de aprendizaje. Y pensar que todo comenzó con esos pantallazos azules, un recuerdo ahora distante... </p>
 <p>Por supuesto que si ahora quieres un Linux para ser servidor, usa Debian. Punto!</p>
-<h1>Notas personales</h1>
+<h1 id="notas-personales">Notas personales</h1>
 <p>Bueno, estas son algunas notas y cosas que he tenido que instalar, y que, dejo acá como auto referencia: de mi, para mi. Puede que te sirvan, como puede que no, si te sirve, genial, si no, pues... No se que haces aquí... XDDD</p>
-<p><img alt="Mis herramientas" src="/media/2025/enero/tools.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Mis herramientas" src="/media/2025/enero/tools.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Mis herramientas, algunas... Ya estais advertidos...</em></p>
-<h2>Configurar zona horaria linux</h2>
+<h2 id="configurar-zona-horaria-linux">Configurar zona horaria linux</h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>America/Santiago
 </code></pre></div>
 
-<h2>Black Arch</h2>
+<h2 id="black-arch">Black Arch</h2>
 <p>Se instaló pero hay unos detalles que arroja al buscar un paquete en especial:</p>
 <blockquote>
-<p>error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete bluebox-ng<br>
-error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete metasploit<br>
-error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete perl-http-parser-xs<br>
+<p>error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete bluebox-ng<br />
+error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete metasploit<br />
+error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete perl-http-parser-xs<br />
 error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete python2-coloredlogs</p>
 </blockquote>
 <p>Por lo que, para solucionar temporalmente mientras:</p>
@@ -128,15 +128,15 @@ sudo<span class="w"> </span>pacman<span class="w"> </span>-Syyu
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="c1"># pacman -Sgg | grep blackarch | cut -d&#39; &#39; -f2 | sort -u</span>
 </code></pre></div>
 
-<h2>Diccionarios</h2>
+<h2 id="diccionarios">Diccionarios</h2>
 <p>Para la instalación de los wordlist he ido a la URL: https://github.com/BlackArch/wordlistctl</p>
 <p>Y he seguido las instrucciones de ahí para instalar el script que descarga los wordlists.</p>
-<h2>seclists</h2>
+<h2 id="seclists">seclists</h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>seclists
 </code></pre></div>
 
 <p>Más info en: https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content</p>
-<h2>Burpsuite</h2>
+<h2 id="burpsuite">Burpsuite</h2>
 <p>Esta aplicación se intentó instalar vía pacman y yay, pero sin éxito.</p>
 <p>La instalación correcta fue efectuada mediante la descarga de:
 https://portswigger.net/burp/releases</p>
@@ -145,16 +145,16 @@ https://portswigger.net/burp/releases</p>
 sudo<span class="w"> </span>./urpsuite_community_linux_v2024_6_3.sh
 </code></pre></div>
 
-<h2>dirb</h2>
+<h2 id="dirb">dirb</h2>
 <p>Se instala dirb siguiendo la forma vía pacman</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>dirb
 </code></pre></div>
 
-<h2>Drivers Nvidia</h2>
+<h2 id="drivers-nvidia">Drivers Nvidia</h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-Syu<span class="w"> </span>nvidia<span class="w"> </span>nvidia-utils<span class="w"> </span>nvidia-settings
 </code></pre></div>
 
-<h2>LaTeX Studio</h2>
+<h2 id="latex-studio">LaTeX Studio</h2>
 <p>Al compilar daba error con biber, se solucionó instalando </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># pacman -S libxcrypt-compat</span>
 </code></pre></div>
@@ -164,14 +164,14 @@ sudo<span class="w"> </span>./urpsuite_community_linux_v2024_6_3.sh
 </code></pre></div>
 
 <p>Después configuro lo de lenguaje como:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Server</span><span class="o">-</span><span class="n">URL</span><span class="p">:</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8081</span><span class="o">/</span>
-<span class="n">Java</span><span class="p">:</span><span class="w"> </span><span class="n">java</span>
-<span class="n">Start</span><span class="w"> </span><span class="n">LanguageTool</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">running</span><span class="p">:</span><span class="w"> </span><span class="n">checked</span>
-<span class="n">LT</span><span class="o">-</span><span class="n">Path</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">languagetool</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">languagetool</span><span class="o">/*</span>
-<span class="n">LT</span><span class="w"> </span><span class="n">Arguments</span><span class="p">:</span><span class="w"> </span><span class="n">org</span><span class="o">.</span><span class="n">languagetool</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">HTTPServer</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">8081</span>
+<div class="highlight"><pre><span></span><code>Server-URL: http://localhost:8081/
+Java: java
+Start LanguageTool if not running: checked
+LT-Path: /usr/share/languagetool:/usr/share/java/languagetool/*
+LT Arguments: org.languagetool.server.HTTPServer -p 8081
 </code></pre></div>
 
-<h2>Limpieza caché pacman</h2>
+<h2 id="limpieza-cache-pacman">Limpieza caché pacman</h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># pacman -Sc</span>
 <span class="c1"># yay -Sc</span>
 </code></pre></div>
@@ -181,7 +181,7 @@ sudo<span class="w"> </span>./urpsuite_community_linux_v2024_6_3.sh
 </code></pre></div>
 
 <p>Pero no la he instalado, pensé que no es necesario pero lo dejo anotado acá por si alguna vez lo quiera usar...</p>
-<h2>Problema de VM y KVM con VirtualBox</h2>
+<h2 id="problema-de-vm-y-kvm-con-virtualbox">Problema de VM y KVM con VirtualBox</h2>
 <p>Se resuelve usando:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>kvm<span class="w">  </span>
 kvm_intel<span class="w">             </span><span class="m">425984</span><span class="w">  </span><span class="m">0</span><span class="w">  </span>
@@ -190,19 +190,19 @@ sudo<span class="w"> </span>rmmod<span class="w"> </span>kvm_intel<span class="w
 sudo<span class="w"> </span>rmmod<span class="w"> </span>kvm<span class="w">  </span>
 </code></pre></div>
 
-<h2>Nessus</h2>
+<h2 id="nessus">Nessus</h2>
 <p>Se instala con yay:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yay<span class="w"> </span>-S<span class="w"> </span>nessus
 </code></pre></div>
 
 <p>Posteriormente se configura utilizando el active key con el que te habrás registrado.</p>
-<h1>R y R-Studio</h1>
+<h1 id="r-y-r-studio">R y R-Studio</h1>
 <p>Se instala R y RStudio-desktop</p>
 <p>Se instala una librería que no estaba cuando uno usa librerías de ML</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>gcc-fortran
 </code></pre></div>
 
-<h2>Searchsploit</h2>
+<h2 id="searchsploit">Searchsploit</h2>
 <p>Personalmente, no me gusta snapd, a la fecha en que redacté estas líneas, lo desinstalé, en su lugar, estoy usando flatpak.</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://aur.archlinux.org/snapd.git
 <span class="nb">cd</span><span class="w"> </span>snapd
@@ -224,7 +224,7 @@ sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </s
 <div class="highlight"><pre><span></span><code>searchsploit<span class="w"> </span>apache<span class="w"> </span><span class="m">2</span>.4.41
 </code></pre></div>
 
-<h2>Wordlistctl</h2>
+<h2 id="wordlistctl">Wordlistctl</h2>
 <p><code>pacman -S wordlistctl</code></p>
   </div>
 </article>

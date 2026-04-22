@@ -89,13 +89,13 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Un poco de recuerdos...</h2>
+    <h2 id="un-poco-de-recuerdos">Un poco de recuerdos...</h2>
 <p>Si bien ocupé tiempo atrás una raspberry para ser <a href="2021-08-17-jugando-con-raspberry-pi-b-plus.html">un server casero Git</a>, puede dar mucho más, pero ahí estaba, descansando y acumulando algo de polvo... Bueno, tiempo atrás borré todo e instalé un <a href="https://www.kali.org/">Kali</a>, pero anda tan tan lento, otro día creo que les comentaré ese caso. De momento, solo les comentaré lo lento, puesto que, bueno, la raspi que tengo es la 1 b+, es un modelo bastante más arcaico para los tiempos actuales, pero no por ello inutilizable para proyectos actuales...</p>
-<h2>Y si...</h2>
+<h2 id="y-si">Y si...</h2>
 <p>... Hacemos que se convierta en un servidor de este blog, pero que además sea capaz de desplegar las visitas que tiene más gráficamente?</p>
 <p>Piensalo por un momento. Actualmente mi sitio web solo cuenta a la forma antigua, bueno, en cierta forma digamos que tengo cierto espíritu de retro o viejuno XDDD, pero es cierto, antiguamente las primeras páginas webs al menos en mi tiempo, tenían un contador de visitas, como el que está al pie de esta página Web.</p>
 <p>Pero, estando alojado en un servidor del que tengo control, tengo acceso a los logs, y con algo de programación pues.. Magia!</p>
-<h2>Partimos</h2>
+<h2 id="partimos">Partimos</h2>
 <p>Así que comenzamos con bajar una versión de raspbian del sitio oficial utilizando la aplicación que tienen para ello. Quito la microSD y la inserto en el PC, comienza el proceso de grabación de la imagen a la tarjeta y cuando finaliza, la vuelvo a insertar en la Raspberry pi. La conecto y con con breve barrido de red con nmap encuentro en que ip está dentro de mi red para ingresar vía SSH.</p>
 <p>Hasta aquí todo bien. Dado el contexto de ciberseguridad que rige hoy en día, lo primero a comenzar a realizar es actualizar el sistema operativo. Así que comenzamos con:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
@@ -107,14 +107,14 @@ sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
 </code></pre></div>
 
 <p>Ahora, si uno se dirige a un PC con un navegador y pone la ip de la raspi con http, se debería de visualizar una página de pruebas que dispone nginx.</p>
-<p><img alt="nginx instalado correctamente" src="/media/2024/junio/nginx-01.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="nginx instalado correctamente" src="/media/2024/junio/nginx-01.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>nginx, recién instalado</em></p>
 <p>Bueno, ya estamos con lo escencial... No, todavía no, en mi caso, si bien escribir en consola es lo usual, me gusta usar algo similar al <a href="https://es.wikipedia.org/wiki/Norton_Commander">Comandante Norton</a> que usaba en ms-dos, pero como estoy en GNU/Linux, pues... Acá tiene otro nombre, <a href="https://midnight-commander.org/">Midnight Commander</a>, así que, vamos con nuestro gestor de paquetes favorito XD y escribimos</p>
 <div class="highlight"><pre><span></span><code>sudo apt install mc
 </code></pre></div>
 
 <p>Y con esto ya tenemos a nuestro gestor de archivos gráfico de la terminal de dos paneles, para ahorranos un poco en el tecle tecle...</p>
-<p><img alt="Midnight Commander" src="/media/2024/junio/mc.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Midnight Commander" src="/media/2024/junio/mc.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>mc instalado</em></p>
 <p>También, necesitaremos un servicio <a href="https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_archivos">FTP</a>. Para quien no lo sepa... </p>
 <p>¿Hay alguien que no sepa en esta época de la vida que es un FTP?, en fin, por si acaso alguien no sabe, un FTP viene de File Transfer Protocol, o Protocolo de Transferencia de Archivo en buen español, en la actualidad si bien se usa, su uso no es tan masificado como antes porque se usan otras soluciones tipo nube, pero sigue siendo muy utilizado. </p>
@@ -168,8 +168,8 @@ Status: active
 </code></pre></div>
 
 <p>Posteriormente habrá que abrir más puertos para permitir la salida del servicio nginx, que permitirá que desde un navegador Web se visualicen las páginas que tengo planeado compartir.</p>
-<h2>¿Qué más?</h2>
-<h4>Actualización: 05-06-2024 19:10 utc -4</h4>
+<h2 id="que-mas">¿Qué más?</h2>
+<h4 id="actualizacion-05-06-2024-1910-utc-4">Actualización: 05-06-2024 19:10 utc -4</h4>
 <p>Bueno, posteriormente habría que verificar si Python está actualizado o al menos en la versión 3.9 en adelante, al menos en teoría... Recuerdo que en Windows me funcionaba bien hace un par de años, imagino que en la raspi no debería de ser problemas... Pero la verdad es que ha sido un poco laborioso... Iba todo bien hasta que me percaté que al instalar unas de las librerías famosas para manejar datos, pues, daba problemas de dependencias.</p>
 <p>He probado de todo, me he bajado la última versión de Python desde la página oficial y lo compilé... Mala idea, 3 horas aproximadamente la compilación, para otros 5 o 10 minutos usar pip para instalar pandas y que me arroje errores... Pero ya era tarde y había que irse a dormir... </p>
 <p>Sin embargo, hoy encontré que algunos han tenido el <a href="https://raspberrypi.stackexchange.com/questions/17073/how-do-i-install-pandas-on-raspberry-pi">mismo problema que yo</a> así que, al momento de la redacción de estas líneas pues, estoy probando esto.</p>
@@ -177,21 +177,21 @@ Status: active
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-pandas
 </code></pre></div>
 
-<p><img alt="Instalando Python3-pandas" src="/media/2024/junio/python-pandas-01.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Instalando Python3-pandas" src="/media/2024/junio/python-pandas-01.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Instalando Python3-pandas... A ver como resulta...</em></p>
 <p>Luego de que terminara el proceso, probamos con una pequeña aplicación en Python que intente leer un archivo csv y lo despliegue en pantalla...</p>
 <p>Pues....</p>
-<div class="highlight"><pre><span></span><code><span class="n">python3</span><span class="w"> </span><span class="n">mi</span><span class="o">-</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
-<span class="n">Traceback</span><span class="w"> </span><span class="p">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">last</span><span class="p">):</span>
-<span class="n">File</span><span class="w"> </span><span class="s2">&quot;mi-test.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">ModuleNotFoundError</span><span class="p">:</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="s1">&#39;pandas&#39;</span>
+<div class="highlight"><pre><span></span><code>python3 mi-test.py
+Traceback (most recent call last):
+File &quot;mi-test.py&quot;, line 3, in &lt;module&gt;
+    import pandas as pd
+ModuleNotFoundError: No module named &#39;pandas&#39;
 </code></pre></div>
 
 <p>Creo que no sirvió de nada... </p>
 <p>Un <a href="https://leonardomerino.cl/">amigo</a> me ha dicho que instale <a href="https://dietpi.com/#downloadinfo">DietPi</a>, pero todavía tengo esperanza de que raspbian serviría...</p>
 <p>Los días van pasando y cada día que pasa, estoy pensando más en seriamente volver a realizar todo el proceso de reinstalación, configuración y todo lo que conlleva... Hasta lo que llevo escrito en estos momentos...</p>
-<h4>Actualización: 06-06-2024 21:53 utc -4</h4>
+<h4 id="actualizacion-06-06-2024-2153-utc-4">Actualización: 06-06-2024 21:53 utc -4</h4>
 <p>Bueno, anoche me resigné y borré todo y comencé con DietPi. Y bueno, primero tuve problemas al utilizar la propia aplicación de la raspi para traspasar la imagen a la microSD. Si bien la imagen permitía a la raspi iniciar, al momento de tratar de conectarse via SSH, no me dejaba, por lo que... Probé esta vez con <a href="https://rufus.ie/es/">Rufus</a> y después de esto, si pude conectarme, y comenzó el proceso de instalación y configuración.</p>
 <p>Elegí los paquetes que instalara que en mi caso fueron nginx, python3, vsftpd, y posteriormente instalé el resto a mano utilizando los comandos antes descrito en este mismo artículo.</p>
 <p>Todo bien hasta el momento de conectarme vía FTP y transferir los archivos. El sitio se visualiza y quedo medianamente contento...</p>
@@ -230,21 +230,21 @@ Status: active
 </code></pre></div>
 
 <p>Nuevamente probamos... Esta vez el error es otro... Y relacionado nuevamente a pandas... Si bien, instalé pandas y numpy, me siguen dando problemas...</p>
-<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">pi</span><span class="o">-</span><span class="n">lectura</span><span class="o">.</span><span class="n">py</span>
-<span class="n">Traceback</span><span class="w"> </span><span class="p">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">last</span><span class="p">):</span>
-<span class="n">File</span><span class="w"> </span><span class="s2">&quot;/home/dietpi/pi-lectura.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">File</span><span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.11/dist-packages/pandas/__init__.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="k">raise</span><span class="w"> </span><span class="n">ImportError</span><span class="p">(</span>
-<span class="n">ImportError</span><span class="p">:</span><span class="w"> </span><span class="n">Unable</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="nn">required</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span>
-<span class="n">numpy</span><span class="p">:</span><span class="w"> </span><span class="nb">Error</span><span class="w"> </span><span class="n">importing</span><span class="w"> </span><span class="n">numpy</span><span class="p">:</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">from</span>
-<span class="w">        </span><span class="nn">its</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">directory</span><span class="p">;</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="n">exit</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">numpy</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">relaunch</span>
-<span class="w">        </span><span class="n">your</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">interpreter</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="nn">there.</span>
+<div class="highlight"><pre><span></span><code>$ sudo python3 pi-lectura.py
+Traceback (most recent call last):
+File &quot;/home/dietpi/pi-lectura.py&quot;, line 3, in &lt;module&gt;
+    import pandas as pd
+File &quot;/usr/local/lib/python3.11/dist-packages/pandas/__init__.py&quot;, line 19, in &lt;module&gt;
+    raise ImportError(
+ImportError: Unable to import required dependencies:
+numpy: Error importing numpy: you should not try to import numpy from
+        its source directory; please exit the numpy source tree, and relaunch
+        your python interpreter from there.
 </code></pre></div>
 
 <p>Es extraño... Probé en una máquina virtual y funciona bien... </p>
-<div class="highlight"><pre><span></span><code><span class="n">dietpi</span><span class="nv">@DietPi</span><span class="err">:</span><span class="o">~/</span><span class="n">lector</span><span class="err">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">py</span><span class="w"> </span><span class="nf">pi</span><span class="o">-</span><span class="n">lectura</span><span class="p">.</span><span class="n">py</span>
-<span class="n">dietpi</span><span class="nv">@DietPi</span><span class="err">:</span><span class="o">~/</span><span class="n">lector</span><span class="err">$</span>
+<div class="highlight"><pre><span></span><code>dietpi@DietPi:~/lector$ sudo py pi-lectura.py
+dietpi@DietPi:~/lector$
 </code></pre></div>
 
 <p>Pero en la raspi no funciona...</p>

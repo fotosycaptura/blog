@@ -89,15 +89,15 @@
     </ul>
   </header>
   <div class="content">
-    <h2>¿Qué es docker?</h2>
+    <h2 id="que-es-docker">¿Qué es docker?</h2>
 <p>Docker es una plataforma que permite automatizar el despliegue de aplicaciones en contenedores. Los contenedores son entornos ligeros y portátiles que contienen todo lo necesario para ejecutar una aplicación, como el código, las bibliotecas y las dependencias necesarias.</p>
 <p>Las ventajas que posee, si te dedicas por ejemplo al desarrollo, son varias: portabilidad, aislamiento, facilidad de despliegue, son algunas de sus ventajas...</p>
-<h2>Instalando docker</h2>
+<h2 id="instalando-docker">Instalando docker</h2>
 <p>Lo primero será instalar docker en tu distribución de Linux. Dependiendo de la distro que uses puede que varíe un poco las sentencias, pero por ejemplo en mi caso al usar arch:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-Syu<span class="w"> </span>docker<span class="w"> </span>docker-compose<span class="w"> </span>containerd
 </code></pre></div>
 
-<h2>Agregando el usuario al grupo docker</h2>
+<h2 id="agregando-el-usuario-al-grupo-docker">Agregando el usuario al grupo docker</h2>
 <p>Para que funcione de forma correcta lo que tendrás que hacer será lo siguiente:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span>USUARIO
 </code></pre></div>
@@ -111,7 +111,7 @@
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/etc/group<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>docker
 </code></pre></div>
 
-<h2>Levantando el servicio</h2>
+<h2 id="levantando-el-servicio">Levantando el servicio</h2>
 <p>Una vez que haya finalizado, lo siguiente será iniciar el servicio a demanda o dejarlo habilitado para que se ejecute de forma permanente, bueno, esto dependerá de como lo quieras manejar. En mi caso, basta con hacer un:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker.service
 </code></pre></div>
@@ -120,7 +120,7 @@
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker.service
 </code></pre></div>
 
-<h2>Nuestro primer contenedor</h2>
+<h2 id="nuestro-primer-contenedor">Nuestro primer contenedor</h2>
 <p>Supongamos que tengo un pequeño sitio web como por ejemplo el de <a href="https://secpo.cl">https://secpo.cl</a>. El sitio Web en cuestión, es un sitio de contenido estático. Para el ejemplo es perfecto.</p>
 <p>Entonces, iremos a nuestro directorio de desarrollo o de pruebas, o el que tengas. Y crearás un directorio que contendrá el sitio web así como el archivo <mark>docker-compose.yml</mark>.</p>
 <p>Para ello, habrá que crear el mentado archivo <mark>docker-compose.yml</mark></p>
@@ -155,13 +155,13 @@
 <p>En el caso del <mark>8080:80</mark>, el primer puerto (8080), será el puerto que se podrá visualizar desde el equipo anfitrión.</p>
 </blockquote>
 <p>Una vez completado, solo quedará guardar todo y salir del editor <em>vim</em>.</p>
-<h2>Ejecutando el contenedor</h2>
+<h2 id="ejecutando-el-contenedor">Ejecutando el contenedor</h2>
 <p>Si todo ha ido bien, ya solo quedará realizar lo siguiente desde la terminal:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up
 </code></pre></div>
 
 <p>Si deseas lanzarlo de manera que quede ejecutándose aún si presionas control+c o sales de la terminal, deberás agregar el parámetro <mark>-d</mark>.</p>
-<h2>¿El contenedor está ejecutándose?</h2>
+<h2 id="el-contenedor-esta-ejecutandose">¿El contenedor está ejecutándose?</h2>
 <p>Eso se puede observar mediante la ejecución de:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps
 </code></pre></div>
@@ -190,7 +190,7 @@
 </code></pre></div>
 
 <p>Ojo que siempre tienes que estar seguro de lo que haces, y de que el contenedor esté detenido, de lo contrario, ya sabes...</p>
-<h2>Conclusión</h2>
+<h2 id="conclusion">Conclusión</h2>
 <p>Bueno, como has visto, todos estos comandos te permiten gestionar y desplegar aplicaciones de manera rápida. Siguiendo esta guía, has aprendido (o quizás no XD), cómo configurar un entorno completo, aunque sea un sitio Web simple. Lo siguiente será experimentar con <em>mysql</em>, sitios más complejos... En fin... Tienes harto por investigar joven padawan... XDD</p>
 <p>Pero en serio, creo que está todo lo básico para comenzar y experimentar...</p>
   </div>

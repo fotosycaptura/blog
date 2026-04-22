@@ -89,18 +89,18 @@
     </ul>
   </header>
   <div class="content">
-    <h2>¿Qué es iperf3?</h2>
+    <h2 id="que-es-iperf3">¿Qué es iperf3?</h2>
 <p>This... Osea, en español please... XDDD Es una herramienta de código abierto que se utiliza para medir el ancho de banda máximo que se puede alcanzar por ejemplo entre dos equipos en una red. Se pueden realizar pruebas tanto en redes locales (LAN) como en conexiones a Internet, midiendo tanto la velocidad de subida como de descarga.</p>
-<h2>Medición en una Red LAN</h2>
+<h2 id="medicion-en-una-red-lan">Medición en una Red LAN</h2>
 <p>Para medir la velocidad de una red local con iperf3, es necesario tener dos equipos: uno actuando como servidor y otro como cliente. El servidor espera las conexiones entrantes, mientras que el cliente envía datos para medir la capacidad de la red.</p>
 <p>Para ello, aquí van los pasos...</p>
-<h3>Paso 1: Ejecutar el Servidor</h3>
+<h3 id="paso-1-ejecutar-el-servidor">Paso 1: Ejecutar el Servidor</h3>
 <p>En el equipo que actuará como servidor, se debe ejecutar el comando:  </p>
 <div class="highlight"><pre><span></span><code>iperf3<span class="w"> </span>-s
 </code></pre></div>
 
 <p>Esto inicia iperf3 como servicio y lo deja escuchando en el puerto por defecto (5201), aunque esto puede personalizarse.</p>
-<h3>Paso 2: Ejecutar el Cliente</h3>
+<h3 id="paso-2-ejecutar-el-cliente">Paso 2: Ejecutar el Cliente</h3>
 <p>En el equipo cliente, se debe ejecutar el siguiente comando, reemplazando IP_DEL_SERVIDOR por la dirección IP del servidor:</p>
 <div class="highlight"><pre><span></span><code>iperf3<span class="w"> </span>-c<span class="w"> </span>IP_DEL_SERVIDOR
 </code></pre></div>
@@ -116,11 +116,11 @@
 </code></pre></div>
 
 <p>En este ejemplo, los resultados muestran una tasa de transferencia de aproximadamente 94-96 Mbps, lo que indica que la red está funcionando dentro de los límites esperados para una conexión de 100 Mbps.</p>
-<hr>
-<h2>Medición de la Velocidad de Conexión a Internet</h2>
+<hr />
+<h2 id="medicion-de-la-velocidad-de-conexion-a-internet">Medición de la Velocidad de Conexión a Internet</h2>
 <p>Si deseas medir la velocidad de tu conexión a Internet, necesitarás un servidor remoto con iperf3 habilitado. Algunos servidores públicos permiten hacer este tipo de pruebas, más abajo en las referencias hay un listado publicado en GitHub que sirve para ese fin.</p>
 <p>Los pasos en general, son similares a los anteriores, así que haré uso de la ley de la flojera, digo, de reutilización de código XDDDD</p>
-<h2>Y... ¿Mi tarjeta de red?</h2>
+<h2 id="y-mi-tarjeta-de-red">Y... ¿Mi tarjeta de red?</h2>
 <p>Es una buena pregunta, si no sabes la velocidad a la que está trabajando tu tarjeta de red, puedes averiguarlo de la siguiente manera:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ethtool<span class="w"> </span>eth0<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Speed
 </code></pre></div>
@@ -130,10 +130,10 @@
 </code></pre></div>
 
 <p>En anbos casos verás la velocidad de tu tarjeta de red.</p>
-<h2>Conclusión</h2>
+<h2 id="conclusion">Conclusión</h2>
 <p>Es una buena herramienta para cualquier administrador de redes que desee medir el rendimiento la red o conexión a Internet.</p>
-<h4>Referencias</h4>
-<p><a href="https://iperf.fr/">Sitio oficial de iperf3</a><br>
+<h4 id="referencias">Referencias</h4>
+<p><a href="https://iperf.fr/">Sitio oficial de iperf3</a><br />
 <a href="https://github.com/R0GGER/public-iperf3-servers">Sitios públicos para probar con iperf (GitHub)</a></p>
   </div>
 </article>

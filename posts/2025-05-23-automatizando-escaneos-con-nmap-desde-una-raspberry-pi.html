@@ -89,11 +89,11 @@
     </ul>
   </header>
   <div class="content">
-    <p><img alt="nmap-monitor" src="/media/2025/mayo/nmap-monitor.jpg" style="width: auto; max-width: 100% !important;"><br>
+    <p><img alt="nmap-monitor" src="/media/2025/mayo/nmap-monitor.jpg" style="width: auto; max-width: 100% !important;" /><br />
 <em>nmap-monitor, mi nueva invención de la rueda... En términos de escaneo XD</em></p>
-<h2>Automatizando escaneos con Nmap desde una Raspberry Pi: mi solución con Python y systemd</h2>
+<h2 id="automatizando-escaneos-con-nmap-desde-una-raspberry-pi-mi-solucion-con-python-y-systemd">Automatizando escaneos con Nmap desde una Raspberry Pi: mi solución con Python y systemd</h2>
 <p>En mi día a día trabajando con tareas de escaneo y análisis de redes, me enfrenté a un problema recurrente: los escaneos largos con Nmap se interrumpían si cerraba la terminal o apagaba el equipo. Como mi equipo no siempre está encendido, decidí trasladar estas tareas a una Raspberry Pi, que normalmente permanece encendida las 24 horas.</p>
-<h2>¿Qué necesitaba?</h2>
+<h2 id="que-necesitaba">¿Qué necesitaba?</h2>
 <p>Pues...</p>
 <ul>
 <li>Ejecutar escaneos Nmap en segundo plano.  </li>
@@ -102,7 +102,7 @@
 <li>Poder editar fácilmente la lista de objetivos desde otro equipo o de forma remota.  </li>
 <li>Mantener los reportes organizados y accesibles.  </li>
 </ul>
-<h2>Y... ¿Qué hice?</h2>
+<h2 id="y-que-hice">Y... ¿Qué hice?</h2>
 <p>Desarrollé un pequeño sistema en Python que:  </p>
 <ul>
 <li>Lee un archivo <code>sitios.csv</code> con la estructura <code>sitio;escaneado</code>.  </li>
@@ -112,19 +112,19 @@
 <li>Marca automáticamente en el CSV cuando el escaneo finaliza.  </li>
 </ul>
 <p>Además, lo configuré como un servicio <code>systemd</code> para que se inicie al arrancar el sistema.</p>
-<h2>¿Por qué usé <code>.lock</code>?</h2>
+<h2 id="por-que-use-lock">¿Por qué usé <code>.lock</code>?</h2>
 <p>Los archivos <code>.lock</code> son una convención clásica en sistemas Linux para indicar que una tarea está "en curso". Son simples de implementar, persistentes ante reinicios y fáciles de auditar.</p>
-<h2>¿Y?...</h2>
+<h2 id="y">¿Y?...</h2>
 <p>Desde que implementé esta solución, he podido dejar tareas de escaneo ejecutándose de forma completamente autónoma desde mi Raspberry Pi. Solo necesito actualizar el CSV desde la nube (que accede al directorio vía disco externo), y los reportes se generan solos.</p>
-<h2>Consideraciones</h2>
+<h2 id="consideraciones">Consideraciones</h2>
 <p>El servicio corre como <code>root</code> para permitir escaneos avanzados (<code>-A</code>, <code>--script vuln -O</code>, etc.). Esto requiere precaución, pero en mi caso el entorno es controlado y el CSV está bajo revisión manual.</p>
-<h1>Código</h1>
+<h1 id="codigo">Código</h1>
 <p>El proyecto completo está disponible en mi Raspberry XDD, pero puedes descargarlo o clonarlo desde:</p>
 <p>📎 <a href="https://github.com/fotosycaptura/nmap-monitor">Mi repositorio en GitHub</a></p>
-<h2>Conclusión</h2>
+<h2 id="conclusion">Conclusión</h2>
 <p>Este pequeño sistema me ha permitido automatizar una tarea que antes hacía manualmente, y demuestra cómo una Raspberry Pi puede ser una herramienta muy versátil para tareas de ciberseguridad. Automatizar procesos repetitivos no solo ahorra tiempo, también ayuda a evitar errores humanos.</p>
 <p>Hoy, 23 de mayo, aprovecho de saludar a mi padre que en paz descanse... Un abrazo hacia donde quiera que se encuentre...</p>
-<hr>
+<hr />
 <p><em>¿Has hecho algo parecido? ¿Tienes ideas para mejorarlo? ¡Te leo en mi guestbook!</em></p>
   </div>
 </article>

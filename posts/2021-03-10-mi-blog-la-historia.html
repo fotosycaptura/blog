@@ -89,18 +89,18 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Un poco de historia...</h2>
+    <h2 id="un-poco-de-historia">Un poco de historia...</h2>
 <p>Erase una vez, en el año 2000, cuando estudiaba en la universidad, en la que se me dio por crear un sitio web personal. Mi primer sitio web... ¡Qué recuerdos! ¡Que nostalgia!... ^^, bueno, ha pasado bastante tiempo desde ese entonces. Pero... En ese entonces había creado mi sitio web, que aún se puede ver algo de ello en <a href="http://web.archive.org/web/20021128115838/http://www.xcx.cjb.net/">web.archive.org</a> concretamente en el año 2002.</p>
-<p><img alt="Mi blog en esa época" src="/media/2021/mi-blog01.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Mi blog en esa época" src="/media/2021/mi-blog01.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Mi blog en esa época</em></p>
 <p>Estaba contento con ello, era mi creación, bien colorida, con hartas páginas, y bastante texto donde tenía algunas cosas...</p>
 <p>Después, en el año 2003 aproximadamente, cuando cursaba una de las asignaturas de programación... A estas alturas no recuerdo cual sería, pero sí recuerdo que conocí uno de los lenguajes java en ella.</p>
 <p>En ese entonces, se me abrió un mundo de posibilidades... Páginas web dinámicas... Bases de datos... Por alguna razón nunca me gustó php, pero java... Java era mi paraíso... Así que comencé a aprender desarrollo en jsp, servlet, etc... </p>
 <p>En ese entonces, quité todo, y me puse manos a la obra, y logré desarrollar <a href="http://web.archive.org/web/20051024123117/http://www.myjavaserver.com/~liss/">mi sitio web personal</a>, en el que podía escribir algunas cosas en base de datos y se mostraban como páginas web... Eran tan feliz... - <em>Que ingenuo era</em> -</p>
-<p><img alt="Mi segundo blog" src="/media/2021/mi-blog02.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Mi segundo blog" src="/media/2021/mi-blog02.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Mi segundo blog</em></p>
 <p>Después ya con el trabajo no hubo tiempo que pudiera dedicarle, el sitio de myjavaserver que era el lugar que usaba de hosting murió, y ya no hice nada más... </p>
-<h2>Pero entonces...</h2>
+<h2 id="pero-entonces">Pero entonces...</h2>
 <p>Visitando algunos sitios de blogs me puse a pensar sobre si valía la pena realmente un sitio web con base de datos y todo lo del contenido dinámico...</p>
 <p>Verán, se trata que de algo personal, no soy una empresa, o un periodista o algo por el estilo, mucho menos un escritor, como para pensar en que haya algún tipo de contenido a cada rato... Lo dinámico sería la interacción del usuario si es que la hay eventualmente, pero todo lo demás, es estático... Entonces... ¿Qué sentido tiene tener un sitio web usando tantos recursos para finalmente, servir páginas webs estáticas y algunas imágenes? </p>
 <p>Fue entonces en el que buscando por internet me encontré con generadores de páginas webs estáticas utilizando lenguajes de marcados como el Mark Down u otro en especial, y esto - pensé - me iba a ahorrar bastante tiempo...</p>
@@ -112,9 +112,9 @@ En segundo lugar, al ser estático, la carga por el lado del servidor es mucho m
 <blockquote>
 <p>A la fecha de redacción de este post, la versión de Python a usar es la 3.9.2, y con ello todo ha funcionado sin problemas.</p>
 </blockquote>
-<h2>¿Ventajas?</h2>
+<h2 id="ventajas">¿Ventajas?</h2>
 <p>Las ventajas son varias, pero siempre está el tema de qué es lo que uno quiere hacer. Así que puede haber diferentes opiniones con respecto a un sitio web estático y uno dinámico, pero no hay que olvidar, que siempre, por muy dinámico que uno piense un sitio, finalmente lo que retorna un servidor es una página web que pueda ser interpretada por el navegador. Lo que realmente estaríamos ahorrando - por decirlo así -, es recursos del propio servidor, y rapidez en la carga de la página.</p>
-<h2>Lo primero que hice</h2>
+<h2 id="lo-primero-que-hice">Lo primero que hice</h2>
 <p>Lo primero por supuesto fue instalar Python, tan sencillo como ir a la web de <a href="https://www.python.org/downloads/">Python</a> y descargarlo desde allí.</p>
 <p>Una vez lo instalé, abrí una consola en modo administrador y escribí:</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pelican<span class="w">  </span>
@@ -141,7 +141,7 @@ pip<span class="w"> </span>install<span class="w"> </span>virtualenv
 <p>Y ya después de ello, fue cosa de elegir un tema, algún plugin de los tantos que hay, y con ello, ya solo quedaba comenzar a escribir los futuros artículos dentro de la carpeta content. Ah cierto, no lo mencioné, pero la estructura de carpeta es bastante fácil e intuitiva, según yo, claro está... &#x1F605;</p>
 <p>Ya para finalizar, solo queda llevar las páginas y todo lo demás generado en la carpeta output después de haber ejecutado Pelican en la consola para generar el contenido estático, y llevarlo a algún sitio web que tengan.</p>
 <p><code>#eso</code></p>
-<h2>Referencias</h2>
+<h2 id="referencias">Referencias</h2>
 <p>Si desean profundizar sobre la implementación, detalles de ello más técnicos, creación de plantillas, o alguna otra cosa, les dejaré estos enlaces de referencias para sus consultas, documentación, etc...</p>
 <ul>
 <li><a href="https://github.com/DandyDev/dandydev.net">Archivo pelicancof.py y publishconf.py del blog de DandyDev, creador de plantilla Booostrap3.</a></li>

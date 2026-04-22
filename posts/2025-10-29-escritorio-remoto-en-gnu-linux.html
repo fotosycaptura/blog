@@ -89,10 +89,10 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Contexto</h2>
-<p><img alt="RDesktop" src="/media/2025/octubre/rdesktop.jpg" style="width: auto; max-width: 100% !important;">  </p>
+    <h2 id="contexto">Contexto</h2>
+<p><img alt="RDesktop" src="/media/2025/octubre/rdesktop.jpg" style="width: auto; max-width: 100% !important;" />  </p>
 <p>En más de alguna ocasión te habrás planteado algo como <em>ojalá pudiera conectarme de forma remota a un equipo</em>, pero ese equipo resulta que tiene un sistema operativo diferente del que usas (GNU/Linux), y ese otro equipo es un Windows algo... Déjame comentarte que... Sí se puede y es muy sencillo...</p>
-<h2>Lo primero</h2>
+<h2 id="lo-primero">Lo primero</h2>
 <p>Esta necesidad surge en muchas ocasiones lejanía de la estación de trabajo o porque no se encuentra de manera presencial, o porque también digamos es mas rápido acceder de manera remota que por ejemplo bajar 20 pisos a la sala de servidores (por dar un ejemplo)...</p>
 <p>Será necesario tener una herramienta instalada denominada <code>rdesktop</code>. Solo hay que comprobar que la tengas instalada en tu sistema, aunque si no la tienes bastaría entonces con instalarla.</p>
 <p>Si tu distribución es alguna basada en debian, bastará con:</p>
@@ -103,7 +103,7 @@
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>rdesktop
 </code></pre></div>
 
-<h2>Instalado ¿Y ahora?</h2>
+<h2 id="instalado-y-ahora">Instalado ¿Y ahora?</h2>
 <p>Pues sencillamente bastaría con tener la IP del equipo al que se desea conectarse... Supongamos un servidor Windows que tiene la IP 192.168.0.250, pues la manera de conectarte sería la siguiente:</p>
 <div class="highlight"><pre><span></span><code>rdesktop<span class="w"> </span>-g<span class="w"> </span>1280x720<span class="w"> </span>-u<span class="w"> </span>administrator<span class="w"> </span><span class="m">192</span>.168.0.250
 </code></pre></div>

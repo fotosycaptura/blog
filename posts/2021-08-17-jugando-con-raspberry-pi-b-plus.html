@@ -89,10 +89,10 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Año 2021, pero esta placa es del 2014... o.O</h2>
+    <h2 id="ano-2021-pero-esta-placa-es-del-2014-oo">Año 2021, pero esta placa es del 2014... o.O</h2>
 <p>Y luego de una pequeña limpieza, está como nueva, me puse a encenderla y decidí mejor actualizarle el OS, pues según la información de foros por ahí, habían cambiado muchas cosas, incluyendo el propio OS que se le puede instalar. Si no estás usando monitor y teclado por separado, no te olvides de crear un archivo vacío llamado <em>ssh</em> en la sd antes de ingresarla o no podrás configurarla vía ssh.</p>
 <p>Luego de ello, y de ingresar con las credenciales iniciales que son pi y de contraseña raspberry, procedí a cambiar la clave con el comando passwd, no te olvides de agregar ese usuario al grupo ssh con:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>adduser<span class="w"> </span>pi<span class="w"> </span>ssh
+<div class="highlight"><pre><span></span><code>$ sudo adduser pi ssh
 </code></pre></div>
 
 <p>y luego de ello a configurarla con: </p>
@@ -117,7 +117,7 @@
 <p>Uhm, he de mencionar que la Raspberry que tengo, la tengo con una SD de 16 GB. Considerando que con el OS versión Lite, y python 3.9, ah cierto, estoy experimentando con ello también, así que, 14% de espacio en total ocupado, y todo el resto libre para repositorio GIT. Creo que es más que suficiente, aunque si quisiera más espacio, siempre se puede instalar una unidad USB y formatear, montar y configurar.</p>
 <p>La configuración de Gitea, no la voy a publicar acá, porque está muy bien documentada en su <a href="https://docs.gitea.io/en-us/install-from-binary/">web</a>.</p>
 <p>Aunque sí pondré algunos pasos que realicé por supuesto... No te mueras!!!</p>
-<h2>Instalando como servicio</h2>
+<h2 id="instalando-como-servicio">Instalando como servicio</h2>
 <p>Seguramente, si has llegado hasta acá, estarás pensando en cómo dejarlo configurado y listo para ejecutarlo como servicio, no tiene sentido ejecutarlo mientras estás logueado como usuario, porque con un reinicio todo eso se va... Y habría que volver a ejecutar la aplicación para que quede escuchando en el puerto que le hayas especificado, etc, etc, etc...</p>
 <p>Así que... Lo primero sería ingresar <a href="https://docs.gitea.io/en-us/linux-service/">acá</a> y descargar el ejemplo que mencionan de <em>gitea.service</em>.</p>
 <p>Luego tocaría modificarlo un poco. No es difícil. Está bien, me compadeceré de ti, te dejaré el archivo que a mi me a funcionado en mi modesto HW...</p>
@@ -186,7 +186,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 </code></pre></div>
 
 <p>Y listo, el resto sería ingresar a la url, que normalmente es localhost:3000 si es que has dejado el puerto por defecto. Y configurar mediante un navegador web, las opciones como la base de datos a usar, la ruta, el usuario administrador, etc, etc, etc... ¡Pero ya quedó!</p>
-<h2>Conclusión</h2>
+<h2 id="conclusion">Conclusión</h2>
 <p>Ya tienes tu server casero, ahorrativo - consume nada de energía - y con la primera versión de la raspberry... Ahora si tienes una versión como la 4 por ejemplo, que al momento de escribir estas líneas, es la más actual. Pues, felicidades, quizás con la opción de usar docker sea más que suficiente... Yo lo hice así porque simplemente, docker no hubo forma de que funcionara utilizando el comando tipico de apt install blablabla....</p>
 <p>¡Hasta la próxima!...</p>
   </div>

@@ -89,10 +89,10 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Contexto</h2>
+    <h2 id="contexto">Contexto</h2>
 <p>Hace unos días estuve revisando un viejo CD, de esos que venían con revistas de programación o Linux que en su época eran muy populares. Aunque la editorial ya no existe, aún conservo tanto la revista como su disco. Sin embargo, el paso del tiempo ya empieza a notarse en la superficie del CD: todavía es legible, pero... ¿y en unos años más?</p>
 <p>Así que decidí hacer un respaldo, también conocido como <em>backup</em>, para no perder esa información que en su momento pagué. Aquí te muestro cómo crear una imagen ISO, ya sea desde un pendrive o desde un directorio, con y sin permisos de superusuario. Acompáñame en esta pequeña pero útil aventura...</p>
-<h2>Lo primero</h2>
+<h2 id="lo-primero">Lo primero</h2>
 <p>Es verificar que unidad es la del lector, grabador, lo que sea que tengas en tu equipo... En mi caso, es una unidad que permite leer y escribir discos DVD, así que, vamos con</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsscsi
 </code></pre></div>
@@ -111,26 +111,26 @@
 </code></pre></div>
 
 <p>Al menos, eso es en mi caso. Entonces... </p>
-<h2>Creando la imagen</h2>
+<h2 id="creando-la-imagen">Creando la imagen</h2>
 <p>Entonces, vamos con la creación de la imagen que fue bastante sencillo:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sr0<span class="w"> </span><span class="nv">of</span><span class="o">=</span>cdrom.iso
 </code></pre></div>
 
 <p>Puedes consultar la ayuda o las páginas man si quieres revisar con más profundidad las diferentes opciones que posee esta herramienta, por ejemplo con <em>bs</em> se puede especificar la cantidad de bytes que se transmitirán por segundo, en mi caso, no lo coloqué...</p>
-<h2>Y, ¿Para ver su contenido?</h2>
+<h2 id="y-para-ver-su-contenido">Y, ¿Para ver su contenido?</h2>
 <p>Bueno, si bien muchas cosas son por consola, muchas cosas se han modernizado en el transcurso del tiempo, y utilizando <em>Dolphin</em> es posible montar la unidad en el sistema y revisar su contenido, simplemente con clic derecho y eligiendo la opción de montar, tal como te muestro acá:</p>
-<p><img alt="Montar ISO con Dolphin" src="/media/2025/junio/dolphin-01.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Montar ISO con Dolphin" src="/media/2025/junio/dolphin-01.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Montando la imagen ISO en Dolphin</em></p>
 <p>Ya solo queda dar clic en <em>la unidad</em> que aparece por llamarlo así, y ya se pueden visualizar los archivos contenidos en la imagen ISO.</p>
-<p><img alt="Visualizar archivos de la imagen ISO con Dolphin" src="/media/2025/junio/dolphin-02.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Visualizar archivos de la imagen ISO con Dolphin" src="/media/2025/junio/dolphin-02.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Visualizando el contenido de la imagen ISO</em></p>
-<h2>Ya me aburrí, ¿Cómo quito la unidad?</h2>
+<h2 id="ya-me-aburri-como-quito-la-unidad">Ya me aburrí, ¿Cómo quito la unidad?</h2>
 <p>Pues, dando clic derecho y desmontar, y luego en la misma imagen ISO y desmontar.</p>
-<p><img alt="Desmontando unidad ISO con Dolphin" src="/media/2025/junio/dolphin-03.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Desmontando unidad ISO con Dolphin" src="/media/2025/junio/dolphin-03.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Desmontando la unidad lógica ISO con Dolphin</em></p>
-<p><img alt="Desmontando unidad ISO con Dolphin" src="/media/2025/junio/dolphin-04.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Desmontando unidad ISO con Dolphin" src="/media/2025/junio/dolphin-04.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Desmontando la imagen ISO del sistema, con Dolphin</em></p>
-<h2>¿Y en la terminal?</h2>
+<h2 id="y-en-la-terminal">¿Y en la terminal?</h2>
 <p>Sería para otra ocasión... Próximamente: cómo montar una ISO en Linux desde la terminal...</p>
 <p>Pero ya vez, así de simple se puede...</p>
 <p>Hasta la próxima...</p>

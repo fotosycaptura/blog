@@ -89,31 +89,31 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Cómo Ampliar la Partición de una micro SD al Migrar una Raspberry Pi a una Tarjeta más Grande</h2>
+    <h2 id="como-ampliar-la-particion-de-una-micro-sd-al-migrar-una-raspberry-pi-a-una-tarjeta-mas-grande">Cómo Ampliar la Partición de una micro SD al Migrar una Raspberry Pi a una Tarjeta más Grande</h2>
 <p>Al trabajar con una Raspberry Pi, es común que, con el tiempo, la micro SD original se quede sin espacio debido a instalaciones de software y almacenamiento de datos. En estos casos, surge la necesidad de migrar a una tarjeta de mayor capacidad sin perder configuraciones ni reinstalar todo el sistema.</p>
 <p>Este artículo explica cómo clonar una micro SD de una Raspberry Pi 4 (1GB de RAM) a otra de mayor capacidad (de 16GB a 64GB, por ejemplo) y, posteriormente, ampliar la partición para aprovechar todo el espacio disponible.</p>
-<p><img alt="Micro SD" src="/media/2025/febrero/size01.jpg" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Micro SD" src="/media/2025/febrero/size01.jpg" style="width: auto; max-width: 100% !important;" /><br />
 <em>Espacio de la micro SD, ya no pude lanzar actualizaciones de seguridad</em></p>
-<h2>Clonando la micro SD Original</h2>
+<h2 id="clonando-la-micro-sd-original">Clonando la micro SD Original</h2>
 <p>Antes de ampliar la partición, primero es necesario clonar la micro SD original en la nueva tarjeta. Existen varias herramientas para este propósito, dependiendo del sistema operativo del usuario.</p>
 <p>La opción usada para esta ocasión desde el propio GNU/Linux es, redoble de tambores... </p>
-<h3>DD</h3>
+<h3 id="dd">DD</h3>
 <p>Lo primero, es identificar la micro SD en el sistema de archivo, para ello se puede utilizar el comando <strong>lsblk</strong> de la siguiente manera:</p>
 <div class="highlight"><pre><span></span><code>lsblk
 </code></pre></div>
 
 <p>Normalmente, la salida debiera ser algo como <em>/dev/mmcblk0</em>, en este punto se tendrá que identificar muy bien la unidad a modificar.</p>
-<h3>Crear una imagen del sistema</h3>
+<h3 id="crear-una-imagen-del-sistema">Crear una imagen del sistema</h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/mmcblk0<span class="w"> </span><span class="nv">of</span><span class="o">=</span>raspberry_backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
 </code></pre></div>
 
 <p>Recuerda reemplazar <em>mmcblk0</em> por la unidad respectiva.</p>
-<h3>Insertar la nueva microSD y restaurar la imagen</h3>
+<h3 id="insertar-la-nueva-microsd-y-restaurar-la-imagen">Insertar la nueva microSD y restaurar la imagen</h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>raspberry_backup.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/mmcblk0<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
 </code></pre></div>
 
 <p>En este punto, deberías de tener una copia exacta, funcional de tu antigua micro SD en la nueva micro SD de mayor capacidad, al menos en teoría. En la práctica todavía falta un paso, pues si bien se traspasó la imagen, existe un espacio libre que está sin utilizar en la micro SD nueva, por lo que habrá que identificar la partición de Linux en la micro SD y expandirla para ocupar la totalidad de este espacio libre sin usar.</p>
-<h3>Expandiendo la Partición en la Nueva microSD</h3>
+<h3 id="expandiendo-la-particion-en-la-nueva-microsd">Expandiendo la Partición en la Nueva microSD</h3>
 <p>Después de clonar la microSD, se notará que la partición sigue ocupando el mismo tamaño que la original (16GB en una tarjeta de 64GB, por ejemplo). Para aprovechar todo el espacio disponible, se debe expandir la partición tal como fue mencionado anteriormente.</p>
 <p>Este punto se puede realizar de varias maneras. En mi caso: <em>gparted</em>.</p>
 <ul>
@@ -142,7 +142,7 @@
 <li>Hacer clic en "Redimensionar/Mover", arrastrar la barra para usar todo el espacio disponible y aplicar los cambios.  </li>
 <li>Expulsar la microSD y probarla en la Raspberry Pi.</li>
 </ul>
-<h3>Verificación y Prueba en la Raspberry Pi</h3>
+<h3 id="verificacion-y-prueba-en-la-raspberry-pi">Verificación y Prueba en la Raspberry Pi</h3>
 <p>Una vez que la partición ha sido ampliada, se debe verificar que el sistema reconoce el nuevo espacio:</p>
 <ul>
 <li>Insertar la microSD en la Raspberry Pi y encender el dispositivo.</li>
@@ -152,9 +152,9 @@
 </code></pre></div>
 
 <p>Si todo ha salido bien, se mostrará la capacidad total de la microSD de 64GB.</p>
-<h2>Conclusión</h2>
+<h2 id="conclusion">Conclusión</h2>
 <p>Expandir la partición de una micro SD al migrar a una tarjeta de mayor capacidad es un procedimiento para quienes buscan "ampliar" el almacenamiento sin necesidad de reinstalar el sistema operativo ni perder configuraciones, osea, mi caso... Aunque tengo todo documentado de como debería de realizarlo desde cero, no quería realizarlo desde cero, puesto que ya lo tenía configurado.</p>
-<p><img alt="Micro SD" src="/media/2025/febrero/size02.jpg" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Micro SD" src="/media/2025/febrero/size02.jpg" style="width: auto; max-width: 100% !important;" /><br />
 <em>Nueva micro SD con espacio libre suficiente para realizar actualizaciones, entre otras cosas</em></p>
 <p><code>#eso</code></p>
   </div>

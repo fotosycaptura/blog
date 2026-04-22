@@ -89,16 +89,16 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Contexto</h2>
-<p><img alt="GNU Emacs" src="/media/2025/agosto/emacs.jpg" style="width: auto; max-width: 100% !important;"><br>
+    <h2 id="contexto">Contexto</h2>
+<p><img alt="GNU Emacs" src="/media/2025/agosto/emacs.jpg" style="width: auto; max-width: 100% !important;" /><br />
 <em>El editor GNU Emacs</em></p>
 <p>He estado experimentando con emacs. Hace muchos años que intento usarlo pero nada me convencía, pensaba que con VIM estaba listo, pero... Hace unos días estaba leyendo y me enteré de ciertas características que, simplemente me hicieron replantearme la idea... Veamos que resultó...</p>
-<h2>Un poco de historia</h2>
+<h2 id="un-poco-de-historia">Un poco de historia</h2>
 <p>Durante todos estos años he sido un usuario más en su mayoría al uso de Vim, con ciertos toques de VS Code. Sin embargo, en las últimas semanas me decidí a darle una nueva oportunidad a Emacs.</p>
 <p>En las oportunidades anteriores, no había conseguido nada... Pero esta vez fue diferente... Me comprometí con más paciencia y curiosidad. El resultado ha sido... Mejor sigue leyendo...</p>
-<h2>Adaptándome a Emacs</h2>
+<h2 id="adaptandome-a-emacs">Adaptándome a Emacs</h2>
 <p>Al principio, la interfaz gráfica me pareció extraña. Siempre que la he visto pensaba que era algo demasiado rudimentario. Casi al mismo nivel que el bloc de notas de cierto sistema operativo... Pero cuando toca consultar por las teclas de acceso directo, también llamado atajos, te das cuenta que, en comparación a Vim, es confuso...</p>
-<h2>Conceptos generales</h2>
+<h2 id="conceptos-generales">Conceptos generales</h2>
 <p>Creo que lo primero, como para que no se me olvide más adelante es definir algunos conceptos para que no se me olvide más adelante. Había leído sobre su curva de aprendizaje, y creo que lo mejor para aprender a comenzar a usarlo es metiéndose, y no usando VIM para nada. Bueno, eso hice, me siento perdido... Pero eso no dura mucho, leyendo y practicando de inmediato hace que uno comience a soltarse...</p>
 <p>Vamos con algunos conceptos.</p>
 <ul>
@@ -108,13 +108,13 @@
 <li>C-x C-s: esta combinación de teclas se refiere a la tecla <code>CONTROL</code> más la tecla <code>x</code> y luego nuevamente la tecla <code>CONTROL</code> más la tecla <code>s</code>. Esto guarda el documento actual que se tenga abierto en ese momento.</li>
 <li>C-l: dependiendo de la línea donde se encuentre el cursor, es como para posicionar todo al comienzo, al medio o al final. Es como la <code>z</code> de VIM.</li>
 </ul>
-<h2>Org-mode: el descubrimiento</h2>
+<h2 id="org-mode-el-descubrimiento">Org-mode: el descubrimiento</h2>
 <p>Es sin duda, lo que más me llamó la atención. Un modo que permite tomar notas, hacer tareas, visualizar todo esto en una agenda, repetir eventos... Al comienzo pensé, que enredado, todo en un puro archivo .org, pero luego pensé ¿Y si los separo? Y bueno, hice eso y quedó mucho mejor la organización, una planificación más clara.</p>
 <p>Para comenzar, se abre con <code>M-x</code> y luego org-mode y se da <code>ENTER</code>.</p>
 <p>Acá, es bien entretenido XD, todo es texto, osea, al estilo markdown, pero en vez de <code>#</code> se puede usar <code>*</code></p>
 <p>Después de eso, ya se puede definir si es una lista de cosas, actividades, etc... <code>C-c a a</code> para abrir la agenda. En mi caso, creé una carpeta org, y dentro de ella tengo archivos del tipo cumples.org, diario.org, eventos.org y por último inbox.org.</p>
 <p>Creo que los nombres son súper claros, cumples para los cumpleaños, diario para las tareas diarias, eventos para los eventos del año, feriados, cosas por el estilo, y por último, inbox, donde voy colocando todo lo relacionado al trabajo en sí, es decir, las tareas.</p>
-<h2>¿Configuraciones?</h2>
+<h2 id="configuraciones">¿Configuraciones?</h2>
 <p>Por supuesto, hubo que hacer ciertos ajustes. No fue muy difícil... La documentación ayuda bastante y en general, lo que uno quiere hacer ya otra persona lo intentó hacer antes, por lo que hay códigos de ejemplos por la Web... Pero dejaré aquí algunos códigos que utilicé para más o menos dejar configurado esto.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">;; Este es un comentario</span>
 
@@ -218,22 +218,22 @@
 <p><code>C-c a a</code>: abre la agenda y se pueden ver los días de la semana y las actividades, las tareas en progreso...</p>
 <p><code>C-c i</code>: abre el <em>inbox</em>, digamos que es mi bandeja de entrada de tareas y actividades. Es diferente del diario porque acá estas tienen fechas límites, fechas programadas y algunos otros puntos que son importantes para la gestión en sí.</p>
 <p>Por ejemplo, al abrir el archivo inbox (teclas <code>C-x C-f</code> ~/org/inbox.org o usando <code>C-c i</code>), se puede comenzar a escribir una tarea comenzando con un * o presionando shift+enter, que pondrá el * al comienzo. Dependiendo de cuantos asteriscos hayan juntos será el nivel de la tarea, su profundidad por así decirlo, imagina una lista típica, mientras más apegadas al borde izquierdo son me mayor jerarquía mientras que más hacia la derecha, están contenidas... </p>
-<div class="highlight"><pre><span></span><code><span class="k">*</span> Tarea 1
+<div class="highlight"><pre><span></span><code>* Tarea 1
 **.Subtarea de la tarea 1
-   <span class="k">-</span> También esto es una tarea dentro de Subtarea, puede ser una nota, en fin...
+   - También esto es una tarea dentro de Subtarea, puede ser una nota, en fin...
 </code></pre></div>
 
 <p>Si por ejemplo, tuvieras el contenido anterior, y te posicionas encima de Tarea 1, y luego presionas las teclas <code>C-c C-t</code>, puedes definir si es una tarea, es decir le agrega las palabras <strong>TODO</strong> - de hacer en inglés -, y puedes también poner <em>en progreso</em>,<em>esperando</em>, <em>finalizado</em>, por supuesto, todo eso en inglés. Siempre se recomienda tener al menos una poca noción de ello.</p>
 <p>Para setear una fecha para lo de <em>programado</em> - SCHEDULED -, pues <code>C-c C-s</code>, donde se abrirá una especie de calendario, donde se ingresará la fecha a mano si es diferente, y solo enter si es el mismo día. Para especificar la hora bastará con agregar un espacio y la hora en formato 24 hrs, es decir, <code>2025-08-06 09:00</code> o si tiene una hora de término sería <code>2025-08-06 09:00-10:00</code> y luego pulsar la tecla ENTER, con eso quedaría configurado.</p>
-<div class="highlight"><pre><span></span><code><span class="k">*</span> Tarea de ejemplo
+<div class="highlight"><pre><span></span><code>* Tarea de ejemplo
 ** DONE Búsqueda de documento para una actividad
 CLOSED: [2025-08-05 ma. 14:56] SCHEDULED: &lt;2025-08-05 ma.&gt;
 
-<span class="k">-</span> State &quot;DONE&quot;       from &quot;IN-PROGRESS&quot; [2025-08-05 ma. 14:56]
+- State &quot;DONE&quot;       from &quot;IN-PROGRESS&quot; [2025-08-05 ma. 14:56]
 </code></pre></div>
 
 <p>Otra de las cosas que me llamó la atención fue:</p>
-<h2>¿Correo en modo texto? Gnus: centralizando el correo y las noticias</h2>
+<h2 id="correo-en-modo-texto-gnus-centralizando-el-correo-y-las-noticias">¿Correo en modo texto? Gnus: centralizando el correo y las noticias</h2>
 <p>Bueno, sí, es posible. Hay que configurar algo llamado <code>gnus</code>. Configuré mi cuenta de Gmail mediante un archivo <code>.authinfo.gpg</code> con cifrado usando GnuPG. Y con eso pude:</p>
 <ul>
 <li>Leer y enviar correos directamente desde Emacs.</li>
@@ -276,7 +276,7 @@ CLOSED: [2025-08-05 ma. 14:56] SCHEDULED: &lt;2025-08-05 ma.&gt;
 <p>Lo recomendaría sólo si tienes tiempo suficiente para aprender, y que por cosas de la vida, tener muchas ventanas te distraen... Aunque, a la fecha de redacción de esta publicación, el sistema operativo de M$ ya trae algo llamado asistente de concentración, que en realidad lo que hace es silenciar las notificaciones para evitar que seas interrumpido... </p>
 <p>En mi caso personal, me alegró poder tener (casi) todo configurado en un solo lugar. </p>
 <p>Así es como se ve todo en la parte de la agenda...</p>
-<p><img alt="La agenda en emacs" src="/media/2025/agosto/agenda.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="La agenda en emacs" src="/media/2025/agosto/agenda.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>La agenda. Lo cierto es que a pesar de lo minimalista que se ve, es tremendamente funcional... Y práctico.</em></p>
 <p>¿Cierto que se ve bonito?</p>
   </div>

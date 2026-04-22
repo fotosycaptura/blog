@@ -89,13 +89,13 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Contexto</h2>
-<p><img alt="Exportando Hugo" src="/media/2025/octubre/exportando.png" style="width: auto; max-width: 100% !important;">  </p>
-<p>Una de las grandes ventajas de <em>Emacs</em> es su capacidad para integrarse con casi cualquier flujo de trabajo.<br>
+    <h2 id="contexto">Contexto</h2>
+<p><img alt="Exportando Hugo" src="/media/2025/octubre/exportando.png" style="width: auto; max-width: 100% !important;" />  </p>
+<p>Una de las grandes ventajas de <em>Emacs</em> es su capacidad para integrarse con casi cualquier flujo de trabajo.<br />
 Y si escribes contenido para la web, <em>Org-mode</em> junto con el paquete <code>ox-hugo</code> se convierten en una herramienta muy versátil y lo suficientemente poderosa para generar publicaciones que luego <code>Hugo</code> transforma en un sitio web estático, limpio y profesional.</p>
 <p>Actualmente, si has estado leyendo sobre mi sitio Web, sabrás que utilizo <code>pelican</code> para su generación. Sin embargo, las nuevas secciones, o mas bien, las secciones migradas, utilicé <code>Hugo</code> en combinación con org-mode y por supuesto Emacs como editor.</p>
 <p>En este artículo les mostraré un poco de lo que hice... Desde la instalación y el cómo exportar un documento de Org-mode a un sitio Hugo, cómo configurar los metadatos, entre otras cosas...</p>
-<h2>Instalación</h2>
+<h2 id="instalacion">Instalación</h2>
 <p>La instalación de Hugo se hace muy fácil en Arch... Tan solo:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>hugo
 </code></pre></div>
@@ -105,7 +105,7 @@ Y si escribes contenido para la web, <em>Org-mode</em> junto con el paquete <cod
 <div class="highlight"><pre><span></span><code>hugo<span class="w"> </span>serve<span class="w"> </span>-D<span class="w"> </span>--baseURL<span class="o">=</span>http://localhost:1313
 </code></pre></div>
 
-<h2>¿Qué es ox-hugo?</h2>
+<h2 id="que-es-ox-hugo">¿Qué es ox-hugo?</h2>
 <p><code>ox-hugo</code> es un <em>exportador</em> (back-end de Org) que convierte tus archivos <code>.org</code> en archivos <code>.md</code> con el formato de metadatos (<em>front matter</em>) que <code>Hugo</code> necesita.</p>
 <p>Cada encabezado (título) dentro del documento puede convertirse en una página o entrada de blog independiente, y el proceso completo puede automatizarse con una simple combinación de teclas.</p>
 <p>Para instalarlo basta con tenerlo en la lista de paquetes de Emacs:</p>
@@ -114,9 +114,9 @@ Y si escribes contenido para la web, <em>Org-mode</em> junto con el paquete <cod
 </code></pre></div>
 
 <p>Una vez cargado, cualquier archivo <code>.org</code> puede exportarse directamente a Hugo.</p>
-<hr>
-<h2>Estructura básica de un archivo Org para Hugo</h2>
-<p>Cada publicación se define mediante un conjunto de variables en la parte superior del archivo.<br>
+<hr />
+<h2 id="estructura-basica-de-un-archivo-org-para-hugo">Estructura básica de un archivo Org para Hugo</h2>
+<p>Cada publicación se define mediante un conjunto de variables en la parte superior del archivo.<br />
 Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe generar el archivo final.</p>
 <p>Ejemplo real:</p>
 <div class="highlight"><pre><span></span><code><span class="nn">#+TITLE:</span> Mi primera publicación con Org y Hugo
@@ -131,8 +131,8 @@ Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe gener
 </code></pre></div>
 
 <p>Luego escribes tu contenido normalmente con formato Org.</p>
-<hr>
-<h2>Exportar el documento</h2>
+<hr />
+<h2 id="exportar-el-documento">Exportar el documento</h2>
 <p>El comando principal es: <code>M-x org-hugo-export-to-md</code></p>
 <p>Esto genera un archivo <code>.md</code> dentro del directorio que definas con <code>#+HUGO_BASE_DIR</code>, respetando la estructura de Hugo (por ejemplo, <code>content/posts/mi-articulo.md</code>).</p>
 <p>También puedes exportar directamente con <code>C-c C-e H H</code>.</p>
@@ -142,8 +142,8 @@ Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe gener
 <li>Genera el Markdown con front matter YAML.</li>
 <li>Lo guarda en la carpeta correspondiente de tu sitio Hugo.</li>
 </ol>
-<hr>
-<h2>Integrar con tu proyecto Hugo</h2>
+<hr />
+<h2 id="integrar-con-tu-proyecto-hugo">Integrar con tu proyecto Hugo</h2>
 <p>Si ya tienes configurado un sitio Hugo (por ejemplo, con el tema PaperMod o Ananke), bastará con tener una estructura como:</p>
 <div class="highlight"><pre><span></span><code>mi-sitio/
 <span class="w"> </span>├──<span class="w"> </span>content/
@@ -160,8 +160,8 @@ Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe gener
 </code></pre></div>
 
 <p>Esto generará la vista previa en http://localhost:1313/</p>
-<hr>
-<h2>Ventajas del flujo Org → Hugo</h2>
+<hr />
+<h2 id="ventajas-del-flujo-org-hugo">Ventajas del flujo Org → Hugo</h2>
 <ul>
 <li>Puedes escribir en un formato legible, con listas, tablas, código fuente, y aprovechar todo lo que sabes hacer en Org-mode.</li>
 <li>Todo el <em>front matter</em> se genera automáticamente.</li>
@@ -169,8 +169,8 @@ Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe gener
 <li>Las imágenes pueden referenciarse directamente desde tu carpeta de <code>static/images/</code>.</li>
 <li>Puedes mantener todas tus publicaciones dentro de un único archivo Org y exportarlas por secciones, aunque esto no lo hago, prefiero tener todos los archivos - digamos - artículos o post por separado...</li>
 </ul>
-<hr>
-<h2>Ejemplo de exportación completa</h2>
+<hr />
+<h2 id="ejemplo-de-exportacion-completa">Ejemplo de exportación completa</h2>
 <div class="highlight"><pre><span></span><code><span class="nn">#+TITLE:</span> Ejemplo práctico
 <span class="nn">#+HUGO_BASE_DIR:</span> ../
 <span class="nn">#+HUGO_SECTION:</span> posts
@@ -181,30 +181,30 @@ Estas líneas comienzan con <code>#+</code> y describen cómo ox-hugo debe gener
 </code></pre></div>
 
 <p>Este es un ejemplo rápido de cómo se vería un artículo exportado.</p>
-<h2>Sección 1: Introducción</h2>
-<p>Escribes tu texto con formato Org.<br>
+<h2 id="seccion-1-introduccion">Sección 1: Introducción</h2>
+<p>Escribes tu texto con formato Org.<br />
 Puedes usar <em>negritas</em>, /cursivas/, +tachado+, o incluso <a href="https://orgmode.org">enlaces</a></p>
-<h2>Sección 2: Código</h2>
+<h2 id="seccion-2-codigo">Sección 2: Código</h2>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola desde Emacs y Hugo!&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
-<h2>Sección 3: Imagen</h2>
+<h2 id="seccion-3-imagen">Sección 3: Imagen</h2>
 <div class="highlight"><pre><span></span><code><span class="p">[[</span><span class="na">../images/hugo-export.png</span><span class="p">]]</span>
 </code></pre></div>
 
-<hr>
-<h2>Consejos finales</h2>
+<hr />
+<h2 id="consejos-finales">Consejos finales</h2>
 <ul>
 <li>Usa <code>:draft false</code> para publicar el artículo, o elimínalo... En mi caso, lo quité porque me comenzó a arrojar problemas al momento de exportar.</li>
 <li>Si tienes varias publicaciones en un solo archivo, define un encabezado con la propiedad <code>:EXPORT_FILE_NAME:</code> para cada una.</li>
 <li>Puedes combinar esto con <em>denote</em> o <em>org-roam</em> para tener notas y artículos sincronizados, aunque esto no lo uso, pero leí que se puede...</li>
 </ul>
-<hr>
-<h2>Conclusión</h2>
-<p>Exportar desde Org-mode a Hugo no solo acelera tu flujo de escritura, sino que convierte Emacs en una plataforma completa de publicación.<br>
+<hr />
+<h2 id="conclusion">Conclusión</h2>
+<p>Exportar desde Org-mode a Hugo no solo acelera tu flujo de escritura, sino que convierte Emacs en una plataforma completa de publicación.<br />
 Si ya usas Org-mode para notas o documentación, integrar Hugo te permitirá transformar esas notas en artículos profesionales con apenas un par de comandos.</p>
-<p>Ahora que tienes el flujo configurado, el siguiente paso será automatizarlo aún más: exportar, validar y publicar con un simple atajo de teclado.<br>
+<p>Ahora que tienes el flujo configurado, el siguiente paso será automatizarlo aún más: exportar, validar y publicar con un simple atajo de teclado.<br />
 Pero eso te lo dejaré de tarea... </p>
 <blockquote>
 <p>“El poder de Emacs no está en lo que hace, sino en lo que puedes enseñarle a hacer.”</p>

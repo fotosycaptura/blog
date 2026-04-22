@@ -89,28 +89,28 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Un poco de historia</h2>
+    <h2 id="un-poco-de-historia">Un poco de historia</h2>
 <p>Ha pasado mucha agua bajo el puente desde el tiempo en que tomé este disco duro la primera vez que lo recibí, y la vez que lo conecté por primera vez... </p>
 <p>Transcurría el año ¿2003? ¿2004? No lo recuerdo con certeza, pero si recuerdo algo, un amigo me trajo ese disco duro para que lo guardara. Nunca me dio curiosidad por ver que contenía en esos entonces, de hecho creo recordar que no tenía espacio en las conexiones para los discos ide en esa época...</p>
 <p>Hace unos días, mientras ponía algo de orden en el caótico estar de los objetos que normalmente un informático suele tener, me percaté de algunos discos duros IDE que aún estaban ahí, existiendo pero a la vez en pausa... ¿Cuántos años tienen ya? ¿Cuántos años han pasado desde su última conexión a algún cable de datos? ¿Se podrá acceder a la información? ¿Presentarán fallas?</p>
-<p><img alt="Disco duro IDE" src="/media/2023/Forensics/peritaje-2.jpg" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Disco duro IDE" src="/media/2023/Forensics/peritaje-2.jpg" style="width: auto; max-width: 100% !important;" /><br />
 <em>Vista desde arriba del disco duro, de 200 MB según el etiquetado.</em></p>
 <p>Así que tomé uno de ellos - el de la imagen -, lo desempolvé un poco y comencé a buscar lo que sería las veces de un traductor que hablara el lenguaje del hardware antiguo y lo iría traduciendo al lenguaje moderno entre computadoras... </p>
 <p>Se que suena un poco extraño pero por un momento traten de imaginarlo... Es loco, ¿Verdad?... </p>
 <p>Bueno, lo conecté y ahí comenzó a emitir sonidos que creía ya olvidados... Y es que claro, ya en esta época existen discos duros de estado sólido, más conocidos como discos SSD, de sus siglas en inglés...</p>
 <p>Abrí el <a href="https://www.ghisler.com/">Total Commander</a>, que es mi gestor de archivos favorito, pero no vi la unidad que esperaba ver conectada, así que, pensando un poco me puse a examinar en el administrador de discos lógicos del sistema de windows, y me percaté ahí que el disco estaba conectado, y se detectaban un par de unidades, pero nada más, no tenían letras asignadas y tampoco es que diera la opción de asignarlas... </p>
 <p>Uhm, esto requiere algo más de análisis. ¿Quizás tenga particiones borradas? ¿Se habrán eliminado por algún tipo de fallo de esos años? A veces con Win98 pasaba si uno lo apagaba a la mala, así que no sería novedad. Asumiendo que era como de esa época, porque ni esa certeza tenía, la memoria es frágil, aunque recuerdo bastante bien que fue durante la universidad...</p>
-<h2>Características Del Disco</h2>
+<h2 id="caracteristicas-del-disco">Características Del Disco</h2>
 <p>Es un disco Jumpers seteado en <em>Cable Select</em>, tanto la marca como el modelo, es posible de apreciar en la imagen. Su capacidad es de 200 MB y es de tipo IDE.</p>
-<p><img alt="Conexiones del disco duro" src="/media/2023/Forensics/peritaje-3.jpg" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Conexiones del disco duro" src="/media/2023/Forensics/peritaje-3.jpg" style="width: auto; max-width: 100% !important;" /><br />
 <em>Vista de las conexiones del disco duro IDE.</em></p>
-<h2>Creando Imagen</h2>
+<h2 id="creando-imagen">Creando Imagen</h2>
 <p>Comenzamos conectando el disco y realizando una imagen del mismo para no modificar la evidencia, seguramente los más puristas me reclamarían de que no he mencionado ningún dispositivo contra escritura al respecto, es cierto, debería de tener alguno, pero en el momento de redactar estas líneas, no tengo ninguno a la mano, pero dado que las particiones no fueron montadas bajo plataforma Windows, pensaremos que el contenido no se vió modificado. </p>
 <p>Por lo que, procederemos a realizar una imagen via herramienta <em><a href="https://www.cgsecurity.org/wiki/TestDisk">TestDisk</a></em>. </p>
 <p>Una vez realizada la imagen, compruebo la imagen con un hash para asegurarme de que la imagen se ha realizado correctamente. Desconecto el disco duro y traslado la imagen a un pendrive. Sí, mi intención es analizar esta imagen desde un ambiente Linux, en este caso estaré utilizando la distribución <em>Kali</em>.</p>
-<h2>Vamos Con Autopsy</h2>
+<h2 id="vamos-con-autopsy">Vamos Con Autopsy</h2>
 <p>Comenzamos nuestro viaje utilizando una de las herramientas por excelencia: <em><a href="https://www.sleuthkit.org">The Sleuth Kit</a></em> el cual luego del análisis nos remonta que su última actividad es en el mes de Enero, un Jueves 22 del año 2004 entre las 11:22:25 y las 11:22:47 hrs de ese día.</p>
-<h2>Notas</h2>
+<h2 id="notas">Notas</h2>
 <ul>
 <li>Este post lo tenía creado hace mucho tiempo, pero por motivos de estudios - recuerden que estoy estudiando -, no he tenido tiempo de terminarlo, pero he querido dejarlo publicado para que se vean las imagenes y porque tenerlo en borradores me daña la retina... XDDD Ya sacaré la parte 2... </li>
 </ul>

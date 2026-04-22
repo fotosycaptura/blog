@@ -89,24 +89,24 @@
     </ul>
   </header>
   <div class="content">
-    <h2>¿Vale la pena?</h2>
+    <h2 id="vale-la-pena">¿Vale la pena?</h2>
 <p>Después de revisar y analizar un poco lo que se requiere, llegó el momento en que me puse a pensar, ¿Valdrá la pena crear un sistema desde cero? Esto igual tiene sus ventajas, sus pro y sus contra... Pero no soy partidario de reinventar la rueda.</p>
 <p>Así que rápidamente me puse a revisar algunos proyectos existentes en Github.</p>
 <p>Después de mucho revisar, clonar, instalar, intentar su ejecución, finalmente... Me decanté por <a href="https://github.com/glpi-project/glpi">GLPI</a>.</p>
 <p>Este sistema cuenta con características bien interesantes. A cierto, vamos viendo algunas cosillas.</p>
-<h2>Cosillas</h2>
+<h2 id="cosillas">Cosillas</h2>
 <p>Este sistema está construido en php 7.2.x, por lo que se recomienda una versión posterior a ello. Utiliza una base de datos mysql, por lo que si estás usando plataforma windows puedes instalar y configurar todo con ammps, xampp, u otro que mejor te acomode, teniendo ojo claramente con las versiones...</p>
 <p>Pero... ¿Y si quieres configurarlo en un ¿Windows Server 2012 R2? ¿Usando IIS? <em>¿En serio? ¿Es posible?</em></p>
-<h2>Cosas previas antes de...</h2>
+<h2 id="cosas-previas-antes-de">Cosas previas antes de...</h2>
 <p>Si, es posible, instalar en un Windows Server 2012 R2, solo hay que tener algunas consideraciones y después de investigar un poco, la mejor opción es utilizar algo llamado <a href="https://www.microsoft.com/web/downloads/platform.aspx">Web Plataform Installer</a>.</p>
 <p>Una vez instalado, hay que cerrar y volver a abrir el IIS y ubicar el nuevo ícono de la aplicación.</p>
-<p><img alt="Web Plataform Installer" src="/media/2021/glpi-paso-01.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Web Plataform Installer" src="/media/2021/glpi-paso-01.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Web plataform Installer</em></p>
 <p>Una vez ubicada la nueva aplicación, doble clic para ejecutarlo y buscar PHP.</p>
-<p><img alt="Php ubicado" src="/media/2021/glpi-paso-02.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Php ubicado" src="/media/2021/glpi-paso-02.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Php ubicado, en mi caso, instalado</em></p>
 <p>En mi caso, tengo instalada la versión 7.3.25 al momento de la publicación de este post.</p>
-<h2>Pero...</h2>
+<h2 id="pero">Pero...</h2>
 <p>Una vez instalado, te darás cuenta que al intentar configurar un sitio en php, pues, da un error... Uno muy molesto por cierto.</p>
 <blockquote>
 <p>HTTP Error 500.0 - Internal Server Error
@@ -119,13 +119,13 @@ Module: FastCgiModule ....</p>
 <p>Lo que hice después de mucho leer e investigar - ya que el mensaje de error es algo... - fue instalar las librerías de <a href="https://www.microsoft.com/es-cl/download/details.aspx?id=48145">Visual C++ Redistributable para Visual Studio 2015</a>, encontré que en algunos sitios, recomendaban instalar las de 2012, pero después de algunos intentos y con el mismo error, fui instalando de versión en versión hasta que con esta me funcionó.</p>
 <p>Peeeeero, <em>porque siempre hay un pero</em>, al intentar ejecutar la instalación del GLPI en IIS, me lanzó un mensaje diferente, esta vez, de que la versión de php era inferior y que necesitaba una mayor o igual a 7.2.x - no recuerdo el número en este momento -...</p>
 <p>Entonces... Nuevamente, fui al IIS, y esta vez a la opción Handler Mappings.</p>
-<p><img alt="Handler Mappings" src="/media/2021/glpi-paso-03.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Handler Mappings" src="/media/2021/glpi-paso-03.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Hangler Mappings</em></p>
 <p>Y luego de ejecutarlo, busqué aquél php que tenía que quitar, para finalmente dejar los que muestro en la imagen a continuación.</p>
-<p><img alt="Los que tienen que quedar" src="/media/2021/glpi-paso-04.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="Los que tienen que quedar" src="/media/2021/glpi-paso-04.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>Los que tienen que quedar</em></p>
 <p>Y con esto, una vez más, reinicio el IIS y por fin! Mi sistema de tickets por fin, ¡vivo!</p>
-<p><img alt="GLPI instalado y funcionando" src="/media/2021/glpi-paso-05.png" style="width: auto; max-width: 100% !important;"><br>
+<p><img alt="GLPI instalado y funcionando" src="/media/2021/glpi-paso-05.png" style="width: auto; max-width: 100% !important;" /><br />
 <em>GLPI instalado y funcionando</em></p>
 <p>Ya el resto de la instalación se las dejo a uds, si total, next, next, finalizar... XDDD</p>
   </div>

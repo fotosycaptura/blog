@@ -89,16 +89,16 @@
     </ul>
   </header>
   <div class="content">
-    <h2>Contexto</h2>
-<p><img alt="Marcadores con Emacs" src="/media/2025/noviembre/marcadores.jpg" style="width: auto; max-width: 100% !important;">  </p>
+    <h2 id="contexto">Contexto</h2>
+<p><img alt="Marcadores con Emacs" src="/media/2025/noviembre/marcadores.jpg" style="width: auto; max-width: 100% !important;" />  </p>
 <p>Una de las ventajas de tener todo tu flujo de trabajo en Emacs es poder centralizar también tus lecturas, notas y enlaces interesantes.
 En este artículo te muestro cómo crear un botón en Firefox que te permita agregar la URL de la pestaña activa directamente a un archivo de marcadores en Emacs, sin ventanas intermedias, gracias a <code>org-protocol</code>.</p>
-<h2>¿Por qué debería?</h2>
+<h2 id="por-que-deberia">¿Por qué debería?</h2>
 <p>Uhm, a lo largo de mi vida he ocupado lo primero que había, ya sea marcadores, o favoritos - así se llamaban en IE -, y digamos que, con el tiempo, nacieron otros servicios para poder tener estos enlaces o URL en la nube... En ese entonces ocupaba un servicio llamado del.icio.us o algo así creo que se llamaba... No me acuerdo bien en el momento de redactar estas líneas, pero ese servicio murió hace muchos años ya... </p>
 <p>Entonces, por ejemplo con el auge de los navegadores y el ofrecimiento de servicios, disponen de guardar muchas cosas en sus propios servidores... Y por supuesto en esto están los marcadores... Pero, ¿y si esos enlaces los usan para ofrecerte publicidad? ¿O si venden esa información para hacer un perfil sobre ti y finalmente ofrecer publicidad? Y quizás cuantas cosas más... </p>
 <p>Y no se en tu caso, pero yo preferiría no más publicidad... Ya es suficiente...</p>
 <p>Así que, ¿Qué mejor que manejarlos directamente desde <code>org-mode</code> con Emacs?</p>
-<h2>Activar <code>org-protocol</code> en Emacs</h2>
+<h2 id="activar-org-protocol-en-emacs">Activar <code>org-protocol</code> en Emacs</h2>
 <p>Primero, necesitamos que Emacs pueda recibir llamadas externas.
 Esto se logra habilitando el servidor integrado y cargando org-protocol.</p>
 <p>Agrega lo siguiente a tu configuración:</p>
@@ -135,7 +135,7 @@ Esto se logra habilitando el servidor integrado y cargando org-protocol.</p>
 </code></pre></div>
 
 <p>Esto crea una función que recibe el enlace y lo guarda en <code>~/org/bookmarks.org</code>, sin pasar por el sistema de <code>org-capture</code>.</p>
-<h2>Registrar el esquema <code>org-protocol://</code> en Linux</h2>
+<h2 id="registrar-el-esquema-org-protocol-en-linux">Registrar el esquema <code>org-protocol://</code> en Linux</h2>
 <p>Para que el navegador pueda llamar a Emacs, hay que decirle al sistema operativo que maneje las URLs con el esquema <code>org-protocol</code>.</p>
 <p>Crea el archivo <code>/usr/share/applications/org-protocol.desktop</code> con el siguiente contenido:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Desktop Entry]</span>
@@ -150,7 +150,7 @@ Esto se logra habilitando el servidor integrado y cargando org-protocol.</p>
 <div class="highlight"><pre><span></span><code>xdg-mime<span class="w"> </span>default<span class="w"> </span>org-protocol.desktop<span class="w"> </span>x-scheme-handler/org-protocol
 </code></pre></div>
 
-<h2>Crear el botón en Firefox (bookmarklet)</h2>
+<h2 id="crear-el-boton-en-firefox-bookmarklet">Crear el botón en Firefox (bookmarklet)</h2>
 <p>Bueno, recomiendo Firefox porque es el navegador que suelo usar, no uso ningún otro por principios, a excepción de links, o eww si es necesario...</p>
 <p>Luego de haber aclarado eso, entonces lo que tienes que hacer es lo siguiente... De hecho, ahora viene la parte divertida: el botón mágico.</p>
 <ul>
@@ -168,14 +168,14 @@ Esto se logra habilitando el servidor integrado y cargando org-protocol.</p>
 
 <p>Guarda los cambios, y listo.
 Ese <code>marcador</code> actuará como un botón que dispara la acción directamente en Emacs.</p>
-<h2>Probando el flujo completo</h2>
+<h2 id="probando-el-flujo-completo">Probando el flujo completo</h2>
 <p>Abre cualquier sitio que quieras guardar, haz clic en tu nuevo botón y observa cómo Emacs registra el enlace al final del archivo bookmarks.org, con su título y la fecha de agregado.</p>
 <p>El resultado que verás será algo más o menos así:</p>
 <div class="highlight"><pre><span></span><code><span class="gh">* [[https://fotosycaptura.cl][Fotos y Captura]]</span>
 ADDED: 2025-11-02 16:37
 </code></pre></div>
 
-<h2>¿Y cómo es que funciona todo esto?</h2>
+<h2 id="y-como-es-que-funciona-todo-esto">¿Y cómo es que funciona todo esto?</h2>
 <p>Detrás de todo lo anterior, más o menos ocurre lo siguiente:</p>
 <ul>
 <li>El bookmarklet en JavaScript toma la URL y el título de la pestaña activa.</li>
@@ -185,14 +185,14 @@ ADDED: 2025-11-02 16:37
 <li>El enlace se guarda directamente en el archivo de Org.</li>
 </ul>
 <p>Como puedes observar, es un flujo rápido y completamente local.</p>
-<h2>Ventajas</h2>
+<h2 id="ventajas">Ventajas</h2>
 <ul>
 <li>Sin ventanas de confirmación: todo se guarda directo.  </li>
 <li>Integrado en tu sistema: no dependes de extensiones externas.  </li>
 <li>Funciona en Firefox, aunque en teoría, debería de funcionar en cualquier navegador que permita bookmarklets.  </li>
 <li>Los enlaces quedan en texto plano dentro de tu flujo de org-mode, nada de que en la nube o servicios de terceros que venden tus datos o que por abc motivo, dejen de existir...</li>
 </ul>
-<h2>Conclusión</h2>
+<h2 id="conclusion">Conclusión</h2>
 <p>Con unos pocos ajustes en Emacs y un pequeño script en Firefox, puedes transformar tu navegador en una herramienta que colabora directamente con tu flujo de trabajo en texto plano.
 Para quienes trabajamos con org-mode, esta integración resulta natural: cada clic se convierte en conocimiento archivado, listo para buscar, enlazar o reanudar más adelante desde Emacs.</p>
   </div>
