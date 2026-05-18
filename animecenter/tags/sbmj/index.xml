@@ -7,6 +7,9 @@
     <generator>Hugo</generator>
     <language>es-cl</language>
     
+    <managingEditor>xxx@example.com (D-Sketon)</managingEditor>
+    <webMaster>xxx@example.com (D-Sketon)</webMaster>
+    
     <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
     
     <lastBuildDate>Sun, 26 Oct 2025 19:41:49 -0300</lastBuildDate>
@@ -22,10 +25,10 @@
       <title>Saber Marionette J</title>
       <link>/animecenter/post/sbmj/</link>
       <pubDate>Sat, 20 Oct 2001 00:00:00 &#43;0000</pubDate>
-      
+      <author>xxx@example.com (D-Sketon)</author>
       <guid>/animecenter/post/sbmj/</guid>
       <description>
-        <![CDATA[<h1>Saber Marionette J</h1><p>Author: Cherry(<no value>)</p>
+        <![CDATA[<h1>Saber Marionette J</h1><p>Author: D-Sketon(xxx@example.com)</p>
         
           <h2 id="saber-marionette-j">
 <a class="header-anchor" href="#saber-marionette-j"></a>
