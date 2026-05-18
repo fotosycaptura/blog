@@ -331,6 +331,22 @@ body [data-aos="zoom-in"] {
   content: "\e619";
 }
 
+.icon-twitter:before {
+  content: "\e62a";
+}
+
+.icon-reddit:before {
+  content: "\e61c";
+}
+
+.icon-tumblr:before {
+  content: "\e625";
+}
+
+.icon-email:before {
+  content: "\e63c";
+}
+
 .sidebar-toc-btn:before {
   font-family: "iconfont";
   content: "\e633";
@@ -3086,6 +3102,34 @@ mjx-container::-webkit-scrollbar {
 
 .sidebar-social-icon:hover {
   transform: scale(1.2);
+}
+
+.icon-email {
+  color: var(--red-2);
+}
+
+.icon-github {
+  color: #191717;
+}
+
+[data-theme="dark"] .icon-github {
+  color: #bc88ff;
+}
+
+.icon-twitter {
+  color: #191717;
+}
+
+[data-theme="dark"] .icon-twitter {
+  color: #bc88ff;
+}
+
+.icon-reddit {
+  color: #ff4500;
+}
+
+.icon-tumblr {
+  color: #35465c;
 }
 
 .sidebar-menu {
