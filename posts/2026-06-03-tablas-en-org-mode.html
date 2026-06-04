@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Org Mode, tablas y exportación: cuando una hoja de cálculo se encuentra con Python | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2026-06-03-tablas-en-org-mode.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Una de las cosas que más me gustan de Org Mode es que, a simple vista, parece un formato de texto plano bastante sencillo. Sin embargo, a medida que se profundiza, se descubre que es una auténtica navaja suiza para organizar información, realizar cálculos, generar informes e incluso automatizar tareas.">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/historial-cambios.html">Logs</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Yo</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-bar-chart" href="https://fotosycaptura.cl/statistic.html" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Org Mode, tablas y exportación: cuando una hoja de cálculo se encuentra con Python
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2026-06-03T21:40:00-04:00">
+        <i class="fa fa-clock-o"></i>
+        2026, mié 03 junio
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/emacs.html">#emacs</a>,         <a href="https://fotosycaptura.cl/tag/org-mode.html">#org-mode</a>,         <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/linux.html">#linux</a>,         <a href="https://fotosycaptura.cl/tag/programacion.html">#programacion</a>,         <a href="https://fotosycaptura.cl/tag/python.html">#python</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><img alt="Texto alternativo" src="/media/2026/junio/escribiendo-en-emacs.png" style="width: auto; max-width: 100% !important;" />  </p>
+<p>Una de las cosas que más me gustan de Org Mode es que, a simple vista, parece un formato de texto plano bastante sencillo. Sin embargo, a medida que se profundiza, se descubre que es una auténtica navaja suiza para organizar información, realizar cálculos, generar informes e incluso automatizar tareas.</p>
+<p>Veamos lo que he ido descubriendo mientras experimento...</p>
+<div class="toc">
+<ul>
+<li><a href="#el-problema">El problema</a></li>
+<li><a href="#la-primera-idea-usar-tblfm">La primera idea: usar TBLFM</a></li>
+<li><a href="#emacs-lisp">Emacs Lisp</a></li>
+<li><a href="#dejar-que-python-haga-el-trabajo-pesado">Dejar que Python haga el trabajo pesado</a></li>
+<li><a href="#formateando-numeros-de-forma-amigable">Formateando números de forma amigable</a></li>
+<li><a href="#exportar-a-excel-sin-sufrimiento">Exportar a Excel sin sufrimiento</a></li>
+<li><a href="#una-leccion-interesante-sobre-los-encabezados">Una lección interesante sobre los encabezados</a></li>
+<li><a href="#recomendaciones">Recomendaciones</a></li>
+<li><a href="#conclusion">Conclusión</a></li>
+</ul>
+</div>
+<h2 id="el-problema">El problema</h2>
+<p>Recientemente me encontré con una necesidad: tenía que trabajar con varias tablas de datos en un documento que estaba realizando en Org Mode, estuve realizando unos cálculos sencillos y con ello realizar una imagen, pero también, tenía que pensar en que es muy probable que tenga que presentar los números para compartirla con usuarios que viven en el mundo de Excel.</p>
+<p>Lo que parecía una tarea con diversas herramientas de ofimática, donde habría mucho copiar  y pegar de un lado a otro, terminó siendo una interesante exploración de las capacidades de Org Mode.</p>
+<p>Para ejemplificar, Supongamos algo sencillo, imaginen que se tiene una tabla de costos:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">|</span><span class="w"> </span><span class="nv">Año</span><span class="w">  </span><span class="nv">|</span><span class="w"> </span><span class="nv">Costo</span><span class="w">    </span><span class="nv">|</span>
+<span class="nv">|------|----------|</span>
+<span class="nv">|</span><span class="w"> </span><span class="mi">2026</span><span class="w"> </span><span class="nv">|</span><span class="w"> </span><span class="mi">17250000</span><span class="w"> </span><span class="nv">|</span>
+<span class="nv">|</span><span class="w"> </span><span class="mi">2027</span><span class="w"> </span><span class="nv">|</span><span class="w"> </span><span class="mi">25875000</span><span class="w"> </span><span class="nv">|</span>
+<span class="nv">|</span><span class="w"> </span><span class="mi">2028</span><span class="w"> </span><span class="nv">|</span><span class="w"> </span><span class="mi">38812500</span><span class="w"> </span><span class="nv">|</span>
+</code></pre></div>
+
+<p>Para Org Mode esos números son perfectos. Son fáciles de utilizar en fórmulas y cálculos.</p>
+<p>Para los seres humanos con tú que estás leyendo esto, no tanto.</p>
+<p>No es lo mismo leer:</p>
+<div class="highlight"><pre><span></span><code>38812500
+</code></pre></div>
+
+<p>que leer:</p>
+<div class="highlight"><pre><span></span><code>38.812.500
+</code></pre></div>
+
+<p>Para el ser humano, es mas fácil con los separadores de miles.</p>
+<h2 id="la-primera-idea-usar-tblfm">La primera idea: usar TBLFM</h2>
+<p>Org Mode incorpora un sistema de fórmulas mediante la directiva #+TBLFM:.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="nv">+TBLFM:</span><span class="w"> </span><span class="nv">$2=$1*1.5</span>
+</code></pre></div>
+
+<p>Y gracias a esta directiva, es que se pueden realizar cálculos de manera similar a una hoja de cálculo.</p>
+<p>Sin embargo, las opciones de formato numérico disponibles no agregan automáticamente separadores de miles como el común de los mortales podría esperar.</p>
+<p>Es decir, se puede calcular fácilmente:</p>
+<div class="highlight"><pre><span></span><code>25875000
+</code></pre></div>
+
+<p>pero no necesariamente mostrar:</p>
+<div class="highlight"><pre><span></span><code>25.875.000
+</code></pre></div>
+
+<p>así sin más...</p>
+<h2 id="emacs-lisp">Emacs Lisp</h2>
+<p>La solución natural en Emacs consistiría en escribir una función en Emacs Lisp que reciba un número y devuelva una cadena formateada.</p>
+<p>Algo como:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">miles</span><span class="w"> </span><span class="p">(</span><span class="nv">n</span><span class="p">)</span>
+<span class="w">  </span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Y luego utilizarla desde las fórmulas de la tabla.</p>
+<p>Funciona bastante bien.</p>
+<p>Sin embargo, yo quería juntar todas las tablas desperdigadas en el documento y unirlas en una sola, principalmente porque estoy realizando un documento de matriz de riesgos, que está segmentado por diversos temas, pero estoy seguro que en algún punto tendré que juntar todas y cada una de esas tablas para que alguien visualice esa matriz en una hoja de cálculo más amigable...</p>
+<p>Y ahí fue donde apareció una idea interesante.</p>
+<h2 id="dejar-que-python-haga-el-trabajo-pesado">Dejar que Python haga el trabajo pesado</h2>
+<p>En Emacs, en Org Mode existe algo denominado Babel que permite ejecutar código de diversos lenguajes, entre ellos Python, y con ello se puede aprovechar para generar tablas listas para presentar o más bien, exportar...</p>
+<p>Por ejemplo, has cuenta que se tienen estas dos tablas:</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="nv">+NAME:</span><span class="w"> </span><span class="nv">servidores_locales</span>
+<span class="nv">|</span><span class="w"> </span><span class="nv">Nombre</span><span class="w"> </span><span class="nv">|</span><span class="w"> </span><span class="nv">SO</span><span class="w">      </span><span class="nv">|</span><span class="w"> </span><span class="nv">RAM</span><span class="w"> </span><span class="nv">|</span>
+<span class="nv">|--------|---------|-----|</span>
+<span class="nv">|</span><span class="w"> </span><span class="nv">srv01</span><span class="w">  </span><span class="nv">|</span><span class="w"> </span><span class="nv">Linux</span><span class="w">   </span><span class="nv">|</span><span class="w"> </span><span class="mi">4</span><span class="w">   </span><span class="nv">|</span>
+<span class="nv">|</span><span class="w"> </span><span class="nv">srv02</span><span class="w">  </span><span class="nv">|</span><span class="w"> </span><span class="nv">Windows</span><span class="w"> </span><span class="nv">|</span><span class="w"> </span><span class="mi">16</span><span class="w">  </span><span class="nv">|</span>
+
+<span class="err">#</span><span class="nv">+NAME:</span><span class="w"> </span><span class="nv">servidores_nube</span>
+<span class="nv">|</span><span class="w"> </span><span class="nv">Nombre</span><span class="w"> </span><span class="nv">|</span><span class="w"> </span><span class="nv">SO</span><span class="w">      </span><span class="nv">|</span><span class="w"> </span><span class="nv">RAM</span><span class="w"> </span><span class="nv">|</span>
+<span class="nv">|--------|---------|-----|</span>
+<span class="nv">|</span><span class="w"> </span><span class="nv">vm01</span><span class="w">   </span><span class="nv">|</span><span class="w"> </span><span class="nv">Linux</span><span class="w">   </span><span class="nv">|</span><span class="w"> </span><span class="mi">8</span><span class="w">   </span><span class="nv">|</span>
+<span class="nv">|</span><span class="w"> </span><span class="nv">vm02</span><span class="w">   </span><span class="nv">|</span><span class="w"> </span><span class="nv">Windows</span><span class="w"> </span><span class="nv">|</span><span class="w"> </span><span class="mi">32</span><span class="w">  </span><span class="nv">|</span>
+</code></pre></div>
+
+<p>Se puede combinar o fusionar mediante Python:</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="nv">+BEGIN_SRC</span><span class="w"> </span><span class="nv">python</span><span class="w"> </span><span class="nb">:var</span><span class="w"> </span><span class="nv">t1=servidores_locales</span><span class="w"> </span><span class="nv">t2=servidores_nube</span><span class="w"> </span><span class="nb">:results</span><span class="w"> </span><span class="nv">table</span>
+<span class="nv">resultado</span><span class="w"> </span><span class="nf">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">[</span><span class="s">&quot;Nombre&quot;</span><span class="o">,</span><span class="w"> </span><span class="s">&quot;SO&quot;</span><span class="o">,</span><span class="w"> </span><span class="s">&quot;RAM&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="nv">resultado.extend</span><span class="p">(</span><span class="nv">t1</span><span class="p">)</span>
+<span class="nv">resultado.extend</span><span class="p">(</span><span class="nv">t2</span><span class="p">)</span>
+
+<span class="nb">return</span><span class="w"> </span><span class="nv">resultado</span>
+<span class="err">#</span><span class="nv">+END_SRC</span>
+</code></pre></div>
+
+<p>El resultado será una única tabla consolidada:</p>
+<div class="highlight"><pre><span></span><code>| Nombre | SO      | RAM |
+|--------|---------|-----|
+| srv01  | Linux   | 4   |
+| srv02  | Windows | 16  |
+| vm01   | Linux   | 8   |
+| vm02   | Windows | 32  |
+</code></pre></div>
+
+<p>Y aquí es donde Python realmente brilla.</p>
+<h2 id="formateando-numeros-de-forma-amigable">Formateando números de forma amigable</h2>
+<p>Una simple función puede mejorar considerablemente la legibilidad de los datos:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">miles</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="n">miles</span><span class="p">(</span><span class="mi">38812500</span><span class="p">)</span>
+</code></pre></div>
+
+<p>produce:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">38.812.500</span>
+</code></pre></div>
+
+<p>Mucho más agradable para la vista.</p>
+<h2 id="exportar-a-excel-sin-sufrimiento">Exportar a Excel sin sufrimiento</h2>
+<p>Una vez que los datos están en Python, generar un archivo Excel es sorprendentemente sencillo.</p>
+<p>Puedes generar un archivo xlsx con la biblioteca openpyxl:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">Workbook</span>
+
+<span class="n">wb</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">active</span>
+
+<span class="k">for</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">resultado</span><span class="p">:</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
+
+<span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;informe.xlsx&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>En pocos segundos se tiene un archivo listo para abrir en Excel o LibreOffice Calc.</p>
+<p>Pero si estás en Emacs también puedes usar la función org-table-export.</p>
+<h2 id="una-leccion-interesante-sobre-los-encabezados">Una lección interesante sobre los encabezados</h2>
+<p>Durante las pruebas observé un detalle... Esperaba que Python recibiera una tabla Org completa, incluyendo la fila de los encabezados.</p>
+<p>Sin embargo, en las pruebas que se realizaron, Org Mode solo pudo entregar únicamente los datos.</p>
+<p>Por eso, anteriormente preferí definir explícitamente la fila de los encabezados de esta manera:</p>
+<div class="highlight"><pre><span></span><code><span class="n">resultado</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;Nombre&quot;</span><span class="p">,</span> <span class="s2">&quot;SO&quot;</span><span class="p">,</span> <span class="s2">&quot;RAM&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>y con ello, tema resuelto.</p>
+<h2 id="recomendaciones">Recomendaciones</h2>
+<p>Después de experimentar con distintas alternativas, estas son mis conclusiones:</p>
+<ul>
+<li>Es mejor utilizar fórmulas de Org para cálculos simples: Si se necesita realizar operaciones básicas o referenciar entre tablas, #+TBLFM: es una excelente opción.</li>
+<li>Es mejor utilizar Python (o el lenguaje con el que tengas mejor soltura) para otras tareas...</li>
+</ul>
+<p>Cuando aparecen necesidades como:</p>
+<ul>
+<li>Formatear números.</li>
+<li>Generar archivos CSV.</li>
+<li>Crear documentos Excel.</li>
+<li>Consolidar múltiples tablas.</li>
+</ul>
+<p>Python suele ser más flexible y fácil de mantener.</p>
+<ul>
+<li>Separa cálculos y presentación</li>
+</ul>
+<p>Una estrategia que se podría utilizar podría ser por ejemplo:</p>
+<ul>
+<li>Mantener una tabla interna con datos "puros".</li>
+<li>Realizar los cálculos necesarios.</li>
+<li>Generar una tabla de presentación mediante Python.</li>
+</ul>
+<p>Así se obtiene lo mejor de ambos mundos.</p>
+<h2 id="conclusion">Conclusión</h2>
+<p>Lo que comenzó como una simple necesidad de agregar separadores de miles y después unir varias tablas en una sola, terminó convirtiéndose en una pequeña exploración de las capacidades de Org Mode, Babel y Python.</p>
+<p>La principal lección fue descubrir que no siempre es necesario hacerlo todo dentro de las fórmulas de Org. En muchos casos resulta más cómodo utilizar Org para almacenar y organizar la información, mientras Python se encarga de procesarla, formatearla y exportarla.</p>
+<p>Y lo mejor de todo es que al trabajar en texto plano, es fácil de versionar, respaldar y mantener.</p>
+<p>No está nada mal para algo que aparenta ser "solo un editor de texto".</p>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://api.fotosycaptura.cl/contador.png" title="Contador de visitas" alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

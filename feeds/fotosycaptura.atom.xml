@@ -1,5 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-05-18T15:23:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Redescubriendo la onda corta...</title><link href="https://fotosycaptura.cl/posts/2026-05-18-redescubriendo-la-onda-corta.html" rel="alternate"/><published>2026-05-18T15:23:00-04:00</published><updated>2026-05-18T15:23:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-05-18:/posts/2026-05-18-redescubriendo-la-onda-corta.html</id><summary type="html">&lt;p&gt;Hace algunos días decidí comprar una radio portátil con recepción de onda corta. No fue una decisión impulsiva ni particularmente práctica, o quizás sí, si pronto se viene algún tipo de apocalipsis. Incluso en esos momentos habría que estar informados XDD, ejem... Más bien fue una mezcla de curiosidad técnica, nostalgia y ese extraño interés que siempre he tenido por las comunicaciones y las señales invisibles que nos rodean.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Escuchando radio" src="/media/2026/mayo/radio.png" style="width: auto; max-width: 100% !important;" /&gt;  &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-06-03T21:40:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Org Mode, tablas y exportación: cuando una hoja de cálculo se encuentra con Python</title><link href="https://fotosycaptura.cl/posts/2026-06-03-tablas-en-org-mode.html" rel="alternate"/><published>2026-06-03T21:40:00-04:00</published><updated>2026-06-03T21:40:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-06-03:/posts/2026-06-03-tablas-en-org-mode.html</id><summary type="html">&lt;p&gt;Una de las cosas que más me gustan de Org Mode es que, a simple vista, parece un formato de texto plano bastante sencillo. Sin embargo, a medida que se profundiza, se descubre que es una auténtica navaja suiza para organizar información, realizar cálculos, generar informes e incluso automatizar tareas.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/junio/escribiendo-en-emacs.png" style="width: auto; max-width: 100% !important;" /&gt;  &lt;/p&gt;
+&lt;p&gt;Una de las cosas que más me gustan de Org Mode es que, a simple vista, parece un formato de texto plano bastante sencillo. Sin embargo, a medida que se profundiza, se descubre que es una auténtica navaja suiza para organizar información, realizar cálculos, generar informes e incluso automatizar tareas.&lt;/p&gt;
+&lt;p&gt;Veamos lo que he ido descubriendo mientras experimento...&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#el-problema"&gt;El problema&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#la-primera-idea-usar-tblfm"&gt;La primera idea: usar TBLFM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#emacs-lisp"&gt;Emacs Lisp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#dejar-que-python-haga-el-trabajo-pesado"&gt;Dejar que Python haga el trabajo pesado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#formateando-numeros-de-forma-amigable"&gt;Formateando números de forma amigable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#exportar-a-excel-sin-sufrimiento"&gt;Exportar a Excel sin sufrimiento&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#una-leccion-interesante-sobre-los-encabezados"&gt;Una lección interesante sobre los encabezados&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#recomendaciones"&gt;Recomendaciones&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#conclusion"&gt;Conclusión&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="el-problema"&gt;El problema&lt;/h2&gt;
+&lt;p&gt;Recientemente me encontré con una necesidad: tenía que trabajar con varias tablas de datos en un documento que estaba realizando en Org Mode, estuve realizando unos cálculos sencillos y con ello realizar una imagen, pero también, tenía que pensar en que es muy probable que tenga que presentar los números para compartirla con usuarios que viven en el mundo de Excel.&lt;/p&gt;
+&lt;p&gt;Lo que parecía una tarea con diversas herramientas de ofimática, donde habría mucho copiar  y pegar de un lado a otro, terminó siendo una interesante exploración de las capacidades de Org Mode.&lt;/p&gt;
+&lt;p&gt;Para ejemplificar, Supongamos algo sencillo, imaginen que se tiene una tabla de costos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Año&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Costo&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;span class="nv"&gt;|------|----------|&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2026&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;17250000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2027&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;25875000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2028&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;38812500&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para Org Mode esos números son perfectos. Son fáciles de utilizar en fórmulas y cálculos.&lt;/p&gt;
+&lt;p&gt;Para los seres humanos con tú que estás leyendo esto, no tanto.&lt;/p&gt;
+&lt;p&gt;No es lo mismo leer:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;38812500
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;que leer:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;38.812.500
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para el ser humano, es mas fácil con los separadores de miles.&lt;/p&gt;
+&lt;h2 id="la-primera-idea-usar-tblfm"&gt;La primera idea: usar TBLFM&lt;/h2&gt;
+&lt;p&gt;Org Mode incorpora un sistema de fórmulas mediante la directiva #+TBLFM:.&lt;/p&gt;
+&lt;p&gt;Por ejemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;+TBLFM:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$2=$1*1.5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y gracias a esta directiva, es que se pueden realizar cálculos de manera similar a una hoja de cálculo.&lt;/p&gt;
+&lt;p&gt;Sin embargo, las opciones de formato numérico disponibles no agregan automáticamente separadores de miles como el común de los mortales podría esperar.&lt;/p&gt;
+&lt;p&gt;Es decir, se puede calcular fácilmente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;25875000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;pero no necesariamente mostrar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;25.875.000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;así sin más...&lt;/p&gt;
+&lt;h2 id="emacs-lisp"&gt;Emacs Lisp&lt;/h2&gt;
+&lt;p&gt;La solución natural en Emacs consistiría en escribir una función en Emacs Lisp que reciba un número y devuelva una cadena formateada.&lt;/p&gt;
+&lt;p&gt;Algo como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;miles&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y luego utilizarla desde las fórmulas de la tabla.&lt;/p&gt;
+&lt;p&gt;Funciona bastante bien.&lt;/p&gt;
+&lt;p&gt;Sin embargo, yo quería juntar todas las tablas desperdigadas en el documento y unirlas en una sola, principalmente porque estoy realizando un documento de matriz de riesgos, que está segmentado por diversos temas, pero estoy seguro que en algún punto tendré que juntar todas y cada una de esas tablas para que alguien visualice esa matriz en una hoja de cálculo más amigable...&lt;/p&gt;
+&lt;p&gt;Y ahí fue donde apareció una idea interesante.&lt;/p&gt;
+&lt;h2 id="dejar-que-python-haga-el-trabajo-pesado"&gt;Dejar que Python haga el trabajo pesado&lt;/h2&gt;
+&lt;p&gt;En Emacs, en Org Mode existe algo denominado Babel que permite ejecutar código de diversos lenguajes, entre ellos Python, y con ello se puede aprovechar para generar tablas listas para presentar o más bien, exportar...&lt;/p&gt;
+&lt;p&gt;Por ejemplo, has cuenta que se tienen estas dos tablas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;+NAME:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;servidores_locales&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Nombre&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;SO&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;RAM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;span class="nv"&gt;|--------|---------|-----|&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;srv01&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Linux&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;srv02&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Windows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;+NAME:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;servidores_nube&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Nombre&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;SO&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;RAM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;span class="nv"&gt;|--------|---------|-----|&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;vm01&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Linux&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;vm02&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Windows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;|&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Se puede combinar o fusionar mediante Python:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;+BEGIN_SRC&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:var&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;t1=servidores_locales&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;t2=servidores_nube&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:results&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;table&lt;/span&gt;
+&lt;span class="nv"&gt;resultado&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nombre&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;SO&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;RAM&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nv"&gt;resultado.extend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;t1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;resultado.extend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;t2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;resultado&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;+END_SRC&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;El resultado será una única tabla consolidada:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;| Nombre | SO      | RAM |
+|--------|---------|-----|
+| srv01  | Linux   | 4   |
+| srv02  | Windows | 16  |
+| vm01   | Linux   | 8   |
+| vm02   | Windows | 32  |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y aquí es donde Python realmente brilla.&lt;/p&gt;
+&lt;h2 id="formateando-numeros-de-forma-amigable"&gt;Formateando números de forma amigable&lt;/h2&gt;
+&lt;p&gt;Una simple función puede mejorar considerablemente la legibilidad de los datos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;miles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;,&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;,&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Por ejemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;miles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;38812500&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;produce:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="mf"&gt;38.812.500&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Mucho más agradable para la vista.&lt;/p&gt;
+&lt;h2 id="exportar-a-excel-sin-sufrimiento"&gt;Exportar a Excel sin sufrimiento&lt;/h2&gt;
+&lt;p&gt;Una vez que los datos están en Python, generar un archivo Excel es sorprendentemente sencillo.&lt;/p&gt;
+&lt;p&gt;Puedes generar un archivo xlsx con la biblioteca openpyxl:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;openpyxl&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Workbook&lt;/span&gt;
+
+&lt;span class="n"&gt;wb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Workbook&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;ws&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;wb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;active&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fila&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;resultado&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;ws&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fila&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;wb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;informe.xlsx&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En pocos segundos se tiene un archivo listo para abrir en Excel o LibreOffice Calc.&lt;/p&gt;
+&lt;p&gt;Pero si estás en Emacs también puedes usar la función org-table-export.&lt;/p&gt;
+&lt;h2 id="una-leccion-interesante-sobre-los-encabezados"&gt;Una lección interesante sobre los encabezados&lt;/h2&gt;
+&lt;p&gt;Durante las pruebas observé un detalle... Esperaba que Python recibiera una tabla Org completa, incluyendo la fila de los encabezados.&lt;/p&gt;
+&lt;p&gt;Sin embargo, en las pruebas que se realizaron, Org Mode solo pudo entregar únicamente los datos.&lt;/p&gt;
+&lt;p&gt;Por eso, anteriormente preferí definir explícitamente la fila de los encabezados de esta manera:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;resultado&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Nombre&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;SO&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;RAM&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;y con ello, tema resuelto.&lt;/p&gt;
+&lt;h2 id="recomendaciones"&gt;Recomendaciones&lt;/h2&gt;
+&lt;p&gt;Después de experimentar con distintas alternativas, estas son mis conclusiones:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Es mejor utilizar fórmulas de Org para cálculos simples: Si se necesita realizar operaciones básicas o referenciar entre tablas, #+TBLFM: es una excelente opción.&lt;/li&gt;
+&lt;li&gt;Es mejor utilizar Python (o el lenguaje con el que tengas mejor soltura) para otras tareas...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cuando aparecen necesidades como:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Formatear números.&lt;/li&gt;
+&lt;li&gt;Generar archivos CSV.&lt;/li&gt;
+&lt;li&gt;Crear documentos Excel.&lt;/li&gt;
+&lt;li&gt;Consolidar múltiples tablas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Python suele ser más flexible y fácil de mantener.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Separa cálculos y presentación&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Una estrategia que se podría utilizar podría ser por ejemplo:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mantener una tabla interna con datos "puros".&lt;/li&gt;
+&lt;li&gt;Realizar los cálculos necesarios.&lt;/li&gt;
+&lt;li&gt;Generar una tabla de presentación mediante Python.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Así se obtiene lo mejor de ambos mundos.&lt;/p&gt;
+&lt;h2 id="conclusion"&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Lo que comenzó como una simple necesidad de agregar separadores de miles y después unir varias tablas en una sola, terminó convirtiéndose en una pequeña exploración de las capacidades de Org Mode, Babel y Python.&lt;/p&gt;
+&lt;p&gt;La principal lección fue descubrir que no siempre es necesario hacerlo todo dentro de las fórmulas de Org. En muchos casos resulta más cómodo utilizar Org para almacenar y organizar la información, mientras Python se encarga de procesarla, formatearla y exportarla.&lt;/p&gt;
+&lt;p&gt;Y lo mejor de todo es que al trabajar en texto plano, es fácil de versionar, respaldar y mantener.&lt;/p&gt;
+&lt;p&gt;No está nada mal para algo que aparenta ser "solo un editor de texto".&lt;/p&gt;</content><category term="Laboratorio"/><category term="emacs"/><category term="org-mode"/><category term="laboratorio"/><category term="linux"/><category term="programacion"/><category term="python"/><category term="software"/></entry><entry><title>Redescubriendo la onda corta...</title><link href="https://fotosycaptura.cl/posts/2026-05-18-redescubriendo-la-onda-corta.html" rel="alternate"/><published>2026-05-18T15:23:00-04:00</published><updated>2026-05-18T15:23:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-05-18:/posts/2026-05-18-redescubriendo-la-onda-corta.html</id><summary type="html">&lt;p&gt;Hace algunos días decidí comprar una radio portátil con recepción de onda corta. No fue una decisión impulsiva ni particularmente práctica, o quizás sí, si pronto se viene algún tipo de apocalipsis. Incluso en esos momentos habría que estar informados XDD, ejem... Más bien fue una mezcla de curiosidad técnica, nostalgia y ese extraño interés que siempre he tenido por las comunicaciones y las señales invisibles que nos rodean.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Escuchando radio" src="/media/2026/mayo/radio.png" style="width: auto; max-width: 100% !important;" /&gt;  &lt;/p&gt;
 &lt;p&gt;Hace algunos días decidí comprar una radio portátil con recepción de onda corta. No fue una decisión impulsiva ni particularmente práctica, o quizás sí, si pronto se viene algún tipo de apocalipsis. Incluso en esos momentos habría que estar informados XDD, ejem... Más bien fue una mezcla de curiosidad técnica, nostalgia y ese extraño interés que siempre he tenido por las comunicaciones y las señales invisibles que nos rodean.&lt;/p&gt;
 &lt;p&gt;Veamos entonces, el contenido de hoy:&lt;/p&gt;
 &lt;div class="toc"&gt;
@@ -2588,29 +2762,4 @@ sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&g
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_27/IMG_20241227_215650.jpg" /&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_27/IMG_20241227_215651.jpg" /&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_27/IMG_20241227_215726.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_27/IMG_20241227_215728.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2024_12_26</title><link href="https://fotosycaptura.cl/posts/galeria-2024_12_26.html" rel="alternate"/><published>2024-12-26T00:00:00-03:00</published><updated>2024-12-26T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-12-26:/posts/galeria-2024_12_26.html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105312.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105319.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105329.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105340.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105346.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105357.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105400.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105415.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105443.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105444.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105505.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105519.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105524.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105547.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105623.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105637.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105644.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105727.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105729.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_105909.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_122602.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_203618.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_203621.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_203625.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_203627.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_26/IMG_20241226_203630.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
+&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_27/IMG_20241227_215728.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
