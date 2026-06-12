@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Montando un OpenCTI en casa.. O casi XD | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2026-06-11-montando-opencti-en-casa-o-casi.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="En una de estas clases introductorias de un diplomado dedicados al Blue Team, presentaron muy por encima un programa llamado OpenCTI... Y me pareció bien interesante como para intentar desplegarlo en un laboratorio o en una Intranet de algún trabajo...">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/historial-cambios.html">Logs</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Yo</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-bar-chart" href="https://fotosycaptura.cl/statistic.html" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Montando un OpenCTI en casa.. O casi XD
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2026-06-11T21:45:00-04:00">
+        <i class="fa fa-clock-o"></i>
+        2026, jue 11 junio
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/programacion.html">#programacion</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>,         <a href="https://fotosycaptura.cl/tag/blog.html">#blog</a>,         <a href="https://fotosycaptura.cl/tag/config.html">#config</a>,         <a href="https://fotosycaptura.cl/tag/contenedor.html">#contenedor</a>,         <a href="https://fotosycaptura.cl/tag/emacs.html">#emacs</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><img alt="Texto alternativo" src="/media/2026/junio/opencti-01.png" style="width: auto; max-width: 100% !important;" /></p>
+<p>En una de estas clases introductorias de un diplomado dedicados al Blue Team, presentaron muy por encima un programa llamado OpenCTI... Y me pareció bien interesante como para intentar desplegarlo en un laboratorio o en una Intranet de algún trabajo...</p>
+<p>Seguramente estarás pensando que necesitas para poder montarlo y tenerlo configurado... Nah, seguro que ni pájara idea tienes... XDDD Bien, como soy un ser de pura bondad, te iluminaré... Con la linterna del conocimiento... XD</p>
+<p>Así que, dicho eso, veremos:</p>
+<div class="toc">
+<ul>
+<li><a href="#que-es-opencti">Qué es OpenCTI</a></li>
+<li><a href="#instalacion">Instalación</a></li>
+<li><a href="#comenzamos">Comenzamos</a></li>
+<li><a href="#configuracion">Configuración</a></li>
+<li><a href="#configuracion-de-elastic-search">Configuración de Elastic Search</a></li>
+<li><a href="#por-fin-desplegando">Por fin, desplegando</a></li>
+<li><a href="#que-bonito-y-ahora">Qué bonito ¿Y ahora?</a></li>
+<li><a href="#notas-al-pie-de-pagina">Notas al pie de p&aacute;gina</a></li>
+</ul>
+</div>
+<h1 id="que-es-opencti">Qué es OpenCTI</h1>
+<p>OpenCTI es una plataforma Open Source de Cyber Threat Intelligence. Sirve para centralizar, estructurar y relacionar información como:</p>
+<ul>
+<li>Actores de amenaza;</li>
+<li>Campañas;</li>
+<li>Malware;</li>
+<li>TTPs;</li>
+<li>Indicadores IOC;</li>
+<li>Observables: IPs, dominios, hashes, URLs;</li>
+<li>Reportes;</li>
+<li>Relaciones con MITRE ATT&amp;CK.</li>
+</ul>
+<p>La idea es que no tengas datos sueltos, sino un grafo de conocimiento de amenazas basado en STIX2, con API GraphQL, frontend web y conectores hacia herramientas como MISP, TheHive, MITRE ATT&amp;CK, etc</p>
+<p>Si a estas alturas no estás entendiendo nada, te recomiendo que no sigas viendo en la carpeta de <code>Laboratorio</code>, digo yo, para que después no me reclames. Yo con esto entiendo que ya estás advertido&#x2026;</p>
+<h1 id="instalacion">Instalación</h1>
+<p>La instalación no fue compleja, se supone que a estas alturas de la vida, y por el hecho de que este post está etiquetado con <em>contenedor</em>, sabrás que habrá que usar Docker.</p>
+<p>Además de ello, te recomiendo tener:</p>
+<ul>
+<li>Idealmente 16 GB en memoria RAM.</li>
+<li>80 GB en espacio de disco. Si te parece demasiado, piensa que se instalará en conjunto además: Elasticsearch/OpenSearch, Redis, RabbitMQ, MinIO, workers y diversos conectores.</li>
+<li>Linux. Bueno, en teoría puedes usar WSL si usas WinBugs, pero como no lo he probado, esto es pura teoría&#x2026; XD</li>
+</ul>
+<p>Eso al menos en términos de <em>Hardware</em>.</p>
+<h1 id="comenzamos">Comenzamos</h1>
+<p>En este punto asumiré que tienes git, jq, openssl, y también no menos importante Docker. Si no es así te sugiero mirar por <a href="https://fotosycaptura.cl/posts/2024-10-01-instalando-y-configurando-docker.html">acá</a>.</p>
+<p>Una vez que cumplas con ello, necesitarás en algún lugar de tu disco duro deberás crear una carpeta y clonar un repositorio. Para ello haz lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p ~/lab/opencti
+cd ~/lab/opencti
+git clone https://github.com/OpenCTI-Platform/docker.git
+cd docker
+cp .env.sample .env
+</code></pre></div>
+
+<h1 id="configuracion">Configuración</h1>
+<p>Tendrás que editar el archivo <em>.env</em> que copiaste en la última instrucción del bloque de código reciente. Puedes usar tu editor de texto favorito, es decir <em>Emacs</em>, o por último <em>ViM</em>. Si usas otro: fuera de mi iglesia XDD <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup></p>
+<p>Necesitarás cambiar a lo menos estos  valores:</p>
+<div class="highlight"><pre><span></span><code>OPENCTI_HOST=localhost
+OPENCTI_PORT=8080
+OPENCTI_EXTERNAL_SCHEME=http
+
+OPENCTI_ADMIN_EMAIL=admin@opencti.local
+OPENCTI_ADMIN_PASSWORD=UnaClaveUltraySeguraAqui
+OPENCTI_ADMIN_TOKEN=&lt;uuid&gt;
+OPENCTI_HEALTHCHECK_ACCESS_KEY=&lt;uuid&gt;
+OPENCTI_ENCRYPTION_KEY=&lt;clave_base64&gt;
+</code></pre></div>
+
+<p>Para los valores <em>uuid</em> y <em>clave en base64</em> necesitarás ejecutar:</p>
+<div class="highlight"><pre><span></span><code>uuidgen
+openssl rand -base64 32
+</code></pre></div>
+
+<p>Con esos comandos obtendrás unos valores adecuados, de lo contrario, es posible que no te funcione y después estés pasando rabias&#x2026; Y si te pasa eso, es por no leerme y seguir mis instrucciones al pie de la letra&#x2026;</p>
+<h1 id="configuracion-de-elastic-search">Configuración de Elastic Search</h1>
+<p><em>Elastic Search</em> es bien especial en sus requisitos y parámetros de funcionamiento&#x2026; Por tanto, te recomiendo que realices lo siguiente antes de desplegar el contenedor:</p>
+<div class="highlight"><pre><span></span><code>sudo sysctl -w vm.max_map_count=1048575
+echo &quot;vm.max_map_count=1048575&quot; | sudo tee /etc/sysctl.d/99-opencti.conf
+sudo sysctl --system
+</code></pre></div>
+
+<h1 id="por-fin-desplegando">Por fin, desplegando</h1>
+<p>Si te pareció eterno, intenta hacerle una imagen de disco a un disco de 1 TB y después a analizarlo mediante métodos de informática forense&#x2026; Ejem&#x2026;</p>
+<p>Bueno, vamos con lo que sigue&#x2026;</p>
+<div class="highlight"><pre><span></span><code>cd ~/lab/opencti/docker
+docker compose pull
+docker compose up -d
+</code></pre></div>
+
+<p>Puedes revisar el estado usando:</p>
+<div class="highlight"><pre><span></span><code>docker compose ps
+docker compose logs -f opencti
+</code></pre></div>
+
+<p>Si todo ha resultado bien, entonces tendrás que ir a tu navegador Firefox favorito e ir a la ruta</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080
+</code></pre></div>
+
+<p>Verás una hermosa página en azul en la que pedirá las credenciales&#x2026; Si te preguntas cuales&#x2026;. Creo que necesitas que te diga <em>Fuera de mi iglesia</em>, o también te podría decir <em>deja la informática, no es para ti</em>. También te diré lo mismo si usas otro navegador que no sea Firefox.</p>
+<h1 id="que-bonito-y-ahora">Qué bonito ¿Y ahora?</h1>
+<p>Pues ya está, listo&#x2026; ¡Adiós!</p>
+<p>&#x2026; XD</p>
+<p>Pero casi, deberías de comenzar a explorar su Dashboard<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup></p>
+<p>Ahí puedes observar y hacer muchas cosas, como por ejemplo:</p>
+<ul>
+<li>Explorar entidades: Intrusion Sets, Malware, Campaigns, Indicators.</li>
+<li>Activar o revisar conectores como MITRE ATT&amp;CK.</li>
+<li>Crear manualmente un observable, por ejemplo una IP sospechosa.</li>
+<li>Relacionar la IP con un reporte o amenaza.</li>
+<li>Exporta información en STIX/CSV para ver cómo estructura los datos.</li>
+<li>Y muchas cosas más&#x2026; ¡Llama ahora, llama ya! XD</li>
+</ul>
+<h1 id="notas-al-pie-de-pagina">Notas al pie de p&aacute;gina</h1>
+<p><sup><a id="fn.1" href="#fnr.1">1</a></sup> Siempre quise decir eso XDD</p>
+<p><sup><a id="fn.2" href="#fnr.2">2</a></sup> También se le dice tablero.</p>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		Visitas <img src="https://api.fotosycaptura.cl/contador.png" title="Contador de visitas" alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

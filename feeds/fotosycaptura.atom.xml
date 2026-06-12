@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-06-06T11:35:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Galería resumen este primer semestre</title><link href="https://fotosycaptura.cl/posts/galeria-2026_06_06.html" rel="alternate"/><published>2026-06-06T11:35:00-04:00</published><updated>2026-06-06T11:35:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-06-06:/posts/galeria-2026_06_06.html</id><summary type="html">&lt;p&gt;Hola a todos, esta es una galería de lo fotografiado y ¿Por qué no? De algunas actividades... Espero que les guste...&lt;/p&gt;</summary><content type="html">&lt;h2 id="resumen"&gt;Resumen&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-06-11T21:45:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Montando un OpenCTI en casa.. O casi XD</title><link href="https://fotosycaptura.cl/posts/2026-06-11-montando-opencti-en-casa-o-casi.html" rel="alternate"/><published>2026-06-11T21:45:00-04:00</published><updated>2026-06-11T21:45:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-06-11:/posts/2026-06-11-montando-opencti-en-casa-o-casi.html</id><summary type="html">&lt;p&gt;En una de estas clases introductorias de un diplomado dedicados al Blue Team, presentaron muy por encima un programa llamado OpenCTI... Y me pareció bien interesante como para intentar desplegarlo en un laboratorio o en una Intranet de algún trabajo...&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/junio/opencti-01.png" style="width: auto; max-width: 100% !important;" /&gt;&lt;/p&gt;
+&lt;p&gt;En una de estas clases introductorias de un diplomado dedicados al Blue Team, presentaron muy por encima un programa llamado OpenCTI... Y me pareció bien interesante como para intentar desplegarlo en un laboratorio o en una Intranet de algún trabajo...&lt;/p&gt;
+&lt;p&gt;Seguramente estarás pensando que necesitas para poder montarlo y tenerlo configurado... Nah, seguro que ni pájara idea tienes... XDDD Bien, como soy un ser de pura bondad, te iluminaré... Con la linterna del conocimiento... XD&lt;/p&gt;
+&lt;p&gt;Así que, dicho eso, veremos:&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#que-es-opencti"&gt;Qué es OpenCTI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#instalacion"&gt;Instalación&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#comenzamos"&gt;Comenzamos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuracion"&gt;Configuración&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuracion-de-elastic-search"&gt;Configuración de Elastic Search&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#por-fin-desplegando"&gt;Por fin, desplegando&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#que-bonito-y-ahora"&gt;Qué bonito ¿Y ahora?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#notas-al-pie-de-pagina"&gt;Notas al pie de p&amp;aacute;gina&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h1 id="que-es-opencti"&gt;Qué es OpenCTI&lt;/h1&gt;
+&lt;p&gt;OpenCTI es una plataforma Open Source de Cyber Threat Intelligence. Sirve para centralizar, estructurar y relacionar información como:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Actores de amenaza;&lt;/li&gt;
+&lt;li&gt;Campañas;&lt;/li&gt;
+&lt;li&gt;Malware;&lt;/li&gt;
+&lt;li&gt;TTPs;&lt;/li&gt;
+&lt;li&gt;Indicadores IOC;&lt;/li&gt;
+&lt;li&gt;Observables: IPs, dominios, hashes, URLs;&lt;/li&gt;
+&lt;li&gt;Reportes;&lt;/li&gt;
+&lt;li&gt;Relaciones con MITRE ATT&amp;amp;CK.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La idea es que no tengas datos sueltos, sino un grafo de conocimiento de amenazas basado en STIX2, con API GraphQL, frontend web y conectores hacia herramientas como MISP, TheHive, MITRE ATT&amp;amp;CK, etc&lt;/p&gt;
+&lt;p&gt;Si a estas alturas no estás entendiendo nada, te recomiendo que no sigas viendo en la carpeta de &lt;code&gt;Laboratorio&lt;/code&gt;, digo yo, para que después no me reclames. Yo con esto entiendo que ya estás advertido&amp;#x2026;&lt;/p&gt;
+&lt;h1 id="instalacion"&gt;Instalación&lt;/h1&gt;
+&lt;p&gt;La instalación no fue compleja, se supone que a estas alturas de la vida, y por el hecho de que este post está etiquetado con &lt;em&gt;contenedor&lt;/em&gt;, sabrás que habrá que usar Docker.&lt;/p&gt;
+&lt;p&gt;Además de ello, te recomiendo tener:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Idealmente 16 GB en memoria RAM.&lt;/li&gt;
+&lt;li&gt;80 GB en espacio de disco. Si te parece demasiado, piensa que se instalará en conjunto además: Elasticsearch/OpenSearch, Redis, RabbitMQ, MinIO, workers y diversos conectores.&lt;/li&gt;
+&lt;li&gt;Linux. Bueno, en teoría puedes usar WSL si usas WinBugs, pero como no lo he probado, esto es pura teoría&amp;#x2026; XD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Eso al menos en términos de &lt;em&gt;Hardware&lt;/em&gt;.&lt;/p&gt;
+&lt;h1 id="comenzamos"&gt;Comenzamos&lt;/h1&gt;
+&lt;p&gt;En este punto asumiré que tienes git, jq, openssl, y también no menos importante Docker. Si no es así te sugiero mirar por &lt;a href="https://fotosycaptura.cl/posts/2024-10-01-instalando-y-configurando-docker.html"&gt;acá&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Una vez que cumplas con ello, necesitarás en algún lugar de tu disco duro deberás crear una carpeta y clonar un repositorio. Para ello haz lo siguiente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir -p ~/lab/opencti
+cd ~/lab/opencti
+git clone https://github.com/OpenCTI-Platform/docker.git
+cd docker
+cp .env.sample .env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id="configuracion"&gt;Configuración&lt;/h1&gt;
+&lt;p&gt;Tendrás que editar el archivo &lt;em&gt;.env&lt;/em&gt; que copiaste en la última instrucción del bloque de código reciente. Puedes usar tu editor de texto favorito, es decir &lt;em&gt;Emacs&lt;/em&gt;, o por último &lt;em&gt;ViM&lt;/em&gt;. Si usas otro: fuera de mi iglesia XDD &lt;sup&gt;&lt;a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Necesitarás cambiar a lo menos estos  valores:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;OPENCTI_HOST=localhost
+OPENCTI_PORT=8080
+OPENCTI_EXTERNAL_SCHEME=http
+
+OPENCTI_ADMIN_EMAIL=admin@opencti.local
+OPENCTI_ADMIN_PASSWORD=UnaClaveUltraySeguraAqui
+OPENCTI_ADMIN_TOKEN=&amp;lt;uuid&amp;gt;
+OPENCTI_HEALTHCHECK_ACCESS_KEY=&amp;lt;uuid&amp;gt;
+OPENCTI_ENCRYPTION_KEY=&amp;lt;clave_base64&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para los valores &lt;em&gt;uuid&lt;/em&gt; y &lt;em&gt;clave en base64&lt;/em&gt; necesitarás ejecutar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uuidgen
+openssl rand -base64 32
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Con esos comandos obtendrás unos valores adecuados, de lo contrario, es posible que no te funcione y después estés pasando rabias&amp;#x2026; Y si te pasa eso, es por no leerme y seguir mis instrucciones al pie de la letra&amp;#x2026;&lt;/p&gt;
+&lt;h1 id="configuracion-de-elastic-search"&gt;Configuración de Elastic Search&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;Elastic Search&lt;/em&gt; es bien especial en sus requisitos y parámetros de funcionamiento&amp;#x2026; Por tanto, te recomiendo que realices lo siguiente antes de desplegar el contenedor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo sysctl -w vm.max_map_count=1048575
+echo &amp;quot;vm.max_map_count=1048575&amp;quot; | sudo tee /etc/sysctl.d/99-opencti.conf
+sudo sysctl --system
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id="por-fin-desplegando"&gt;Por fin, desplegando&lt;/h1&gt;
+&lt;p&gt;Si te pareció eterno, intenta hacerle una imagen de disco a un disco de 1 TB y después a analizarlo mediante métodos de informática forense&amp;#x2026; Ejem&amp;#x2026;&lt;/p&gt;
+&lt;p&gt;Bueno, vamos con lo que sigue&amp;#x2026;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd ~/lab/opencti/docker
+docker compose pull
+docker compose up -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Puedes revisar el estado usando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker compose ps
+docker compose logs -f opencti
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si todo ha resultado bien, entonces tendrás que ir a tu navegador Firefox favorito e ir a la ruta&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;http://localhost:8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Verás una hermosa página en azul en la que pedirá las credenciales&amp;#x2026; Si te preguntas cuales&amp;#x2026;. Creo que necesitas que te diga &lt;em&gt;Fuera de mi iglesia&lt;/em&gt;, o también te podría decir &lt;em&gt;deja la informática, no es para ti&lt;/em&gt;. También te diré lo mismo si usas otro navegador que no sea Firefox.&lt;/p&gt;
+&lt;h1 id="que-bonito-y-ahora"&gt;Qué bonito ¿Y ahora?&lt;/h1&gt;
+&lt;p&gt;Pues ya está, listo&amp;#x2026; ¡Adiós!&lt;/p&gt;
+&lt;p&gt;&amp;#x2026; XD&lt;/p&gt;
+&lt;p&gt;Pero casi, deberías de comenzar a explorar su Dashboard&lt;sup&gt;&lt;a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Ahí puedes observar y hacer muchas cosas, como por ejemplo:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Explorar entidades: Intrusion Sets, Malware, Campaigns, Indicators.&lt;/li&gt;
+&lt;li&gt;Activar o revisar conectores como MITRE ATT&amp;amp;CK.&lt;/li&gt;
+&lt;li&gt;Crear manualmente un observable, por ejemplo una IP sospechosa.&lt;/li&gt;
+&lt;li&gt;Relacionar la IP con un reporte o amenaza.&lt;/li&gt;
+&lt;li&gt;Exporta información en STIX/CSV para ver cómo estructura los datos.&lt;/li&gt;
+&lt;li&gt;Y muchas cosas más&amp;#x2026; ¡Llama ahora, llama ya! XD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="notas-al-pie-de-pagina"&gt;Notas al pie de p&amp;aacute;gina&lt;/h1&gt;
+&lt;p&gt;&lt;sup&gt;&lt;a id="fn.1" href="#fnr.1"&gt;1&lt;/a&gt;&lt;/sup&gt; Siempre quise decir eso XDD&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;&lt;a id="fn.2" href="#fnr.2"&gt;2&lt;/a&gt;&lt;/sup&gt; También se le dice tablero.&lt;/p&gt;</content><category term="Laboratorio"/><category term="laboratorio"/><category term="programacion"/><category term="software"/><category term="blog"/><category term="config"/><category term="contenedor"/><category term="emacs"/></entry><entry><title>Galería resumen este primer semestre</title><link href="https://fotosycaptura.cl/posts/galeria-2026_06_06.html" rel="alternate"/><published>2026-06-06T11:35:00-04:00</published><updated>2026-06-06T11:35:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-06-06:/posts/galeria-2026_06_06.html</id><summary type="html">&lt;p&gt;Hola a todos, esta es una galería de lo fotografiado y ¿Por qué no? De algunas actividades... Espero que les guste...&lt;/p&gt;</summary><content type="html">&lt;h2 id="resumen"&gt;Resumen&lt;/h2&gt;
 &lt;p&gt;Hola a todos, esta es una galería de lo fotografiado y ¿Por qué no? De algunas actividades... Espero que les guste...&lt;/p&gt;
 &lt;p&gt;Bueno, lo siguiente es mi primer Hanko, traído directamente desde Japón... ¿Qué les parece? &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Resumen de estos días" src="/media/2026/junio/2026_06_06/semestre1-01.jpg" style="width: auto; max-width: 100% !important;" /&gt;  &lt;/p&gt;
@@ -2681,5 +2790,4 @@ sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&g
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_30/IMG_20241230_211718.jpg" /&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_30/IMG_20241230_211720.jpg" /&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_30/IMG_20241230_211724.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_30/IMG_20241230_211726.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2024_12_29</title><link href="https://fotosycaptura.cl/posts/galeria-2024_12_29.html" rel="alternate"/><published>2024-12-29T00:00:00-03:00</published><updated>2024-12-29T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2024-12-29:/posts/galeria-2024_12_29.html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_29/IMG_20241229_103344.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_29/IMG_20241229_212023.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
+&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2024/2024_12_30/IMG_20241230_211726.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>

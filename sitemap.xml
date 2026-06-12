@@ -5,42 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/</loc>
-<lastmod>2026-06-08T21:49:19-00:00</lastmod>
+<lastmod>2026-06-11T21:45:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/tags.html</loc>
-<lastmod>2026-06-08T21:49:19-00:00</lastmod>
+<lastmod>2026-06-11T21:45:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/categories.html</loc>
-<lastmod>2026-06-08T21:49:19-00:00</lastmod>
+<lastmod>2026-06-11T21:45:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/authors.html</loc>
-<lastmod>2026-06-08T21:49:19-00:00</lastmod>
+<lastmod>2026-06-11T21:45:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/archives.html</loc>
-<lastmod>2026-06-08T21:49:19-00:00</lastmod>
+<lastmod>2026-06-11T21:45:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://fotosycaptura.cl/pages/index.html</loc>
-<lastmod>2026-06-08T21:49:19-00:00</lastmod>
+<lastmod>2026-06-11T21:45:13-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -64,6 +64,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2025-05-13T15:00:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/posts/2026-06-11-montando-opencti-en-casa-o-casi.html</loc>
+<lastmod>2026-06-11T21:45:00-04:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
@@ -8083,7 +8090,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/category/laboratorio.html</loc>
-<lastmod>2026-06-03T21:40:00-04:43</lastmod>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -8117,6 +8124,55 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://fotosycaptura.cl/tag/laboratorio.html</loc>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/programacion.html</loc>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/software.html</loc>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/blog.html</loc>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/config.html</loc>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/contenedor.html</loc>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://fotosycaptura.cl/tag/emacs.html</loc>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://fotosycaptura.cl/tag/galeria.html</loc>
 <lastmod>2026-06-06T11:35:00-04:43</lastmod>
 <changefreq>daily</changefreq>
@@ -8131,21 +8187,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://fotosycaptura.cl/tag/emacs.html</loc>
-<lastmod>2026-06-03T21:40:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://fotosycaptura.cl/tag/org-mode.html</loc>
-<lastmod>2026-06-03T21:40:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/tag/laboratorio.html</loc>
 <lastmod>2026-06-03T21:40:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -8159,21 +8201,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://fotosycaptura.cl/tag/programacion.html</loc>
-<lastmod>2026-06-03T21:40:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://fotosycaptura.cl/tag/python.html</loc>
-<lastmod>2026-06-03T21:40:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/tag/software.html</loc>
 <lastmod>2026-06-03T21:40:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -8237,13 +8265,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/tag/bicicleta.html</loc>
-<lastmod>2026-04-02T11:08:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/tag/blog.html</loc>
 <lastmod>2026-04-02T11:08:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -8390,13 +8411,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://fotosycaptura.cl/tag/contenedor.html</loc>
-<lastmod>2025-09-03T23:00:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://fotosycaptura.cl/tag/testdisk.html</loc>
 <lastmod>2025-08-18T20:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
@@ -8406,13 +8420,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://fotosycaptura.cl/tag/pendrive.html</loc>
 <lastmod>2025-08-18T20:00:00-04:43</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://fotosycaptura.cl/tag/config.html</loc>
-<lastmod>2025-08-06T23:00:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -8853,7 +8860,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://fotosycaptura.cl/author/fotosycaptura.html</loc>
-<lastmod>2026-06-06T11:35:00-04:43</lastmod>
+<lastmod>2026-06-11T21:45:00-04:43</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
