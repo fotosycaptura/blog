@@ -97,11 +97,12 @@
 <ul>
 <li><a href="#que-es-opencti">Qué es OpenCTI</a></li>
 <li><a href="#instalacion">Instalación</a></li>
-<li><a href="#comenzamos">Comenzamos</a></li>
+<li><a href="#descarga">Descarga</a></li>
 <li><a href="#configuracion">Configuración</a></li>
 <li><a href="#configuracion-de-elastic-search">Configuración de Elastic Search</a></li>
-<li><a href="#por-fin-desplegando">Por fin, desplegando</a></li>
+<li><a href="#desplegando-por-fin">Desplegando (Por fin)</a></li>
 <li><a href="#que-bonito-y-ahora">Qué bonito ¿Y ahora?</a></li>
+<li><a href="#y-conectores">Y&#x2026; ¿Conectores?</a></li>
 <li><a href="#notas-al-pie-de-pagina">Notas al pie de p&aacute;gina</a></li>
 </ul>
 </div>
@@ -128,7 +129,7 @@
 <li>Linux. Bueno, en teoría puedes usar WSL si usas WinBugs, pero como no lo he probado, esto es pura teoría&#x2026; XD</li>
 </ul>
 <p>Eso al menos en términos de <em>Hardware</em>.</p>
-<h1 id="comenzamos">Comenzamos</h1>
+<h1 id="descarga">Descarga</h1>
 <p>En este punto asumiré que tienes git, jq, openssl, y también no menos importante Docker. Si no es así te sugiero mirar por <a href="https://fotosycaptura.cl/posts/2024-10-01-instalando-y-configurando-docker.html">acá</a>.</p>
 <p>Una vez que cumplas con ello, necesitarás en algún lugar de tu disco duro deberás crear una carpeta y clonar un repositorio. Para ello haz lo siguiente:</p>
 <div class="highlight"><pre><span></span><code>mkdir -p ~/lab/opencti
@@ -165,7 +166,7 @@ echo &quot;vm.max_map_count=1048575&quot; | sudo tee /etc/sysctl.d/99-opencti.co
 sudo sysctl --system
 </code></pre></div>
 
-<h1 id="por-fin-desplegando">Por fin, desplegando</h1>
+<h1 id="desplegando-por-fin">Desplegando (Por fin)</h1>
 <p>Si te pareció eterno, intenta hacerle una imagen de disco a un disco de 1 TB y después a analizarlo mediante métodos de informática forense&#x2026; Ejem&#x2026;</p>
 <p>Bueno, vamos con lo que sigue&#x2026;</p>
 <div class="highlight"><pre><span></span><code>cd ~/lab/opencti/docker
@@ -178,11 +179,11 @@ docker compose up -d
 docker compose logs -f opencti
 </code></pre></div>
 
-<p>Si todo ha resultado bien, entonces tendrás que ir a tu navegador Firefox favorito e ir a la ruta</p>
+<p>Si todo ha resultado bien, entonces tendrás que ir a tu navegador <abbr title="El mejor navegador del mundo.">Firefox</abbr> favorito e ir a la ruta</p>
 <div class="highlight"><pre><span></span><code>http://localhost:8080
 </code></pre></div>
 
-<p>Verás una hermosa página en azul en la que pedirá las credenciales&#x2026; Si te preguntas cuales&#x2026;. Creo que necesitas que te diga <em>Fuera de mi iglesia</em>, o también te podría decir <em>deja la informática, no es para ti</em>. También te diré lo mismo si usas otro navegador que no sea Firefox.</p>
+<p>Verás una hermosa página en azul en la que pedirá las credenciales&#x2026; Si te preguntas cuales&#x2026;. Creo que necesitas que te diga <em>Fuera de mi iglesia</em>, o también te podría decir <em>deja la informática, no es para ti</em>. También te diré lo mismo si usas otro navegador que no sea <abbr title="El mejor navegador del mundo.">Firefox</abbr>.</p>
 <h1 id="que-bonito-y-ahora">Qué bonito ¿Y ahora?</h1>
 <p>Pues ya está, listo&#x2026; ¡Adiós!</p>
 <p>&#x2026; XD</p>
@@ -196,9 +197,86 @@ docker compose logs -f opencti
 <li>Exporta información en STIX/CSV para ver cómo estructura los datos.</li>
 <li>Y muchas cosas más&#x2026; ¡Llama ahora, llama ya! XD</li>
 </ul>
+<h1 id="y-conectores">Y&#x2026; ¿Conectores?</h1>
+<p>Aún no estas preparado, dijo Illidan Tempestira<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>, pero si quieres experimentar, tendrás que buscar por internet&#x2026;</p>
+<p>Pero vamos, no soy tan malo&#x2026; XDD, te mostraré como ingresar por ejemplo uno muy bueno llamado <em>Alienvault</em>. Para ello, deberías dirigirte a la página de <a href="https://otx.alienvault.com/">AlienVault</a> y registrarte.</p>
+<p>Busca el <code>API KEY OTX</code>.</p>
+<p>También necesitarás un <code>uuid</code>, que lo generarás tal como se realizó en el apartado anterior&#x2026;</p>
+<p>Ahora, con tu editor Emacs o VIM favorito, editarás el archivo <em>Docker-Compose.yml</em> y buscarás por ejemplo <em>Mitre</em>. Justo después de ello y fijándote que estás en el apartado de conectores, agregarás lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>connector-alienvault:
+  image: opencti/connector-alienvault:latest
+  environment:
+    - OPENCTI_URL=http://localhost
+    - OPENCTI_TOKEN=ChangeMe # &lt;-- Acá colocarás el token de OpenCTI, está más arriba, puedes copiar y pegar el mismo que está en la sección de Mitre.
+    - CONNECTOR_ID=8bbae241-6289-4faf-b7d6-7503bed50bbc  # Optional (default: 8bbae241-6289-4faf-b7d6-7503bed50bbc) &lt;-- Acá colocarás tu uuid generado.
+    - CONNECTOR_NAME=AlienVault  # Optional (default: AlienVault)
+    - CONNECTOR_SCOPE=alienvault  # Optional (default: alienvault)
+    - CONNECTOR_LOG_LEVEL=error  # Optional (default: error)
+    - CONNECTOR_DURATION_PERIOD=PT30M  # Optional (default: PT30M) - ISO8601 Format starting with &quot;P&quot; for Period ex: &quot;PT30M&quot; = Period time of 30 minutes
+    - ALIENVAULT_BASE_URL=https://otx.alienvault.com  # Optional (default: https://otx.alienvault.com)
+    - ALIENVAULT_API_KEY=ChangeMe  # Required &lt;-- Acá colocarás el API KEY OTX
+    - ALIENVAULT_TLP=White  # Optional (default: White)
+    - ALIENVAULT_CREATE_OBSERVABLES=true  # Optional (default: true)
+    - ALIENVAULT_CREATE_INDICATORS=true  # Optional (default: true)
+    - ALIENVAULT_PULSE_START_TIMESTAMP=2020-05-01T00:00:00  # Optional (default: 2020-05-01T00:00:00) - ISO 8601 format, UTC - BEWARE! Could be a lot of pulses!
+    - ALIENVAULT_REPORT_TYPE=threat-report  # Optional (default: threat-report)
+    - ALIENVAULT_REPORT_STATUS=New  # Optional (default: New) - New, In progress, Analyzed and Closed
+    - ALIENVAULT_GUESS_MALWARE=false  # Optional (default: false) - Use tags to guess malware
+    - ALIENVAULT_GUESS_CVE=false  # Optional (default: false) - Use tags to guess CVE
+    - ALIENVAULT_EXCLUDED_PULSE_INDICATOR_TYPES=FileHash-MD5,FileHash-SHA1  # Optional (default: &quot;&quot;) - Comma-separated list of Pulse indicator types to exclude
+    - ALIENVAULT_ENABLE_RELATIONSHIPS=true  # Optional (default: true) - Enable/Disable relationship creation between SDOs
+    - ALIENVAULT_ENABLE_ATTACK_PATTERNS_INDICATES=true  # Optional (default: true) - Enable/Disable &quot;indicates&quot; relationships between indicators and attack patterns
+    - ALIENVAULT_FILTER_INDICATORS=false  # Optional (default: false) - Filter indicators by their created datetime
+    - ALIENVAULT_DEFAULT_X_OPENCTI_SCORE=50  # Optional (default: 50) - The default x_opencti_score to use for indicators
+    - ALIENVAULT_X_OPENCTI_SCORE_IP=60  # Optional (default: uses default_x_opencti_score) - The x_opencti_score to use for IP indicators
+    - ALIENVAULT_X_OPENCTI_SCORE_DOMAIN=70  # Optional (default: uses default_x_opencti_score) - The x_opencti_score to use for Domain indicators
+    - ALIENVAULT_X_OPENCTI_SCORE_HOSTNAME=75  # Optional (default: uses default_x_opencti_score) - The x_opencti_score to use for Hostname indicators
+    - ALIENVAULT_X_OPENCTI_SCORE_EMAIL=70  # Optional (default: uses default_x_opencti_score) - The x_opencti_score to use for Email indicators
+    - ALIENVAULT_X_OPENCTI_SCORE_FILE=80  # Optional (default: uses default_x_opencti_score) - The x_opencti_score to use for StixFile indicators
+    - ALIENVAULT_X_OPENCTI_SCORE_URL=80  # Optional (default: uses default_x_opencti_score) - The x_opencti_score to use for URL indicators
+    - ALIENVAULT_X_OPENCTI_SCORE_MUTEX=60  # Optional (default: uses default_x_opencti_score) - The x_opencti_score to use for Mutex indicators
+    - ALIENVAULT_X_OPENCTI_SCORE_CRYPTOCURRENCY_WALLET=80  # Optional (default: uses default_x_opencti_score) - The x_opencti_score to use for Cryptocurrency Wallet indicators
+  restart: always
+</code></pre></div>
+
+<p>Se cuidadoso con el tema de los espacios, ve guiándote con el anterior de <em>Mitre</em>, no uses la tecla <em>tab</em>.</p>
+<p>Una vez que hayas terminado con ello, guarda y sale, y ahora tocará verificar si el archivo quedó correcto para su ejecución. La manera de comprobarlo será ejecutando:</p>
+<div class="highlight"><pre><span></span><code>docker compose config
+</code></pre></div>
+
+<p>Si de resultado te arroja el contenido del archivo completo de <em>docker-compose.yml</em>, entonces todo está bien, en caso contrario, deberás de corregir la indentación, que muy probablemente no me hayas hecho caso y hayas cometido un error&#x2026; Si ni para eso sirves&#x2026; En fin&#x2026;</p>
+<p>Luego, hay que levantar el contenedor, digo el conector, ¿O era el contenedor? Es que ¿Sabes? te vas a sorprender, es casi la misma manera de levantarla:</p>
+<div class="highlight"><pre><span></span><code>docker compose up -d connector-alienvault
+</code></pre></div>
+
+<p>Puedes revisar los logs del conector desde la terminal mediante:</p>
+<div class="highlight"><pre><span></span><code>docker compose logs -f connector-alienvault
+</code></pre></div>
+
+<p>Si todo va bien, ya puedes ir a la interfaz de OpenCTI e ir hacia <em>Datos</em>, <em>Ingestión</em>, <em>AlienVault</em>.</p>
+<p><img alt="Revisando la ingesta" src="/media/2026/junio/opencti-02.png" style="width: auto; max-width: 100% !important;" />
+<em>Revisando la ingesta de Alientvault</em></p>
+<p>Si se ve similar, entonces vas bien&#x2026; Solo&#x2026; Un detalle.. Verás que no hay progreso&#x2026; Y eso es porque te faltará <em>suscribirte</em> a los <em>Pulses</em>&#x2026; Así que, ve a la página de Alientvault y suscribirte debes, es gratis&#x2026; Solo, no te suscribas a todo lo que vez, prueba con uno&#x2026; La información que hay es demasiada y puede que luego el servidor que estás armando se encuentre sin poder procesar más información&#x2026; Quizás ahí también tengas que jugar un poco con el tiempo en el que realiza la tarea&#x2026;</p>
+<p><img alt="suscribiéndose a los Pulses" src="/media/2026/junio/opencti-03.png" style="width: auto; max-width: 100% !important;" />
+<em>Suscribiéndose</em></p>
+<p>Una vez que hayas realizado esto, ahora sí luego de un momento comenzará a aparecer una barra de progreso y se estará procesando la información&#x2026; Ten paciencia&#x2026; El profesor del diplomado tardó toda una noche&#x2026; Yo he tardado 2 días, le he dado demasiada información&#x2026;</p>
+<p>Si todo te ha ido bien, verás algo como esto:</p>
+<p><img alt="OpenCTI en acción" src="/media/2026/junio/opencti-04.png" style="width: auto; max-width: 100% !important;" />
+<em>Ya comienza a visualizarse información interesante</em></p>
+<p>Acá puedes observar que:</p>
+<ul>
+<li>El conector está importando datos de forma correcta.</li>
+<li>Ya creó un Threat Report.</li>
+<li>Está creando entidades relacionadas.</li>
+<li>Está importando observables (IPs, dominios, URLs).</li>
+<li>Está importando patrones ATT&amp;CK y relacionándolos con el informe.</li>
+</ul>
+<p>Y lo más importante: el programa ya está trabajando, y relacionando información automáticamente.</p>
+<p>¡Hasta la próxima!</p>
 <h1 id="notas-al-pie-de-pagina">Notas al pie de p&aacute;gina</h1>
 <p><sup><a id="fn.1" href="#fnr.1">1</a></sup> Siempre quise decir eso XDD</p>
 <p><sup><a id="fn.2" href="#fnr.2">2</a></sup> También se le dice tablero.</p>
+<p><sup><a id="fn.3" href="#fnr.3">3</a></sup> Personaje famoso de World Of Warcraft, un juego multi jugador masivo muy popular en Internet.</p>
   </div>
 </article>
     </div>
