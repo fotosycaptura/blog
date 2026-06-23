@@ -13,6 +13,7 @@
 &lt;li&gt;&lt;a href="#desplegando-por-fin"&gt;Desplegando (Por fin)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#que-bonito-y-ahora"&gt;Qué bonito ¿Y ahora?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#y-conectores"&gt;Y&amp;#x2026; ¿Conectores?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#hotfix"&gt;Hotfix&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#notas-al-pie-de-pagina"&gt;Notas al pie de p&amp;aacute;gina&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -183,10 +184,72 @@ docker compose logs -f opencti
 &lt;/ul&gt;
 &lt;p&gt;Y lo más importante: el programa ya está trabajando, y relacionando información automáticamente.&lt;/p&gt;
 &lt;p&gt;¡Hasta la próxima!&lt;/p&gt;
+&lt;h1 id="hotfix"&gt;Hotfix&lt;/h1&gt;
+&lt;p&gt;Hace unos días me encontré con una publicación &lt;a href="https://github.com/OpenCTI-Platform/connectors/issues/6200"&gt;acá&lt;/a&gt; en la que mencionan un &lt;code&gt;bug&lt;/code&gt; conocido respecto a un conector de cierto alien&amp;#x2026; Por tanto, les comento un poco los pasos para la resolución.&lt;/p&gt;
+&lt;p&gt;Lo primero será ingresar a la terminal y desde ahí ingresar a la terminal&lt;sup&gt;&lt;a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink"&gt;4&lt;/a&gt;&lt;/sup&gt; del contenedor. Pero si no sabes que nombre o de que manera acceder te lo explicaré así que tranquilo.&lt;/p&gt;
+&lt;p&gt;Primero, revisa que contenedor es del conector, por ejemplo tomemos el del extraterrestre como ejemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker ps | grep alienvault
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Una vez ubicado podrás ingresar como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker exec -it f4683c09c4d8 /bin/sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Siendo ese revoltijo de números y letras el identificador del contenedor. También funciona si usas el nombre, pero yo uso ese ID.&lt;/p&gt;
+&lt;p&gt;Luego, una vez dentro de esa terminal, buscas el archivo &lt;code&gt;client.py&lt;/code&gt; de esta manera:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;find /opt -path &amp;quot;*alienvault/client.py&amp;quot; -o -path &amp;quot;*client.py&amp;quot; | grep alienvault
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Una vez que lo encuentres e identifiques la ruta, deberás editarlo con algún editor de texto. En general suele estar disponible nano, pero yo usé VI.&lt;/p&gt;
+&lt;p&gt;Pero, antes de llegar y editar, te recomiendo hacer una copia de seguridad&amp;#x2026; Sí, se que eres manitos de hacha, así que mejor hay que hacer las cosas a prueba de we&amp;#x2026; De fallos&amp;#x2026;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cp /opt/opencti-connector-alienvault/alienvault/client.py /opt/opencti-connector-alienvault/alienvault/client.py.back
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Bueno, ahora que has realizado la copia de seguridad por si dejas la escoba, vamos con lo siguiente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vi /opt/opencti-connector-alienvault/alienvault/client.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Puedes usar nano, yo no estoy acostumbrado, así que uso VI, ya que no hay emacs&amp;#x2026; &lt;/p&gt;
+&lt;p&gt;Finalmente, el archivo denominado &lt;code&gt;client.py&lt;/code&gt; deberás editarlo y cambiar el código de la definición de la función por lo siguiente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def get_pulses_subscribed(self, modified_since: datetime, limit: int = 20):
+    # Use activity endpoint instead of subscribed
+    activity_url = f&amp;quot;/api/v1/pulses/activity?limit={limit}&amp;quot;
+    response = self.otx.get(activity_url)
+
+    if response and isinstance(response, dict) and &amp;#39;results&amp;#39; in response:
+        all_pulses = response[&amp;#39;results&amp;#39;]
+        filtered_pulses = []
+
+        for pulse in all_pulses:
+            # Add default TLP if missing
+            if &amp;#39;tlp&amp;#39; not in pulse:
+                pulse[&amp;#39;tlp&amp;#39;] = &amp;#39;white&amp;#39;
+
+            if &amp;#39;modified&amp;#39; in pulse:
+                pulse_modified_str = pulse[&amp;#39;modified&amp;#39;].replace(&amp;#39;Z&amp;#39;, &amp;#39;+00:00&amp;#39;)
+                try:
+                    pulse_modified = datetime.fromisoformat(pulse_modified_str)
+                    if pulse_modified &amp;gt;= modified_since:
+                        filtered_pulses.append(pulse)
+                except Exception:
+                    filtered_pulses.append(pulse)
+            else:
+                filtered_pulses.append(pulse)
+
+        pulses = parse_obj_as(List[Pulse], filtered_pulses)
+    else:
+        pulses = []
+
+    return pulses
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ya solo resta salir del contenedor con &lt;code&gt;exit&lt;/code&gt; y tocaría reiniciar el contenedor sin recrearlo.&lt;/p&gt;
+&lt;p&gt;Básicamente, con todo lo anterior explicado,  lo que estarás haciendo con esto es utilizar la API para obtener las actividades en vez de las suscripciones. Y con eso todo volverá a la normalidad. Al menos hasta este momento &lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;&amp;lt;2026-06-23 mar&amp;gt; &lt;/span&gt;&lt;/span&gt; puedo decir que todo ha estado funcionando bien.&lt;/p&gt;
 &lt;h1 id="notas-al-pie-de-pagina"&gt;Notas al pie de p&amp;aacute;gina&lt;/h1&gt;
 &lt;p&gt;&lt;sup&gt;&lt;a id="fn.1" href="#fnr.1"&gt;1&lt;/a&gt;&lt;/sup&gt; Siempre quise decir eso XDD&lt;/p&gt;
 &lt;p&gt;&lt;sup&gt;&lt;a id="fn.2" href="#fnr.2"&gt;2&lt;/a&gt;&lt;/sup&gt; También se le dice tablero.&lt;/p&gt;
-&lt;p&gt;&lt;sup&gt;&lt;a id="fn.3" href="#fnr.3"&gt;3&lt;/a&gt;&lt;/sup&gt; Personaje famoso de World Of Warcraft, un juego multi jugador masivo muy popular en Internet.&lt;/p&gt;</content><category term="Laboratorio"/><category term="laboratorio"/><category term="programacion"/><category term="software"/><category term="blog"/><category term="config"/><category term="contenedor"/><category term="emacs"/></entry><entry><title>Galería resumen este primer semestre</title><link href="https://fotosycaptura.cl/posts/galeria-2026_06_06.html" rel="alternate"/><published>2026-06-06T11:35:00-04:00</published><updated>2026-06-06T11:35:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-06-06:/posts/galeria-2026_06_06.html</id><summary type="html">&lt;p&gt;Hola a todos, esta es una galería de lo fotografiado y ¿Por qué no? De algunas actividades... Espero que les guste...&lt;/p&gt;</summary><content type="html">&lt;h2 id="resumen"&gt;Resumen&lt;/h2&gt;
+&lt;p&gt;&lt;sup&gt;&lt;a id="fn.3" href="#fnr.3"&gt;3&lt;/a&gt;&lt;/sup&gt; Personaje famoso de World Of Warcraft, un juego multi jugador masivo muy popular en Internet.&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;&lt;a id="fn.4" href="#fnr.4"&gt;4&lt;/a&gt;&lt;/sup&gt; Que recursivo&lt;/p&gt;</content><category term="Laboratorio"/><category term="laboratorio"/><category term="programacion"/><category term="software"/><category term="blog"/><category term="config"/><category term="contenedor"/><category term="emacs"/></entry><entry><title>Galería resumen este primer semestre</title><link href="https://fotosycaptura.cl/posts/galeria-2026_06_06.html" rel="alternate"/><published>2026-06-06T11:35:00-04:00</published><updated>2026-06-06T11:35:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-06-06:/posts/galeria-2026_06_06.html</id><summary type="html">&lt;p&gt;Hola a todos, esta es una galería de lo fotografiado y ¿Por qué no? De algunas actividades... Espero que les guste...&lt;/p&gt;</summary><content type="html">&lt;h2 id="resumen"&gt;Resumen&lt;/h2&gt;
 &lt;p&gt;Hola a todos, esta es una galería de lo fotografiado y ¿Por qué no? De algunas actividades... Espero que les guste...&lt;/p&gt;
 &lt;p&gt;Bueno, lo siguiente es mi primer Hanko, traído directamente desde Japón... ¿Qué les parece? &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Resumen de estos días" src="/media/2026/junio/2026_06_06/semestre1-01.jpg" style="width: auto; max-width: 100% !important;" /&gt;  &lt;/p&gt;

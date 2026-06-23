@@ -103,6 +103,7 @@
 <li><a href="#desplegando-por-fin">Desplegando (Por fin)</a></li>
 <li><a href="#que-bonito-y-ahora">Qué bonito ¿Y ahora?</a></li>
 <li><a href="#y-conectores">Y&#x2026; ¿Conectores?</a></li>
+<li><a href="#hotfix">Hotfix</a></li>
 <li><a href="#notas-al-pie-de-pagina">Notas al pie de p&aacute;gina</a></li>
 </ul>
 </div>
@@ -273,10 +274,72 @@ docker compose logs -f opencti
 </ul>
 <p>Y lo más importante: el programa ya está trabajando, y relacionando información automáticamente.</p>
 <p>¡Hasta la próxima!</p>
+<h1 id="hotfix">Hotfix</h1>
+<p>Hace unos días me encontré con una publicación <a href="https://github.com/OpenCTI-Platform/connectors/issues/6200">acá</a> en la que mencionan un <code>bug</code> conocido respecto a un conector de cierto alien&#x2026; Por tanto, les comento un poco los pasos para la resolución.</p>
+<p>Lo primero será ingresar a la terminal y desde ahí ingresar a la terminal<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup> del contenedor. Pero si no sabes que nombre o de que manera acceder te lo explicaré así que tranquilo.</p>
+<p>Primero, revisa que contenedor es del conector, por ejemplo tomemos el del extraterrestre como ejemplo:</p>
+<div class="highlight"><pre><span></span><code>docker ps | grep alienvault
+</code></pre></div>
+
+<p>Una vez ubicado podrás ingresar como:</p>
+<div class="highlight"><pre><span></span><code>docker exec -it f4683c09c4d8 /bin/sh
+</code></pre></div>
+
+<p>Siendo ese revoltijo de números y letras el identificador del contenedor. También funciona si usas el nombre, pero yo uso ese ID.</p>
+<p>Luego, una vez dentro de esa terminal, buscas el archivo <code>client.py</code> de esta manera:</p>
+<div class="highlight"><pre><span></span><code>find /opt -path &quot;*alienvault/client.py&quot; -o -path &quot;*client.py&quot; | grep alienvault
+</code></pre></div>
+
+<p>Una vez que lo encuentres e identifiques la ruta, deberás editarlo con algún editor de texto. En general suele estar disponible nano, pero yo usé VI.</p>
+<p>Pero, antes de llegar y editar, te recomiendo hacer una copia de seguridad&#x2026; Sí, se que eres manitos de hacha, así que mejor hay que hacer las cosas a prueba de we&#x2026; De fallos&#x2026;</p>
+<div class="highlight"><pre><span></span><code>cp /opt/opencti-connector-alienvault/alienvault/client.py /opt/opencti-connector-alienvault/alienvault/client.py.back
+</code></pre></div>
+
+<p>Bueno, ahora que has realizado la copia de seguridad por si dejas la escoba, vamos con lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>vi /opt/opencti-connector-alienvault/alienvault/client.py
+</code></pre></div>
+
+<p>Puedes usar nano, yo no estoy acostumbrado, así que uso VI, ya que no hay emacs&#x2026; </p>
+<p>Finalmente, el archivo denominado <code>client.py</code> deberás editarlo y cambiar el código de la definición de la función por lo siguiente.</p>
+<div class="highlight"><pre><span></span><code>def get_pulses_subscribed(self, modified_since: datetime, limit: int = 20):
+    # Use activity endpoint instead of subscribed
+    activity_url = f&quot;/api/v1/pulses/activity?limit={limit}&quot;
+    response = self.otx.get(activity_url)
+
+    if response and isinstance(response, dict) and &#39;results&#39; in response:
+        all_pulses = response[&#39;results&#39;]
+        filtered_pulses = []
+
+        for pulse in all_pulses:
+            # Add default TLP if missing
+            if &#39;tlp&#39; not in pulse:
+                pulse[&#39;tlp&#39;] = &#39;white&#39;
+
+            if &#39;modified&#39; in pulse:
+                pulse_modified_str = pulse[&#39;modified&#39;].replace(&#39;Z&#39;, &#39;+00:00&#39;)
+                try:
+                    pulse_modified = datetime.fromisoformat(pulse_modified_str)
+                    if pulse_modified &gt;= modified_since:
+                        filtered_pulses.append(pulse)
+                except Exception:
+                    filtered_pulses.append(pulse)
+            else:
+                filtered_pulses.append(pulse)
+
+        pulses = parse_obj_as(List[Pulse], filtered_pulses)
+    else:
+        pulses = []
+
+    return pulses
+</code></pre></div>
+
+<p>Ya solo resta salir del contenedor con <code>exit</code> y tocaría reiniciar el contenedor sin recrearlo.</p>
+<p>Básicamente, con todo lo anterior explicado,  lo que estarás haciendo con esto es utilizar la API para obtener las actividades en vez de las suscripciones. Y con eso todo volverá a la normalidad. Al menos hasta este momento <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-06-23 mar&gt; </span></span> puedo decir que todo ha estado funcionando bien.</p>
 <h1 id="notas-al-pie-de-pagina">Notas al pie de p&aacute;gina</h1>
 <p><sup><a id="fn.1" href="#fnr.1">1</a></sup> Siempre quise decir eso XDD</p>
 <p><sup><a id="fn.2" href="#fnr.2">2</a></sup> También se le dice tablero.</p>
 <p><sup><a id="fn.3" href="#fnr.3">3</a></sup> Personaje famoso de World Of Warcraft, un juego multi jugador masivo muy popular en Internet.</p>
+<p><sup><a id="fn.4" href="#fnr.4">4</a></sup> Que recursivo</p>
   </div>
 </article>
     </div>
