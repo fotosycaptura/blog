@@ -195,7 +195,7 @@
 <p>Y aquí es donde Python realmente brilla.</p>
 <h2 id="formateando-numeros-de-forma-amigable">Formateando números de forma amigable</h2>
 <p>Una simple función puede mejorar considerablemente la legibilidad de los datos:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">miles</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">miles</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </code></pre></div>
 
@@ -211,7 +211,7 @@
 <h2 id="exportar-a-excel-sin-sufrimiento">Exportar a Excel sin sufrimiento</h2>
 <p>Una vez que los datos están en Python, generar un archivo Excel es sorprendentemente sencillo.</p>
 <p>Puedes generar un archivo xlsx con la biblioteca openpyxl:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">Workbook</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">openpyxl</span><span class="w"> </span><span class="kn">import</span> <span class="n">Workbook</span>
 
 <span class="n">wb</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
 <span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">active</span>
