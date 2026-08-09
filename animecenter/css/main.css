@@ -168,7 +168,7 @@ body [data-aos="zoom-in"] {
 
 @font-face {
   font-family: "iconfont";
-  src: url("//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2") format("woff2");
+  src: url("//at.alicdn.com/t/c/font_4552607_ex15nbittbh.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -1729,6 +1729,25 @@ a, .main-nav-icon, .popup-btn-close, button {
 
 .article-entry h2 {
   margin-bottom: 40px;
+}
+
+.article-entry .paragraph-anchor {
+  opacity: 0;
+  text-decoration: none !important;
+  transition: 0.3s;
+}
+
+.article-entry p:hover > .paragraph-anchor,
+.article-entry li:hover > .paragraph-anchor,
+.article-entry dd:hover > .paragraph-anchor,
+.article-entry dt:hover > .paragraph-anchor,
+.article-entry td:hover > .paragraph-anchor,
+.article-entry th:hover > .paragraph-anchor,
+.article-entry blockquote:hover > .paragraph-anchor,
+.article-entry details:hover > .paragraph-anchor,
+.article-entry figure:hover > .paragraph-anchor,
+.article-entry figcaption:hover > .paragraph-anchor {
+  opacity: 0.4;
 }
 
 .article-entry a {
