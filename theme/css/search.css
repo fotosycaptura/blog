@@ -1,0 +1,100 @@
+.search-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-header {
+    margin-bottom: 2rem;
+}
+
+.search-form {
+    margin-bottom: 1rem;
+}
+
+.search-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.search-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0.9rem 1rem;
+
+    font-size: 1.05rem;
+
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+.search-input:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.search-status {
+    margin: 1rem 0 2rem 0;
+
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.search-results {
+    display: block;
+}
+
+.search-result {
+    padding: 1.5rem 0;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.search-result-title {
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+
+    font-size: 1.35rem;
+}
+
+.search-result-title a {
+    text-decoration: none;
+}
+
+.search-result-title a:hover {
+    text-decoration: underline;
+}
+
+.search-result-meta {
+    margin-bottom: 0.8rem;
+
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.search-result-summary {
+    margin-bottom: 0.8rem;
+
+    line-height: 1.6;
+}
+
+.search-result-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.4rem;
+}
+
+.search-result-tag {
+    display: inline-block;
+
+    padding: 0.2rem 0.55rem;
+
+    font-size: 0.8rem;
+
+    border: 1px solid #aaa;
+    border-radius: 999px;
+}
