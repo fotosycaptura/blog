@@ -1,5 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-07-27T18:40:00-04:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>De paseo y de aniversario</title><link href="https://fotosycaptura.cl/posts/2026-07-27-de-paseo-y-aniversario.html" rel="alternate"/><published>2026-07-27T18:40:00-04:00</published><updated>2026-07-27T18:40:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-07-27:/posts/2026-07-27-de-paseo-y-aniversario.html</id><summary type="html">&lt;p&gt;Uhm, digamos que estuvimos paseando después de un día lluvioso... Estos días han sido días muy llenos de agua... Y justo después que deja de llover, es momento de caminar y contemplar las maravillas de la lluvia sobre la vegetación... Pero no es lo único, en estos días se viene también un festejo, una celebración... ¿Qué será?...&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/julio/paseo/paseando-11.jpg" style="width: auto; max-width: 100% !important;" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-09-08T20:00:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Un repositorio documental en local</title><link href="https://fotosycaptura.cl/posts/2026-09-08-un-repositorio-documental-en-local.html" rel="alternate"/><published>2026-09-08T20:00:00-03:00</published><updated>2026-09-08T20:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-09-08:/posts/2026-09-08-un-repositorio-documental-en-local.html</id><summary type="html">&lt;p&gt;Hace un tiempo mientras navegaba, buscaba  y leía sobre algunos sistemas que sirvieran para un propósito: un gestor documental, que me permitiera encontrar lo que quisiera de manera rápida, que me permitiera etiquetar las cosas, que soportara más usuarios, en fin... Muchas cosas... Ven a ver lo que pillé...&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Un vistazo" src="/media/2026/septiembre/ss.png" style="width: auto; max-width: 100% !important;" /&gt;  &lt;/p&gt;
+&lt;p&gt;Hace un tiempo mientras navegaba, buscaba  y leía sobre algunos sistemas que sirvieran para un propósito: un gestor documental, que me permitiera encontrar lo que quisiera de manera rápida, que me permitiera etiquetar las cosas, que soportara más usuarios, en fin... Muchas cosas... Ven a ver lo que pillé... &lt;/p&gt;
+&lt;p&gt;Lo que pillé se llama &lt;code&gt;Paperless-ngx&lt;/code&gt;, y lo mejor de todo, se puede ejecutar como contenedor...&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#que-es"&gt;¿Qué es?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#para-que-sirve"&gt;¿Para qué sirve?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#que-puedo-almacenar"&gt;¿Qué puedo almacenar?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#la-carpeta-consume"&gt;La carpeta consume&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ventajas"&gt;¿Ventajas?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#puede-reemplazar-a-otros-gestores-documentales"&gt;Puede reemplazar a otros gestores documentales&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ya-mucho-relato-quiero-instalarlo"&gt;Ya, mucho relato, quiero instalarlo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#accediendo-a-paperless"&gt;Accediendo a Paperless&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="que-es"&gt;¿Qué es?&lt;/h2&gt;
+&lt;p&gt;Para poder comentarte que es, primero debo contarte algo... &lt;/p&gt;
+&lt;p&gt;Cuando uno empieza a acumular documentación técnica, manuales, informes, respaldos, contratos, procedimientos o simples PDF, tarde o temprano aparece el mismo problema: encontrar algo se vuelve más difícil que guardarlo.&lt;/p&gt;
+&lt;p&gt;Una solución bastante interesante para esto es &lt;code&gt;Paperless-ngx&lt;/code&gt;, un sistema de gestión documental - DMS, Document Management System - de código abierto y autoalojable.&lt;/p&gt;
+&lt;p&gt;Su objetivo no es simplemente guardar archivos, sino convertirlos en un archivo documental indexado y permitir búsquedas rápidas y sobre todo, simples. &lt;/p&gt;
+&lt;p&gt;Entre sus características se puede mencionar que realiza OCR sobre los documentos, extrae texto, asigna metadatos ya sea automáticamente, o de manera manual, lo cual te permitirá clasificar documentos y permitir búsquedas por contenido. &lt;/p&gt;
+&lt;h2 id="para-que-sirve"&gt;¿Para qué sirve?&lt;/h2&gt;
+&lt;p&gt;A veces me pregunto si realmente cuando lees, entiendes lo que lees... o.O... Pero bueno, vamos... Paciencia... Puede servirte ya sea en el ámbito personal como también en el profesional...&lt;/p&gt;
+&lt;h2 id="que-puedo-almacenar"&gt;¿Qué puedo almacenar?&lt;/h2&gt;
+&lt;p&gt;Algunos ejemplos de documentos que se pueden almacenarse son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Manuales&lt;/li&gt;
+&lt;li&gt;Procedimientos&lt;/li&gt;
+&lt;li&gt;Informes&lt;/li&gt;
+&lt;li&gt;Facturas&lt;/li&gt;
+&lt;li&gt;Contratos&lt;/li&gt;
+&lt;li&gt;Certificados&lt;/li&gt;
+&lt;li&gt;Documentación técnica&lt;/li&gt;
+&lt;li&gt;Documentación de proveedores&lt;/li&gt;
+&lt;li&gt;Informes de incidencias&lt;/li&gt;
+&lt;li&gt;Diagramas&lt;/li&gt;
+&lt;li&gt;Auditorías&lt;/li&gt;
+&lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Te podría dar otros ejemplos más pero creo que ya se entiende la idea, espero... &lt;/p&gt;
+&lt;p&gt;La principal diferencia respecto a un sistema tradicional de carpetas es que &lt;strong&gt;no estarás obligado a recordar dónde está físicamente el documento&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;En lugar de una estructura de carpetas típica, simplemente puedes buscar y encontrar, y le dejas lo del almacenamiento a la plataforma. ¡Simple!&lt;/p&gt;
+&lt;h2 id="la-carpeta-consume"&gt;La carpeta &lt;code&gt;consume&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Paperless posee un mecanismo muy útil llamado &lt;code&gt;consumption directory&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;En palabras simples, es una carpeta vigilada por el sistema, éste sistema... No vayas a pensar que hay un guardia de seguridad o algo por el estilo.. e.e.. Entonces, esta carpeta servirá para que como usuario, puedas dejar archivos ahí y Paperless se encargará de automatizar el proceso. Puedes entenderlo de esta manera si habláramos como un oficinista, como si fuera una bandeja de entrada.&lt;/p&gt;
+&lt;h2 id="ventajas"&gt;¿Ventajas?&lt;/h2&gt;
+&lt;p&gt;Las ventajas más interesantes son las siguientes.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Control de los datos. Al poder ser auto alojado, los documentos pueden permanecer completamente dentro de nuestra infraestructura. Paperless no necesita enviar nuestros archivos a servicios externos para nada.&lt;/li&gt;
+&lt;li&gt;Búsqueda por contenido. No depende únicamente del nombre del archivo ni de recordar la carpeta correcta.&lt;/li&gt;
+&lt;li&gt;OCR. Los documentos escaneados se convierten en documentos en los cuales se pueden realizar búsquedas.&lt;/li&gt;
+&lt;li&gt;Metadatos. Se pueden organizar mediante tipos, etiquetas, correspondientes y campos personalizados, aunque esto último no lo he experimentado todavía.&lt;/li&gt;
+&lt;li&gt;Automatización. La carpeta consume permite integrar escáneres, scripts, SCP, Samba, tareas programadas u otros sistemas. Pero también se pueden automatizar el tema de las etiquetas, autores, en fin... &lt;/li&gt;
+&lt;li&gt;Backups bajo control. Si eres entendido, que imagino que sí, osea, lo doy por hecho porque por algo lees mi sitio XD, puedes automatizar los respaldos...&lt;/li&gt;
+&lt;li&gt;Multiusuario. Paperless permite disponer de usuarios, grupos y permisos tanto globales como sobre documentos y otros objetos. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="puede-reemplazar-a-otros-gestores-documentales"&gt;Puede reemplazar a otros gestores documentales&lt;/h2&gt;
+&lt;p&gt;Acá te respondería con un &lt;code&gt;depende&lt;/code&gt;... Principalmente porque hay tipos de archivos que no soporta. Sí, esto lo he revisado hace poco y me he percatado de ello, pero no es algo de lo que me preocupe mucho la verdad, casi todos mis archivos son de todo menos de Office XDD...&lt;/p&gt;
+&lt;p&gt;Como ya expliqué antes, no usa el concepto de carpetas, pero por ejemplo podrías complementarlo como un archivador documental o histórico si por ejemplo usaras otro gestor que fuera colaborativo...&lt;/p&gt;
+&lt;h2 id="ya-mucho-relato-quiero-instalarlo"&gt;Ya, mucho relato, quiero instalarlo&lt;/h2&gt;
+&lt;p&gt;Los pasos para su instalación en contenedores usando Docker o Podman serían estos:&lt;/p&gt;
+&lt;p&gt;Si no tienes docker o no sabes que es, puedes mirar primero &lt;a href="/posts/2024-10-01-instalando-y-configurando-docker.html"&gt;acá&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Primero, necesitas tener un archivo &lt;code&gt;docker-compose.yml&lt;/code&gt;, puedes usar este que te dejo o uno similar...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;services:
+
+  broker:
+    image: docker.io/library/redis:8
+    container_name: paperless-redis
+    restart: unless-stopped
+
+    volumes:
+      - ./redis:/data
+
+    networks:
+      - paperless-net
+
+  db:
+    image: docker.io/library/postgres:18
+    container_name: paperless-postgres
+    restart: unless-stopped
+
+    volumes:
+      - ./postgres:/var/lib/postgresql
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    networks:
+      - paperless-net
+
+
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: paperless-webserver
+    restart: unless-stopped
+
+    depends_on:
+      - db
+      - broker
+
+    ports:
+      - &amp;quot;8000:8000&amp;quot;
+
+    volumes:
+      - ./data:/usr/src/paperless/data
+      - ./media:/usr/src/paperless/media
+      - ./export:/usr/src/paperless/export
+      - ./consume:/usr/src/paperless/consume
+
+    environment:
+      # Base de datos
+      PAPERLESS_DBENGINE: postgresql
+      PAPERLESS_DBHOST: db
+      PAPERLESS_DBNAME: ${POSTGRES_DB}
+      PAPERLESS_DBUSER: ${POSTGRES_USER}
+      PAPERLESS_DBPASS: ${POSTGRES_PASSWORD}
+
+      # Broker
+      PAPERLESS_REDIS: redis://broker:6379
+
+      # Seguridad
+      PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
+
+      # Configuración regional
+      PAPERLESS_TIME_ZONE: America/Santiago
+
+      # OCR
+      PAPERLESS_OCR_LANGUAGE: spa+eng
+      PAPERLESS_OCR_LANGUAGES: spa eng
+
+      # Usuario/grupo del host
+      USERMAP_UID: ${USERMAP_UID}
+      USERMAP_GID: ${USERMAP_GID}
+
+      # Nombre mostrado
+      PAPERLESS_APP_TITLE: &amp;quot;Repositorio documental&amp;quot;
+
+    networks:
+      - paperless-net
+
+
+networks:
+
+  paperless-net:
+    name: paperless-net
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Como advertirás, hay claves y otras cosas que no están disponibles acá y eso es justamente porque se usa un archivo &lt;code&gt;.env&lt;/code&gt; para dar un poco más de seguridad. Necesitarás crearlo mediante tu editor de texto favorito, sí, VIM o Emacs. Si es otro, ¡Fuera de mi iglesia!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;POSTGRES_DB&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;paperless
+&lt;span class="nv"&gt;POSTGRES_USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;paperless
+&lt;span class="nv"&gt;POSTGRES_PASSWORD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;AcáTuClaveSuperRobusta
+
+&lt;span class="nv"&gt;PAPERLESS_SECRET_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;AcáTuClaveSuperRobusta2.0
+
+&lt;span class="nv"&gt;USERMAP_UID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;
+&lt;span class="nv"&gt;USERMAP_GID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Bueno, está demás decir que deberás establecer una contraseña robusta... Te recomendaría si no se te ocurre nada usar algo como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl&lt;span class="w"&gt; &lt;/span&gt;rand&lt;span class="w"&gt; &lt;/span&gt;-base64&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;32&lt;/span&gt;
+openssl&lt;span class="w"&gt; &lt;/span&gt;rand&lt;span class="w"&gt; &lt;/span&gt;-base64&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;64&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Con eso tendrás algo totalmente aleatorio y bien robusto...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lo siguiente será crear la estructura de carpeta. Puedes hacer algo como:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;data&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;media&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;consume&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;postgres&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;redis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Con eso se generará en tu disco algo como esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/tu-ruta/paperless/
+├──&lt;span class="w"&gt; &lt;/span&gt;docker-compose.yml
+├──&lt;span class="w"&gt; &lt;/span&gt;.env
+├──&lt;span class="w"&gt; &lt;/span&gt;data/
+├──&lt;span class="w"&gt; &lt;/span&gt;media/
+├──&lt;span class="w"&gt; &lt;/span&gt;consume/
+├──&lt;span class="w"&gt; &lt;/span&gt;export/
+├──&lt;span class="w"&gt; &lt;/span&gt;postgres/
+└──&lt;span class="w"&gt; &lt;/span&gt;redis/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si lo has hecho todo bien, entonces podrás ir al último paso que será este:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;compose&lt;span class="w"&gt; &lt;/span&gt;up&lt;span class="w"&gt; &lt;/span&gt;-d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lo que esto hará será descargar la imagen, y después arrancará Paperless.&lt;/p&gt;
+&lt;h2 id="accediendo-a-paperless"&gt;Accediendo a Paperless&lt;/h2&gt;
+&lt;p&gt;Pues, para ello deberás dirigirte a tu equipo de manera local e ingresar a http://localhost:8000&lt;/p&gt;
+&lt;p&gt;Te comento que soporta perfectamente el uso con &lt;code&gt;nginx&lt;/code&gt;, pero eso es tema de otra configuración y de otra sección de quizás más adelante... Por lo que, de momento no lo detallaré acá...&lt;/p&gt;
+&lt;p&gt;La primera vez que ingreses al sitio te pedirá generar un usuario que será quien administre la plataforma. ¿Y después? Pues, ve, juega y ¡experimenta!&lt;/p&gt;
+&lt;p&gt;La interfaz no es compleja, además que soporta arrastrar y soltar, por lo que puedes abrir tu gestor de archivos favoritos y arrastrar los archivos a Paperless...&lt;/p&gt;
+&lt;p&gt;El principal cambio conceptual será algo como esto: antes pensabas "¿Dónde dejé el documento?", mientras que ahora pensarás en "¿Que decía?", o "recuerdo que el documento hablaba de esto..."&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Y eso sería todo por hoy, hasta la próxima!&lt;/p&gt;</content><category term="Laboratorio"/><category term="laboratorio"/><category term="linux"/><category term="paperless"/><category term="software"/><category term="docker"/></entry><entry><title>De paseo y de aniversario</title><link href="https://fotosycaptura.cl/posts/2026-07-27-de-paseo-y-aniversario.html" rel="alternate"/><published>2026-07-27T18:40:00-04:00</published><updated>2026-07-27T18:40:00-04:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-07-27:/posts/2026-07-27-de-paseo-y-aniversario.html</id><summary type="html">&lt;p&gt;Uhm, digamos que estuvimos paseando después de un día lluvioso... Estos días han sido días muy llenos de agua... Y justo después que deja de llover, es momento de caminar y contemplar las maravillas de la lluvia sobre la vegetación... Pero no es lo único, en estos días se viene también un festejo, una celebración... ¿Qué será?...&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Texto alternativo" src="/media/2026/julio/paseo/paseando-11.jpg" style="width: auto; max-width: 100% !important;" /&gt;&lt;/p&gt;
 &lt;p&gt;Uhm, digamos que estuvimos paseando después de un día lluvioso... Estos días han sido días muy llenos de agua... Y justo después que deja de llover, es momento de caminar y contemplar las maravillas de la lluvia sobre la vegetación... Pero no es lo único, en estos días se viene también un festejo, una celebración... ¿Qué será?...&lt;/p&gt;
 &lt;p&gt;Pues... Pasa y averigua... XDD&lt;/p&gt;
 &lt;div class="toc"&gt;
@@ -3005,140 +3211,4 @@ CLOSED: [2025-08-05 ma. 14:56] SCHEDULED: &amp;lt;2025-08-05 ma.&amp;gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_04 (Casa Lili)/IMG_20250104_185845.jpg" /&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_04 (Casa Lili)/IMG_20250104_185848.jpg" /&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_04 (Casa Lili)/IMG_20250104_185858.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_04 (Casa Lili)/IMG_20250104_185859.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Mi Experiencia con Arch Linux: Un Viaje Desde Windows y Otras Distros</title><link href="https://fotosycaptura.cl/posts/2025-01-03-mi-sistema-arch.html" rel="alternate"/><published>2025-01-03T22:40:00-03:00</published><updated>2025-01-03T22:40:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-01-03:/posts/2025-01-03-mi-sistema-arch.html</id><summary type="html">&lt;p&gt;Mi transición a Arch Linux comenzó después de un problema con Windows 11 que marcó el final de mi uso de sistemas operativos de Microsoft en mi equipo personal. Tras años explorando distribuciones como Debian, Mandrake, Gentoo, Linux Mint, entre otras, encontré en Arch Linux la combinación perfecta de personalización, control y aprendizaje. Por si acaso, no me están pagando por esto... XDDD&lt;/p&gt;</summary><content type="html">&lt;h2 id="mi-experiencia-con-arch-linux-un-viaje-desde-windows-y-otras-distros"&gt;Mi Experiencia con Arch Linux: Un Viaje Desde Windows y Otras Distros&lt;/h2&gt;
-&lt;p&gt;Todo comenzó con un simple intento de actualizar los drivers de mi tarjeta de video en Windows 11. Lo que debería haber sido un proceso sencillo, de hecho lo fue.. Al menos en un comienzo... Terminó desencadenando una serie de pantallazos azules que transformaron mi equipo en una fuente de frustración constante. Dejó de ser el wintendo que era... Snife, snife... Bueno, fue en ese momento que tomé una decisión trascendental: sería la última vez que usaría un sistema operativo Windows en este equipo.&lt;/p&gt;
-&lt;p&gt;Así comenzó mi retorno al mundo de Linux. No pisaba Linux desde... Uff, ya varios años... Exporádicamente accedía a un servidor por tareas de respaldos o de alguna actualización...Pero no era algo ajeno... A lo largo de los años ya había explorado diversas distribuciones. Mi historial incluía distros como Debian, Mandrake, después su evolución hacia Mandriva, SUSE, Red Hat, Centos, Gentoo y Linux Mint, por solo mencionar las que me acuerdo en el momento en que escribo estas líneas. Cada una de estas distros dejó su huella, pero ninguna como Debian, hasta ahora... Hasta que llegué a Arch Linux.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Mi viaje por las distintas distros" src="/media/2025/enero/evolucion.png" style="width: auto; max-width: 100% !important;" /&gt;&lt;br /&gt;
-&lt;em&gt;Mi viaje por las distintas distros&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Desde que comencé a estudiar ciberseguridad, pasé por Kali como distro de pruebas, también probé Parrot, pero finalmente me decanté por Arch Linux. La experiencia ha sido buena, osea, siempre he pensado que Linux es uno solo y que las distros agregan temas de paquetería, y alguna que otra personalización, pero en términos tanto a nivel profesional como personal, no eran relevantes. Hasta ahora... Arch me ha desafiado a aprender y entender profundamente en mayor medida el funcionamiento del sistema, algo muy importante en mi área de estudio. La filosofía KISS ("Keep It Simple, Stupid") de Arch XDDDD, junto con su enfoque en la personalización y el control absoluto, resuena con mi necesidad de tener un entorno optimizado y a la medida de mis necesidades.&lt;/p&gt;
-&lt;p&gt;Una de las primeras cosas que noté fue la velocidad y fluidez del sistema. Arch Linux no solo es liviano, sino que también me permite instalar únicamente lo que realmente necesito. Siempre pensaba por qué un sistema operativo es tan pesado? Es decir, partí mi vida informática en MS-DOS, pasando por Win 3.11, que eran bastante livianos, pero cada vez, a medida que evolucionaban en el tiempo, se hacían más y más pesados... Consumiendo tantos recursos... Esto contrasta marcadamente con la experiencia de otras distribuciones que, aunque son más amigables para principiantes, a menudo traen software innecesario preinstalado. Podría desinstalarlo, sí, y en ocasiones lo hice, pero en otras... En fin...&lt;/p&gt;
-&lt;p&gt;Lo que más me gustó fue el acceso a programas actualizados... Digamos, de última generación XDD, todo esto gracias a su sistema de rolling release y el repositorio AUR (Arch User Repository) es simplemente excepcional. Gracias a esto, siempre tengo a mano las herramientas más recientes y actualizadas, lo cual es de vital importancia en un campo tan dinámico como la ciberseguridad.&lt;/p&gt;
-&lt;p&gt;Incluso en el ámbito del juego (gaming para los amigos), Arch Linux no me ha decepcionado. Steam funciona de maravilla, y he podido disfrutar de mis juegos favoritos (Starbound principalmente XDD) sin mayores problemas. Esto es un claro ejemplo de cuánto ha avanzado Linux en términos de compatibilidad y soporte para los gamers, un área que antes era considerada su talón de Aquiles.&lt;/p&gt;
-&lt;p&gt;Mirando atrás en el tiempo, puedo decir que cada distribución que utilicé me preparó para este momento. Estaba pensando, esto último suena a que estoy más viejo? O poeta? Pensativo? Filosófico? XDDDD En fin, Debian me enseñó estabilidad; Gentoo, la paciencia y la personalización extrema; y Linux Mint, la importancia de una interfaz amigable. Pero Arch Linux combina todos estos elementos en un paquete que, para mí, es... Solo puedo decir que es simplemente perfecto, al menos para mi...&lt;/p&gt;
-&lt;p&gt;Si estás buscando una distribución para tu equipo personal, que sea desafiante en medida de que te enseñe y te dé control total sobre tu sistema, no puedo recomendar Arch Linux lo suficiente. Es una experiencia que va más allá del simple uso de un sistema operativo; es un viaje de aprendizaje. Y pensar que todo comenzó con esos pantallazos azules, un recuerdo ahora distante... &lt;/p&gt;
-&lt;p&gt;Por supuesto que si ahora quieres un Linux para ser servidor, usa Debian. Punto!&lt;/p&gt;
-&lt;h1 id="notas-personales"&gt;Notas personales&lt;/h1&gt;
-&lt;p&gt;Bueno, estas son algunas notas y cosas que he tenido que instalar, y que, dejo acá como auto referencia: de mi, para mi. Puede que te sirvan, como puede que no, si te sirve, genial, si no, pues... No se que haces aquí... XDDD&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Mis herramientas" src="/media/2025/enero/tools.png" style="width: auto; max-width: 100% !important;" /&gt;&lt;br /&gt;
-&lt;em&gt;Mis herramientas, algunas... Ya estais advertidos...&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id="configurar-zona-horaria-linux"&gt;Configurar zona horaria linux&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;timedatectl&lt;span class="w"&gt; &lt;/span&gt;set-timezone&lt;span class="w"&gt; &lt;/span&gt;America/Santiago
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="black-arch"&gt;Black Arch&lt;/h2&gt;
-&lt;p&gt;Se instaló pero hay unos detalles que arroja al buscar un paquete en especial:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete bluebox-ng&lt;br /&gt;
-error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete metasploit&lt;br /&gt;
-error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete perl-http-parser-xs&lt;br /&gt;
-error: la base de datos blackarch es inconsistente: versión mal emparejada en el paquete python2-coloredlogs&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Por lo que, para solucionar temporalmente mientras:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;vim&lt;span class="w"&gt; &lt;/span&gt;/etc/pacman.conf
-&lt;span class="c1"&gt;# Buscar y desactivar el repositorio ligado a blackarch&lt;/span&gt;
-sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-Fyy&lt;span class="w"&gt; &lt;/span&gt;gl.h
-sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-Syyu
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Ahora puedes instalar las herramientas del repositorio Blackarch. Para mostrar una lista de todas las herramientas disponibles, ejecuta:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# pacman -Sgg | grep blackarch | cut -d&amp;#39; &amp;#39; -f2 | sort -u&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="diccionarios"&gt;Diccionarios&lt;/h2&gt;
-&lt;p&gt;Para la instalación de los wordlist he ido a la URL: https://github.com/BlackArch/wordlistctl&lt;/p&gt;
-&lt;p&gt;Y he seguido las instrucciones de ahí para instalar el script que descarga los wordlists.&lt;/p&gt;
-&lt;h2 id="seclists"&gt;seclists&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;seclists
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Más info en: https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content&lt;/p&gt;
-&lt;h2 id="burpsuite"&gt;Burpsuite&lt;/h2&gt;
-&lt;p&gt;Esta aplicación se intentó instalar vía pacman y yay, pero sin éxito.&lt;/p&gt;
-&lt;p&gt;La instalación correcta fue efectuada mediante la descarga de:
-https://portswigger.net/burp/releases&lt;/p&gt;
-&lt;p&gt;Y posteriormente instalando con:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;chmod&lt;span class="w"&gt; &lt;/span&gt;+x&lt;span class="w"&gt; &lt;/span&gt;urpsuite_community_linux_v2024_6_3.sh
-sudo&lt;span class="w"&gt; &lt;/span&gt;./urpsuite_community_linux_v2024_6_3.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="dirb"&gt;dirb&lt;/h2&gt;
-&lt;p&gt;Se instala dirb siguiendo la forma vía pacman&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;dirb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="drivers-nvidia"&gt;Drivers Nvidia&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-Syu&lt;span class="w"&gt; &lt;/span&gt;nvidia&lt;span class="w"&gt; &lt;/span&gt;nvidia-utils&lt;span class="w"&gt; &lt;/span&gt;nvidia-settings
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="latex-studio"&gt;LaTeX Studio&lt;/h2&gt;
-&lt;p&gt;Al compilar daba error con biber, se solucionó instalando &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# pacman -S libxcrypt-compat&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Y para el languagetool:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# pacman -S languagetool&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Después configuro lo de lenguaje como:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Server-URL: http://localhost:8081/
-Java: java
-Start LanguageTool if not running: checked
-LT-Path: /usr/share/languagetool:/usr/share/java/languagetool/*
-LT Arguments: org.languagetool.server.HTTPServer -p 8081
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="limpieza-cache-pacman"&gt;Limpieza caché pacman&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# pacman -Sc&lt;/span&gt;
-&lt;span class="c1"&gt;# yay -Sc&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Hay una aplicación que sirve para realizar limpieza y mantención, aunque es algo privativa. Se llama &lt;em&gt;stacer&lt;/em&gt; y se instala como &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# pacman -S stacer&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Pero no la he instalado, pensé que no es necesario pero lo dejo anotado acá por si alguna vez lo quiera usar...&lt;/p&gt;
-&lt;h2 id="problema-de-vm-y-kvm-con-virtualbox"&gt;Problema de VM y KVM con VirtualBox&lt;/h2&gt;
-&lt;p&gt;Se resuelve usando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;lsmod&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;kvm&lt;span class="w"&gt;  &lt;/span&gt;
-kvm_intel&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;425984&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
-kvm&lt;span class="w"&gt;                  &lt;/span&gt;&lt;span class="m"&gt;1388544&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kvm_intel&lt;span class="w"&gt;  &lt;/span&gt;
-sudo&lt;span class="w"&gt; &lt;/span&gt;rmmod&lt;span class="w"&gt; &lt;/span&gt;kvm_intel&lt;span class="w"&gt;  &lt;/span&gt;
-sudo&lt;span class="w"&gt; &lt;/span&gt;rmmod&lt;span class="w"&gt; &lt;/span&gt;kvm&lt;span class="w"&gt;  &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="nessus"&gt;Nessus&lt;/h2&gt;
-&lt;p&gt;Se instala con yay:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;yay&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;nessus
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Posteriormente se configura utilizando el active key con el que te habrás registrado.&lt;/p&gt;
-&lt;h1 id="r-y-r-studio"&gt;R y R-Studio&lt;/h1&gt;
-&lt;p&gt;Se instala R y RStudio-desktop&lt;/p&gt;
-&lt;p&gt;Se instala una librería que no estaba cuando uno usa librerías de ML&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;gcc-fortran
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="searchsploit"&gt;Searchsploit&lt;/h2&gt;
-&lt;p&gt;Personalmente, no me gusta snapd, a la fecha en que redacté estas líneas, lo desinstalé, en su lugar, estoy usando flatpak.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://aur.archlinux.org/snapd.git
-&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;snapd
-makepkg&lt;span class="w"&gt; &lt;/span&gt;-si
-sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--now&lt;span class="w"&gt; &lt;/span&gt;snapd.socket
-sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--now&lt;span class="w"&gt; &lt;/span&gt;snapd.apparmor.service
-sudo&lt;span class="w"&gt; &lt;/span&gt;ln&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;/var/lib/snapd/snap&lt;span class="w"&gt; &lt;/span&gt;/snap
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Finalmente ahora se puede instalar así:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;snap&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;searchsploit
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;sploitctl
-sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;exploitdb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Y ahora por fin puedo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;searchsploit&lt;span class="w"&gt; &lt;/span&gt;apache&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.4.41
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="wordlistctl"&gt;Wordlistctl&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;pacman -S wordlistctl&lt;/code&gt;&lt;/p&gt;</content><category term="Laboratorio"/><category term="blog"/><category term="config"/><category term="laboratorio"/><category term="software"/></entry></feed>
+&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_04 (Casa Lili)/IMG_20250104_185859.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
