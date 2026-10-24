@@ -1,5 +1,426 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-10-12T19:47:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Un paseo bajo la lluvia</title><link href="https://fotosycaptura.cl/posts/2026-10-12-un-paseo-bajo-la-lluvia.html" rel="alternate"/><published>2026-10-12T19:47:00-03:00</published><updated>2026-10-12T19:47:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-10-12:/posts/2026-10-12-un-paseo-bajo-la-lluvia.html</id><summary type="html">&lt;p&gt;Hoy en día de lluvia, salimos a caminar y tomar algunas fotitos... Acompáñanos disfrutando de ellas...&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Paseando bajo la lluvia" src="/media/2026/octubre/pbll-08.jpg" style="width: auto; max-width: 100% !important;" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://fotosycaptura.cl - @fotosycaptura</title><link href="https://fotosycaptura.cl/" rel="alternate"/><link href="https://fotosycaptura.cl/feeds/fotosycaptura.atom.xml" rel="self"/><id>https://fotosycaptura.cl/</id><updated>2026-10-24T20:00:00-03:00</updated><subtitle>Bit&amp;aacute;cora personal del capit&amp;aacute;n @fotosycaptura ✨</subtitle><entry><title>Copyparty: montando una nube personal ligera con Docker y Nginx Proxy Manager</title><link href="https://fotosycaptura.cl/posts/2026-10-24-montando-nube-con-copyparty.html" rel="alternate"/><published>2026-10-24T20:00:00-03:00</published><updated>2026-10-24T20:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-10-24:/posts/2026-10-24-montando-nube-con-copyparty.html</id><summary type="html">&lt;p&gt;Hace algún tiempo comencé a utilizar File Browser para administrar y compartir archivos desde mi propia infraestructura. La idea era bastante sencilla: disponer de un espacio accesible mediante un navegador, con usuarios, carpetas y permisos, sin depender de servicios externos de almacenamiento. Sin embargo... Todo cambió cuando dejó de tener soporte... Y eso conlleva riesgos de ciberseguridad... Acompáñame a revisar con qué lo reemplacé...&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Copyparty" src="/media/2026/octubre/copyparty.png" style="width: auto; max-width: 100% !important;" /&gt;&lt;/p&gt;
+&lt;p&gt;Hace algún tiempo comencé a utilizar File Browser para administrar y compartir archivos desde mi propia infraestructura. La idea era bastante sencilla: disponer de un espacio accesible mediante un navegador, con usuarios, carpetas y permisos, sin depender de servicios externos de almacenamiento. Sin embargo... Todo cambió cuando dejó de tener soporte... Y eso, conlleva riesgos de ciberseguridad...   Acompáñame a revisar con qué lo reemplacé...&lt;/p&gt;
+&lt;p&gt;Al buscar alternativas para reemplazar la instalación que utilizaba, terminé encontrándome con Copyparty, un servidor de archivos escrito principalmente en Python que destaca por su ligereza y por la cantidad de funcionalidades que ofrece.&lt;/p&gt;
+&lt;p&gt;En este artículo explicaré qué es Copyparty, sus principales características y cómo se puede instalar por ejemplo en una Raspberry Pi utilizando Docker Compose. También explicaré cómo publicarlo mediante Nginx Proxy Manager, configurar usuarios con permisos diferentes y resolver algunos inconvenientes que podrían llegar a aparecer durante la instalación.&lt;/p&gt;
+&lt;p&gt;Dicho esto, los temás de hoy:&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#que-es-copyparty"&gt;¿Qué es Copyparty?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#por-que-elegir-copyparty"&gt;¿Por qué elegir Copyparty?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#preparando-la-estructura-de-directorios"&gt;Preparando la estructura de directorios&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#crear-la-configuracion-de-docker-compose"&gt;Crear la configuración de Docker Compose&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#por-que-se-utiliza-xdg_config_home"&gt;¿Por qué se utiliza XDG_CONFIG_HOME?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configurar-usuarios-y-carpetas"&gt;Configurar usuarios y carpetas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#comprendiendo-los-permisos"&gt;Comprendiendo los permisos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#iniciar-copyparty"&gt;Iniciar Copyparty&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#publicar-copyparty-mediante-nginx-proxy-manager"&gt;Publicar Copyparty mediante Nginx Proxy Manager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#primer-inconveniente-que-puedes-encontrar-error-cors"&gt;Primer inconveniente que puedes encontrar: error CORS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#segundo-inconveniente-que-podrias-obtener-502-bad-gateway"&gt;Segundo inconveniente que podrías obtener: 502 Bad Gateway&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#montar-carpetas-externas-sin-copiar-los-archivos"&gt;Montar carpetas externas sin copiar los archivos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#conclusiones"&gt;Conclusiones&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#referencias"&gt;Referencias&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="que-es-copyparty"&gt;¿Qué es Copyparty?&lt;/h2&gt;
+&lt;p&gt;Copyparty es, básicamente un servidor de archivos que permite compartir, administrar, subir y descargar archivos mediante una interfaz web.&lt;/p&gt;
+&lt;p&gt;A diferencia de plataformas más complejas como Nextcloud, Copyparty no pretende ser una suite completa de colaboración, calendario o productividad. Su propósito principal es ofrecer un sistema de intercambio y administración de archivos, con una instalación relativamente sencilla y un consumo de recursos casi despreciable diría yo.&lt;/p&gt;
+&lt;p&gt;Entre sus características, destacan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Interfaz web para navegar, subir y descargar archivos.&lt;/li&gt;
+&lt;li&gt;Cuentas de usuario con permisos diferenciados.&lt;/li&gt;
+&lt;li&gt;Volúmenes virtuales que permiten publicar distintas carpetas.&lt;/li&gt;
+&lt;li&gt;Subidas de archivos mediante el navegador.&lt;/li&gt;
+&lt;li&gt;Posibilidad de habilitar protocolos adicionales, según la configuración y las dependencias instaladas.&lt;/li&gt;
+&lt;li&gt;Compatibilidad con Linux y despliegues mediante contenedores.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Una característica especialmente interesante es su sistema de volúmenes virtuales: se puede presentar carpetas ubicadas en diferentes lugares del sistema como si pertenecieran a un mismo servidor de archivos, sin necesidad de moverlas físicamente.&lt;/p&gt;
+&lt;h2 id="por-que-elegir-copyparty"&gt;¿Por qué elegir Copyparty?&lt;/h2&gt;
+&lt;p&gt;Mi objetivo era mantener un servicio pequeño casero para almacenar y compartir archivos, principalmente documentos, fotografías y otros materiales personales. Antes usaba filebrowser y si bien, podría seguir utilizándolo mediante acceso VPN, tener aplicaciones legacy puede conllevar un riesgo así que mejor, usar otra alternativa...&lt;/p&gt;
+&lt;p&gt;No necesitaba una plataforma demasiado compleja. La solución debía funcionar en una Raspberry, y debería de permitir varios usuarios y ofrecer acceso remoto mediante HTTPS.&lt;/p&gt;
+&lt;p&gt;Entre otras opciones, evalué SFTPGo, que incorpora funcionalidades interesantes y soporte para diferentes protocolos de transferencia. Sin embargo, para este caso decidí probar Copyparty por su enfoque ligero y por la flexibilidad de su configuración.&lt;/p&gt;
+&lt;p&gt;Si estás interesado en ello, seguramente la infraestructura que utilizarás podría ser como la siguiente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Raspberry Pi 4 con Debian.&lt;/li&gt;
+&lt;li&gt;Docker y Docker Compose.&lt;/li&gt;
+&lt;li&gt;Nginx Proxy Manager para administrar HTTPS.&lt;/li&gt;
+&lt;li&gt;Un dominio propio.&lt;/li&gt;
+&lt;li&gt;Carpetas locales y/o almacenamiento adicional.&lt;/li&gt;
+&lt;li&gt;Una red Docker compartida entre el proxy y Copyparty.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="preparando-la-estructura-de-directorios"&gt;Preparando la estructura de directorios&lt;/h2&gt;
+&lt;p&gt;Primero deberás generar un directorio de trabajo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;~/mi-usuario-u-otra-ruta/copyparty
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/mi-usuario-u-otra-ruta/copyparty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Dentro de él convendrá preparar algunas carpetas que serán necesarias:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;state&lt;span class="w"&gt; &lt;/span&gt;files/invitado/subidas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La estructura inicial será algo como esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;copyparty/
+├──&lt;span class="w"&gt; &lt;/span&gt;docker-compose.yml
+├──&lt;span class="w"&gt; &lt;/span&gt;config/
+│&lt;span class="w"&gt;   &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;copyparty.conf
+├──&lt;span class="w"&gt; &lt;/span&gt;state/
+└──&lt;span class="w"&gt; &lt;/span&gt;files/
+&lt;span class="w"&gt;    &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;invitado/
+&lt;span class="w"&gt;        &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;subidas/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Cada directorio tiene una finalidad:
+- config: configuración de Copyparty.
+- state: información persistente de la aplicación, incluidas las sesiones.
+- files: archivos administrados desde la interfaz web.&lt;/p&gt;
+&lt;p&gt;Como medida de seguridad, será importante mantener separados los archivos personales y los datos internos de la aplicación.&lt;/p&gt;
+&lt;h2 id="crear-la-configuracion-de-docker-compose"&gt;Crear la configuración de Docker Compose&lt;/h2&gt;
+&lt;p&gt;Y llegado a este punto, se usará una imagen de Copyparty y se conectará a una red Docker compartida con Nginx Proxy Manager.&lt;/p&gt;
+&lt;p&gt;Para ello, toca generar el archivo docker-compose.yml:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;copyparty&lt;/span&gt;
+
+&lt;span class="na"&gt;services&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;copyparty&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;copyparty/min:latest&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;container_name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;copyparty&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;user&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1000:1000&amp;quot;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;environment&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="na"&gt;TZ&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;America/Santiago&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="na"&gt;PYTHONUNBUFFERED&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="na"&gt;XDG_CONFIG_HOME&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;/state&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;volumes&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="na"&gt;- ./config&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;/cfg:ro&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="na"&gt;- ./state&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;/state:rw&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="na"&gt;- ./files&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;/w:rw&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;networks&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="na"&gt;proxy-interno&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="na"&gt;ipv4_address&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;172.18.0.3&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;mem_limit&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;256m&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;security_opt&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="na"&gt;- no-new-privileges&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;true&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;restart&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;unless-stopped&lt;/span&gt;
+
+&lt;span class="na"&gt;networks&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;proxy-interno&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;external&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En este ejemplo, proxy-interno es una red Docker que ya existe y que también utiliza Nginx Proxy Manager.&lt;/p&gt;
+&lt;p&gt;Antes de asignar una IP fija deberás comprobar que la red tenga una subred compatible y que la dirección elegida esté disponible:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;network&lt;span class="w"&gt; &lt;/span&gt;inspect&lt;span class="w"&gt; &lt;/span&gt;proxy-interno
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La IP 172.18.0.3 es únicamente la dirección utilizada en la instalación. No necesariamente será válida en otras redes, y en tu caso, puede que sea otra...&lt;/p&gt;
+&lt;p&gt;También deberás verificar que el usuario 1000:1000 tenga acceso a los directorios montados. Si los permisos no son correctos, Copyparty podría iniciar, pero no conseguir escribir sus archivos de estado o permitir las subidas.&lt;/p&gt;
+&lt;p&gt;Así que, para comprobar el UID del usuario, puedes usar el comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;id
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si corresponde al UID 1000, normalmente podrás preparar las carpetas locales de esta forma:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;chown&lt;span class="w"&gt; &lt;/span&gt;-R&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;:1000&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;state&lt;span class="w"&gt; &lt;/span&gt;files
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Este comando está pensado para los directorios recién creados del proyecto, no para carpetas personales existentes que puedan contener archivos de otros usuarios.&lt;/p&gt;
+&lt;h2 id="por-que-se-utiliza-xdg_config_home"&gt;¿Por qué se utiliza XDG_CONFIG_HOME?&lt;/h2&gt;
+&lt;p&gt;Durante las primeras pruebas observé advertencias relacionadas con directorios de configuración de solo lectura.&lt;/p&gt;
+&lt;p&gt;Al establecer:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;XDG_CONFIG_HOME:&lt;span class="w"&gt; &lt;/span&gt;/state
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;y montar ese directorio con permisos de escritura, Copyparty puede almacenar su información persistente sin depender del sistema de archivos interno del contenedor.&lt;/p&gt;
+&lt;h2 id="configurar-usuarios-y-carpetas"&gt;Configurar usuarios y carpetas&lt;/h2&gt;
+&lt;p&gt;Una de las cosas que más me llamó la atención fue su sistema de cuentas y volúmenes.&lt;/p&gt;
+&lt;p&gt;Supongamos un caso en el que necesitas dos usuarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Admin, tu usuario para administrar tus archivos y carpetas.&lt;/li&gt;
+&lt;li&gt;Invitados, para acceder a una carpeta compartida, con permisos de escritura limitados a un directorio específico.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Para ello, deberás de generar el archivo config/copyparty.conf, algo como esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[global]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;p&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;3923&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;xff-src&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;172.18.0.2/32&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;rproxy&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;1&lt;/span&gt;
+
+&lt;span class="k"&gt;[accounts]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;CAMBIAR_CLAVE_ADMIN&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;invitado&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;CAMBIAR_CLAVE_INVITADO&lt;/span&gt;
+
+&lt;span class="k"&gt;[/]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;/w&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;accs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;rwmda&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;admin&lt;/span&gt;
+
+&lt;span class="k"&gt;[/invitado]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;/w/invitado&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;accs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;r&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;invitado&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;rwmda&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;admin&lt;/span&gt;
+
+&lt;span class="k"&gt;[/subidas]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;/w/subidas&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;accs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;invitado&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;rwmda&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;admin&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Las contraseñas son valores de ejemplo y deben reemplazarse por credenciales seguras. En este punto, recomendaría proteger el archivo de configuración porque contiene información sensible.&lt;/p&gt;
+&lt;p&gt;La opción xff-src indica qué dirección del proxy inverso es de confianza. En este caso corresponde a la IP interna de Nginx Proxy Manager en la red compartida. Esto es algo que deberás de verificar en tu instalación, dado que puede variar...&lt;/p&gt;
+&lt;h2 id="comprendiendo-los-permisos"&gt;Comprendiendo los permisos&lt;/h2&gt;
+&lt;p&gt;Copyparty permite establecer diferentes permisos sobre cada volumen.&lt;/p&gt;
+&lt;p&gt;Los principales son:&lt;/p&gt;
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col  class="org-left" /&gt;
+
+&lt;col  class="org-left" /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt;&lt;b&gt;Permiso&lt;/b&gt;&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;&lt;b&gt;Función&lt;/b&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;r&lt;/td&gt;
+&lt;td class="org-left"&gt;Leer y descargar&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;w&lt;/td&gt;
+&lt;td class="org-left"&gt;Subir archivos y crear directorios&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;m&lt;/td&gt;
+&lt;td class="org-left"&gt;Mover o renombrar&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;Eliminar&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;Administrar el volumen&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;/br&gt;
+Por ejemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[/invitado]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;/w/invitado&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;accs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;r&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;invitado&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;rwmda&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;admin&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Esto permite que invitado lea los archivos de su directorio, pero que no pueda modificarlos.&lt;/p&gt;
+&lt;p&gt;Sin embargo, si necesitas que pueda subir archivos, puedes usar una carpeta específica para ello.&lt;/p&gt;
+&lt;p&gt;Con algo por ejemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[/subidas]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;/w/subidas&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;accs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;rw&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;invitados&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;rwmda&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;admin&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;De esta manera, el usuario invitado puede subir archivos y crear subdirectorios dentro de subidas, mientras que las demás carpetas permanecen de solo lectura.&lt;/p&gt;
+&lt;p&gt;El usuario administrador conserva todos los permisos.&lt;/p&gt;
+&lt;p&gt;Esta configuración resulta útil cuando se desea compartir documentos y, al mismo tiempo, disponer de un espacio donde otras personas puedan entregar archivos sin modificar el resto del contenido.&lt;/p&gt;
+&lt;h2 id="iniciar-copyparty"&gt;Iniciar Copyparty&lt;/h2&gt;
+&lt;p&gt;Con los archivos preparados, lo que queda es iniciar el contenedor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;compose&lt;span class="w"&gt; &lt;/span&gt;up&lt;span class="w"&gt; &lt;/span&gt;-d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para comprobar su estado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;compose&lt;span class="w"&gt; &lt;/span&gt;ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y revisar los registros:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;logs&lt;span class="w"&gt; &lt;/span&gt;--tail&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;60&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;copyparty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En los registros deberías de encontrar mensajes indicando que Copyparty está escuchando en el puerto 3923 y que sus procesos han iniciado correctamente.&lt;/p&gt;
+&lt;p&gt;También mostrará los volúmenes configurados y sus permisos.&lt;/p&gt;
+&lt;p&gt;Durante las pruebas puedes agregar al docker-compose temporalmente un puerto para revisar la configuración, por ejemplo mediante:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ports:
+&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;8080:3923&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;De esta manera, te permitirá acceder al servicio utilizando la dirección IP de la Raspberry y el puerto 8080.&lt;/p&gt;
+&lt;p&gt;Solo recuerda que si vas a publicar Copyparty exclusivamente mediante Nginx Proxy Manager, no se necesita mantener ese puerto expuesto. En la configuración final deberías de utilizar únicamente la red interna de Docker.&lt;/p&gt;
+&lt;h2 id="publicar-copyparty-mediante-nginx-proxy-manager"&gt;Publicar Copyparty mediante Nginx Proxy Manager&lt;/h2&gt;
+&lt;p&gt;Como en este post utilizaré Nginx Proxy Manager para publicar otros servicios, decidí aprovechar la misma infraestructura.&lt;/p&gt;
+&lt;p&gt;La arquitectura quedó aproximadamente así:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Mapa" src="/media/2026/octubre/mapa.png" style="width: auto; max-width: 100% !important;" /&gt;  &lt;/p&gt;
+&lt;p&gt;En la interfaz de Nginx Proxy Manager puedes crear un Proxy Host con los siguientes parámetros:&lt;/p&gt;
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col  class="org-left" /&gt;
+
+&lt;col  class="org-left" /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt;&lt;b&gt;Parámetro&lt;/b&gt;&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;&lt;b&gt;Valor&lt;/b&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Domain Names&lt;/td&gt;
+&lt;td class="org-left"&gt;nube.ejemplo.cl&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Scheme&lt;/td&gt;
+&lt;td class="org-left"&gt;http&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Forward Hostname / IP&lt;/td&gt;
+&lt;td class="org-left"&gt;IP interna de Copyparty&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Forward Port&lt;/td&gt;
+&lt;td class="org-left"&gt;3923&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Websockets Support&lt;/td&gt;
+&lt;td class="org-left"&gt;Activado&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;SSL&lt;/td&gt;
+&lt;td class="org-left"&gt;Certificado válido&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Force SSL&lt;/td&gt;
+&lt;td class="org-left"&gt;Activado&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;/br&gt;
+Aunque los visitantes se conectan mediante HTTPS, la comunicación entre Nginx Proxy Manager y Copyparty puede realizarse mediante HTTP dentro de la red privada de Docker.&lt;/p&gt;
+&lt;h2 id="primer-inconveniente-que-puedes-encontrar-error-cors"&gt;Primer inconveniente que puedes encontrar: error CORS&lt;/h2&gt;
+&lt;p&gt;Al intentar iniciar sesión mediante el dominio público, Copyparty puede rechazar algunas solicitudes con un mensaje relacionado con CORS.&lt;/p&gt;
+&lt;p&gt;Si en los registros te aparece algo parecido a:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cors-reject POST because request-header Origin
+does not match request-protocol &amp;#39;http://&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Entonces tienes un problema... Pero tranquilo... Lo que ocurre es que el navegador accede mediante HTTPS, pero Copyparty interpretaba que la solicitud original había llegado mediante HTTP.&lt;/p&gt;
+&lt;p&gt;El problema estaba relacionado con el tratamiento de las cabeceras del proxy inverso y con la dirección desde la cual Copyparty recibe las conexiones.&lt;/p&gt;
+&lt;p&gt;Para solucionarlo, necesitarás revisar la configuración del proxy, la red compartida y las opciones xff-src y rproxy de Copyparty, seguramente las IPs serán diferentes que las del ejemplo, así que revisa con paciencia y cuidado...&lt;/p&gt;
+&lt;p&gt;Podrías llegar a desactivar las comprobaciones CORS para resolver este tipo de errores, pero no lo recomiendo. Lo mejor es corregir la configuración del proxy y asegurarse de que Copyparty identifique correctamente el protocolo y el origen de las solicitudes.&lt;/p&gt;
+&lt;h2 id="segundo-inconveniente-que-podrias-obtener-502-bad-gateway"&gt;Segundo inconveniente que podrías obtener: 502 Bad Gateway&lt;/h2&gt;
+&lt;p&gt;Después de modificar el destino de Nginx Proxy Manager para utilizar el nombre del contenedor, podrías llegar a tener un:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;502 Bad Gateway
+openresty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Curiosamente, Copyparty parece funcionar sin inconvenientes, pero al ingresar recibes ese error... ¿Entonces?&lt;/p&gt;
+&lt;p&gt;Si miras los logs, los registros podrían llegar a mostrar que se esta escuchando en:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;http://172.18.0.3:3923/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Puedes comprobar la comunicación entre ambos contenedores con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker exec nginxproxymanager getent hosts copyparty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Deberías obtener algo como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;172.18.0.3 copyparty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Después si pruebas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;nginxproxymanager&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;curl&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;http://copyparty:3923/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y obtienes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;HTTP/1.1&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;200&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;OK
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Esto te demuestra que Nginx Proxy Manager se comunica con Copyparty.&lt;/p&gt;
+&lt;p&gt;Entonces, ¿por qué el error 502?&lt;/p&gt;
+&lt;p&gt;Seguramente, es muy probable que el problema sea la resolución DNS de Nginx&lt;/p&gt;
+&lt;p&gt;Al revisar los registros de Nginx Proxy Manager, en mis pruebas encontré:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;copyparty could not be resolved
+(3: Host not found)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;El contenedor utilizaba correctamente el DNS interno de Docker:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nameserver&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;127&lt;/span&gt;.0.0.11
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Pero la configuración efectiva de Nginx tenía definidos servidores DNS externos, que no conocen los nombres de los contenedores Docker.&lt;/p&gt;
+&lt;p&gt;Por eso, aunque getent y curl resolvían correctamente el nombre copyparty, Nginx no conseguía hacerlo al procesar las solicitudes.&lt;/p&gt;
+&lt;p&gt;Así que, dada esa situación, en lugar de modificar la configuración global de Nginx Proxy Manager, decidí en la prueba, utilizar directamente la IP interna de Copyparty, con ese cambio, el servicio comenzó a funcionar correctamente.&lt;/p&gt;
+&lt;p&gt;Para evitar que la dirección cambiara al recrear el contenedor, puedes agregar una IP estática a su configuración de Docker Compose:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;networks:
+&lt;span class="w"&gt;  &lt;/span&gt;proxy-interno:
+&lt;span class="w"&gt;    &lt;/span&gt;ipv4_address:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;172&lt;/span&gt;.18.0.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Esta solución requiere que la red Docker tenga una subred compatible y que la dirección esté disponible.&lt;/p&gt;
+&lt;p&gt;Otra alternativa habría sido configurar Nginx para resolver los nombres mediante el DNS interno de Docker, pero eso escapa al propósito de este artículo...&lt;/p&gt;
+&lt;h2 id="montar-carpetas-externas-sin-copiar-los-archivos"&gt;Montar carpetas externas sin copiar los archivos&lt;/h2&gt;
+&lt;p&gt;Una vez que Copyparty se encuentra funcionando, puedes querer agregar una carpeta por ejemplo de fotografías que quizás ya tengas almacenada en otro directorio, o en otro disco.&lt;/p&gt;
+&lt;p&gt;Copyparty permite hacerlo sin copiar los archivos, aprovechando los montajes de Docker.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, supongamos que nuestras fotografías están en una unidad externa, digamos, algo del tipo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/media/devmon/Fotos/algo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Puedes agregar un nuevo volumen al docker-compose.yml:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="na"&gt;volumes&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;- ./config&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;/cfg:ro&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;- ./state&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;/state:rw&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;- ./files&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;/w:rw&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;- /media/devmon/algo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;/fotos:ro&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;El parámetro :ro hace que el montaje sea de solo lectura.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Esto resulta muy conveniente para evitar modificaciones o borrados accidentales de tus fotografías personales...&lt;/p&gt;
+&lt;p&gt;Luego, en el archivo de configuración de copyparty, agregas  un volumen virtual:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[/fotos]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;/fotos&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="na"&gt;accs&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;r&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;admin&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;De esta manera, únicamente el usuario administrador podrá acceder a las fotografías.&lt;/p&gt;
+&lt;p&gt;El usuario invitado no tendrá permisos sobre ese volumen.&lt;/p&gt;
+&lt;h2 id="conclusiones"&gt;Conclusiones&lt;/h2&gt;
+&lt;p&gt;Después de varias pruebas, Copyparty terminó siendo una alternativa interesante para mantener un pequeño servidor de archivos.&lt;/p&gt;
+&lt;p&gt;Su principal atractivo es que permite disponer de una interfaz web para administrar archivos sin instalar una plataforma demasiado compleja. Y si usas Gnome por ejemplo, puedes usar Nautilus mediante protocolo DAV para conectarse y trabajar de manera gráfica...&lt;/p&gt;
+&lt;p&gt;La posibilidad de crear volúmenes virtuales, asignar permisos por usuario y montar carpetas existentes resulta muy útil para tener una estructura organizada de almacenamiento.&lt;/p&gt;
+&lt;p&gt;En este caso de ejemplo, la instalación también sirvió para recordar algunas particularidades de Docker y Nginx Proxy Manager, especialmente la diferencia entre la resolución DNS del contenedor y la que utiliza internamente Nginx.&lt;/p&gt;
+&lt;p&gt;Finalmente, con esto se puede conseguir una instalación con acceso HTTPS, cuentas independientes, permisos por carpeta y almacenamiento compartido, funcionando en una Raspberry Pi.&lt;/p&gt;
+&lt;p&gt;Este artículo, no pretende que reemplaces todos los servicios de una nube comercial ni convertirse en una plataforma de colaboración completa, pero para compartir documentos, recibir archivos y consultar fotografías u otros documentos privados desde cualquier lugar, sin que mande telemetría a externos, cumple bastante bien...&lt;/p&gt;
+&lt;h2 id="referencias"&gt;Referencias&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/9001/copyparty"&gt;Repositorio oficial de Copyparty&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/compose/"&gt;Documentación de docker compose&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://nginxproxymanager.com/"&gt;Nginx Proxy Manager&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Laboratorio"/><category term="laboratorio"/><category term="programacion"/><category term="software"/><category term="config"/><category term="contenedor"/></entry><entry><title>Un paseo bajo la lluvia</title><link href="https://fotosycaptura.cl/posts/2026-10-12-un-paseo-bajo-la-lluvia.html" rel="alternate"/><published>2026-10-12T19:47:00-03:00</published><updated>2026-10-12T19:47:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2026-10-12:/posts/2026-10-12-un-paseo-bajo-la-lluvia.html</id><summary type="html">&lt;p&gt;Hoy en día de lluvia, salimos a caminar y tomar algunas fotitos... Acompáñanos disfrutando de ellas...&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Paseando bajo la lluvia" src="/media/2026/octubre/pbll-08.jpg" style="width: auto; max-width: 100% !important;" /&gt;&lt;/p&gt;
 &lt;p&gt;Hoy en día de lluvia, salimos a caminar y tomar algunas fotitos... Acompáñanos disfrutando de ellas...&lt;/p&gt;
 &lt;p&gt;Pensaba sacar fotos en el cerro Santa Lucía, pero como lo cerraron por la lluvia, pues... Será por los alrededores entonces... Fue principalmente para ser un par de gatos bajo la lluvia... Y probar una mini cámara que llegó a mis manos... Ya cuando vean las fotos entenderán...&lt;/p&gt;
 &lt;p&gt;Espero que tú, que estás viendo esta página, te gusten las fotografías que he tomado en compañía de mi esposa... Con mucho cariño...&lt;/p&gt;
@@ -3235,127 +3656,4 @@ CLOSED: [2025-08-05 ma. 14:56] SCHEDULED: &amp;lt;2025-08-05 ma.&amp;gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_11 (Laptop Spencer)/IMG_20250111_102140.jpg" /&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_11 (Laptop Spencer)/IMG_20250111_102527.jpg" /&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_11 (Laptop Spencer)/IMG_20250111_103033.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_11 (Laptop Spencer)/IMG_20250111_115352.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry><entry><title>Galería 2025_01_10 (Tianfu Festival)</title><link href="https://fotosycaptura.cl/posts/galeria-2025_01_10%20(Tianfu%20Festival).html" rel="alternate"/><published>2025-01-10T00:00:00-03:00</published><updated>2025-01-10T00:00:00-03:00</updated><author><name>@fotosycaptura</name></author><id>tag:fotosycaptura.cl,2025-01-10:/posts/galeria-2025_01_10 (Tianfu Festival).html</id><summary type="html"/><content type="html">&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210117.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210122.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210132.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210137.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210153.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210154.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210235.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210249.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210250.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210345.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210404.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210407.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210443.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210639.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210652.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210742.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210751.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210859.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_210905.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211015.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211017.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211112.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211115.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211216.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211319.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211331.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211335.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211353.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211410.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211453.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211527.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211654.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211655.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211727.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211823.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211836.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_211855.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212049.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212124.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212208.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212228.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212238.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212255.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212320.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212337.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212424.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212438.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212517.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212538.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212616.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212629.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212655.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212723.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212735.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212839.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212909.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212911.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_212949.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213034.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213037.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213052.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213054.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213110.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213254.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213303.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213344.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213416.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213455.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213510.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213603.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213631.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_213935.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214004.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214155.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214338.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214401.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214415.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214437.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214508.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214529.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214618.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214646.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214729.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214736.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214753.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214754.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214825.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_214946.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215001.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215041.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215123.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215137.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215211.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215312.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215324.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215336.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215344.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215437.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215453.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215508.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215509.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215554.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215558.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215630.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215736.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_215745.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_220055.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_221252.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_221255.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_221508.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_221512.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_221525.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_222218.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_222219.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_232518.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_232537.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_234255.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_234314.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_235512.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_235537.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_235554.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_235645.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_235710.jpg" /&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_10 (Tianfu Festival)/IMG_20250110_235724.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>
+&lt;p&gt;&lt;img alt="Comida" src="/media/exIG/2025/2025_01_11 (Laptop Spencer)/IMG_20250111_115352.jpg" /&gt;  &lt;/p&gt;</content><category term="Galeria"/><category term="galeria"/><category term="fotos"/></entry></feed>

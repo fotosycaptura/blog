@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:secure_url" content="https://fotosycaptura.cl/extras/ms-icon-310x310.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <title>Copyparty: montando una nube personal ligera con Docker y Nginx Proxy Manager | https://fotosycaptura.cl
+</title>
+  <link rel="canonical" href="https://fotosycaptura.cl/posts/2026-10-24-montando-nube-con-copyparty.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://fotosycaptura.cl/feeds/all.atom.xml" title="Full Atom Feed">
+
+  <link rel="apple-touch-icon" href="https://fotosycaptura.cl/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://fotosycaptura.cl/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://fotosycaptura.cl/manifest.json">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/pygments/native.min.css">
+  <link rel="stylesheet" href="https://fotosycaptura.cl/theme/css/style.css">
+
+
+<meta name="description" content="Hace algún tiempo comencé a utilizar File Browser para administrar y compartir archivos desde mi propia infraestructura. La idea era bastante sencilla: disponer de un espacio accesible mediante un navegador, con usuarios, carpetas y permisos, sin depender de servicios externos de almacenamiento. Sin embargo... Todo cambió cuando dejó de tener soporte... Y eso conlleva riesgos de ciberseguridad... Acompáñame a revisar con qué lo reemplacé...">
+</head>
+
+<body>
+  <header class="header fondo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="https://fotosycaptura.cl">
+            <img class="img-fluid" src=https://fotosycaptura.cl/images/logo.jpg width=200 height=200 alt="https://fotosycaptura.cl">
+          </a>
+        </div>
+        <div class="col-sm-8">
+          <h1 class="title"><a href="https://fotosycaptura.cl">https://fotosycaptura.cl</a></h1>
+          <p class="text-muted">Bit&aacute;cora personal del capit&aacute;n @fotosycaptura ✨</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/blog.html">Artículos</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/buscar">Buscar</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/links.html">Blogroll</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/guestbook.html">Guestbook</a></li>
+            <li class="list-inline-item"><a href="https://fotosycaptura.cl/pages/aboutme.html">Yo</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a class="fa fa-instagram" href="https://www.instagram.com/fotosycaptura_cl" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-twitter" href="https://www.twitter.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-tumblr" href="https://fotosycaptura.tumblr.com" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-youtube" href="https://www.youtube.com/user/charsxcx/featured" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/fotosycaptura" target="_blank"></a></li>
+            <li class="list-inline-item"><a class="fa fa-rss" href="http://fotosycaptura.cl//feeds/all.atom.xml" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Copyparty: montando una nube personal ligera con Docker y Nginx Proxy Manager
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2026-10-24T20:00:00-03:00">
+        <i class="fa fa-clock-o"></i>
+        2026, sáb 24 octubre
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://fotosycaptura.cl/category/laboratorio.html">Laboratorio</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://fotosycaptura.cl/author/fotosycaptura.html">@fotosycaptura</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://fotosycaptura.cl/tag/laboratorio.html">#laboratorio</a>,         <a href="https://fotosycaptura.cl/tag/programacion.html">#programacion</a>,         <a href="https://fotosycaptura.cl/tag/software.html">#software</a>,         <a href="https://fotosycaptura.cl/tag/config.html">#config</a>,         <a href="https://fotosycaptura.cl/tag/contenedor.html">#contenedor</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><img alt="Copyparty" src="/media/2026/octubre/copyparty.png" style="width: auto; max-width: 100% !important;" /></p>
+<p>Hace algún tiempo comencé a utilizar File Browser para administrar y compartir archivos desde mi propia infraestructura. La idea era bastante sencilla: disponer de un espacio accesible mediante un navegador, con usuarios, carpetas y permisos, sin depender de servicios externos de almacenamiento. Sin embargo... Todo cambió cuando dejó de tener soporte... Y eso, conlleva riesgos de ciberseguridad...   Acompáñame a revisar con qué lo reemplacé...</p>
+<p>Al buscar alternativas para reemplazar la instalación que utilizaba, terminé encontrándome con Copyparty, un servidor de archivos escrito principalmente en Python que destaca por su ligereza y por la cantidad de funcionalidades que ofrece.</p>
+<p>En este artículo explicaré qué es Copyparty, sus principales características y cómo se puede instalar por ejemplo en una Raspberry Pi utilizando Docker Compose. También explicaré cómo publicarlo mediante Nginx Proxy Manager, configurar usuarios con permisos diferentes y resolver algunos inconvenientes que podrían llegar a aparecer durante la instalación.</p>
+<p>Dicho esto, los temás de hoy:</p>
+<div class="toc">
+<ul>
+<li><a href="#que-es-copyparty">¿Qué es Copyparty?</a></li>
+<li><a href="#por-que-elegir-copyparty">¿Por qué elegir Copyparty?</a></li>
+<li><a href="#preparando-la-estructura-de-directorios">Preparando la estructura de directorios</a></li>
+<li><a href="#crear-la-configuracion-de-docker-compose">Crear la configuración de Docker Compose</a></li>
+<li><a href="#por-que-se-utiliza-xdg_config_home">¿Por qué se utiliza XDG_CONFIG_HOME?</a></li>
+<li><a href="#configurar-usuarios-y-carpetas">Configurar usuarios y carpetas</a></li>
+<li><a href="#comprendiendo-los-permisos">Comprendiendo los permisos</a></li>
+<li><a href="#iniciar-copyparty">Iniciar Copyparty</a></li>
+<li><a href="#publicar-copyparty-mediante-nginx-proxy-manager">Publicar Copyparty mediante Nginx Proxy Manager</a></li>
+<li><a href="#primer-inconveniente-que-puedes-encontrar-error-cors">Primer inconveniente que puedes encontrar: error CORS</a></li>
+<li><a href="#segundo-inconveniente-que-podrias-obtener-502-bad-gateway">Segundo inconveniente que podrías obtener: 502 Bad Gateway</a></li>
+<li><a href="#montar-carpetas-externas-sin-copiar-los-archivos">Montar carpetas externas sin copiar los archivos</a></li>
+<li><a href="#conclusiones">Conclusiones</a></li>
+<li><a href="#referencias">Referencias</a></li>
+</ul>
+</div>
+<h2 id="que-es-copyparty">¿Qué es Copyparty?</h2>
+<p>Copyparty es, básicamente un servidor de archivos que permite compartir, administrar, subir y descargar archivos mediante una interfaz web.</p>
+<p>A diferencia de plataformas más complejas como Nextcloud, Copyparty no pretende ser una suite completa de colaboración, calendario o productividad. Su propósito principal es ofrecer un sistema de intercambio y administración de archivos, con una instalación relativamente sencilla y un consumo de recursos casi despreciable diría yo.</p>
+<p>Entre sus características, destacan:</p>
+<ul>
+<li>Interfaz web para navegar, subir y descargar archivos.</li>
+<li>Cuentas de usuario con permisos diferenciados.</li>
+<li>Volúmenes virtuales que permiten publicar distintas carpetas.</li>
+<li>Subidas de archivos mediante el navegador.</li>
+<li>Posibilidad de habilitar protocolos adicionales, según la configuración y las dependencias instaladas.</li>
+<li>Compatibilidad con Linux y despliegues mediante contenedores.</li>
+</ul>
+<p>Una característica especialmente interesante es su sistema de volúmenes virtuales: se puede presentar carpetas ubicadas en diferentes lugares del sistema como si pertenecieran a un mismo servidor de archivos, sin necesidad de moverlas físicamente.</p>
+<h2 id="por-que-elegir-copyparty">¿Por qué elegir Copyparty?</h2>
+<p>Mi objetivo era mantener un servicio pequeño casero para almacenar y compartir archivos, principalmente documentos, fotografías y otros materiales personales. Antes usaba filebrowser y si bien, podría seguir utilizándolo mediante acceso VPN, tener aplicaciones legacy puede conllevar un riesgo así que mejor, usar otra alternativa...</p>
+<p>No necesitaba una plataforma demasiado compleja. La solución debía funcionar en una Raspberry, y debería de permitir varios usuarios y ofrecer acceso remoto mediante HTTPS.</p>
+<p>Entre otras opciones, evalué SFTPGo, que incorpora funcionalidades interesantes y soporte para diferentes protocolos de transferencia. Sin embargo, para este caso decidí probar Copyparty por su enfoque ligero y por la flexibilidad de su configuración.</p>
+<p>Si estás interesado en ello, seguramente la infraestructura que utilizarás podría ser como la siguiente:</p>
+<ul>
+<li>Raspberry Pi 4 con Debian.</li>
+<li>Docker y Docker Compose.</li>
+<li>Nginx Proxy Manager para administrar HTTPS.</li>
+<li>Un dominio propio.</li>
+<li>Carpetas locales y/o almacenamiento adicional.</li>
+<li>Una red Docker compartida entre el proxy y Copyparty.</li>
+</ul>
+<h2 id="preparando-la-estructura-de-directorios">Preparando la estructura de directorios</h2>
+<p>Primero deberás generar un directorio de trabajo:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/mi-usuario-u-otra-ruta/copyparty
+<span class="nb">cd</span><span class="w"> </span>~/mi-usuario-u-otra-ruta/copyparty
+</code></pre></div>
+
+<p>Dentro de él convendrá preparar algunas carpetas que serán necesarias:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>config<span class="w"> </span>state<span class="w"> </span>files/invitado/subidas
+</code></pre></div>
+
+<p>La estructura inicial será algo como esto:</p>
+<div class="highlight"><pre><span></span><code>copyparty/
+├──<span class="w"> </span>docker-compose.yml
+├──<span class="w"> </span>config/
+│<span class="w">   </span>└──<span class="w"> </span>copyparty.conf
+├──<span class="w"> </span>state/
+└──<span class="w"> </span>files/
+<span class="w">    </span>└──<span class="w"> </span>invitado/
+<span class="w">        </span>└──<span class="w"> </span>subidas/
+</code></pre></div>
+
+<p>Cada directorio tiene una finalidad:
+- config: configuración de Copyparty.
+- state: información persistente de la aplicación, incluidas las sesiones.
+- files: archivos administrados desde la interfaz web.</p>
+<p>Como medida de seguridad, será importante mantener separados los archivos personales y los datos internos de la aplicación.</p>
+<h2 id="crear-la-configuracion-de-docker-compose">Crear la configuración de Docker Compose</h2>
+<p>Y llegado a este punto, se usará una imagen de Copyparty y se conectará a una red Docker compartida con Nginx Proxy Manager.</p>
+<p>Para ello, toca generar el archivo docker-compose.yml:</p>
+<div class="highlight"><pre><span></span><code><span class="na">name</span><span class="o">:</span><span class="w"> </span><span class="s">copyparty</span>
+
+<span class="na">services</span><span class="o">:</span>
+<span class="w">  </span><span class="na">copyparty</span><span class="o">:</span>
+<span class="w">    </span><span class="na">image</span><span class="o">:</span><span class="w"> </span><span class="s">copyparty/min:latest</span>
+<span class="w">    </span><span class="na">container_name</span><span class="o">:</span><span class="w"> </span><span class="s">copyparty</span>
+
+<span class="w">    </span><span class="na">user</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;1000:1000&quot;</span>
+
+<span class="w">    </span><span class="na">environment</span><span class="o">:</span>
+<span class="w">      </span><span class="na">TZ</span><span class="o">:</span><span class="w"> </span><span class="s">America/Santiago</span>
+<span class="w">      </span><span class="na">PYTHONUNBUFFERED</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">      </span><span class="na">XDG_CONFIG_HOME</span><span class="o">:</span><span class="w"> </span><span class="s">/state</span>
+
+<span class="w">    </span><span class="na">volumes</span><span class="o">:</span>
+<span class="w">      </span><span class="na">- ./config</span><span class="o">:</span><span class="s">/cfg:ro</span>
+<span class="w">      </span><span class="na">- ./state</span><span class="o">:</span><span class="s">/state:rw</span>
+<span class="w">      </span><span class="na">- ./files</span><span class="o">:</span><span class="s">/w:rw</span>
+
+<span class="w">    </span><span class="na">networks</span><span class="o">:</span>
+<span class="w">      </span><span class="na">proxy-interno</span><span class="o">:</span>
+<span class="w">        </span><span class="na">ipv4_address</span><span class="o">:</span><span class="w"> </span><span class="s">172.18.0.3</span>
+
+<span class="w">    </span><span class="na">mem_limit</span><span class="o">:</span><span class="w"> </span><span class="s">256m</span>
+
+<span class="w">    </span><span class="na">security_opt</span><span class="o">:</span>
+<span class="w">      </span><span class="na">- no-new-privileges</span><span class="o">:</span><span class="s">true</span>
+
+<span class="w">    </span><span class="na">restart</span><span class="o">:</span><span class="w"> </span><span class="s">unless-stopped</span>
+
+<span class="na">networks</span><span class="o">:</span>
+<span class="w">  </span><span class="na">proxy-interno</span><span class="o">:</span>
+<span class="w">    </span><span class="na">external</span><span class="o">:</span><span class="w"> </span><span class="s">true</span>
+</code></pre></div>
+
+<p>En este ejemplo, proxy-interno es una red Docker que ya existe y que también utiliza Nginx Proxy Manager.</p>
+<p>Antes de asignar una IP fija deberás comprobar que la red tenga una subred compatible y que la dirección elegida esté disponible:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>proxy-interno
+</code></pre></div>
+
+<p>La IP 172.18.0.3 es únicamente la dirección utilizada en la instalación. No necesariamente será válida en otras redes, y en tu caso, puede que sea otra...</p>
+<p>También deberás verificar que el usuario 1000:1000 tenga acceso a los directorios montados. Si los permisos no son correctos, Copyparty podría iniciar, pero no conseguir escribir sus archivos de estado o permitir las subidas.</p>
+<p>Así que, para comprobar el UID del usuario, puedes usar el comando:</p>
+<div class="highlight"><pre><span></span><code>id
+</code></pre></div>
+
+<p>Si corresponde al UID 1000, normalmente podrás preparar las carpetas locales de esta forma:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="m">1000</span>:1000<span class="w"> </span>config<span class="w"> </span>state<span class="w"> </span>files
+</code></pre></div>
+
+<p>Este comando está pensado para los directorios recién creados del proyecto, no para carpetas personales existentes que puedan contener archivos de otros usuarios.</p>
+<h2 id="por-que-se-utiliza-xdg_config_home">¿Por qué se utiliza XDG_CONFIG_HOME?</h2>
+<p>Durante las primeras pruebas observé advertencias relacionadas con directorios de configuración de solo lectura.</p>
+<p>Al establecer:</p>
+<div class="highlight"><pre><span></span><code>XDG_CONFIG_HOME:<span class="w"> </span>/state
+</code></pre></div>
+
+<p>y montar ese directorio con permisos de escritura, Copyparty puede almacenar su información persistente sin depender del sistema de archivos interno del contenedor.</p>
+<h2 id="configurar-usuarios-y-carpetas">Configurar usuarios y carpetas</h2>
+<p>Una de las cosas que más me llamó la atención fue su sistema de cuentas y volúmenes.</p>
+<p>Supongamos un caso en el que necesitas dos usuarios:</p>
+<ul>
+<li>Admin, tu usuario para administrar tus archivos y carpetas.</li>
+<li>Invitados, para acceder a una carpeta compartida, con permisos de escritura limitados a un directorio específico.</li>
+</ul>
+<p>Para ello, deberás de generar el archivo config/copyparty.conf, algo como esto:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[global]</span>
+<span class="w">  </span><span class="na">p</span><span class="o">:</span><span class="w"> </span><span class="s">3923</span>
+<span class="w">  </span><span class="na">xff-src</span><span class="o">:</span><span class="w"> </span><span class="s">172.18.0.2/32</span>
+<span class="w">  </span><span class="na">rproxy</span><span class="o">:</span><span class="w"> </span><span class="s">1</span>
+
+<span class="k">[accounts]</span>
+<span class="w">  </span><span class="na">admin</span><span class="o">:</span><span class="w"> </span><span class="s">CAMBIAR_CLAVE_ADMIN</span>
+<span class="w">  </span><span class="na">invitado</span><span class="o">:</span><span class="w"> </span><span class="s">CAMBIAR_CLAVE_INVITADO</span>
+
+<span class="k">[/]</span>
+<span class="w">  </span><span class="na">/w</span>
+<span class="w">  </span><span class="na">accs</span><span class="o">:</span>
+<span class="w">    </span><span class="na">rwmda</span><span class="o">:</span><span class="w"> </span><span class="s">admin</span>
+
+<span class="k">[/invitado]</span>
+<span class="w">  </span><span class="na">/w/invitado</span>
+<span class="w">  </span><span class="na">accs</span><span class="o">:</span>
+<span class="w">    </span><span class="na">r</span><span class="o">:</span><span class="w"> </span><span class="s">invitado</span>
+<span class="w">    </span><span class="na">rwmda</span><span class="o">:</span><span class="w"> </span><span class="s">admin</span>
+
+<span class="k">[/subidas]</span>
+<span class="w">  </span><span class="na">/w/subidas</span>
+<span class="w">  </span><span class="na">accs</span><span class="o">:</span>
+<span class="w">    </span><span class="na">rw</span><span class="o">:</span><span class="w"> </span><span class="s">invitado</span>
+<span class="w">    </span><span class="na">rwmda</span><span class="o">:</span><span class="w"> </span><span class="s">admin</span>
+</code></pre></div>
+
+<p>Las contraseñas son valores de ejemplo y deben reemplazarse por credenciales seguras. En este punto, recomendaría proteger el archivo de configuración porque contiene información sensible.</p>
+<p>La opción xff-src indica qué dirección del proxy inverso es de confianza. En este caso corresponde a la IP interna de Nginx Proxy Manager en la red compartida. Esto es algo que deberás de verificar en tu instalación, dado que puede variar...</p>
+<h2 id="comprendiendo-los-permisos">Comprendiendo los permisos</h2>
+<p>Copyparty permite establecer diferentes permisos sobre cada volumen.</p>
+<p>Los principales son:</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Permiso</b></th>
+<th scope="col" class="org-left"><b>Función</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">r</td>
+<td class="org-left">Leer y descargar</td>
+</tr>
+
+<tr>
+<td class="org-left">w</td>
+<td class="org-left">Subir archivos y crear directorios</td>
+</tr>
+
+<tr>
+<td class="org-left">m</td>
+<td class="org-left">Mover o renombrar</td>
+</tr>
+
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">Eliminar</td>
+</tr>
+
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">Administrar el volumen</td>
+</tr>
+</tbody>
+</table>
+
+<p></br>
+Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[/invitado]</span>
+<span class="w">  </span><span class="na">/w/invitado</span>
+<span class="w">  </span><span class="na">accs</span><span class="o">:</span>
+<span class="w">    </span><span class="na">r</span><span class="o">:</span><span class="w"> </span><span class="s">invitado</span>
+<span class="w">    </span><span class="na">rwmda</span><span class="o">:</span><span class="w"> </span><span class="s">admin</span>
+</code></pre></div>
+
+<p>Esto permite que invitado lea los archivos de su directorio, pero que no pueda modificarlos.</p>
+<p>Sin embargo, si necesitas que pueda subir archivos, puedes usar una carpeta específica para ello.</p>
+<p>Con algo por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[/subidas]</span>
+<span class="w">  </span><span class="na">/w/subidas</span>
+<span class="w">  </span><span class="na">accs</span><span class="o">:</span>
+<span class="w">    </span><span class="na">rw</span><span class="o">:</span><span class="w"> </span><span class="s">invitados</span>
+<span class="w">    </span><span class="na">rwmda</span><span class="o">:</span><span class="w"> </span><span class="s">admin</span>
+</code></pre></div>
+
+<p>De esta manera, el usuario invitado puede subir archivos y crear subdirectorios dentro de subidas, mientras que las demás carpetas permanecen de solo lectura.</p>
+<p>El usuario administrador conserva todos los permisos.</p>
+<p>Esta configuración resulta útil cuando se desea compartir documentos y, al mismo tiempo, disponer de un espacio donde otras personas puedan entregar archivos sin modificar el resto del contenido.</p>
+<h2 id="iniciar-copyparty">Iniciar Copyparty</h2>
+<p>Con los archivos preparados, lo que queda es iniciar el contenedor:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+
+<p>Para comprobar su estado:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>ps
+</code></pre></div>
+
+<p>Y revisar los registros:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>--tail<span class="w"> </span><span class="m">60</span><span class="w"> </span>copyparty
+</code></pre></div>
+
+<p>En los registros deberías de encontrar mensajes indicando que Copyparty está escuchando en el puerto 3923 y que sus procesos han iniciado correctamente.</p>
+<p>También mostrará los volúmenes configurados y sus permisos.</p>
+<p>Durante las pruebas puedes agregar al docker-compose temporalmente un puerto para revisar la configuración, por ejemplo mediante:</p>
+<div class="highlight"><pre><span></span><code>ports:
+<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;8080:3923&quot;</span>
+</code></pre></div>
+
+<p>De esta manera, te permitirá acceder al servicio utilizando la dirección IP de la Raspberry y el puerto 8080.</p>
+<p>Solo recuerda que si vas a publicar Copyparty exclusivamente mediante Nginx Proxy Manager, no se necesita mantener ese puerto expuesto. En la configuración final deberías de utilizar únicamente la red interna de Docker.</p>
+<h2 id="publicar-copyparty-mediante-nginx-proxy-manager">Publicar Copyparty mediante Nginx Proxy Manager</h2>
+<p>Como en este post utilizaré Nginx Proxy Manager para publicar otros servicios, decidí aprovechar la misma infraestructura.</p>
+<p>La arquitectura quedó aproximadamente así:</p>
+<p><img alt="Mapa" src="/media/2026/octubre/mapa.png" style="width: auto; max-width: 100% !important;" />  </p>
+<p>En la interfaz de Nginx Proxy Manager puedes crear un Proxy Host con los siguientes parámetros:</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Parámetro</b></th>
+<th scope="col" class="org-left"><b>Valor</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Domain Names</td>
+<td class="org-left">nube.ejemplo.cl</td>
+</tr>
+
+<tr>
+<td class="org-left">Scheme</td>
+<td class="org-left">http</td>
+</tr>
+
+<tr>
+<td class="org-left">Forward Hostname / IP</td>
+<td class="org-left">IP interna de Copyparty</td>
+</tr>
+
+<tr>
+<td class="org-left">Forward Port</td>
+<td class="org-left">3923</td>
+</tr>
+
+<tr>
+<td class="org-left">Websockets Support</td>
+<td class="org-left">Activado</td>
+</tr>
+
+<tr>
+<td class="org-left">SSL</td>
+<td class="org-left">Certificado válido</td>
+</tr>
+
+<tr>
+<td class="org-left">Force SSL</td>
+<td class="org-left">Activado</td>
+</tr>
+</tbody>
+</table>
+
+<p></br>
+Aunque los visitantes se conectan mediante HTTPS, la comunicación entre Nginx Proxy Manager y Copyparty puede realizarse mediante HTTP dentro de la red privada de Docker.</p>
+<h2 id="primer-inconveniente-que-puedes-encontrar-error-cors">Primer inconveniente que puedes encontrar: error CORS</h2>
+<p>Al intentar iniciar sesión mediante el dominio público, Copyparty puede rechazar algunas solicitudes con un mensaje relacionado con CORS.</p>
+<p>Si en los registros te aparece algo parecido a:</p>
+<div class="highlight"><pre><span></span><code>cors-reject POST because request-header Origin
+does not match request-protocol &#39;http://&#39;
+</code></pre></div>
+
+<p>Entonces tienes un problema... Pero tranquilo... Lo que ocurre es que el navegador accede mediante HTTPS, pero Copyparty interpretaba que la solicitud original había llegado mediante HTTP.</p>
+<p>El problema estaba relacionado con el tratamiento de las cabeceras del proxy inverso y con la dirección desde la cual Copyparty recibe las conexiones.</p>
+<p>Para solucionarlo, necesitarás revisar la configuración del proxy, la red compartida y las opciones xff-src y rproxy de Copyparty, seguramente las IPs serán diferentes que las del ejemplo, así que revisa con paciencia y cuidado...</p>
+<p>Podrías llegar a desactivar las comprobaciones CORS para resolver este tipo de errores, pero no lo recomiendo. Lo mejor es corregir la configuración del proxy y asegurarse de que Copyparty identifique correctamente el protocolo y el origen de las solicitudes.</p>
+<h2 id="segundo-inconveniente-que-podrias-obtener-502-bad-gateway">Segundo inconveniente que podrías obtener: 502 Bad Gateway</h2>
+<p>Después de modificar el destino de Nginx Proxy Manager para utilizar el nombre del contenedor, podrías llegar a tener un:</p>
+<div class="highlight"><pre><span></span><code>502 Bad Gateway
+openresty
+</code></pre></div>
+
+<p>Curiosamente, Copyparty parece funcionar sin inconvenientes, pero al ingresar recibes ese error... ¿Entonces?</p>
+<p>Si miras los logs, los registros podrían llegar a mostrar que se esta escuchando en:</p>
+<div class="highlight"><pre><span></span><code>http://172.18.0.3:3923/
+</code></pre></div>
+
+<p>Puedes comprobar la comunicación entre ambos contenedores con:</p>
+<div class="highlight"><pre><span></span><code>docker exec nginxproxymanager getent hosts copyparty
+</code></pre></div>
+
+<p>Deberías obtener algo como:</p>
+<div class="highlight"><pre><span></span><code>172.18.0.3 copyparty
+</code></pre></div>
+
+<p>Después si pruebas:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>nginxproxymanager<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>curl<span class="w"> </span>-I<span class="w"> </span>http://copyparty:3923/
+</code></pre></div>
+
+<p>Y obtienes:</p>
+<div class="highlight"><pre><span></span><code>HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK
+</code></pre></div>
+
+<p>Esto te demuestra que Nginx Proxy Manager se comunica con Copyparty.</p>
+<p>Entonces, ¿por qué el error 502?</p>
+<p>Seguramente, es muy probable que el problema sea la resolución DNS de Nginx</p>
+<p>Al revisar los registros de Nginx Proxy Manager, en mis pruebas encontré:</p>
+<div class="highlight"><pre><span></span><code>copyparty could not be resolved
+(3: Host not found)
+</code></pre></div>
+
+<p>El contenedor utilizaba correctamente el DNS interno de Docker:</p>
+<div class="highlight"><pre><span></span><code>nameserver<span class="w"> </span><span class="m">127</span>.0.0.11
+</code></pre></div>
+
+<p>Pero la configuración efectiva de Nginx tenía definidos servidores DNS externos, que no conocen los nombres de los contenedores Docker.</p>
+<p>Por eso, aunque getent y curl resolvían correctamente el nombre copyparty, Nginx no conseguía hacerlo al procesar las solicitudes.</p>
+<p>Así que, dada esa situación, en lugar de modificar la configuración global de Nginx Proxy Manager, decidí en la prueba, utilizar directamente la IP interna de Copyparty, con ese cambio, el servicio comenzó a funcionar correctamente.</p>
+<p>Para evitar que la dirección cambiara al recrear el contenedor, puedes agregar una IP estática a su configuración de Docker Compose:</p>
+<div class="highlight"><pre><span></span><code>networks:
+<span class="w">  </span>proxy-interno:
+<span class="w">    </span>ipv4_address:<span class="w"> </span><span class="m">172</span>.18.0.3
+</code></pre></div>
+
+<p>Esta solución requiere que la red Docker tenga una subred compatible y que la dirección esté disponible.</p>
+<p>Otra alternativa habría sido configurar Nginx para resolver los nombres mediante el DNS interno de Docker, pero eso escapa al propósito de este artículo...</p>
+<h2 id="montar-carpetas-externas-sin-copiar-los-archivos">Montar carpetas externas sin copiar los archivos</h2>
+<p>Una vez que Copyparty se encuentra funcionando, puedes querer agregar una carpeta por ejemplo de fotografías que quizás ya tengas almacenada en otro directorio, o en otro disco.</p>
+<p>Copyparty permite hacerlo sin copiar los archivos, aprovechando los montajes de Docker.</p>
+<p>Por ejemplo, supongamos que nuestras fotografías están en una unidad externa, digamos, algo del tipo:</p>
+<div class="highlight"><pre><span></span><code>/media/devmon/Fotos/algo
+</code></pre></div>
+
+<p>Puedes agregar un nuevo volumen al docker-compose.yml:</p>
+<div class="highlight"><pre><span></span><code><span class="na">volumes</span><span class="o">:</span>
+<span class="w">  </span><span class="na">- ./config</span><span class="o">:</span><span class="s">/cfg:ro</span>
+<span class="w">  </span><span class="na">- ./state</span><span class="o">:</span><span class="s">/state:rw</span>
+<span class="w">  </span><span class="na">- ./files</span><span class="o">:</span><span class="s">/w:rw</span>
+<span class="w">  </span><span class="na">- /media/devmon/algo</span><span class="o">:</span><span class="s">/fotos:ro</span>
+</code></pre></div>
+
+<p><em>El parámetro :ro hace que el montaje sea de solo lectura.</em></p>
+<p>Esto resulta muy conveniente para evitar modificaciones o borrados accidentales de tus fotografías personales...</p>
+<p>Luego, en el archivo de configuración de copyparty, agregas  un volumen virtual:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[/fotos]</span>
+<span class="w">  </span><span class="na">/fotos</span>
+<span class="w">  </span><span class="na">accs</span><span class="o">:</span>
+<span class="w">    </span><span class="na">r</span><span class="o">:</span><span class="w"> </span><span class="s">admin</span>
+</code></pre></div>
+
+<p>De esta manera, únicamente el usuario administrador podrá acceder a las fotografías.</p>
+<p>El usuario invitado no tendrá permisos sobre ese volumen.</p>
+<h2 id="conclusiones">Conclusiones</h2>
+<p>Después de varias pruebas, Copyparty terminó siendo una alternativa interesante para mantener un pequeño servidor de archivos.</p>
+<p>Su principal atractivo es que permite disponer de una interfaz web para administrar archivos sin instalar una plataforma demasiado compleja. Y si usas Gnome por ejemplo, puedes usar Nautilus mediante protocolo DAV para conectarse y trabajar de manera gráfica...</p>
+<p>La posibilidad de crear volúmenes virtuales, asignar permisos por usuario y montar carpetas existentes resulta muy útil para tener una estructura organizada de almacenamiento.</p>
+<p>En este caso de ejemplo, la instalación también sirvió para recordar algunas particularidades de Docker y Nginx Proxy Manager, especialmente la diferencia entre la resolución DNS del contenedor y la que utiliza internamente Nginx.</p>
+<p>Finalmente, con esto se puede conseguir una instalación con acceso HTTPS, cuentas independientes, permisos por carpeta y almacenamiento compartido, funcionando en una Raspberry Pi.</p>
+<p>Este artículo, no pretende que reemplaces todos los servicios de una nube comercial ni convertirse en una plataforma de colaboración completa, pero para compartir documentos, recibir archivos y consultar fotografías u otros documentos privados desde cualquier lugar, sin que mande telemetría a externos, cumple bastante bien...</p>
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li><a href="https://github.com/9001/copyparty">Repositorio oficial de Copyparty</a></li>
+<li><a href="https://docs.docker.com/compose/">Documentación de docker compose</a></li>
+<li><a href="https://nginxproxymanager.com/">Nginx Proxy Manager</a></li>
+</ul>
+  </div>
+</article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/authors.html">Autores</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/archives.html">Archivados</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/categories.html">Carpetas</a></li>
+          <li class="list-inline-item"><a href="https://fotosycaptura.cl/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+		 <img src="https://api.fotosycaptura.cl/logo.png" title="Logo pie de página" alt="Logo pie de página" referrerpolicy="no-referrer-when-downgrade"><a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
