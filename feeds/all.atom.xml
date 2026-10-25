@@ -386,7 +386,7 @@ openresty
 &lt;p&gt;Una vez que Copyparty se encuentra funcionando, puedes querer agregar una carpeta por ejemplo de fotografías que quizás ya tengas almacenada en otro directorio, o en otro disco.&lt;/p&gt;
 &lt;p&gt;Copyparty permite hacerlo sin copiar los archivos, aprovechando los montajes de Docker.&lt;/p&gt;
 &lt;p&gt;Por ejemplo, supongamos que nuestras fotografías están en una unidad externa, digamos, algo del tipo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/media/devmon/Fotos/algo
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/media/devmon/algo
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Puedes agregar un nuevo volumen al docker-compose.yml:&lt;/p&gt;
