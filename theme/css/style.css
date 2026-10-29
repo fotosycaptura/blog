@@ -145,3 +145,405 @@ hr {
     margin-right: 10px;
   }
 }
+/* =========================================================
+   TEMA HALLOWEEN
+   ========================================================= */
+
+:root {
+    --halloween-bg: #211827;
+    --halloween-surface: #fff8ed;
+    --halloween-orange: #ff7518;
+    --halloween-purple: #683c79;
+    --halloween-text: #302537;
+}
+
+/* Fondo general */
+body {
+    background-color: var(--halloween-bg);
+    color: var(--halloween-text);
+}
+
+/* Contenido principal */
+.main {
+    background-color: var(--halloween-surface);
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .25);
+}
+
+/* Encabezado */
+.header {
+    border-bottom: 2px solid var(--halloween-orange);
+}
+
+.header .title {
+    color: var(--halloween-orange);
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, .4);
+}
+
+/* Logo */
+.header img {
+    border: 2px solid var(--halloween-orange);
+    box-shadow: 0 0 14px rgba(255, 117, 24, .35);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.header img:hover {
+    transform: rotate(-2deg) scale(1.03);
+    box-shadow: 0 0 22px rgba(255, 117, 24, .6);
+}
+
+/* Enlaces */
+a {
+    color: #8a420b;
+}
+
+a:hover,
+a:focus {
+    color: #c94e00;
+}
+
+/* Enlaces sobre el fondo oscuro */
+.header a,
+.footer a {
+    color: #ffad65;
+}
+
+.header a:hover,
+.footer a:hover {
+    color: #ffd29f;
+}
+
+/* Selección */
+::selection {
+    background: var(--halloween-orange);
+    color: #211827;
+}
+
+/* Citas */
+blockquote {
+    border-left: 4px solid var(--halloween-orange);
+    padding-left: 1rem;
+    color: #66536a;
+}
+
+/* Separadores */
+hr {
+    border-color: rgba(104, 60, 121, .3);
+}
+
+/* Paginación */
+.pagination .page-link {
+    color: #8a420b;
+}
+
+/* Pie de página */
+.footer {
+    color: #e8d6eb;
+    border-top: 1px solid var(--halloween-orange);
+}
+
+/* Banner Halloween */
+.fondo::before {
+    background-image: url("/images/Fondo-Halloween.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: .55;
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .header img {
+        transition: none;
+    }
+
+    .header img:hover {
+        transform: none;
+    }
+}
+/* Pie de página */
+.footer {
+    color: #e9dce8;
+}
+
+/* Mejor contraste del banner */
+.fondo::before {
+    opacity: .65;
+}
+
+/* Paginación */
+.pagination .page-link {
+    background-color: #392b42;
+    border-color: #674b6b;
+    color: #ffbd84;
+}
+
+.pagination .page-link:hover {
+    background-color: #51385a;
+    color: #fff;
+}
+body {
+    background-color: red !important;
+}
+
+.main {
+    background-color: #211827 !important;
+    color: white !important;
+}
+
+.header p,
+.header small,
+.header .text-muted {
+    color: yellow !important;
+}
+/* Subtítulo del encabezado */
+.header .text-muted,
+.header .subtitle,
+.header .description {
+    color: #f4d9b8 !important;
+    opacity: 1 !important;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, .95),
+        0 2px 8px rgba(0, 0, 0, .85);
+}
+/* Degradado oscuro sobre el banner */
+.fondo::before {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(20, 12, 25, .15) 0%,
+            rgba(20, 12, 25, .45) 45%,
+            rgba(20, 12, 25, .60) 75%,
+            rgba(20, 12, 25, .25) 100%
+        ),
+        url("/images/Fondo-Halloween.jpg");
+
+    background-position: center;
+    background-size: cover;
+    opacity: 1;
+}
+/* Títulos de artículos */
+.teaser .title a,
+.teaser h2 a,
+.article .title {
+    color: #ffb36e !important;
+}
+
+.teaser .title a:hover,
+.teaser h2 a:hover {
+    color: #ffd9a8 !important;
+}
+/* Metadatos de artículos */
+.teaser header,
+.teaser header li,
+.teaser header .text-muted,
+.article header .text-muted {
+    color: #cbb8d0 !important;
+}
+
+/* Enlaces de categorías y autores */
+.teaser header a,
+.article header a {
+    color: #ffad65 !important;
+}
+/* =========================================================
+   HALLOWEEN - TARJETAS BOOTSTRAP
+   ========================================================= */
+
+/* Contenedor de tarjetas */
+.main .card {
+    background-color: #38283f;
+    color: #e8d9e9;
+    border: 1px solid #795680 !important;
+    border-radius: 8px;
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+/* Encabezado */
+.main .card-header {
+    background-color: #4b3150;
+    color: #ffc58d;
+
+    border-bottom: 1px solid #795680;
+    font-weight: 600;
+    padding: .75rem 1rem;
+}
+
+/* Cuerpo */
+.main .card-body {
+    background-color: #38283f;
+    color: #e8d9e9;
+}
+
+/* Títulos */
+.main .card-title,
+.main .card-title a {
+    color: #ffe0b5;
+}
+
+/* Descripciones */
+.main .card-text {
+    color: #e8d9e9;
+    line-height: 1.6;
+}
+
+/* Enlaces */
+.main .card-link,
+.main .card a {
+    color: #ffad65;
+}
+
+.main .card a:hover {
+    color: #ffd9a8;
+}
+
+/* Efecto al pasar el mouse */
+.main .card:hover {
+    transform: translateY(-4px);
+    border-color: #ffad65 !important;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, .35),
+        0 0 12px rgba(255, 117, 24, .12);
+}
+
+/* Imágenes dentro de las tarjetas */
+.main .card img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Respeto a movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .main .card {
+        transition: none;
+    }
+
+    .main .card:hover {
+        transform: none;
+    }
+}
+/* =========================================================
+   HALLOWEEN - PIE DE PÁGINA
+   ========================================================= */
+
+footer.footer {
+    background-color: #2b1d32 !important;
+    color: #e9dce8 !important;
+
+    border-top: 2px solid #ff7518 !important;
+
+    box-shadow:
+        0 -4px 20px rgba(0, 0, 0, .25);
+}
+
+/* Enlaces */
+footer.footer a {
+    color: #ffad65 !important;
+    text-decoration: none;
+
+    transition: color .2s ease;
+}
+
+footer.footer a:hover {
+    color: #ffe0b8 !important;
+    text-decoration: underline;
+}
+
+/* Texto y elementos del footer */
+footer.footer p,
+footer.footer span,
+footer.footer li {
+    color: #e9dce8;
+}
+
+/* Separadores */
+footer.footer hr {
+    border-color: rgba(255, 173, 101, .25);
+}
+
+/* Imagen o logotipo */
+footer.footer img {
+    max-width: 100%;
+    height: auto;
+}
+/* =========================================================
+   HALLOWEEN - FANTASMA FLOTANTE
+   ========================================================= */
+
+.halloween-ghost {
+    position: fixed;
+
+    /* Posición vertical */
+    top: 35%;
+
+    /* Inicialmente fuera de la pantalla */
+    left: 0;
+
+    font-size: 48px;
+    line-height: 1;
+
+    /* Siempre visible, pero sin bloquear clics */
+    z-index: 9999;
+    pointer-events: none;
+    user-select: none;
+
+    opacity: 0;
+
+    /* Movimiento horizontal */
+    animation: ghost-travel 25s linear infinite;
+
+    will-change: transform, opacity;
+}
+
+/* Recorrido de izquierda a derecha */
+@keyframes ghost-travel {
+
+    0% {
+        transform: translate(-100px, 0);
+        opacity: 0;
+    }
+
+    5% {
+        opacity: .65;
+    }
+
+    20% {
+        transform: translate(20vw, -20px);
+    }
+
+    40% {
+        transform: translate(40vw, 15px);
+    }
+
+    60% {
+        transform: translate(60vw, -25px);
+    }
+
+    80% {
+        transform: translate(80vw, 10px);
+    }
+
+    95% {
+        opacity: .65;
+    }
+
+    100% {
+        transform: translate(calc(100vw + 100px), 0);
+        opacity: 0;
+    }
+}
+
+/* Accesibilidad: evitar animaciones */
+@media (prefers-reduced-motion: reduce) {
+    .halloween-ghost {
+        display: none;
+    }
+}
+
