@@ -1,0 +1,166 @@
+/* Navidad bajo las estrellas — FotosyCaptura.cl
+   Cargar DESPUÉS de Bootstrap y style.css. No cargar halloween.css a la vez. */
+:root {
+  --navy-bg: #0b1930;
+  --navy-main: #152b49;
+  --navy-card: #223e64;
+  --navy-card-head: #1b3456;
+  --gold: #f4c978;
+  --gold-hover: #ffe4a6;
+  --snow: #e8f3ff;
+  --muted-snow: #b9cce2;
+  --border-ice: #52789e;
+}
+::selection { background: #f4c978; color: #0b1930; text-shadow: none; }
+body { background: var(--navy-bg); color: var(--snow); }
+a { color: var(--gold); }
+a:hover, a:focus { color: var(--gold-hover); }
+.header.fondo { position: relative; isolation: isolate; color: var(--snow); border-bottom: 2px solid var(--gold); }
+.header.fondo::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background-image: linear-gradient(90deg, rgba(5,15,35,.68), rgba(5,15,35,.76) 45%, rgba(5,15,35,.62)), url('/images/Fondo-Navidad.jpg');
+  background-position: center; background-size: cover; background-repeat: no-repeat;
+  opacity: 1; pointer-events: none;
+}
+.header .title { color: var(--gold); text-shadow: 0 2px 6px #061022; overflow-wrap: anywhere; }
+.header.fondo p.text-muted { color: var(--snow) !important; opacity: 1 !important; text-shadow: 0 2px 5px #061022; }
+.header a, .header ul a { color: var(--gold); text-shadow: 0 2px 5px #061022; }
+.header a:hover, .header a:focus { color: #fff6d9; }
+.header img { border: 2px solid var(--gold); box-shadow: 0 0 18px rgba(244,201,120,.25); }
+.main { background: var(--navy-main); color: var(--snow); border-radius: 0; }
+.main h1, .main h2, .main h3, .main h4, .main h5, .main h6 { color: var(--snow); }
+.main a { color: var(--gold); }
+.main a:hover, .main a:focus { color: var(--gold-hover); }
+.main .text-muted, .main .text-secondary, .teaser header li, .article header li { color: var(--muted-snow) !important; }
+.main .text-muted a, .teaser header a, .article header a { color: var(--gold); }
+.main hr { border-color: rgba(185,204,226,.3); opacity: 1; }
+.main blockquote { color: #d3e2f3; border-left: 3px solid var(--gold); padding-left: 1rem; }
+.main .card { background: var(--navy-card); color: var(--snow); border: 1px solid var(--border-ice) !important; border-radius: 9px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,.22); transition: transform .25s ease, box-shadow .25s ease; }
+.main .card-header { background: var(--navy-card-head); color: var(--gold); border-bottom: 1px solid var(--border-ice); font-weight: 600; }
+.main .card-body, .main .card-text { background: var(--navy-card); color: var(--snow); }
+.main .card-title, .main .card-title a { color: var(--gold); }
+.main .card a { color: var(--gold); }
+.main .card a:hover { color: var(--gold-hover); }
+.main .card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.32); }
+.main .alert-success { background: #193e42; border-color: #558d84; color: #e5fff4; }
+.main .alert-success a { color: #ffe4a6; }
+.main .alert-info { background: #1b3d5e; border-color: #5b8ab6; color: var(--snow); }
+.main .alert-warning { background: #554324; border-color: #a78544; color: #fff2d6; }
+.main .alert-danger { background: #552c39; border-color: #aa6678; color: #fff0f1; }
+.main pre, .main .highlight pre { background: #0b1a2d; color: #e8f3ff; border: 1px solid #45617d; border-radius: 6px; padding: 1rem; overflow-x: auto; }
+.main :not(pre) > code { color: #ffd69d; }
+.main table { color: var(--snow); }
+.main .table { --bs-table-color: #e8f3ff; --bs-table-bg: transparent; --bs-table-border-color: #52789e; color: var(--snow); }
+.main .table th, .main .table td { border-color: #52789e; }
+.main input, .main textarea, .main select, .main .form-control { background: #102641; color: var(--snow); border: 1px solid #6486aa; }
+.main input:focus, .main textarea:focus, .main select:focus, .main .form-control:focus { background: #102641; color: #fff; border-color: var(--gold); box-shadow: 0 0 0 .2rem rgba(244,201,120,.2); }
+.main input::placeholder, .main textarea::placeholder { color: #b9cce2; opacity: 1; }
+.pagination .page-link { background: #1b3456; color: var(--gold); border-color: #52789e; }
+.pagination .page-link:hover, .pagination .page-item.active .page-link { background: #31577d; color: #fff; border-color: var(--gold); }
+footer.footer, .footer { background: #0b1930 !important; color: var(--snow) !important; border-top: 2px solid var(--gold) !important; }
+.footer a { color: var(--gold) !important; }
+.footer a:hover { color: var(--gold-hover) !important; }
+.footer p, .footer span, .footer li { color: var(--snow); }
+@media (prefers-reduced-motion: reduce) { .main .card { transition: none; } .main .card:hover { transform: none; } }
+/* ==========================================================
+   NAVIDAD - NIEVE ACUMULADA EN TARJETAS
+   ========================================================== */
+
+.main .card {
+    position: relative;
+    overflow: visible;
+    margin-top: 12px;
+}
+
+/* Capa de nieve sobre el borde superior */
+.main .card::before {
+    content: "";
+    position: absolute;
+
+    top: -11px;
+    left: -2px;
+    right: -2px;
+
+    height: 19px;
+
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #f1f9ff 45%,
+        #c4e1f5 85%,
+        #91bcd8 100%
+    );
+
+    clip-path: polygon(
+        0% 30%,
+        5% 20%,
+        12% 32%,
+        18% 15%,
+        25% 28%,
+        34% 18%,
+        42% 35%,
+        50% 17%,
+        59% 28%,
+        67% 15%,
+        75% 30%,
+        84% 18%,
+        92% 28%,
+        100% 20%,
+        100% 65%,
+        95% 75%,
+        89% 62%,
+        83% 90%,
+        75% 65%,
+        66% 78%,
+        58% 60%,
+        49% 88%,
+        40% 65%,
+        32% 82%,
+        24% 63%,
+        16% 85%,
+        8% 65%,
+        0% 78%
+    );
+
+    z-index: 2;
+    pointer-events: none;
+
+    filter: drop-shadow(
+        0 2px 2px rgba(0, 0, 0, .15)
+    );
+}
+
+/* Evitar que la nieve tape los títulos */
+.main .card-header {
+    position: relative;
+    padding-top: 1rem;
+}
+/* Logo con animación suave */
+.header img {
+    border: 2px solid #f4c978;
+    border-radius: 12px;
+
+    box-shadow: 0 0 14px rgba(244, 201, 120, .35);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+/* Efecto al acercar el cursor */
+.header img:hover {
+    transform: rotate(-2deg) scale(1.03);
+
+    box-shadow: 0 0 22px rgba(244, 201, 120, .6);
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .header img {
+        transition: none;
+    }
+
+    .header img:hover {
+        transform: none;
+    }
+}

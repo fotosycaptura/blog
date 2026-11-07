@@ -1,0 +1,84 @@
+/* ==========================================================
+   FOTOSYCAPTURA.CL - NEVADA NAVIDEÑA
+   ========================================================== */
+
+.christmas-snow {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+
+    contain: layout style;
+}
+
+.christmas-snowflake {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    color: #e8f3ff;
+    line-height: 1;
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 4px rgba(255, 255, 255, .5),
+        0 0 8px rgba(160, 210, 255, .3);
+
+    will-change: transform, opacity;
+
+    animation-name: christmas-snowfall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Caída con desplazamiento lateral */
+@keyframes christmas-snowfall {
+
+    0% {
+        transform:
+            translate3d(0, -40px, 0)
+            rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: var(--snow-opacity, .6);
+    }
+
+    50% {
+        transform:
+            translate3d(
+                calc(var(--snow-drift, 20px) * .5),
+                50vh,
+                0
+            )
+            rotate(90deg);
+        opacity: var(--snow-opacity, .6);
+    }
+
+    90% {
+        opacity: var(--snow-opacity, .6);
+    }
+
+    100% {
+        transform:
+            translate3d(
+                var(--snow-drift, 20px),
+                110vh,
+                0
+            )
+            rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .christmas-snow {
+        display: none !important;
+    }
+}
