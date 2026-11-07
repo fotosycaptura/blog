@@ -164,3 +164,33 @@ footer.footer, .footer { background: #0b1930 !important; color: var(--snow) !imp
         transform: none;
     }
 }
+/* ==========================================================
+   NAVIDAD - FONDO AZUL NOCTURNO A NEGRO
+   ========================================================== */
+
+html {
+    background-color: #05070d;
+}
+
+body {
+    background: linear-gradient(
+        180deg,
+        #172e4e 0%,
+        #11233d 25%,
+        #0b172a 50%,
+        #070e1b 75%,
+        #030407 100%
+    );
+
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    color: #e8f3ff;
+    min-height: 100vh;
+}
+
+/* Evitar que el contenedor principal tape el degradado */
+main,
+.main {
+    background-color: transparent;
+}
